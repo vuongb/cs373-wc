@@ -5,7 +5,7 @@ Course Name: CS373
 Unique: 91055
 
 First Name: Bryan
-Last Name: Vuong 
+Last Name: Vuong
 EID: bkv85
 E-mail: vuong.bryan@gmail.com
 Estimated number of hours: 12
@@ -39,8 +39,8 @@ Group Member Point Adjustment: <only if you're leader>
 
 Group Member First Name: Boris
 Group Member Last Name: Jonica
-Group Member EID:
-Group Member E-mail:
+Group Member EID: bj4338
+Group Member E-mail: samnosuke@gmail.com
 Group Member Rating:           <from the list below>
 Group Member Point Adjustment: <only if you're leader>
 
