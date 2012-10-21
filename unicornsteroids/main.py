@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 import webapp2
+from google.appengine.ext import db
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -25,18 +26,100 @@ app = webapp2.WSGIApplication([
 ], debug=True)
 
 
+# One to Many Relationships
+class ExternalLink(db.Model):
+    title = db.StringProperty(required=True)
+    link = db.LinkProperty(required=True)
+    # One(object) to many(links)
+    # Specifying None for class allows us to use any object for the association
+    assoc_object = db.ReferenceProperty(None, collection_name='external_links', required=True)
+
 class Organization(db.Model):
+    # Base Data
+    name            = db.StringProperty(required=True)
+    alternameNames  = db.StringListProperty()
+    kind            = db.StringProperty(required=True)
+    citations       = db.StringListProperty()
+    externalLinks   = db.StringListProperty()
+    history         = db.TextProperty()
+
+    # Location
+    city            = db.StringProperty()
+    state           = db.StringProperty()
+    country         = db.StringProperty(required=True)
+
+    # Media
+    images          = db.StringListProperty()
+    video           = db.StringListProperty()
+    social          = db.StringListProperty()
+
+    # Contact Info
+    address         = db.StringProperty()
+    email           = db.StringProperty()
+    phone           = db.StringProperty()
 
 class People(db.Model):
+    # Base Data
+    name            = db.StringProperty(required=True)
+    alternameNames  = db.StringListProperty()
+    kind            = db.StringProperty(required=True)
+    citations       = db.StringListProperty()
+    externalLinks   = db.StringListProperty()
+
+    # Location
+    city            = db.StringProperty()
+    state           = db.StringProperty()
+    country         = db.StringProperty(required=True)
+
+    # Media
+    images          = db.StringListProperty()
+    video           = db.StringListProperty()
+    social          = db.StringListProperty()
 
 class Crisis(db.Model):
-    startDate = db.DateProperty()
-    endDate = db.DateProperty()
-    humanImpact = db.StringProperty()
-    economicImpact = db.IntegerProperty()
-    resoucesNeeded = 
-    waysToHelp = 
-    organization = 
-    people = 
+    # Base Data
+    name            = db.StringProperty(required=True)
+    alternameNames  = db.StringListProperty()
+    kind            = db.StringProperty(required=True)
+    citations       = db.StringListProperty()
+    startDate       = db.DateProperty()
+    endDate         = db.DateProperty()
+    economicImpact  = db.IntegerProperty(required=True)
+    resoucesNeeded  = db.StringListProperty()
+    waysToHelp      = db.StringListProperty()
+
+    # Location
+    city            = db.StringProperty()
+    state           = db.StringProperty()
+    country         = db.StringProperty(required=True)
+
+    # Media
+    images          = db.StringListProperty()
+    video           = db.StringListProperty()
+    social          = db.StringListProperty()
+
+    # External Links
+    link            = db.StringProperty()
+    description     = db.TextProperty()
+
+    # Human Impact
+    deaths          = db.IntegerProperty()
+    missing         = db.IntegerProperty()
+    injured         = db.IntegerProperty()
+    displaced       = db.IntegerProperty()
+
+
+# Many to many relationships
+class CrisisOrganization(db.Model):
+    crisis = db.ReferenceProperty(Crisis, required=True, collection_name='organizations')
+    organization = db.ReferenceProperty(Organization, required=True, collection_name='crises')
+
+class CrisisPerson(db.Model):
+    crisis = db.ReferenceProperty(Crisis, required=True, collection_name='people')
+    person = db.ReferenceProperty(Person, required=True, collection_name='crises')
+
+class OrganizationPerson(db.Model):
+    organization = db.ReferenceProperty(Organization, required=True, collection_name='people')
+    person = db.ReferenceProperty(Person, required=True, collection_name='organizations')
     
     
