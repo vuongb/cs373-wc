@@ -23,3 +23,20 @@ class MainHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
+
+
+class Organization(db.Model):
+
+class People(db.Model):
+
+class Crisis(db.Model):
+    startDate = db.DateProperty()
+    endDate = db.DateProperty()
+    humanImpact = db.StringProperty()
+    economicImpact = db.IntegerProperty()
+    resoucesNeeded = 
+    waysToHelp = 
+    organization = 
+    people = 
+    
+    
