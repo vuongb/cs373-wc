@@ -58,7 +58,7 @@ class Organization(db.Model):
     us_email           = db.StringProperty()
     us_phone           = db.StringProperty()
 
-class People(db.Model):
+class Person(db.Model):
     # Base Data
     us_name            = db.StringProperty(required=True)
     us_alternameNames  = db.StringListProperty()
