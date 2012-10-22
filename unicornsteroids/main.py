@@ -17,9 +17,59 @@
 import webapp2
 from google.appengine.ext import db
 
+
+def application_key(application_name = None):
+    return db.Key.from_path('Crises Center', application_name or 'default_application')
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write(self.get_header())
+
+        ##todo: not too sure about how or if this works
+        ## see https://developers.google.com/appengine/docs/python/gettingstartedpython27/usingdatastore
+        self.application_name = self.request.get('application_name')
+
+        crises = self.get_crises()
+        organizations = self.get_organizations()
+        people = self.get_people()
+
+        body = "Crises\n" + self.to_ul(crises) \
+               + "\nOrganizations\n" + self.to_ul(organizations) \
+               + "\nPeople\n" + self.to_ul(people)
+
+        self.response.out.write(body)
+
+        self.response.write(self.get_footer())
+
+    def get_header(self):
+        return "<html><body>"
+
+    def get_footer(self):
+        return "</body></html>"
+
+    def get_crises(self):
+        return db.GqlQuery("SELECT * "
+                             "FROM Crisis "
+                             "WHERE ANCESTOR IS :1 "
+                             "ORDER BY us_name DESC",
+                             application_key(self.application_name))
+
+    def get_organizations(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM Organization "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY us_name DESC",
+                            application_key(self.application_name))
+
+    def get_people(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM Person "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY us_name DESC",
+                            application_key(self.application_name))
+    def to_ul(self, col):
+        return "<ul>" + "\n".join(["<li>" + str(item) + "</li>" for item in col]) + "</ul>"
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
@@ -61,7 +111,7 @@ class Organization(db.Model):
 class Person(db.Model):
     # Base Data
     us_name            = db.StringProperty(required=True)
-    us_alternameNames  = db.StringListProperty()
+    us_alternateNames  = db.StringListProperty()
     us_kind            = db.StringProperty(required=True)
     us_citations       = db.StringListProperty()
     us_externalLinks   = db.StringListProperty()
@@ -79,7 +129,7 @@ class Person(db.Model):
 class Crisis(db.Model):
     # Base Data
     us_name            = db.StringProperty(required=True)
-    us_alternameNames  = db.StringListProperty()
+    us_alternateNames  = db.StringListProperty()
     us_kind            = db.StringProperty(required=True)
     us_citations       = db.StringListProperty()
     us_startDate       = db.DateProperty()
