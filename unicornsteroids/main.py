@@ -36,77 +36,77 @@ class ExternalLink(db.Model):
 
 class Organization(db.Model):
     # Base Data
-    name            = db.StringProperty(required=True)
-    alternameNames  = db.StringListProperty()
-    kind            = db.StringProperty(required=True)
-    citations       = db.StringListProperty()
-    externalLinks   = db.StringListProperty()
-    history         = db.TextProperty()
+    us_name            = db.StringProperty(required=True)
+    us_alternateNames  = db.StringListProperty()
+    us_type            = db.StringProperty(required=True)
+    us_citations       = db.StringListProperty()
+    us_externalLinks   = db.StringListProperty()
+    us_history         = db.TextProperty()
 
     # Location
-    city            = db.StringProperty()
-    state           = db.StringProperty()
-    country         = db.StringProperty(required=True)
+    us_city            = db.StringProperty()
+    us_state           = db.StringProperty()
+    us_country         = db.StringProperty(required=True)
 
     # Media
-    images          = db.StringListProperty()
-    video           = db.StringListProperty()
-    social          = db.StringListProperty()
+    us_images          = db.StringListProperty()
+    us_video           = db.StringListProperty()
+    us_social          = db.StringListProperty()
 
     # Contact Info
-    address         = db.StringProperty()
-    email           = db.StringProperty()
-    phone           = db.StringProperty()
+    us_address         = db.StringProperty()
+    us_email           = db.StringProperty()
+    us_phone           = db.StringProperty()
 
 class People(db.Model):
     # Base Data
-    name            = db.StringProperty(required=True)
-    alternameNames  = db.StringListProperty()
-    kind            = db.StringProperty(required=True)
-    citations       = db.StringListProperty()
-    externalLinks   = db.StringListProperty()
+    us_name            = db.StringProperty(required=True)
+    us_alternameNames  = db.StringListProperty()
+    us_kind            = db.StringProperty(required=True)
+    us_citations       = db.StringListProperty()
+    us_externalLinks   = db.StringListProperty()
 
     # Location
-    city            = db.StringProperty()
-    state           = db.StringProperty()
-    country         = db.StringProperty(required=True)
+    us_city            = db.StringProperty()
+    us_state           = db.StringProperty()
+    us_country         = db.StringProperty(required=True)
 
     # Media
-    images          = db.StringListProperty()
-    video           = db.StringListProperty()
-    social          = db.StringListProperty()
+    us_images          = db.StringListProperty()
+    us_video           = db.StringListProperty()
+    us_social          = db.StringListProperty()
 
 class Crisis(db.Model):
     # Base Data
-    name            = db.StringProperty(required=True)
-    alternameNames  = db.StringListProperty()
-    kind            = db.StringProperty(required=True)
-    citations       = db.StringListProperty()
-    startDate       = db.DateProperty()
-    endDate         = db.DateProperty()
-    economicImpact  = db.IntegerProperty(required=True)
-    resoucesNeeded  = db.StringListProperty()
-    waysToHelp      = db.StringListProperty()
+    us_name            = db.StringProperty(required=True)
+    us_alternameNames  = db.StringListProperty()
+    us_kind            = db.StringProperty(required=True)
+    us_citations       = db.StringListProperty()
+    us_startDate       = db.DateProperty()
+    us_endDate         = db.DateProperty()
+    us_economicImpact  = db.IntegerProperty(required=True)
+    us_resoucesNeeded  = db.StringListProperty()
+    us_waysToHelp      = db.StringListProperty()
 
     # Location
-    city            = db.StringProperty()
-    state           = db.StringProperty()
-    country         = db.StringProperty(required=True)
+    us_city            = db.StringProperty()
+    us_state           = db.StringProperty()
+    us_country         = db.StringProperty(required=True)
 
     # Media
-    images          = db.StringListProperty()
-    video           = db.StringListProperty()
-    social          = db.StringListProperty()
+    us_images          = db.StringListProperty()
+    us_video           = db.StringListProperty()
+    us_social          = db.StringListProperty()
 
     # External Links
-    link            = db.StringProperty()
-    description     = db.TextProperty()
+    us_link            = db.StringProperty()
+    us_description     = db.TextProperty()
 
     # Human Impact
-    deaths          = db.IntegerProperty()
-    missing         = db.IntegerProperty()
-    injured         = db.IntegerProperty()
-    displaced       = db.IntegerProperty()
+    us_deaths          = db.IntegerProperty()
+    us_missing         = db.IntegerProperty()
+    us_injured         = db.IntegerProperty()
+    us_displaced       = db.IntegerProperty()
 
 
 # Many to many relationships
