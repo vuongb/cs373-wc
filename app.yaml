@@ -2,7 +2,7 @@ application: unicornsteroids
 version: 1
 runtime: python27
 api_version: 1
-threadsafe: yes
+threadsafe: true
 
 handlers:
 - url: /static
@@ -17,7 +17,7 @@ handlers:
   upload: favicon\.ico
 
 - url: /.+
-  script: WC1.py
+  script: WC1.app
 
 libraries:
 - name: webapp2
