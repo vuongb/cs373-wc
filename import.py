@@ -19,6 +19,9 @@ def get_tree_and_validate(data, schema):
 tree = get_tree_and_validate('xml_instances/crisis-breast_cancer.xml', SCHEMA)
 
 def process(tree):
+    '''
+    go through elementtree and create objects from elements
+    '''
     root = tree.getroot()
 
     print(str(root.tag))
