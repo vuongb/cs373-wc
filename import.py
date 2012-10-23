@@ -23,26 +23,23 @@ def process(tree):
     go through elementtree and create objects from elements
     '''
     root = tree.getroot()
+    for i in root:
+        if i.tag == 'crises':
+            process_crises(i)
+        elif i.tag == 'organizations':
+            process_organizations(i)
+        elif i.tag == 'people':
+            process_people(i)
 
-    print(str(root.tag))
-    if str(root.tag) == 'world-crises':
-        process(root.getroot())
-    elif str(root.tag) == 'crises':
-        process_crises(root.gettree())
-    elif str(root.tag) == 'organizations':
-        process_organizations(root.gettree())
-    elif str(root.tag) == 'people':
-        process_people(root.gettree())
+def process_crises(element):
+    for i in element:
+        pass
 
-def process_crises(tree):
+def process_organizations(element):
     root = tree.getroot()
     print(root)
 
-def process_organizations(tree):
-    root = tree.getroot()
-    print(root)
-
-def process_people(tree):
+def process_people(element):
     root = tree.getroot()
     print(root)
 
