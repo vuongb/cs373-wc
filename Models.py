@@ -1,3 +1,5 @@
+from google.appengine.ext import db
+
 # One to Many Relationships
 class ExternalLink(db.Model):
     source = db.LinkProperty(required=True)
