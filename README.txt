@@ -25,7 +25,7 @@ Group Member Point Adjustment: <only if you're leader>
 
 Group Member First Name: Michael
 Group Member Last Name: Tarng
-Group Member EID: mt22239
+Group Member EID: MT22239
 Group Member E-mail: mtarng@gmail.com
 Group Member Rating:           <from the list below>
 Group Member Point Adjustment: <only if you're leader>
