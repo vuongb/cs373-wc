@@ -43,34 +43,38 @@ def addCrisis(crisis):
   ele.attrib['id'] = crisis.key().name()
 
   name = Element('name')
-  name.text = crisis.name
+  name.text = crisis.us_name
   ele.append(name)
 
   kind = Element('kind')
-  kind.text = crisis.kind_
+  kind.text = crisis.us_type
   ele.append(kind)
 
   if crisis.description:
     description = Element('description')
-    description.text = crisis.description
+    description.text = crisis.us_description
     ele.append(description)
 
   if crisis.city:
     city = Element('city')
-    city.text = crisis.city
+    city.text = crisis.us_city
     ele.append(city)
 
   if crisis.state:
     state = Element('state')
-    state.text = crisis.state
+    state.text = crisis.us_state
     ele.append(state)
 
   country = Element('country')
-  country.text = crisis.country
+  country.text = crisis.us_country
   ele.append(country)
 
-  date = Element('date')
-  date.text = str(crisis.date)
+  date = Element('startDate')
+  date.text = str(crisis.us_startDate)
+  ele.append(date)
+
+  date = Element('endDate')
+  date.text = str(crisis.us_endDate)
   ele.append(date)
 
   human_impact = Element('human-impact')
