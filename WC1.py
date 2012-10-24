@@ -114,8 +114,8 @@ class ImportHandler(webapp2.RequestHandler):
                 SCHEMA  ='cassie-schema-statistics.xsd'
 
                 tree = get_tree_and_validate(upload_request, open(SCHEMA, 'r').read())
-                if tree == 0:
-                    self.get()
+#                if tree == 0:
+#                    self.get()
 
                 root    = tree.getroot()
                 # iterate over types
