@@ -48,7 +48,7 @@ def addCrisis(crisis, idNum):
     """
 
   ele = Element('crisis')
-  ele.attrib['id'] = str(idNum)
+  ele.attrib['id'] = 'c' + str(idNum)
   
   name = Element('name')
   name.text = crisis.us_name
@@ -98,12 +98,115 @@ def addCrisis(crisis, idNum):
     
   ele.append(location)
 
-  date = Element('startDate')
-  date.text = str(crisis.us_startDate)
+##  date = Element('startDate')
+##  date.text = str(crisis.us_startDate)
+##  ele.append(date)
+##
+##  date = Element('endDate')
+##  date.text = str(crisis.us_endDate)
+##  ele.append(date)
+
+##  human_impact = Element('human-impact')
+##  for h_impact in crisis.us_humanImpact:
+##    stat = Element('statistic')
+##    stat.text = h_impact
+##    human_impact.append(stat)
+##  ele.append(human_impact)
+##  
+##  economic_impact = Element('economic-impact')
+##  for e_impact in crisis.us_economicImpact:
+##    econImpact_Ele = Element('statistic')
+##    econImpact_Ele.text = e_impact
+##    economic_impact.append(econImpact_Ele)
+##  ele.append(economic_impact)
+##
+##  resources = Element('resources-needed')
+##  for resource in crisis.us_resoucesNeeded:
+##    resource_ele = Element('resource')
+##    resource_ele.text = resource
+##    resources.append(resource_ele)
+##  ele.append(resources)
+##
+##  ways = Element('ways-to-help')
+##  for way in crisis.us_waysToHelp:
+##    way_ele = Element('way')
+##    way_ele.text = way
+##    ways.append(way_ele)
+##  ele.append(ways)
+
+  image_main = Element('images')
+  for image in crisis.images:
+    image_ele = Element('image')
+    link = Element('source')
+    link.text = image.source
+    image_ele.append(link)
+    if image.description:
+      des_ele = Element('description')
+      des_ele.text = image.description
+      image_ele.append(des_ele)
+    image_main.append(image_ele)
+  ele.append(image_main)
+
+  maps_main = Element('maps')
+  for map in crisis.maps:
+    map_ele = Element('map')
+    link = Element('source')
+    link.text = map.source
+    map_ele.append(link)
+    if map.description:
+      des_ele = Element('description')
+      des_ele.text = map.description
+      map_ele.append(des_ele)
+    maps_main.append(map_ele)
+  ele.append(maps_main)
+
+  video_main = Element('videos')
+  for video in crisis.videos:
+    video_ele = Element(video.video_type)
+    video_ele.text = video.video_id
+    video_main.append(video_ele)
+  ele.append(video_main)
+
+  social_main = Element('social')
+  for social in crisis.social:
+    social_ele = Element(social.social_type)
+    social_ele.text = social.social_id
+    social_main.append(social_ele)
+  ele.append(social_main)
+
+  citations_main = Element('citations')
+  for citation in crisis.maps:
+    citation_ele = Element('citation')
+    link = Element('source')
+    link.text = citation.source
+    citation_ele.append(link)
+    if citation.description:
+      des_ele = Element('description')
+      des_ele.text = citation.description
+      citation_ele.append(des_ele)
+    citations_main.append(citation_ele)
+  ele.append(citations_main)
+
+  extLink_main = Element('external-links')
+  for link in crisis.external_links:
+    link_ele = Element('external-link')
+    source_Elem = Element('source')
+    source_Elem.text = link.source
+    link_ele.append(source_Elem)
+    descrip_Elem = Element('description')
+    descrip_Elem.text = link.description
+    link_ele.append(descrip_Elem)
+    extLink_main.append(link_ele)
+  ele.append(extLink_main)
+
+  date = Element('start-date')
+  tempDate = str(crisis.us_startDate)
+  date.text = tempDate.replace(' ', 'T')
   ele.append(date)
 
-  date = Element('endDate')
-  date.text = str(crisis.us_endDate)
+  date = Element('end-date')
+  tempDate = str(crisis.us_startDate)
+  date.text = tempDate.replace(' ', 'T')
   ele.append(date)
 
   human_impact = Element('human-impact')
@@ -134,58 +237,6 @@ def addCrisis(crisis, idNum):
     ways.append(way_ele)
   ele.append(ways)
 
-##  for image in crisis.images:
-##    image_ele = Element('image')
-##    link = Element('link')
-##    link.text = image.link
-##    image_ele.append(link)
-##    if image.description:
-##      des_ele = Element('description')
-##      des_ele.text = image.description
-##      image_ele.append(des_ele)
-##    ele.append(image_ele)
-##
-##  for video in crisis.videos:
-##    video_ele = Element('video')
-##    video_ele.attrib['video-type'] = video.video_type
-##    link = Element('link')
-##    link.text = video.link
-##    video_ele.append(link)
-##    if video.title:
-##      name_ele = Element('title')
-##      name_ele.text = video.title
-##      video_ele.append(name_ele)
-##    if video.description:
-##      des_ele = Element('description')
-##      des_ele.text = video.description
-##      video_ele.append(des_ele)
-##    else:
-##      video_ele.append(Element('description'))
-##    ele.append(video_ele)
-##
-##  for social in crisis.social_networks:
-##    social_ele = Element('social')
-##    social_ele.attrib['social-type'] = social.social_type
-##    link = Element('link')
-##    link.text = social.link
-##    social_ele.append(link)
-##    if social.title:
-##      name_ele = Element('title')
-##      name_ele.text = social.title
-##      social_ele.append(name_ele)
-##    ele.append(social_ele)
-##
-##  for link in crisis.external_links:
-##    link_ele = Element('external-link')
-##    url = Element('link')
-##    url.text = link.link
-##    link_ele.append(url)
-##    if link.title:
-##      name_ele = Element('title')
-##      name_ele.text = link.title
-##      link_ele.append(name_ele)
-##    ele.append(link_ele)
-##
 ##  org_refs = []
 ##  for org in crisis.organizations:
 ##    org_refs.append(org.organization.key().name())
@@ -211,7 +262,7 @@ def addOrganization(organization, idNum):
     """
   ele = Element('organization')
   #ele.attrib['id'] = organization.us_name
-  ele.attrib['id'] = str(idNum)
+  ele.attrib['id'] = 'o' + str(idNum)
 
   name = Element('name')
   name.text = organization.us_name
@@ -260,79 +311,87 @@ def addOrganization(organization, idNum):
     location.append(longitude)
     
   ele.append(location)
+    
+  image_main = Element('images')
+  for image in organization.images:
+    image_ele = Element('image')
+    link = Element('source')
+    link.text = image.source
+    image_ele.append(link)
+    if image.description:
+      des_ele = Element('description')
+      des_ele.text = image.description
+      image_ele.append(des_ele)
+    image_main.append(image_ele)
+  ele.append(image_main)
 
-  # Text property cause problems?
-  if organization.us_address or organization.us_email or organization.us_phone:
-    contactInfo = Element('contact-info')
-  
+  maps_main = Element('maps')
+  for map in organization.maps:
+    map_ele = Element('map')
+    link = Element('source')
+    link.text = map.source
+    map_ele.append(link)
+    if map.description:
+      des_ele = Element('description')
+      des_ele.text = map.description
+      map_ele.append(des_ele)
+    maps_main.append(map_ele)
+  ele.append(maps_main)
+
+  video_main = Element('videos')
+  for video in organization.videos:
+    video_ele = Element(video.video_type)
+    video_ele.text = video.video_id
+    video_main.append(video_ele)
+  ele.append(video_main)
+
+  social_main = Element('social')
+  for social in organization.social:
+    social_ele = Element(social.social_type)
+    social_ele.text = social.social_id
+    social_main.append(social_ele)
+  ele.append(social_main)
+
+  citations_main = Element('citations')
+  for citation in organization.maps:
+    citation_ele = Element('citation')
+    link = Element('source')
+    link.text = citation.source
+    citation_ele.append(link)
+    if citation.description:
+      des_ele = Element('description')
+      des_ele.text = citation.description
+      citation_ele.append(des_ele)
+    citations_main.append(citation_ele)
+  ele.append(citations_main)
+
+  extLink_main = Element('external-links')
+  for link in organization.external_links:
+    link_ele = Element('external-link')
+    source_Elem = Element('source')
+    source_Elem.text = link.source
+    link_ele.append(source_Elem)
+    descrip_Elem = Element('description')
+    descrip_Elem.text = link.description
+    link_ele.append(descrip_Elem)
+    extLink_main.append(link_ele)
+  ele.append(extLink_main)
+
   if organization.us_address:
     address = Element('address')
     address.text = organization.us_address
-    contactInfo.append(address)
+    ele.append(address)
 
   if organization.us_email:
     email = Element('email')
     email.text = organization.us_email
-    contactInfo.append(email)
+    ele.append(email)
 
   if organization.us_phone:
     phone = Element('phone')
     phone.text = organization.us_phone
-    contactInfo.append(phone)
+    ele.append(phone)
 
-  if contactInfo:
-    ele.append(contactInfo)
-
-##  for image in organization.images:
-##    image_ele = Element('image')
-##    link = Element('link')
-##    link.text = image.link
-##    image_ele.append(link)
-##    if image.description:
-##      des_ele = Element('description')
-##      des_ele.text = image.description
-##      image_ele.append(des_ele)
-##    ele.append(image_ele)
-##
-##  for video in organization.videos:
-##    video_ele = Element('video')
-##    video_ele.attrib['video-type'] = video.video_type
-##    link = Element('link')
-##    link.text = video.link
-##    video_ele.append(link)
-##    if video.title:
-##      name_ele = Element('title')
-##      name_ele.text = video.title
-##      video_ele.append(name_ele)
-##    if video.description:
-##      des_ele = Element('description')
-##      des_ele.text = video.description
-##      video_ele.append(des_ele)
-##    ele.append(video_ele)
-##
-##  for social in organization.social_networks:
-##    social_ele = Element('social')
-##    social_ele.attrib['social-type'] = social.social_type
-##    link = Element('link')
-##    link.text = social.link
-##    social_ele.append(link)
-##    if social.title:
-##      name_ele = Element('title')
-##      name_ele.text = social.title
-##      social_ele.append(name_ele)
-##    ele.append(social_ele)
-##
-##  for link in organization.external_links:
-##    link_ele = Element('external-link')
-##    url = Element('link')
-##    url.text = link.link
-##    link_ele.append(url)
-##    if link.title:
-##      name_ele = Element('title')
-##      name_ele.text = link.title
-##      link_ele.append(name_ele)
-##    ele.append(link_ele)
-##
 ##  c_refs = []
 ##  for c in organization.crises:
 ##    c_refs.append(c.crisis.key().name())
@@ -358,7 +417,7 @@ def addPerson(person, idNum):
   
   ele = Element('person')
 #  ele.attrib['id'] = person.key().name()
-  ele.attrib['id'] = str(idNum)
+  ele.attrib['id'] = 'p' + str(idNum)
 
   name = Element('name')
   name.text = person.us_name
@@ -408,56 +467,71 @@ def addPerson(person, idNum):
     
   ele.append(location)
 
-##  for image in person.images:
-##    image_ele = Element('image')
-##    link = Element('link')
-##    link.text = image.link
-##    image_ele.append(link)
-##    if image.description:
-##      des_ele = Element('description')
-##      des_ele.text = image.description
-##      image_ele.append(des_ele)
-##    ele.append(image_ele)
-##
-##  for video in person.videos:
-##    video_ele = Element('video')
-##    video_ele.attrib['video-type'] = video.video_type
-##    link = Element('link')
-##    link.text = video.link
-##    video_ele.append(link)
-##    if video.title:
-##      name_ele = Element('title')
-##      name_ele.text = video.title
-##      video_ele.append(name_ele)
-##    if video.description:
-##      des_ele = Element('description')
-##      des_ele.text = video.description
-##      video_ele.append(des_ele)
-##    ele.append(video_ele)
-##
-##  for social in person.social_networks:
-##    social_ele = Element('social')
-##    social_ele.attrib['social-type'] = social.social_type
-##    link = Element('link')
-##    link.text = social.link
-##    social_ele.append(link)
-##    if social.title:
-##      name_ele = Element('title')
-##      name_ele.text = social.title
-##      social_ele.append(name_ele)
-##    ele.append(social_ele)
-##
-##  for link in person.external_links:
-##    link_ele = Element('external-link')
-##    url = Element('link')
-##    url.text = link.link
-##    link_ele.append(url)
-##    if link.title:
-##      name_ele = Element('title')
-##      name_ele.text = link.title
-##      link_ele.append(name_ele)
-##    ele.append(link_ele)
-##
+  image_main = Element('images')
+  for image in person.images:
+    image_ele = Element('image')
+    link = Element('source')
+    link.text = image.source
+    image_ele.append(link)
+    if image.description:
+      des_ele = Element('description')
+      des_ele.text = image.description
+      image_ele.append(des_ele)
+    image_main.append(image_ele)
+  ele.append(image_main)
+
+  maps_main = Element('maps')
+  for map in person.maps:
+    map_ele = Element('map')
+    link = Element('source')
+    link.text = map.source
+    map_ele.append(link)
+    if map.description:
+      des_ele = Element('description')
+      des_ele.text = map.description
+      map_ele.append(des_ele)
+    maps_main.append(map_ele)
+  ele.append(maps_main)
+
+  video_main = Element('videos')
+  for video in person.videos:
+    video_ele = Element(video.video_type)
+    video_ele.text = video.video_id
+    video_main.append(video_ele)
+  ele.append(video_main)
+
+  social_main = Element('social')
+  for social in person.social:
+    social_ele = Element(social.social_type)
+    social_ele.text = social.social_id
+    social_main.append(social_ele)
+  ele.append(social_main)
+
+  citations_main = Element('citations')
+  for citation in person.maps:
+    citation_ele = Element('citation')
+    link = Element('source')
+    link.text = citation.source
+    citation_ele.append(link)
+    if citation.description:
+      des_ele = Element('description')
+      des_ele.text = citation.description
+      citation_ele.append(des_ele)
+    citations_main.append(citation_ele)
+  ele.append(citations_main)
+
+  extLink_main = Element('external-links')
+  for link in person.external_links:
+    link_ele = Element('external-link')
+    source_Elem = Element('source')
+    source_Elem.text = link.source
+    link_ele.append(source_Elem)
+    descrip_Elem = Element('description')
+    descrip_Elem.text = link.description
+    link_ele.append(descrip_Elem)
+    extLink_main.append(link_ele)
+  ele.append(extLink_main)
+
 ##  c_refs = []
 ##  for c in person.crises:
 ##    c_refs.append(c.crisis.key().name())
