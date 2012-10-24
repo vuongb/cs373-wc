@@ -1,0 +1,69 @@
+<world-crises>
+	<crises>
+	</crises>
+	<organizations>
+	</organizations>
+	<people>
+		<!-- 0 or more of these -->
+		<person id="p-jimmycarter">
+			<!-- common data -->
+			<name>Jimmy Carter</name>
+			<kind>President</kind>
+			<description>In 1982, Jimmy Carter became University Distinguished Professor at Emory University in Atlanta, Ga., and founded The Carter Center. Actively guided by President Carter, the nonpartisan and nonprofit Center addresses national and international issues of public policy. Carter Center fellows, associates, and staff join with President Carter in efforts to resolve conflict, promote democracy, protect human rights, and prevent disease and other afflictions.Through the Global 2000 programs, the Center advances health and agriculture in the developing world. It has spearheaded the international effort to eradicate Guinea worm disease, which will be the second disease in history to be eliminated. On Dec.10, 2002, the Norwegian Nobel Committee awarded the Nobel Peace Prize for 2002 to Mr. Carter "for his decades of untiring effort to find peaceful solutions to international conflicts, to advance democracy and human rights, and to promote economic and social development."</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>
+					Plains
+				</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/JimmyCarterPortrait2.jpg/220px-JimmyCarterPortrait2.jpg</source>
+					<description>Jimmy Carter</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/8jbRH</source>
+					<description>Plains, Georgia</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>yFcWhyzFR4M</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@CarterCenter</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Jimmy_Carter</source>
+					<description>Wiki</description>				</citation>
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Presidency_of_Jimmy_Carter</source>
+					<description>Wiki</description>				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.cartercenter.org/about/index.html</source>
+					<description>Carter Center</description>
+				</external-link>
+				<external-link>
+					<source>http://www.georgiaencyclopedia.org/nge/Article.jsp?id=h-676</source>
+					<description>Georgia Encyclopedia</description>
+				</external-link>
+				<external-link>
+					<source>http://www.washingtonmonthly.com/features/2004/0405.kaplan.html</source>
+					<description>Article</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
+		</person>
+	</people>
+</world-crises>
