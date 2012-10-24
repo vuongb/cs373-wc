@@ -9,12 +9,12 @@ Last Name: Vuong
 EID: bkv85
 E-mail: vuong.bryan@gmail.com
 Estimated number of hours: 12
-Actual    number of hours:
+Actual    number of hours: 22
 
-Turnin CS Username:     <the chosen one for the group, same for all three phases>
+Turnin CS Username: rp22566
 GitHub ID: vuongb
 GitHub Repository Name: cs373-wc
-Google App Engine URL:  <cs username>-cs373-wc.appspot.com
+Google App Engine URL:  http://unicornsteroids.appspot.com/
 
 Group Member First Name: Ryan
 Group Member Last Name: Prater
@@ -32,8 +32,8 @@ Group Member Point Adjustment: <only if you're leader>
 
 Group Member First Name: Cassie
 Group Member Last Name: Schwendiman
-Group Member EID:
-Group Member E-mail:
+Group Member EID: cls3282
+Group Member E-mail: cassie.schwendiman@gmail.com
 Group Member Rating:           <from the list below>
 Group Member Point Adjustment: <only if you're leader>
 
@@ -44,10 +44,10 @@ Group Member E-mail: samnosuke@gmail.com
 Group Member Rating:           <from the list below>
 Group Member Point Adjustment: <only if you're leader>
 
-Group Member First Name:
-Group Member Last Name:
-Group Member EID:
-Group Member E-mail:
+Group Member First Name: Dereck
+Group Member Last Name: Sanchez
+Group Member EID: das2735
+Group Member E-mail: dereck.sanchez@gmail.com
 Group Member Rating:           <from the list below>
 Group Member Point Adjustment: <only if you're leader>
 
