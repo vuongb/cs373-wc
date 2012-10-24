@@ -7,189 +7,190 @@ import Models
 
 class TestImport(unittest.TestCase):
     def setUp(self):
-        importer.make_models(ETree.XML(
+        importer.importer(
             '''<world-crises>
-                <crises>
-                    <crisis id="c-id">
-                        <name>name</name>
-                        <altername-names>
-                            <alternate-name>name1</alternate-name>
-                            <alternate-name>name2</alternate-name>
-                        </alternate-names>
-                        <kind>kind</kind>
-                        <description>long description</description>
-                        <location>
-                            <city>city</city>
-                            <state>st</state>
-                            <country>country</country>
-                            <latitude>1.23456</latitude>
-                            <longitude>1.23456</longitude>
-                        </location>
-                        <images>
-                            <image>
-                                <source>http://www.images.com/random.jpg</source>
-                                <description>image des</description>
-                            </image>
-                        </images>
-                        <maps>
-                            <map>
-                                <source>http://www.maps.com/map</source>
-                                <description>map des</description>
-                            </map>
-                        </maps>
-                        <videos>
-                            <youtube>youtube</youtube>
-                            <vimeo>12345</vimeo>
-                        </videos>
-                        <social>
-                            <facebook>facebookusername</facebook>
-                            <twitter>@twittername</twitter>
-                            <twitter>#twitterhashtag</twitter>
-                            <youtube>youtubeusername</youtube>
-                        </social>
-                        <citations>
-                            <citation>
-                                <source>http://www.wikipedia.org/</source>
-                                <description>citation des</description>
-                            </citation>
-                        </citations>
-                        <external-links>
-                            <external-link>
-                                <source>http://www.somecoolplace.org/</source>
-                                <description>link des</description>
-                            </external-link>
-                        </external-links>
-                        <human-impact>
-                            <statistic>1000 people</statistic>
-                        </human-impact>
-                        <economic-impact>
-                            <statistic>$1000</statistic>
-                        </economic-impact>
-                        <resources-needed>
-                            <resource>resource</resource>
-                        </resources-needed>
-                        <ways-to-help>
-                            <way>way</way>
-                        </ways-to-help>
-                        <organization-refs>o-id</organization-refs>
-                        <person-refs>p-id</person-refs>
-                    </crisis>
-                </crises>
-                <organizations>
-                    <organization id="o-id">
-                        <name>name</name>
-                        <altername-names>
-                            <alternate-name>name1</alternate-name>
-                            <alternate-name>name2</alternate-name>
-                        </alternate-names>
-                        <kind>kind</kind>
-                        <description>long description</description>
-                        <location>
-                            <city>city</city>
-                            <state>st</state>
-                            <country>country</country>
-                            <latitude>1.23456</latitude>
-                            <longitude>1.23456</longitude>
-                        </location>
-                        <images>
-                            <image>
-                                <source>http://www.images.com/random.jpg</source>
-                                <description>image des</description>
-                            </image>
-                        </images>
-                        <maps>
-                            <map>
-                                <source>http://www.maps.com/map</source>
-                                <description>map des</description>
-                            </map>
-                        </maps>
-                        <videos>
-                            <youtube>youtube</youtube>
-                            <vimeo>12345</vimeo>
-                        </videos>
-                        <social>
-                            <facebook>facebookusername</facebook>
-                            <twitter>@twittername</twitter>
-                            <twitter>#twitterhashtag</twitter>
-                            <youtube>youtubeusername</youtube>
-                        </social>
-                        <citations>
-                            <citation>
-                                <source>http://www.wikipedia.org/</source>
-                                <description>citation des</description>
-                            </citation>
-                        </citations>
-                        <external-links>
-                            <external-link>
-                                <source>http://www.somecoolplace.org/</source>
-                                <description>link des</description>
-                            </external-link>
-                        </external-links>
-                        <address>
-                            address
-                            city, st zipcode
-                        </address>
-                        <email>email@name.org</email>
-                        <phone>123 456 - 7890</phone>
-                        <crisis-refs>c-id</organization-refs>
-                        <person-refs>p-id</person-refs>
-                    </organization>
-                </organizations>
-                <people>
-                    <person id="p-id">
-                        <name>name</name>
-                        <altername-names>
-                            <alternate-name>name1</alternate-name>
-                            <alternate-name>name2</alternate-name>
-                        </alternate-names>
-                        <kind>kind</kind>
-                        <description>long description</description>
-                        <location>
-                            <city>city</city>
-                            <state>st</state>
-                            <country>country</country>
-                            <latitude>1.23456</latitude>
-                            <longitude>1.23456</longitude>
-                        </location>
-                        <images>
-                            <image>
-                                <source>http://www.images.com/random.jpg</source>
-                                <description>image des</description>
-                            </image>
-                        </images>
-                        <maps>
-                            <map>
-                                <source>http://www.maps.com/map</source>
-                                <description>map des</description>
-                            </map>
-                        </maps>
-                        <videos>
-                            <youtube>youtube</youtube>
-                            <vimeo>12345</vimeo>
-                        </videos>
-                        <social>
-                            <facebook>facebookusername</facebook>
-                            <twitter>@twittername</twitter>
-                            <twitter>#twitterhashtag</twitter>
-                            <youtube>youtubeusername</youtube>
-                        </social>
-                        <citations>
-                            <citation>
-                                <source>http://www.wikipedia.org/</source>
-                                <description>citation des</description>
-                            </citation>
-                        </citations>
-                        <external-links>
-                            <external-link>
-                                <source>http://www.somecoolplace.org/</source>
-                                <description>link des</description>
-                            </external-link>
-                        </external-links>
-                        <crisis-refs>c-id</crisis-refs>
-                        <person-refs>p-id</person-refs>
-                    </person>
-                </people>
-            </world-crises>'''))
+    <crises>
+	<crisis id="c-id">
+	    <name>name</name>
+	    <alternate-names>
+		<alternate-name>name1</alternate-name>
+		<alternate-name>name2</alternate-name>
+	    </alternate-names>
+	    <kind>kind</kind>
+	    <description>long description</description>
+	    <location>
+		<city>city</city>
+		<state>ST</state>
+		<country>country</country>
+		<latitude>1.23456</latitude>
+		<longitude>1.23456</longitude>
+	    </location>
+	    <images>
+		<image>
+		    <source>http://www.images.com/random.jpg</source>
+		    <description>image des</description>
+		</image>
+	    </images>
+	    <maps>
+		<map>
+		    <source>http://www.maps.com/map</source>
+		    <description>map des</description>
+		</map>
+	    </maps>
+	    <videos>
+		<youtube>youtube</youtube>
+		<vimeo>12345</vimeo>
+	    </videos>
+	    <social>
+		<facebook>facebookusername</facebook>
+		<twitter>@twittername</twitter>
+		<twitter>#twitterhashtag</twitter>
+		<youtube>youtubeusername</youtube>
+	    </social>
+	    <citations>
+		<citation>
+		    <source>http://www.wikipedia.org/</source>
+		    <description>citation des</description>
+		</citation>
+	    </citations>
+	    <external-links>
+		<external-link>
+		    <source>http://www.somecoolplace.org/</source>
+		    <description>link des</description>
+		</external-link>
+	    </external-links>
+	    <start-date>2012-10-24T20:00:00</start-date>
+	    <human-impact>
+		<statistic>1000 people</statistic>
+	    </human-impact>
+	    <economic-impact>
+		<statistic>$1000</statistic>
+	    </economic-impact>
+	    <resources-needed>
+		<resource>resource</resource>
+	    </resources-needed>
+	    <ways-to-help>
+		<way>way</way>
+	    </ways-to-help>
+	    <organization-refs>o-id</organization-refs>
+	    <person-refs>p-id</person-refs>
+	</crisis>
+    </crises>
+    <organizations>
+	<organization id="o-id">
+	    <name>name</name>
+	    <alternate-names>
+		<alternate-name>name1</alternate-name>
+		<alternate-name>name2</alternate-name>
+	    </alternate-names>
+	    <kind>kind</kind>
+	    <description>long description</description>
+	    <location>
+		<city>city</city>
+		<state>ST</state>
+		<country>country</country>
+		<latitude>1.23456</latitude>
+		<longitude>1.23456</longitude>
+	    </location>
+	    <images>
+		<image>
+		    <source>http://www.images.com/random.jpg</source>
+		    <description>image des</description>
+		</image>
+	    </images>
+	    <maps>
+		<map>
+		    <source>http://www.maps.com/map</source>
+		    <description>map des</description>
+		</map>
+	    </maps>
+	    <videos>
+		<youtube>youtube</youtube>
+		<vimeo>12345</vimeo>
+	    </videos>
+	    <social>
+		<facebook>facebookusername</facebook>
+		<twitter>@twittername</twitter>
+		<twitter>#twitterhashtag</twitter>
+		<youtube>youtubeusername</youtube>
+	    </social>
+	    <citations>
+		<citation>
+		    <source>http://www.wikipedia.org/</source>
+		    <description>citation des</description>
+		</citation>
+	    </citations>
+	    <external-links>
+		<external-link>
+		    <source>http://www.somecoolplace.org/</source>
+		    <description>link des</description>
+		</external-link>
+	    </external-links>
+	    <address>
+		address
+		city, st zipcode
+	    </address>
+	    <email>email@name.org</email>
+	    <phone>123 456 - 7890</phone>
+	    <crisis-refs>c-id</crisis-refs>
+	    <person-refs>p-id</person-refs>
+	</organization>
+    </organizations>
+    <people>
+	<person id="p-id">
+	    <name>name</name>
+	    <alternate-names>
+		<alternate-name>name1</alternate-name>
+		<alternate-name>name2</alternate-name>
+	    </alternate-names>
+	    <kind>kind</kind>
+	    <description>long description</description>
+	    <location>
+		<city>city</city>
+		<state>ST</state>
+		<country>country</country>
+		<latitude>1.23456</latitude>
+		<longitude>1.23456</longitude>
+	    </location>
+	    <images>
+		<image>
+		    <source>http://www.images.com/random.jpg</source>
+		    <description>image des</description>
+		</image>
+	    </images>
+	    <maps>
+		<map>
+		    <source>http://www.maps.com/map</source>
+		    <description>map des</description>
+		</map>
+	    </maps>
+	    <videos>
+		<youtube>youtube</youtube>
+		<vimeo>12345</vimeo>
+	    </videos>
+	    <social>
+		<facebook>facebookusername</facebook>
+		<twitter>@twittername</twitter>
+		<twitter>#twitterhashtag</twitter>
+		<youtube>youtubeusername</youtube>
+	    </social>
+	    <citations>
+		<citation>
+		    <source>http://www.wikipedia.org/</source>
+		    <description>citation des</description>
+		</citation>
+	    </citations>
+	    <external-links>
+		<external-link>
+		    <source>http://www.somecoolplace.org/</source>
+		    <description>link des</description>
+		</external-link>
+	    </external-links>
+	    <crisis-refs>c-id</crisis-refs>
+	    <person-refs>p-id</person-refs>
+	</person>
+    </people>
+</world-crises>''')
 
         self.crisis = db.Query(Models.Crisis).get()
         self.org = db.Query(Models.Organization).get()
