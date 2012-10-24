@@ -21,6 +21,10 @@ import xml.etree.ElementTree as ET
 from importer import process_crisis, process_organization, process_person
 from Models import *
 import logging
+import xml.etree.ElementTree as ETree
+from xml.etree.ElementTree import Element
+import exporter
+
 
 
 def application_key(application_name = None):
@@ -70,6 +74,14 @@ class ImportHandler(webapp2.RequestHandler):
                     if type(p) != str:
                         person_instance = process_person(p)
                         person_instance.put()
+
+
+class ExportHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = "text/xml; charset=utf-8"
+        root = exporter.buildTree()
+        output = ETree.tostring(root)
+        self.response.out.write(unicode(output,"UTF-8"))
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -124,5 +136,6 @@ class MainHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/import', ImportHandler)
+    ('/import', ImportHandler),
+    ('/export', ExportHandler)
 ], debug=True)
