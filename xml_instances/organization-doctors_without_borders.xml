@@ -1,0 +1,64 @@
+<world-crises>
+	<crises>
+	</crises>
+	<organizations>
+		<!-- 0 or more of these -->
+		<organization id="o-doctorswithoutborders">
+			<!-- common data -->
+			<name>Doctors Without Borders</name>
+			<kind>Secular humanitarian-aid NGO</kind>
+			<description>Formed during the Nigerian Cival War of 1967 to 1970. A number of French doctors volunteered to work in hospitals and feeding centers. The doctors were attacked by the Nigerian army and witnessed innocent civilians
+			being killed. The doctors critisized the Nigerian government and the Red Cross who was complicit with their behavior. They agreed a new organization was needed that would ignore government and religious boundaries and prioritize the aid of those in need.
+			At the same time a second group called Secours Medical Francais (French Medical Relief) was providing aid to those affected by the 1970 Bhola cyclone. The leader of the group, Raymond Borel, had inteded to recruit doctors to provide aid to victims of natural disaters.
+			On 20 December 1971, these two groups merged to form Medecins Sans Frontieres (Doctors Without Borders).</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>
+					New York
+				</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://i.imgur.com/TbbPF.png?1</source>
+					<description>docotors_wb_logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://i.imgur.com/bMmUE.png?1</source>
+					<description>Mission Areas</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>73zMcdGfXGE</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@MSF_USA</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/M%C3%A9decins_Sans_Fronti%C3%A8res</source>
+					<description>Doctors Without Borders Wiki</description>				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://doctorswithoutborders.org/</source>
+					<description>Doctors Without Borders homepage</description>
+				</external-link>
+			</external-links>
+			<address>333 7th Avenue, 2nd Floor New York, NY 10001-5004 USA</address>
+			<email>office-ldn@london.msf.org</email>
+			<phone>212-679-6800</phone>
+			<!-- end common data -->
+		</organization>
+	</organizations>
+	<people>
+	</people>
+</world-crises>
