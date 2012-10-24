@@ -44,6 +44,59 @@ def etree_to_dict(t):
         d = {t.tag : map(etree_to_dict, t.getchildren())}
     return d
 
+
+def store_special_classes(result_dict, assoc_obj):
+    # this is nuts. If you have questions, debug.
+    videos          = result_dict.get('videos')
+    if videos:
+        for video in videos:
+            builder                 = {}
+            builder['video_type']   = video.items()[0][0]
+            builder['video_id']     = video.items()[0][1]
+            builder['assoc_object'] = assoc_obj
+            Video(**builder).put()
+    social          = result_dict.get('social')
+    if social:
+        for media in social:
+            builder                 = {}
+            builder['social_type']  = media.items()[0][0]
+            builder['social_id']    = media.items()[0][1]
+            builder['assoc_object'] = assoc_obj
+            Social(**builder).put()
+    images          = result_dict.get('images')
+    if images:
+        for image in images:
+            builder                 = {}
+            builder['source']       = image.get('source')
+            builder['description']  = image.get('description')
+            builder['assoc_object'] = assoc_obj
+            Image(**builder).put()
+    maps            = result_dict.get('maps')
+    if maps:
+        for map in maps:
+            builder                 = {}
+            builder['source']       = map.get('source')
+            builder['description']  = map.get('description')
+            builder['assoc_object'] = assoc_obj
+            Map(**builder).put()
+    citations       = result_dict.get('citations')
+    if citations:
+        for citation in citations:
+            builder                 = {}
+            builder['source']       = citation.get('source')
+            builder['description']  = citation.get('description')
+            builder['assoc_object'] = assoc_obj
+            Citation(**builder).put()
+    external_links  = result_dict.get('external_links')
+    if external_links:
+        for link in external_links:
+            builder                 = {}
+            builder['source']       = link.get('source')
+            builder['description']  = link.get('description')
+            builder['assoc_object'] = assoc_obj
+            ExternalLink(**builder).put()
+
+
 class ImportHandler(webapp2.RequestHandler):
     def post(self):
         password = self.request.get('pass')
@@ -66,73 +119,30 @@ class ImportHandler(webapp2.RequestHandler):
                         d = etree_to_dict(i)
                         for c in d.get('crises'):
                             if type(c) != str:
-                                result_dict = process_crisis(c)
-                                crisis = result_dict.get('crisis')
+                                result_dict     = process_crisis(c)
+                                crisis          = result_dict.get('crisis')
                                 crisis.put()
-                                # this is nuts. If you have questions, debug.
-                                videos          = result_dict.get('videos')
-                                if videos:
-                                    for video in videos:
-                                        builder                 = {}
-                                        builder['video_type']   = video.items()[0][0]
-                                        builder['video_id']     = video.items()[0][1]
-                                        builder['assoc_object'] = crisis
-                                        Video(**builder).put()
-                                social          = result_dict.get('social')
-                                if social:
-                                    for media in social:
-                                        builder                 = {}
-                                        builder['social_type']  = media.items()[0][0]
-                                        builder['social_id']    = media.items()[0][1]
-                                        builder['assoc_object'] = crisis
-                                        Social(**builder).put()
-                                images          = result_dict.get('images')
-                                if images:
-                                    for image in images:
-                                        builder                 = {}
-                                        builder['source']       = image.get('source')
-                                        builder['description']  = image.get('description')
-                                        builder['assoc_object'] = crisis
-                                        Image(**builder).put()
-                                maps            = result_dict.get('maps')
-                                if maps:
-                                    for map in maps:
-                                        builder                 = {}
-                                        builder['source']       = map.get('source')
-                                        builder['description']  = map.get('description')
-                                        builder['assoc_object'] = crisis
-                                        Map(**builder).put()
-                                citations       = result_dict.get('citations')
-                                if citations:
-                                    for citation in citations:
-                                        builder                 = {}
-                                        builder['source']       = citation.get('source')
-                                        builder['description']  = citation.get('description')
-                                        builder['assoc_object'] = crisis
-                                        Citation(**builder).put()
-                                external_links  = result_dict.get('external_links')
-                                if external_links:
-                                    for link in external_links:
-                                        builder                 = {}
-                                        builder['source']       = link.get('source')
-                                        builder['description']  = link.get('description')
-                                        builder['assoc_object'] = crisis
-                                        ExternalLink(**builder).put()
+                                store_special_classes(result_dict, crisis)
                     elif i.tag == 'organizations':
                         # iterate through all organizations
                         d = etree_to_dict(i)
                         logging.info(d)
                         for o in d.get('organizations'):
                             if type(o) != str:
-                                organization_instance = process_organization(o)
-                                organization_instance.put()
+                                result_dict     = process_organization(o)
+                                organization    = result_dict.get('organization')
+                                organization.put()
+                                store_special_classes(result_dict, organizaion)
                     elif i.tag == 'people':
                         # iterate through all person
                         d = etree_to_dict(i)
                         for p in d.get('people'):
                             if type(p) != str:
-                                person_instance = process_person(p)
-                                person_instance.put()
+                                result_dict     = process_person(p)
+                                person          = result_dict.get('person')
+                                person.put()
+                                store_special_classes(result_dict, person)
+
         else:
             self.response.out.write("""<h1>Please enter a password</h1>
 <form method="post" enctype="multipart/form-data" action="/import">

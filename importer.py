@@ -117,6 +117,8 @@ def process_crisis(crisis):
                 for way in v:
                     ways.append(way['way'])
                 c['us_waysToHelp'] = ways
+
+            # The following are associated classes (not properties of Crisis)
             elif k == 'videos':
                 videos = []
                 for video in v:
@@ -148,20 +150,18 @@ def process_crisis(crisis):
                 except Exception:
                     logging.warn("Empty tag found for external_links")
 
-    crisis_instance = Crisis(**c)
-    result['crisis'] =  crisis_instance
+    crisis_instance     = Crisis(**c)
+    result['crisis']    =  crisis_instance
     #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}
     return result
 
 def process_organization(organization):
     result = {}
-    print organization
     logging.info(organization)
     o = {}
     # iterates through list of dictionaries
     for attribute_dictionary in organization['organization']:
         # iterates through attribute dictionary
-        print "attribute dictionary: " + str(attribute_dictionary)
         for k,v in attribute_dictionary.items():
             if k == 'name':
                 o['us_name'] = str(v)
@@ -200,39 +200,49 @@ def process_organization(organization):
                 o['us_email'] = str(v)
             elif k == 'phone':
                 o['us_phone'] = str(v)
-                
-##            # TODO: images
-##            elif k == 'images':
-##                images = []
-##                for image in v:
-##                    images.append(image['image'])
-##            # TODO: maps
-##            elif k == 'maps':
-##                maps = []
-##                for map in v:
-##                    maps.append(map['map'])
-##                result['maps']
-            # TODO: videos
-            # TODO: social
-            # TODO: citations
-            # TODO: external links
-    org_instance = Organization(**o)
 
-    #
-    #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}
-    # result['crisis'] =  crisis_instance
-    # return result
+            # The following are associated classes (not properties of Organization)
+            elif k == 'videos':
+                videos = []
+                for video in v:
+                    videos.append(video)
+                result['videos']    = videos
+            elif k == 'social':
+                socials = []
+                for social in v:
+                    socials.append(social)
+                result['social']    = socials
+            elif k == 'images':
+                try:
+                    result['images']            = parse_links(v, "image")
+                except Exception:
+                    logging.warn("Empty tag found for images")
+            elif k == 'maps':
+                try:
+                    result['maps']              = parse_links(v, "maps")
+                except Exception:
+                    logging.warn("Empty tag found for maps")
+            elif k == 'citations':
+                try:
+                    result['citations']         = parse_links(v, "citation")
+                except Exception:
+                    logging.warn("Empty tag found for citations")
+            elif k == 'external-links':
+                try:
+                    result['external_links']    = parse_links(v, "external-link")
+                except Exception:
+                    logging.warn("Empty tag found for external_links")
 
-    return org_instance
+    org_instance            = Organization(**o)
+    result['organization']  = org_instance
+    return result
 
 def process_person(person):
     result = {}
-    print person
     p = {}
     # iterates through list of dictionaries
     for attribute_dictionary in person['person']:
         # iterates through attribute dictionary
-        print "attribute dictionary: " + str(attribute_dictionary)
         for k,v in attribute_dictionary.items():
             if k == 'name':
                 p['us_name'] = str(v)
@@ -257,29 +267,41 @@ def process_person(person):
                         p['us_latitude'] = str(value['latitude'])
                     if 'longitude' in value:
                         p['us_longitude'] = str(value['longitude'])
-                
-##            # TODO: images
-##            elif k == 'images':
-##                images = []
-##                for image in v:
-##                    images.append(image['image'])
-##            # TODO: maps
-##            elif k == 'maps':
-##                maps = []
-##                for map in v:
-##                    maps.append(map['map'])
-##                result['maps']
-            # TODO: videos
-            # TODO: social
-            # TODO: citations
-            # TODO: external links
-    person_instance = Person(**p)
 
-    #
-    #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}
-    # result['crisis'] =  crisis_instance
-    # return result
+            # The following are associated classes (not properties of Person)
+            elif k == 'videos':
+                videos = []
+                for video in v:
+                    videos.append(video)
+                result['videos']    = videos
+            elif k == 'social':
+                socials = []
+                for social in v:
+                    socials.append(social)
+                result['social']    = socials
+            elif k == 'images':
+                try:
+                    result['images']            = parse_links(v, "image")
+                except Exception:
+                    logging.warn("Empty tag found for images")
+            elif k == 'maps':
+                try:
+                    result['maps']              = parse_links(v, "maps")
+                except Exception:
+                    logging.warn("Empty tag found for maps")
+            elif k == 'citations':
+                try:
+                    result['citations']         = parse_links(v, "citation")
+                except Exception:
+                    logging.warn("Empty tag found for citations")
+            elif k == 'external-links':
+                try:
+                    result['external_links']    = parse_links(v, "external-link")
+                except Exception:
+                    logging.warn("Empty tag found for external_links")
 
-    return person_instance
+    person_instance     = Person(**p)
+    result['person']    = person_instance
+    return result
 
 #process(tree)
