@@ -1,0 +1,76 @@
+<world-crises>
+	<crises>
+		<!-- 0 or more of these -->
+		<crisis id="c-libyanwar">
+			<!-- common data -->
+			<name>Libyan Civil War</name>
+			<kind>Civil War</kind>
+			<description>Breast cancer is a type of cancer originating from breast tissue, most commonly from the inner lining of milk ducts or the lobules that supply the ducts with milk.</description>
+			<location>
+				<country>USA</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://static.guim.co.uk/sys-images/Guardian/About/General/2012/10/21/1350843473049/protesters-Libya-parliame-010.jpg</source>
+					<description>Libyan Protesters</description>
+				</image>
+				<image>
+					<source>http://static.guim.co.uk/sys-images/Guardian/About/General/2011/11/19/1321713344809/Libyans-celebrate-news-of-007.jpg</source>
+					<description>Libyan Victory</description>
+				</image>
+			</images>
+			<maps>
+				<source>http://goo.gl/maps/e9N4I</source>
+					<description>Tipoli Airport</description>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>m4h10yy6IgE</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@Libya</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Libyan_civil_war</source>
+					<description>Wiki</description>
+				</citation>
+				
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				
+			</external-links>
+			<start-date>2011-02-17T00:00:00</start-date>
+			<end-date>2011-10-23T00:00:00</end-date>
+			<!-- end common data -->
+			<human-impact>
+				<!-- 0 or more of these -->
+				<statistic>Deaths: 20,000 - 30,000</statistic>
+				<statistic>Missing: 4,000</statistic>
+				<statistic>Injured: 50,000</statistic>
+			</human-impact>
+			<economic-impact>
+				<!-- 0 or more of these -->
+				<statistic>15 Billion USD</statistic>
+			</economic-impact>
+			<resources-needed>
+				<!-- 0 or more of these -->
+				<resource>money</resource>
+				<resource>fuel</resource>
+				<resource>food</resource>
+			</resources-needed>
+			<ways-to-help>
+				<!-- 0 or more of these -->
+				<way>donations</way>
+			</ways-to-help>
+		</crisis>
+	</crises>
+	<organizations>
+	</organizations>
+	<people>
+	</people>
+</world-crises>

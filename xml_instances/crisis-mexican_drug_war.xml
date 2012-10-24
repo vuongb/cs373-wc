@@ -1,0 +1,74 @@
+<world-crises>
+	<crises>
+		<!-- 0 or more of these -->
+		<crisis id="c-mexicandrugwar">
+			<!-- common data -->
+			<name>Libyan Civil War</name>
+			<kind>Armed Conflict</kind>
+			<description>Breast cancer is a type of cancer originating from breast tissue, most commonly from the inner lining of milk ducts or the lobules that supply the ducts with milk.</description>
+			<location>
+				<country>Mexico</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://1.bp.blogspot.com/-Jq7ss7appZ4/TwDaMRGMLpI/AAAAAAAAAFg/4nTGb4Gs90Q/s400/mexico_drug_war3_30954s-400x288.jpg</source>
+					<description>Drug War</description>
+				</image>
+			</images>
+			<maps>
+				<source>http://goo.gl/maps/I3H1G</source>
+					<description>Mexico</description>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>hyDHNeJxazU</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@mexicodrugwar</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Mexican_Drug_War</source>
+					<description>Wiki</description>
+				</citation>
+				
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				
+			</external-links>
+			<start-date>2006-12-11T00:00:00</start-date>
+			<!-- end common data -->
+			<human-impact>
+				<!-- 0 or more of these -->
+				<statistic>Deaths: 54,927</statistic>
+				<statistic>Missing (est): 10,000</statistic>
+				<statistic>Displaced (est): 1.6 Million</statistic>
+			</human-impact>
+			<economic-impact>
+				<!-- 0 or more of these -->
+				<statistic>65 Billion USD</statistic>
+			</economic-impact>
+			<resources-needed>
+				<!-- 0 or more of these -->
+				<resource>Money</resource>
+				<resource>Police and Military Presence</resource>
+			</resources-needed>
+			<ways-to-help>
+				<!-- 0 or more of these -->
+				<way>Increased aid to Mexico</way>
+				<way>Reduced Drug and Weapon smuggling</way>
+			</ways-to-help>
+		</crisis>
+	</crises>
+	<organizations>
+	</organizations>
+	<people>
+		<person>Felipe Calderon</person>
+		<person>George W. Bush</person>
+		<person>Barack Obama</person>
+	</people>
+</world-crises>
