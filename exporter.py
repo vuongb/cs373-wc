@@ -258,11 +258,6 @@ def addOrganization(organization):
     
   ele.append(location)
 
-##  if organization.history:
-##    history = Element('history')
-##    history.text = organization.history
-##    ele.append(history)
-
   # Text property cause problems?
   if organization.us_address or organization.us_email or organization.us_phone:
     contactInfo = Element('contact-info')
