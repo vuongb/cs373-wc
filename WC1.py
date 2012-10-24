@@ -46,34 +46,62 @@ def etree_to_dict(t):
     return d
 
 class ImportHandler(webapp2.RequestHandler):
+    #def get(self):
+    def post(self):
+        if self.request.get('pass') == 'hunter2':
+
+            self.response.out.write('Authorized.');
+
+            if self.response.get('uploaded_file') == '':
+                self.response.out.write("Please upload an xml instance")
+                self.response.out.write("""<form>
+<input type="file" name="uploaded_file"/>
+<input type="submit" value="upload"/>
+</form>""")
+            else:
+                received_data = request.get('uploaded_file')
+                #xml_file = db.Blob(received_data)
+                
+            
+                SCHEMA  ='cassie-schema-statistics.xsd'
+                
+                tree    = get_tree_and_validate('xml_instances/person-bono.xml', SCHEMA)
+                #tree = get_tree_and_validate(xml_file, SCHEMA)
+                
+                root    = tree.getroot()
+                # iterate over types
+                for i in root.iter():
+                    if i.tag == 'crises':
+                        # iterate through all crises
+                        d = etree_to_dict(i)
+                        for c in d.get('crises'):
+                            if type(c) != str:
+                                crisis_instance = process_crisis(c)
+                                crisis_instance.put()
+                    elif i.tag == 'organizations':
+                        # iterate through all organizations
+                        d = etree_to_dict(i)
+                        logging.info(d)
+                        for o in d.get('organizations'):
+                            if type(o) != str:
+                                organization_instance = process_organization(o)
+                                organization_instance.put()
+                    elif i.tag == 'people':
+                        # iterate through all person
+                        d = etree_to_dict(i)
+                        for p in d.get('people'):
+                            if type(p) != str:
+                                person_instance = process_person(p)
+                                person_instance.put()
+        else:
+            self.response.out.write("""<h1>Please enter a password</h1>
+<form method="post">
+<input type="password" name="pass"/>
+<input type="submit" value="login"/>
+</form>""")
+            
     def get(self):
-        SCHEMA  ='cassie-schema-statistics.xsd'
-        tree    = get_tree_and_validate('xml_instances/person-bono.xml', SCHEMA)
-        root    = tree.getroot()
-        # iterate over types
-        for i in root.iter():
-            if i.tag == 'crises':
-                # iterate through all crises
-                d = etree_to_dict(i)
-                for c in d.get('crises'):
-                    if type(c) != str:
-                        crisis_instance = process_crisis(c)
-                        crisis_instance.put()
-            elif i.tag == 'organizations':
-                # iterate through all organizations
-                d = etree_to_dict(i)
-                logging.info(d)
-                for o in d.get('organizations'):
-                    if type(o) != str:
-                        organization_instance = process_organization(o)
-                        organization_instance.put()
-            elif i.tag == 'people':
-                # iterate through all person
-                d = etree_to_dict(i)
-                for p in d.get('people'):
-                    if type(p) != str:
-                        person_instance = process_person(p)
-                        person_instance.put()
+        self.post()
 
 
 class ExportHandler(webapp2.RequestHandler):
