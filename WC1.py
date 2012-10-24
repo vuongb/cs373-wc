@@ -159,6 +159,7 @@ class ExportHandler(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "text/xml; charset=utf-8"
         root = exporter.buildTree()
+        logging.info("root: %s", root)
         output = ET.tostring(root)
         self.response.out.write(unicode(output,"UTF-8"))
 
