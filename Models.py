@@ -65,6 +65,7 @@ class Person(db.Model):
     us_longitude       = db.StringProperty()
 
 class Crisis(db.Model):
+    #todo removed required properties for name, type, description, economicimpact, humanimpact, resourcesneeded, waystohelp
     # Base Data
     us_name            = db.StringProperty(required=True)
     us_alternateNames  = db.StringListProperty()
@@ -79,8 +80,8 @@ class Crisis(db.Model):
     us_longitude       = db.StringProperty()
 
     # Other Data
-    us_startDate       = db.DateProperty()
-    us_endDate         = db.DateProperty()
+    us_startDate       = db.DateTimeProperty()
+    us_endDate         = db.DateTimeProperty()
     us_economicImpact  = db.StringListProperty(required=True)
     us_humanImpact     = db.StringListProperty(required=True)
     us_resoucesNeeded  = db.StringListProperty(required=True)
