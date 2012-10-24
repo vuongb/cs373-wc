@@ -20,8 +20,10 @@ tree = get_tree_and_validate('xml_instances/crisis-breast_cancer.xml', SCHEMA)
 
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
 def etree_to_dict(t):
-    d = {t.tag : map(etree_to_dict, t.getchildren())}
-    d.update(('@' + k, v) for k, v in t.attrib.iteritems())
+    if t.getchildren() == []:
+        d = {t.tag: t.text}
+    else:
+        d = {t.tag : map(etree_to_dict, t.getchildren())}
     return d
 
 def process(tree):
