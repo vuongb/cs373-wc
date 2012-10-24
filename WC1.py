@@ -20,6 +20,7 @@ from minixsv import pyxsval as xsv
 import xml.etree.ElementTree as ET
 from importer import process_crisis, process_organization, process_person
 from Models import *
+import logging
 
 
 def application_key(application_name = None):
@@ -51,20 +52,24 @@ class ImportHandler(webapp2.RequestHandler):
                 # iterate through all crises
                 d = etree_to_dict(i)
                 for c in d.get('crises'):
-                    crisis_instance = process_crisis(c)
-                    crisis_instance.put()
+                    if type(c) != str:
+                        crisis_instance = process_crisis(c)
+                        crisis_instance.put()
             elif i.tag == 'organizations':
                 # iterate through all organizations
                 d = etree_to_dict(i)
+                logging.info(d)
                 for o in d.get('organizations'):
-                    organization_instance = process_organization(o)
-                    organization_instance.put()
+                    if type(o) != str:
+                        organization_instance = process_organization(o)
+                        organization_instance.put()
             elif i.tag == 'people':
                 # iterate through all people
                 d = etree_to_dict(i)
                 for p in d.get('people'):
-                    people_instance = process_people(p)
-                    people_instance.put()
+                    if type(p) != str:
+                        people_instance = process_people(p)
+                        people_instance.put()
 
 
 class MainHandler(webapp2.RequestHandler):

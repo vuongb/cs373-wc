@@ -1,6 +1,7 @@
 from google.appengine.ext import db
 from Models import Crisis
 import datetime
+import logging
 
 #def process(tree):
 #    '''
@@ -124,6 +125,7 @@ def process_crisis(crisis):
 def process_organization(organization):
     result = {}
     print organization
+    logging.info(organization)
     o = {}
     # iterates through list of dictionaries
     for attribute_dictionary in organization['organization']:
