@@ -200,10 +200,10 @@ class MainHandler(webapp2.RequestHandler):
 
     def get_crises(self):
         return db.GqlQuery("SELECT * "
-                             "FROM Crisis "
-                             "WHERE ANCESTOR IS :1 "
-                             "ORDER BY us_name DESC",
-                             application_key(self.application_name))
+                           "FROM Crisis "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY us_name DESC",
+                           application_key(self.application_name))
 
     def get_organizations(self):
         return db.GqlQuery("SELECT * "
