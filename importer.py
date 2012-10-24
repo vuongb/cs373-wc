@@ -3,43 +3,6 @@ from Models import *
 import datetime
 import logging
 
-#def process(tree):
-#    '''
-#    go through elementtree and create objects from elements
-#    '''
-#    root = tree.getroot()
-#    for i in root.iter():
-#        if i.tag == 'crises':
-#
-#            process_crises(i)
-#        elif i.tag == 'organizations':
-#            process_organizations(i)
-#        elif i.tag == 'people':
-#            process_people(i)
-
-#def process_crises(element):
-#    # Iterates through all crises
-#    dict = etree_to_dict(element)
-#    # for all crises
-#    for crisis in dict.get('crises'):
-#        print crisis
-#        c = Crisis
-#        # iterates through list of dictionaries
-#        for attribute_dictionary in crisis['crisis']:
-#            # iterates through attribute dictionary
-#            print "attribute dictionary: " + str(attribute_dictionary)
-#            for k,v in attribute_dictionary.items():
-#                print "k: " + str(k)
-#                print "v: " + str(v)
-#                # set attributes of crisis class and prepend 'us_' to field names
-#                setattr(c, "us_" + str(k), v)
-#        print crisis
-#    print
-#    print
-#    print
-#    print Crisis
-
-
 # The handling of links is really gross. They're all individual dictionaries wrapped in lists
 # We re-package them as a list of dictionaries with keys {source, description} so we can extract them in WC1.py
 
@@ -136,7 +99,7 @@ def process_crisis(crisis):
                     logging.warn("Empty tag found for images")
             elif k == 'maps':
                 try:
-                    result['maps']              = parse_links(v, "maps")
+                    result['maps']              = parse_links(v, "map")
                 except Exception:
                     logging.warn("Empty tag found for maps")
             elif k == 'citations':
@@ -219,7 +182,7 @@ def process_organization(organization):
                     logging.warn("Empty tag found for images")
             elif k == 'maps':
                 try:
-                    result['maps']              = parse_links(v, "maps")
+                    result['maps']              = parse_links(v, "map")
                 except Exception:
                     logging.warn("Empty tag found for maps")
             elif k == 'citations':
@@ -286,7 +249,7 @@ def process_person(person):
                     logging.warn("Empty tag found for images")
             elif k == 'maps':
                 try:
-                    result['maps']              = parse_links(v, "maps")
+                    result['maps']              = parse_links(v, "map")
                 except Exception:
                     logging.warn("Empty tag found for maps")
             elif k == 'citations':
