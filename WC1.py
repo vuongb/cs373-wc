@@ -27,6 +27,11 @@ from Models import Image, Video, Map, Social, ExternalLink, Citation
 
 
 def get_tree_and_validate(data, schema):
+    """validate an xml string against a schema string and return an ETree representation if it is valid
+    data is the xml data to validate and build a tree from
+    schema is the schema to validate against
+    returns 0 if the xml is invalid, and an ETree if it is
+    """
     try:
         xsv.parseAndValidateXmlInputString(data, schema, xmlIfClass=xsv.XMLIF_ELEMENTTREE)
         return ET.parse(StringIO(data))
@@ -35,6 +40,7 @@ def get_tree_and_validate(data, schema):
 
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
 def etree_to_dict(t):
+    """recursively converts an ETree into a dict"""
     if t.getchildren() == []:
         d = {t.tag: t.text}
     else:
@@ -43,7 +49,8 @@ def etree_to_dict(t):
 
 
 def store_special_classes(result_dict, assoc_obj):
-    # this is nuts. If you have questions, debug.
+    """ creates relational/child objects like videos, social, images, maps, etc from dict data
+    """
     videos          = result_dict.get('videos')
     if videos:
         for video in videos:
@@ -93,24 +100,23 @@ def store_special_classes(result_dict, assoc_obj):
             builder['assoc_object'] = assoc_obj
             ExternalLink(**builder).put()
 
-class ErrorHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.out.write("There was an error parsing or validating your file. Please try again")
-
 class ImportHandler(webapp2.RequestHandler):
+    """ Handles the interaction between the client and the server for importing xml files into our datastore
+    """
+    SCHEMA  ='unicornSteroids.xsd' # the schema that all xml is validated against
+    PASSWORD = 'hunter2' # the password required for upload and import functionality
+
     def post(self):
         self.response.out.write("<html><body>")
         password = self.request.get('pass')
         if password == 'hunter2':
-
             self.response.out.write('<h2>Access Granted</h2>')
-            upload_request = self.request.get('uploaded_file')
+            upload_request = self.request.get('uploaded_file') #upload request contains the raw data from the file
 
             if upload_request != '':
+                # We only want to reach this section if the user actually attempted to upload a file
 
-                SCHEMA  ='unicornSteroids.xsd'
-
-                tree = get_tree_and_validate(upload_request, open(SCHEMA, 'r').read())
+                tree = get_tree_and_validate(upload_request, open(self.SCHEMA, 'r').read())
 
                 if tree == 0:
                     self.response.out.write('<p>The file you uploaded did not validate.<br />Please try again</p>')
@@ -157,10 +163,13 @@ class ImportHandler(webapp2.RequestHandler):
 </form>""")
         self.response.out.write("</body></html>")
     def get(self):
+        # This section is reached when a user clicks on "Import" on the main page, but we want a post, not a get.
         self.post()
 
 
 class ExportHandler(webapp2.RequestHandler):
+    """ Renders the page for exporting objects from our datastore to XML
+    """
     def get(self):
         self.response.headers['Content-Type'] = "text/xml; charset=utf-8"
         root = exporter.buildTree()
@@ -172,6 +181,5 @@ class ExportHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 #    ('/', MainHandler),
     ('/import', ImportHandler),
-    ('/export', ExportHandler),
-    ('/error', ErrorHandler)
+    ('/export', ExportHandler)
 ], debug=True)
