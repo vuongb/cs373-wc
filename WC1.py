@@ -49,14 +49,22 @@ class ImportHandler(webapp2.RequestHandler):
         for i in root.iter():
             if i.tag == 'crises':
                 # iterate through all crises
-                dict = etree_to_dict(i)
-                for c in dict.get('crises'):
+                d = etree_to_dict(i)
+                for c in d.get('crises'):
                     crisis_instance = process_crisis(c)
                     crisis_instance.put()
             elif i.tag == 'organizations':
-                process_organization(i)
+                # iterate through all organizations
+                d = etree_to_dict(i)
+                for o in d.get('organizations'):
+                    organization_instance = process_organization(o)
+                    organization_instance.put()
             elif i.tag == 'people':
-                process_person(i)
+                # iterate through all people
+                d = etree_to_dict(i)
+                for p in d.get('people'):
+                    people_instance = process_people(p)
+                    people_instance.put()
 
 
 class MainHandler(webapp2.RequestHandler):

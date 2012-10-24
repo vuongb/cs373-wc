@@ -73,17 +73,17 @@ def process_crisis(crisis):
                         c['us_latitude'] = str(value['latitude'])
                     if 'longitude' in value:
                         c['us_longitude'] = str(value['longitude'])
-            # TODO: images
-            elif k == 'images':
-                images = []
-                for image in v:
-                    images.append(image['image'])
-            # TODO: maps
-            elif k == 'maps':
-                maps = []
-                for map in v:
-                    maps.append(map['map'])
-                result['maps']
+##            # TODO: images
+##            elif k == 'images':
+##                images = []
+##                for image in v:
+##                    images.append(image['image'])
+##            # TODO: maps
+##            elif k == 'maps':
+##                maps = []
+##                for map in v:
+##                    maps.append(map['map'])
+##                result['maps']
             # TODO: videos
             # TODO: social
             # TODO: citations
@@ -121,12 +121,128 @@ def process_crisis(crisis):
 
     return crisis_instance
 
-def process_organization(element):
-    for i in element.iter():
-        print(i)
+def process_organization(organization):
+    result = {}
+    print organization
+    o = {}
+    # iterates through list of dictionaries
+    for attribute_dictionary in organization['organization']:
+        # iterates through attribute dictionary
+        print "attribute dictionary: " + str(attribute_dictionary)
+        for k,v in attribute_dictionary.items():
+            if k == 'name':
+                o['us_name'] = str(v)
+            elif k == 'alternate-names':
+                #TODO: test this with xml containing alternate names
+                o['us_alternateNames'] = v
+            elif k == 'kind':
+                o['us_type'] = str(v)
+            elif k == 'description':
+                o['us_description'] = db.Text(v)
+            elif k == 'location':
+                for value in v:
+                    if 'city' in value:
+                        o['us_city'] = str(value['city'])
+                    if 'state' in value:
+                        o['us_state'] = str(value['state'])
+                    if 'country' in value:
+                        o['us_country'] = str(value['country'])
+                    if 'latitude' in value:
+                        o['us_latitude'] = str(value['latitude'])
+                    if 'longitude' in value:
+                        o['us_longitude'] = str(value['longitude'])
+            elif k == 'contact-info':
+                for value in v:
+                    if 'address' in value:
+                        o['us_address'] = str(value['address'])
+                    if 'email' in value:
+                        o['us_email'] = str(value['email'])
+                    if 'phone' in value:
+                        o['us_phone'] = str(value['phone'])
+            elif k == 'address':
+                o['us_address'] = str(v)
+            elif k == 'email':
+                o['us_email'] = str(v)
+            elif k == 'phone':
+                o['us_phone'] = str(v)
+                
+##            # TODO: images
+##            elif k == 'images':
+##                images = []
+##                for image in v:
+##                    images.append(image['image'])
+##            # TODO: maps
+##            elif k == 'maps':
+##                maps = []
+##                for map in v:
+##                    maps.append(map['map'])
+##                result['maps']
+            # TODO: videos
+            # TODO: social
+            # TODO: citations
+            # TODO: external links
+    org_instance = Organization(**o)
 
-def process_person(element):
-    for i in element:
-        print(i)
+    #
+    #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}
+    # result['crisis'] =  crisis_instance
+    # return result
+
+    return org_instance
+
+def process_person(person):
+    result = {}
+    print person
+    p = {}
+    # iterates through list of dictionaries
+    for attribute_dictionary in person['person']:
+        # iterates through attribute dictionary
+        print "attribute dictionary: " + str(attribute_dictionary)
+        for k,v in attribute_dictionary.items():
+            if k == 'name':
+                p['us_name'] = str(v)
+            elif k == 'alternate-names':
+                #TODO: test this with xml containing alternate names
+                p['us_alternateNames'] = v
+            elif k == 'kind':
+                p['us_type'] = str(v)
+            elif k == 'description':
+                p['us_description'] = db.Text(v)
+            elif k == 'location':
+                for value in v:
+                    if 'city' in value:
+                        p['us_city'] = str(value['city'])
+                    if 'state' in value:
+                        p['us_state'] = str(value['state'])
+                    if 'country' in value:
+                        p['us_country'] = str(value['country'])
+                    if 'latitude' in value:
+                        p['us_latitude'] = str(value['latitude'])
+                    if 'longitude' in value:
+                        p['us_longitude'] = str(value['longitude'])
+                
+##            # TODO: images
+##            elif k == 'images':
+##                images = []
+##                for image in v:
+##                    images.append(image['image'])
+##            # TODO: maps
+##            elif k == 'maps':
+##                maps = []
+##                for map in v:
+##                    maps.append(map['map'])
+##                result['maps']
+            # TODO: videos
+            # TODO: social
+            # TODO: citations
+            # TODO: external links
+    person_instance = Person(**o)
+
+    #
+    #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}
+    # result['crisis'] =  crisis_instance
+    # return result
+
+    return person_instance
 
 #process(tree)
