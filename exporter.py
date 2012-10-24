@@ -54,6 +54,8 @@ def addCrisis(crisis, idNum):
   name.text = crisis.us_name
   ele.append(name)
 
+  # Alternate Names is stored as a list in datastore
+  # Export as: <alternate-names><alternate-name>.....</alternate-name></alternate-names>
   if crisis.us_alternateNames:
     altName = Element('alternate-names')
     for name in crisis.us_alternateNames:
@@ -70,7 +72,8 @@ def addCrisis(crisis, idNum):
   description.text = crisis.us_description
   ele.append(description)
 
-  # Location has nested groups. Cause problems?
+  # Location has nested XML groups: city, state, country, latitude, longitude
+  # Export as: <location><>.....</></location>
   location = Element('location')
   if crisis.us_city:
     city = Element('city')
@@ -98,42 +101,8 @@ def addCrisis(crisis, idNum):
     
   ele.append(location)
 
-##  date = Element('startDate')
-##  date.text = str(crisis.us_startDate)
-##  ele.append(date)
-##
-##  date = Element('endDate')
-##  date.text = str(crisis.us_endDate)
-##  ele.append(date)
-
-##  human_impact = Element('human-impact')
-##  for h_impact in crisis.us_humanImpact:
-##    stat = Element('statistic')
-##    stat.text = h_impact
-##    human_impact.append(stat)
-##  ele.append(human_impact)
-##  
-##  economic_impact = Element('economic-impact')
-##  for e_impact in crisis.us_economicImpact:
-##    econImpact_Ele = Element('statistic')
-##    econImpact_Ele.text = e_impact
-##    economic_impact.append(econImpact_Ele)
-##  ele.append(economic_impact)
-##
-##  resources = Element('resources-needed')
-##  for resource in crisis.us_resoucesNeeded:
-##    resource_ele = Element('resource')
-##    resource_ele.text = resource
-##    resources.append(resource_ele)
-##  ele.append(resources)
-##
-##  ways = Element('ways-to-help')
-##  for way in crisis.us_waysToHelp:
-##    way_ele = Element('way')
-##    way_ele.text = way
-##    ways.append(way_ele)
-##  ele.append(ways)
-
+  # Images is another entity in GAE
+  # Export as: <images><image><source>...</source><description>...</description></image></images>
   image_main = Element('images')
   for image in crisis.images:
     image_ele = Element('image')
@@ -147,6 +116,8 @@ def addCrisis(crisis, idNum):
     image_main.append(image_ele)
   ele.append(image_main)
 
+  # Maps is another entity in GAE
+  # Export as: <maps><map><source>...</source><description>...</description></map></maps>
   maps_main = Element('maps')
   for map in crisis.maps:
     map_ele = Element('map')
@@ -160,6 +131,8 @@ def addCrisis(crisis, idNum):
     maps_main.append(map_ele)
   ele.append(maps_main)
 
+  # Video is another entity in GAE
+  # Export as: <videos><..>..</..></videos>
   video_main = Element('videos')
   for video in crisis.videos:
     video_ele = Element(video.video_type)
@@ -167,6 +140,8 @@ def addCrisis(crisis, idNum):
     video_main.append(video_ele)
   ele.append(video_main)
 
+  # Social is another entity in GAE
+  # Export as: <social><..>..</..></social>
   social_main = Element('social')
   for social in crisis.social:
     social_ele = Element(social.social_type)
@@ -174,6 +149,8 @@ def addCrisis(crisis, idNum):
     social_main.append(social_ele)
   ele.append(social_main)
 
+  # Citations is another entity in GAE
+  # Export as: <citations><citation><source>...</source><description>...</description></citation></citations>
   citations_main = Element('citations')
   for citation in crisis.maps:
     citation_ele = Element('citation')
@@ -187,6 +164,8 @@ def addCrisis(crisis, idNum):
     citations_main.append(citation_ele)
   ele.append(citations_main)
 
+  # External-Links is another entity in GAE
+  # Export as: <external-links><external-link><source>...</source><description>...</description></external-link></external-links>
   extLink_main = Element('external-links')
   for link in crisis.external_links:
     link_ele = Element('external-link')
@@ -209,13 +188,17 @@ def addCrisis(crisis, idNum):
   date.text = tempDate.replace(' ', 'T')
   ele.append(date)
 
+  # human impact is stored as a list in GAE
+  # Export as: <human-impact><statistic>...</statistic></human-impact>
   human_impact = Element('human-impact')
   for h_impact in crisis.us_humanImpact:
     stat = Element('statistic')
     stat.text = h_impact
     human_impact.append(stat)
   ele.append(human_impact)
-  
+
+  # economic impact is stored as a list in GAE
+  # Export as: <economic-impact><statistic>...</statistic></economic-impact>
   economic_impact = Element('economic-impact')
   for e_impact in crisis.us_economicImpact:
     econImpact_Ele = Element('statistic')
@@ -223,6 +206,8 @@ def addCrisis(crisis, idNum):
     economic_impact.append(econImpact_Ele)
   ele.append(economic_impact)
 
+  # resources needed is stored as a list in GAE
+  # Export as: <resources-needed><resource>...</resource></resources-needed>
   resources = Element('resources-needed')
   for resource in crisis.us_resoucesNeeded:
     resource_ele = Element('resource')
@@ -230,6 +215,9 @@ def addCrisis(crisis, idNum):
     resources.append(resource_ele)
   ele.append(resources)
 
+
+  # ways to help is stored as a list in GAE
+  # Export as: <ways-to-help><way>...</way></ways-to-help>
   ways = Element('ways-to-help')
   for way in crisis.us_waysToHelp:
     way_ele = Element('way')
@@ -260,6 +248,7 @@ def addOrganization(organization, idNum):
     organization is an Organization object from the GAE datastore
     return organization xml element
     """
+  
   ele = Element('organization')
   #ele.attrib['id'] = organization.us_name
   ele.attrib['id'] = 'o' + str(idNum)
@@ -268,6 +257,8 @@ def addOrganization(organization, idNum):
   name.text = organization.us_name
   ele.append(name)
 
+  # Alternate Names is stored as a list in datastore
+  # Export as: <alternate-names><alternate-name>.....</alternate-name></alternate-names>
   if organization.us_alternateNames:
     altName = Element('alternate-names')
     for name in organization.us_alternateNames:
@@ -284,7 +275,8 @@ def addOrganization(organization, idNum):
   description.text = organization.us_description
   ele.append(description)
 
-  # Location has nested groups. Cause problems?
+  # Location has nested XML groups: city, state, country, latitude, longitude
+  # Export as: <location><>.....</></location>
   location = Element('location')
   if organization.us_city:
     city = Element('city')
@@ -311,7 +303,9 @@ def addOrganization(organization, idNum):
     location.append(longitude)
     
   ele.append(location)
-    
+
+  # Images is another entity in GAE
+  # Export as: <images><image><source>...</source><description>...</description></image></images>    
   image_main = Element('images')
   for image in organization.images:
     image_ele = Element('image')
@@ -325,6 +319,8 @@ def addOrganization(organization, idNum):
     image_main.append(image_ele)
   ele.append(image_main)
 
+  # Maps is another entity in GAE
+  # Export as: <maps><map><source>...</source><description>...</description></map></maps>
   maps_main = Element('maps')
   for map in organization.maps:
     map_ele = Element('map')
@@ -338,6 +334,8 @@ def addOrganization(organization, idNum):
     maps_main.append(map_ele)
   ele.append(maps_main)
 
+  # Video is another entity in GAE
+  # Export as: <videos><..>..</..></videos>
   video_main = Element('videos')
   for video in organization.videos:
     video_ele = Element(video.video_type)
@@ -345,6 +343,8 @@ def addOrganization(organization, idNum):
     video_main.append(video_ele)
   ele.append(video_main)
 
+  # Social is another entity in GAE
+  # Export as: <social><..>..</..></social>
   social_main = Element('social')
   for social in organization.social:
     social_ele = Element(social.social_type)
@@ -352,6 +352,8 @@ def addOrganization(organization, idNum):
     social_main.append(social_ele)
   ele.append(social_main)
 
+  # Citations is another entity in GAE
+  # Export as: <citations><citation><source>...</source><description>...</description></citation></citations>
   citations_main = Element('citations')
   for citation in organization.maps:
     citation_ele = Element('citation')
@@ -364,7 +366,9 @@ def addOrganization(organization, idNum):
       citation_ele.append(des_ele)
     citations_main.append(citation_ele)
   ele.append(citations_main)
-
+  
+  # External-Links is another entity in GAE
+  # Export as: <external-links><external-link><source>...</source><description>...</description></external-link></external-links>
   extLink_main = Element('external-links')
   for link in organization.external_links:
     link_ele = Element('external-link')
@@ -423,6 +427,8 @@ def addPerson(person, idNum):
   name.text = person.us_name
   ele.append(name)
 
+  # Alternate Names is stored as a list in datastore
+  # Export as: <alternate-names><alternate-name>.....</alternate-name></alternate-names>
   if person.us_alternateNames:
     altName = Element('alternate-names')
     for name in person.us_alternateNames:
@@ -439,7 +445,8 @@ def addPerson(person, idNum):
   description.text = person.us_description
   ele.append(description)
 
-  # Location has nested groups. Cause problems?
+  # Location has nested XML groups: city, state, country, latitude, longitude
+  # Export as: <location><>.....</></location>
   location = Element('location')
   if person.us_city:
     city = Element('city')
@@ -467,6 +474,8 @@ def addPerson(person, idNum):
     
   ele.append(location)
 
+  # Images is another entity in GAE
+  # Export as: <images><image><source>...</source><description>...</description></image></images>
   image_main = Element('images')
   for image in person.images:
     image_ele = Element('image')
@@ -480,6 +489,8 @@ def addPerson(person, idNum):
     image_main.append(image_ele)
   ele.append(image_main)
 
+  # Maps is another entity in GAE
+  # Export as: <maps><map><source>...</source><description>...</description></map></maps>
   maps_main = Element('maps')
   for map in person.maps:
     map_ele = Element('map')
@@ -493,6 +504,8 @@ def addPerson(person, idNum):
     maps_main.append(map_ele)
   ele.append(maps_main)
 
+  # Video is another entity in GAE
+  # Export as: <videos><..>..</..></videos>
   video_main = Element('videos')
   for video in person.videos:
     video_ele = Element(video.video_type)
@@ -500,6 +513,8 @@ def addPerson(person, idNum):
     video_main.append(video_ele)
   ele.append(video_main)
 
+  # Social is another entity in GAE
+  # Export as: <social><..>..</..></social>
   social_main = Element('social')
   for social in person.social:
     social_ele = Element(social.social_type)
@@ -507,6 +522,8 @@ def addPerson(person, idNum):
     social_main.append(social_ele)
   ele.append(social_main)
 
+  # Citations is another entity in GAE
+  # Export as: <citations><citation><source>...</source><description>...</description></citation></citations>
   citations_main = Element('citations')
   for citation in person.maps:
     citation_ele = Element('citation')
@@ -520,6 +537,8 @@ def addPerson(person, idNum):
     citations_main.append(citation_ele)
   ele.append(citations_main)
 
+  # External-Links is another entity in GAE
+  # Export as: <external-links><external-link><source>...</source><description>...</description></external-link></external-links>
   extLink_main = Element('external-links')
   for link in person.external_links:
     link_ele = Element('external-link')
