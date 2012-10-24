@@ -16,7 +16,6 @@
 #
 from StringIO import StringIO
 import webapp2
-from google.appengine.ext import db
 from minixsv import pyxsval as xsv
 import xml.etree.ElementTree as ET
 from importer import process_crisis, process_organization, process_person
