@@ -17,8 +17,10 @@
 				</image>
 			</images>
 			<maps>
+				<map>
 				<source>http://goo.gl/maps/I3H1G</source>
 					<description>Mexico</description>
+				</map>
 			</maps>
 			<videos>
 				<!-- 0 or more of these -->
@@ -67,8 +69,5 @@
 	<organizations>
 	</organizations>
 	<people>
-		<person>Felipe Calderon</person>
-		<person>George W. Bush</person>
-		<person>Barack Obama</person>
 	</people>
 </world-crises>

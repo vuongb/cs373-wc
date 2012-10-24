@@ -21,8 +21,10 @@
 				</image>
 			</images>
 			<maps>
+				<map>
 				<source>http://goo.gl/maps/e9N4I</source>
 					<description>Tipoli Airport</description>
+				</map>
 			</maps>
 			<videos>
 				<!-- 0 or more of these -->

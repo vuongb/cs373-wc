@@ -17,6 +17,10 @@
 				</image>
 			</images>
 			<maps>
+				<map>
+					<source>http://goo.gl/maps/l8U03</source>
+					<description>Darfur region of Sudan</description>
+				</map>
 			</maps>
 			<videos>
 				<!-- 0 or more of these -->
@@ -40,6 +44,10 @@
 					<source>http://news.bbc.co.uk/2/hi/africa/3496731.stm</source>
 					<description>BBC</description>
 				</citation>
+				<citation>
+					<source>http://www.frontier-economics.com/_library/pdfs/frontier%20report%20-%20the%20cost%20of%20future%20conflict%20in%20sudan.pdf</source>
+					<description>Frontier Economics</description>
+				</citation>
 			</citations>
 			<external-links>
 				<!-- 0 or more of these -->
@@ -59,6 +67,10 @@
 				<!-- 0 or more of these -->
 				<statistic>500,000 Deaths</statistic>
 			</human-impact>
+			<economic-impact>
+				<!-- 0 or more of these -->
+				<statistic>52 Billion USD</statistic>
+			</economic-impact>
 			<resources-needed>
 				<!-- 0 or more of these -->
 				<resource>money</resource>
