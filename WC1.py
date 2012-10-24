@@ -16,11 +16,48 @@
 #
 import webapp2
 from google.appengine.ext import db
+from minixsv import pyxsval as xsv
+import xml.etree.ElementTree as ET
+from importer import process_crisis, process_organization, process_person
 from Models import *
 
 
 def application_key(application_name = None):
     return db.Key.from_path('Crises Center', application_name or 'default_application')
+
+def get_tree_and_validate(data, schema):
+    try:
+        wrapper = xsv.parseAndValidateXmlInput(data, schema, xmlIfClass=xsv.XMLIF_ELEMENTTREE)
+        return ET.parse(data)
+    except xsv.XsvalError as e:
+        print("XML did not validate\n"+str(e))
+
+#http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
+def etree_to_dict(t):
+    if t.getchildren() == []:
+        d = {t.tag: t.text}
+    else:
+        d = {t.tag : map(etree_to_dict, t.getchildren())}
+    return d
+
+class ImportHandler(webapp2.RequestHandler):
+    def get(self):
+        SCHEMA  ='cassie-schema-statistics.xsd'
+        tree    = get_tree_and_validate('xml_instances/crisis-breast_cancer.xml', SCHEMA)
+        root    = tree.getroot()
+        # iterate over types
+        for i in root.iter():
+            if i.tag == 'crises':
+                # iterate through all crises
+                dict = etree_to_dict(i)
+                for c in dict.get('crises'):
+                    crisis_instance = process_crisis(c)
+                    crisis_instance.put()
+            elif i.tag == 'organizations':
+                process_organization(i)
+            elif i.tag == 'people':
+                process_person(i)
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -73,5 +110,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/import', ImportHandler)
 ], debug=True)
