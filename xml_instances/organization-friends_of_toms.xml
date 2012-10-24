@@ -1,0 +1,71 @@
+<world-crises>
+	<crises>
+	</crises>
+	<organizations>
+		<!-- 0 or more of these -->
+		<organization id="o-friendsoftoms">
+			<!-- common data -->
+			<name>Friends of Toms</name>
+			<kind>Non-profit Charity</kind>
+			<description>Founded in 2006, TOMS shoes was founded on the idea that for every pair sold, a new pair would be given to a child in need.</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>
+					Santa Monica
+				</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/en/6/6f/Tom-Logo.jpg</source>
+					<description>TOMS shoes logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/8WAfw</source>
+					<description>Headquarters</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>dXDWXX5NzXI</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@TOMS</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Toms_Shoes</source>
+					<description>TOMS Shoes Wiki</description>
+				</citation>
+				<citation>
+					<source>http://blog.toms.com/</source>
+					<description>TOMS blog</description>
+				</citation>
+				<citation>
+					<source>http://www2.guidestar.org/organizations/20-5555180/friends-toms.aspx</source>
+					<description>NPO Guide</description>
+				</citation>
+				<citation>
+					<source>http://www.volunteermatch.org/search/org94072.jsp</source>
+					<description>Volunteer Profile</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://doctorswithoutborders.org/</source>
+					<description>Doctors Without Borders homepage</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
+		</organization>
+	</organizations>
+	<people>
+	</people>
+</world-crises>

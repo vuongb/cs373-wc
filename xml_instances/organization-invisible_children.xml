@@ -1,0 +1,63 @@
+<world-crises>
+	<crises>
+	</crises>
+	<organizations>
+		<!-- 0 or more of these -->
+		<organization id="o-invisiblechildren">
+			<!-- common data -->
+			<name>Invisible Children</name>
+			<kind>Non-profit Organization</kind>
+			<description>Invisible Children, Inc. is an organization founded in 2004 to bring awareness to the activities of the Lord's Resistance Army (LRA) in Central Africa, and its leader, Joseph Kony. Specifically, the group seeks to put an end to the practices of the LRA which include abductions and abuse of children, and forcing them to serve as soldiers. To this end, Invisible Children urges the United States government to take military action in the central region of Africa.</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>
+					San Diego
+				</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/en/d/d7/Invisible_Children_Official_Logo.jpg</source>
+					<description>TOMS shoes logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/4CEFg</source>
+					<description>Headquarters</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>JOrzBOauLyo</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@Invisible</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Invisible_Children,_Inc.</source>
+					<description>Invisible Children Wiki</description>
+				</citation>
+				<citation>
+					<source>http://www.invisiblechildren.com/</source>
+					<description>Invisible Children Website</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>ttp://www.invisiblechildren.com/</source>
+					<description>Invisible Children homepage</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
+		</organization>
+	</organizations>
+	<people>
+	</people>
+</world-crises>
