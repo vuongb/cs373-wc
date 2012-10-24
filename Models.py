@@ -3,22 +3,22 @@ from google.appengine.ext import db
 # One to Many Relationships
 class ExternalLink(db.Model):
     source = db.LinkProperty(required=True)
-    description = db.LinkProperty(required=True)
+    description = db.StringProperty(required=True)
     assoc_object = db.ReferenceProperty(None, collection_name='external_links', required=True)
 
 class Citation(db.Model):
     source = db.LinkProperty(required=True)
-    description = db.LinkProperty(required=True)
+    description = db.StringProperty(required=True)
     assoc_object = db.ReferenceProperty(None, collection_name='citations', required=True)
 
 class Map(db.Model):
     source = db.LinkProperty(required=True)
-    description = db.LinkProperty(required=True)
+    description = db.StringProperty(required=True)
     assoc_object = db.ReferenceProperty(None, collection_name='maps', required=True)
 
 class Image(db.Model):
     source = db.LinkProperty(required=True)
-    description = db.LinkProperty(required=True)
+    description = db.StringProperty(required=True)
     assoc_object = db.ReferenceProperty(None, collection_name='images', required=True)
 
 class Social(db.Model):
@@ -27,8 +27,8 @@ class Social(db.Model):
     assoc_object = db.ReferenceProperty(None, collection_name='social', required=True)
 
 class Video(db.Model):
-    social_id = db.StringProperty(required=True)
-    social_type = db.StringProperty(choices=('youtube', 'vimeo'), required=True)
+    video_id = db.StringProperty(required=True)
+    video_type = db.StringProperty(choices=('youtube', 'vimeo'), required=True)
     assoc_object = db.ReferenceProperty(None, collection_name='videos', required=True)
 
 class Organization(db.Model):

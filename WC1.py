@@ -48,7 +48,7 @@ def etree_to_dict(t):
 class ImportHandler(webapp2.RequestHandler):
     def get(self):
         SCHEMA  ='cassie-schema-statistics.xsd'
-        tree    = get_tree_and_validate('xml_instances/person-bono.xml', SCHEMA)
+        tree    = get_tree_and_validate('xml_instances/crisis-breast_cancer.xml', SCHEMA)
         root    = tree.getroot()
         # iterate over types
         for i in root.iter():
@@ -57,8 +57,58 @@ class ImportHandler(webapp2.RequestHandler):
                 d = etree_to_dict(i)
                 for c in d.get('crises'):
                     if type(c) != str:
-                        crisis_instance = process_crisis(c)
-                        crisis_instance.put()
+                        result_dict     = process_crisis(c)
+                        crisis          = result_dict.get('crisis')
+                        crisis.put()
+                        # this is nuts. If you have questions, debug.
+#                        videos          = result_dict.get('videos')
+#                        if videos:
+#                            for video in videos:
+#                                builder                 = {}
+#                                builder['video_type']   = video.items()[0][0]
+#                                builder['video_id']     = video.items()[0][1]
+#                                builder['assoc_object'] = c
+#                                Video(**builder).put()
+#                        social          = result_dict.get('social')
+#                        if social:
+#                            for media in social:
+#                                builder                 = {}
+#                                builder['social_type']  = media.items()[0][0]
+#                                builder['social_id']    = media.items()[0][1]
+#                                builder['assoc_object'] = c
+#                                Social(**builder).put()
+#                        images          = result_dict.get('images')
+#                        if images:
+#                            for image in images:
+#                                builder                 = {}
+#                                builder['source']       = image.get('source')
+#                                builder['description']  = image.get('description')
+#                                builder['assoc_object'] = c
+#                                Image(**builder).put()
+#                        maps            = result_dict.get('maps')
+#                        if maps:
+#                            for map in maps:
+#                                builder                 = {}
+#                                builder['source']       = map.get('source')
+#                                builder['description']  = map.get('description')
+#                                builder['assoc_object'] = c
+#                                Map(**builder).put()
+#                        citations       = result_dict.get('citations')
+#                        if citations:
+#                            for citation in citations:
+#                                builder                 = {}
+#                                builder['source']       = citation.get('source')
+#                                builder['description']  = citation.get('description')
+#                                builder['assoc_object'] = c
+#                                Citation(**builder).put()
+#                        external_links  = result_dict.get('external_links')
+#                        if external_links:
+#                            for link in external_links:
+#                                builder                 = {}
+#                                builder['source']       = link.get('source')
+#                                builder['description']  = link.get('description')
+#                                builder['assoc_object'] = c
+#                                ExternalLink(**builder).put()
             elif i.tag == 'organizations':
                 # iterate through all organizations
                 d = etree_to_dict(i)
