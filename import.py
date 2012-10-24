@@ -31,6 +31,7 @@ def process(tree):
     root = tree.getroot()
     for i in root.iter():
         if i.tag == 'crises':
+
             process_crises(i)
         elif i.tag == 'organizations':
             process_organizations(i)
@@ -39,6 +40,14 @@ def process(tree):
 
 def process_crises(element):
     print etree_to_dict(element)
+    '''
+    returns a dict of the element tree
+    '''
+    for i in element.iter():
+        tag = i.tag
+        attrib = i.attrib
+        for key, value in attrib.items():
+            print(str(key) + " " + str(value))
 
 def process_organizations(element):
     for i in element.iter():
