@@ -357,11 +357,8 @@ def addPerson(person, idNum):
     """
   
   ele = Element('person')
-<<<<<<< HEAD
 #  ele.attrib['id'] = person.key().name()
-=======
   ele.attrib['id'] = str(idNum)
->>>>>>> Export works for all but strange objects
 
   name = Element('name')
   name.text = person.us_name
