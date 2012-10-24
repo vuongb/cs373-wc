@@ -111,7 +111,7 @@ class ImportHandler(webapp2.RequestHandler):
 
             if upload_request != '':
 
-                SCHEMA  ='cassie-schema-statistics.xsd'
+                SCHEMA  ='unicornSteroids.xsd'
 
                 tree = get_tree_and_validate(upload_request, open(SCHEMA, 'r').read())
                 if tree == 0:
