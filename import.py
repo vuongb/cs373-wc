@@ -1,5 +1,6 @@
 from minixsv import pyxsval as xsv
 import xml.etree.ElementTree as ET
+from Models import Crisis
 
 
 SCHEMA='cassie-schema-statistics.xsd'
@@ -20,8 +21,10 @@ tree = get_tree_and_validate('xml_instances/crisis-breast_cancer.xml', SCHEMA)
 
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
 def etree_to_dict(t):
-    d = {t.tag : map(etree_to_dict, t.getchildren())}
-    d.update(('@' + k, v) for k, v in t.attrib.iteritems())
+    if t.getchildren() == []:
+        d = {t.tag: t.text}
+    else:
+        d = {t.tag : map(etree_to_dict, t.getchildren())}
     return d
 
 def process(tree):
@@ -39,15 +42,27 @@ def process(tree):
             process_people(i)
 
 def process_crises(element):
-    print etree_to_dict(element)
-    '''
-    returns a dict of the element tree
-    '''
-    for i in element.iter():
-        tag = i.tag
-        attrib = i.attrib
-        for key, value in attrib.items():
-            print(str(key) + " " + str(value))
+    # Iterates through all crises
+    dict = etree_to_dict(element)
+    # for all crises
+    for crisis in dict.get('crises'):
+        print crisis
+        c = Crisis
+        # iterates through list of dictionaries
+        for attribute_dictionary in crisis['crisis']:
+            # iterates through attribute dictionary
+            print "attribute dictionary: " + str(attribute_dictionary)
+            for k,v in attribute_dictionary.items():
+                print "k: " + str(k)
+                print "v: " + str(v)
+                # set attributes of crisis class and prepend 'us_' to field names
+                setattr(c, "us_" + str(k), v)
+        print crisis
+    print
+    print
+    print
+    print Crisis
+
 
 def process_organizations(element):
     for i in element.iter():
