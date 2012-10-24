@@ -61,7 +61,7 @@ def process_crisis(crisis):
             elif k == 'alternate-names':
                 altNames = []
                 for name in v:
-                    altNames.append(name)
+                    altNames.append(name['alternate-name'])
                 c['us_alternateNames'] = altNames
             elif k == 'kind':
                 c['us_type'] = str(v)
@@ -140,8 +140,10 @@ def process_organization(organization):
             if k == 'name':
                 o['us_name'] = str(v)
             elif k == 'alternate-names':
-                #TODO: test this with xml containing alternate names
-                o['us_alternateNames'] = v
+                altNames = []
+                for name in v:
+                    altNames.append(name['alternate-name'])
+                o['us_alternateNames'] = altNames
             elif k == 'kind':
                 o['us_type'] = str(v)
             elif k == 'description':
@@ -211,7 +213,7 @@ def process_person(person):
             elif k == 'alternate-names':
                 altNames = []
                 for name in v:
-                    altNames.append(name)
+                    altNames.append(name['alternate-name'])
                 p['us_alternateNames'] = altNames
             elif k == 'kind':
                 p['us_type'] = str(v)
