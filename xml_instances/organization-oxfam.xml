@@ -10,9 +10,7 @@
 			<description>The Oxford Committee for Famine Relief was founded in 1896 to relieve famine in Greece during WWII. in 1942, the name changed to Oxfam. Oxfam International was founded in 1995 by a group of independent non-governmental organizations</description>
 			<location>
 				<!-- either city/country, long/lat, or both (in this order) -->
-				<city>
-					Summertown
-				</city> 
+				<city>Summertown</city> 
 				<country>United Kingdom</country>
 			</location>
 			<images>
