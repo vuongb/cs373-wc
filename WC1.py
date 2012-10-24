@@ -132,7 +132,7 @@ class ImportHandler(webapp2.RequestHandler):
                                 result_dict     = process_organization(o)
                                 organization    = result_dict.get('organization')
                                 organization.put()
-                                store_special_classes(result_dict, organizaion)
+                                store_special_classes(result_dict, organization)
                     elif i.tag == 'people':
                         # iterate through all person
                         d = etree_to_dict(i)
