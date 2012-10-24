@@ -44,7 +44,7 @@ def etree_to_dict(t):
 class ImportHandler(webapp2.RequestHandler):
     def get(self):
         SCHEMA  ='cassie-schema-statistics.xsd'
-        tree    = get_tree_and_validate('xml_instances/organization-doctors_without_borders.xml', SCHEMA)
+        tree    = get_tree_and_validate('xml_instances/person-bono.xml', SCHEMA)
         root    = tree.getroot()
         # iterate over types
         for i in root.iter():
@@ -64,12 +64,12 @@ class ImportHandler(webapp2.RequestHandler):
                         organization_instance = process_organization(o)
                         organization_instance.put()
             elif i.tag == 'people':
-                # iterate through all people
+                # iterate through all person
                 d = etree_to_dict(i)
                 for p in d.get('people'):
                     if type(p) != str:
-                        people_instance = process_people(p)
-                        people_instance.put()
+                        person_instance = process_person(p)
+                        person_instance.put()
 
 
 class MainHandler(webapp2.RequestHandler):

@@ -6,11 +6,12 @@
 	<people>
 		<!-- 0 or more of these -->
 		<person id="p-algore">
+
 			<!-- common data -->
 			<name>Albert Arnold Gore, Jr.</name>
 			<alternate-names>
 				<!-- optional -->
-				Al Gore
+				<alternate-name>Al Gore</alternate-name>
 			</alternate-names>
 			<kind>Former US Vice President</kind>
 			<description>Al Gore served as the 45th Vice President of the United States (1993-2001), under President Bill Clinton. He is currently an author and eviromental activist, and has founded a number for non-profit organizations</description>
