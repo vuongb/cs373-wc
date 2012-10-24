@@ -34,10 +34,6 @@ def get_tree_and_validate(data, schema):
         xsv.parseAndValidateXmlInputString(data, schema, xmlIfClass=xsv.XMLIF_ELEMENTTREE)
         return ET.parse(StringIO(data))
     except xsv.XsvalError as e:
-        print("XML did not validate\n"+str(e))
-        return 0
-    except Exception as e:
-        logging.info('bad file\n' + str(e))
         return 0
 
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
@@ -100,13 +96,17 @@ def store_special_classes(result_dict, assoc_obj):
             builder['assoc_object'] = assoc_obj
             ExternalLink(**builder).put()
 
+class ErrorHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.out.write("There was an error parsing or validating your file. Please try again")
 
 class ImportHandler(webapp2.RequestHandler):
     def post(self):
+        self.response.out.write("<html><body>")
         password = self.request.get('pass')
         if password == 'hunter2':
 
-            self.response.out.write('Authorized.')
+            self.response.out.write('<h2>Access Granted</h2>')
             upload_request = self.request.get('uploaded_file')
 
             if upload_request != '':
@@ -114,42 +114,42 @@ class ImportHandler(webapp2.RequestHandler):
                 SCHEMA  ='unicornSteroids.xsd'
 
                 tree = get_tree_and_validate(upload_request, open(SCHEMA, 'r').read())
-                if tree == 0:
-                    self.response.out.write('The file you uploaded is not valid. Please try again')
-                else:
-                    self.response.out.write('Your file has validated')
 
-                root    = tree.getroot()
-                # iterate over types
-                for i in root.iter():
-                    if i.tag == 'crises':
-                        # iterate through all crises
-                        d = etree_to_dict(i)
-                        for c in d.get('crises'):
-                            if type(c) != str:
-                                result_dict     = process_crisis(c)
-                                crisis          = result_dict.get('crisis')
-                                crisis.put()
-                                store_special_classes(result_dict, crisis)
-                    elif i.tag == 'organizations':
-                        # iterate through all organizations
-                        d = etree_to_dict(i)
-                        logging.info(d)
-                        for o in d.get('organizations'):
-                            if type(o) != str:
-                                result_dict     = process_organization(o)
-                                organization    = result_dict.get('organization')
-                                organization.put()
-                                store_special_classes(result_dict, organization)
-                    elif i.tag == 'people':
-                        # iterate through all person
-                        d = etree_to_dict(i)
-                        for p in d.get('people'):
-                            if type(p) != str:
-                                result_dict     = process_person(p)
-                                person          = result_dict.get('person')
-                                person.put()
-                                store_special_classes(result_dict, person)
+                if tree == 0:
+                    self.response.out.write('<p>The file you uploaded did not validate.<br />Please try again</p>')
+                else:
+                    self.response.out.write('<p>Your file has validated</p>')
+                    root    = tree.getroot()
+                    # iterate over types
+                    for i in root.iter():
+                        if i.tag == 'crises':
+                            # iterate through all crises
+                            d = etree_to_dict(i)
+                            for c in d.get('crises'):
+                                if type(c) != str:
+                                    result_dict     = process_crisis(c)
+                                    crisis          = result_dict.get('crisis')
+                                    crisis.put()
+                                    store_special_classes(result_dict, crisis)
+                        elif i.tag == 'organizations':
+                            # iterate through all organizations
+                            d = etree_to_dict(i)
+                            logging.info(d)
+                            for o in d.get('organizations'):
+                                if type(o) != str:
+                                    result_dict     = process_organization(o)
+                                    organization    = result_dict.get('organization')
+                                    organization.put()
+                                    store_special_classes(result_dict, organization)
+                        elif i.tag == 'people':
+                            # iterate through all person
+                            d = etree_to_dict(i)
+                            for p in d.get('people'):
+                                if type(p) != str:
+                                    result_dict     = process_person(p)
+                                    person          = result_dict.get('person')
+                                    person.put()
+                                    store_special_classes(result_dict, person)
 
         else:
             self.response.out.write("""<h1>Please enter a password</h1>
@@ -158,7 +158,7 @@ class ImportHandler(webapp2.RequestHandler):
 <input type="password" name="pass"/>
 <input type="submit" value="login"/>
 </form>""")
-
+        self.response.out.write("</body></html>")
     def get(self):
         self.post()
 
@@ -270,5 +270,6 @@ class MainHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/import', ImportHandler),
-    ('/export', ExportHandler)
+    ('/export', ExportHandler),
+    ('/error', ErrorHandler)
 ], debug=True)
