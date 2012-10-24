@@ -44,7 +44,6 @@ def etree_to_dict(t):
     return d
 
 class ImportHandler(webapp2.RequestHandler):
-    #def get(self):
     def post(self):
         password = self.request.get('pass')
         if password == 'hunter2':
@@ -54,12 +53,8 @@ class ImportHandler(webapp2.RequestHandler):
 
             if upload_request != '':
 
-#                xml_data = XMLData(content=db.Blob(upload_request))
-#                xml_data.put()
-
                 SCHEMA  ='cassie-schema-statistics.xsd'
 
-                #tree    = get_tree_and_validate('xml_instances/person-bono.xml', SCHEMA)
                 tree = get_tree_and_validate(upload_request, open(SCHEMA, 'r').read())
                 
                 root    = tree.getroot()
