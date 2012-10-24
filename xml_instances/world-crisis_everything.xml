@@ -1,0 +1,332 @@
+<world-crises>
+	<crises>
+		<!-- 0 or more of these -->
+		<crisis id="c-breast_cancer">
+			<!-- common data -->
+			<name>Breast Cancer</name>
+			<kind>Cancer</kind>
+			<description>Breast cancer is a type of cancer originating from breast tissue, most commonly from the inner lining of milk ducts or the lobules that supply the ducts with milk.</description>
+			<location>
+				<country>USA</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mammo_breast_cancer.jpg/230px-Mammo_breast_cancer.jpg</source>
+					<description>Breast Cancer</description>
+				</image>
+			</images>
+			<maps>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>YNUBnX9JHQs</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@BrstCancerNews</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Breast_cancer</source>
+					<description>Wiki</description>
+				</citation>
+				<citation>
+					<source>http://www.ncbi.nlm.nih.gov/pubmed/17345557</source>
+					<description>Economic Impact</description>
+				</citation>
+				<citation>
+					<source>http://c-changetogether.org/Websites/cchange/images/Publications%20and%20Reports/Reports/Disparities%20Report.pdf</source>
+					<description>Societal Impact</description>
+				</citation>
+				<citation>
+					<source>http://www.cancer.gov/cancertopics/types/breast</source>
+					<description>Cancer.gov on breast cancer</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.nationalbreastcancer.org/breast-cancer-support</source>
+					<description>How to help 1</description>
+				</external-link>
+				<external-link>
+					<source>http://www.bcsupport.org/</source>
+					<description>How to help 2</description>
+				</external-link>
+				<external-link>
+					<source>http://www.huffingtonpost.com/hayley-rose-horzepa/breast-cancer-awareness_b_1990310.html</source>
+					<description>Awareness 1</description>
+				</external-link>
+				<external-link>
+					<source>http://www.nationalpartnership.org</source>
+					<description>Awareness 2</description>
+				</external-link>
+			</external-links>
+			<start-date>1776-07-04T00:00:00</start-date>
+			<end-date>2012-10-22T00:00:00</end-date>
+			<!-- end common data -->
+			<human-impact>
+				<!-- 0 or more of these -->
+				<statistic>230,480 people per year</statistic>
+			</human-impact>
+			<economic-impact>
+				<!-- 0 or more of these -->
+				<statistic>$60,000 per person</statistic>
+			</economic-impact>
+			<resources-needed>
+				<!-- 0 or more of these -->
+				<resource>money</resource>
+				<resource>donations</resource>
+				<resource>research</resource>
+			</resources-needed>
+			<ways-to-help>
+				<!-- 0 or more of these -->
+				<way>donations</way>
+				<way>volunteering</way>
+				<way>fundraising</way>
+				<way>pink ribbons</way>
+				<way>support</way>
+			</ways-to-help>
+		</crisis>
+		<crisis id="c-libyanwar">
+			<!-- common data -->
+			<name>Libyan Civil War</name>
+			<kind>Civil War</kind>
+			<description>The Libyan civil war, also referred to as the Libyan revolution[38] was an armed conflict in the North African state of Libya, fought between forces loyal to Colonel Muammar Gaddafi and those seeking to oust his government. The war was preceded by protests in Benghazi beginning on Tuesday, 15 February 2011, which led to clashes with security forces that fired on the crowd. The protests escalated into a rebellion that spread across the country.</description>
+			<location>
+				<country>USA</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://static.guim.co.uk/sys-images/Guardian/About/General/2012/10/21/1350843473049/protesters-Libya-parliame-010.jpg</source>
+					<description>Libyan Protesters</description>
+				</image>
+				<image>
+					<source>http://static.guim.co.uk/sys-images/Guardian/About/General/2011/11/19/1321713344809/Libyans-celebrate-news-of-007.jpg</source>
+					<description>Libyan Victory</description>
+				</image>
+			</images>
+			<maps>
+				<map>
+				<source>http://goo.gl/maps/e9N4I</source>
+					<description>Tipoli Airport</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>m4h10yy6IgE</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@Libya</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Libyan_civil_war</source>
+					<description>Wiki</description>
+				</citation>
+				
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				
+			</external-links>
+			<start-date>2011-02-17T00:00:00</start-date>
+			<end-date>2011-10-23T00:00:00</end-date>
+			<!-- end common data -->
+			<human-impact>
+				<!-- 0 or more of these -->
+				<statistic>Deaths: 20,000 - 30,000</statistic>
+				<statistic>Missing: 4,000</statistic>
+				<statistic>Injured: 50,000</statistic>
+			</human-impact>
+			<economic-impact>
+				<!-- 0 or more of these -->
+				<statistic>15 Billion USD</statistic>
+			</economic-impact>
+			<resources-needed>
+				<!-- 0 or more of these -->
+				<resource>money</resource>
+				<resource>fuel</resource>
+				<resource>food</resource>
+			</resources-needed>
+			<ways-to-help>
+				<!-- 0 or more of these -->
+				<way>donations</way>
+			</ways-to-help>
+		</crisis>
+		<crisis id="c-mexicandrugwar">
+			<!-- common data -->
+			<name>Mexican Drug War</name>
+			<kind>Armed Conflict</kind>
+			<description>The Mexican Drug War is an ongoing armed conflict taking place among rival drug cartels fighting each other for regional control, and Mexican government forces seeking to combat drug trafficking. However, the government's principal goal has been to put down the drug-related violence that was raging between different rival drug cartels in Mexico before any military intervention was made. In addition, the Mexican government has claimed that their primary focus is on dismantling the powerful drug cartels, rather than on drug trafficking prevention, which is left to U.S. functionaries.</description>
+			<location>
+				<country>Mexico</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://1.bp.blogspot.com/-Jq7ss7appZ4/TwDaMRGMLpI/AAAAAAAAAFg/4nTGb4Gs90Q/s400/mexico_drug_war3_30954s-400x288.jpg</source>
+					<description>Drug War</description>
+				</image>
+			</images>
+			<maps>
+				<map>
+				<source>http://goo.gl/maps/I3H1G</source>
+					<description>Mexico</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>hyDHNeJxazU</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@mexicodrugwar</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Mexican_Drug_War</source>
+					<description>Wiki</description>
+				</citation>
+				
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				
+			</external-links>
+			<start-date>2006-12-11T00:00:00</start-date>
+			<!-- end common data -->
+			<human-impact>
+				<!-- 0 or more of these -->
+				<statistic>Deaths: 54,927</statistic>
+				<statistic>Missing (est): 10,000</statistic>
+				<statistic>Displaced (est): 1.6 Million</statistic>
+			</human-impact>
+			<economic-impact>
+				<!-- 0 or more of these -->
+				<statistic>65 Billion USD</statistic>
+			</economic-impact>
+			<resources-needed>
+				<!-- 0 or more of these -->
+				<resource>Money</resource>
+				<resource>Police and Military Presence</resource>
+			</resources-needed>
+			<ways-to-help>
+				<!-- 0 or more of these -->
+				<way>Increased aid to Mexico</way>
+				<way>Reduced Drug and Weapon smuggling</way>
+			</ways-to-help>
+		</crisis>
+		<crisis id="c-sudanese-conflict">
+			<!-- common data -->
+			<name>Sudanese Conflict</name>
+			<kind>Cancer</kind>
+			<description>The conflict began when many groups took up arms, accusing the Sudanese government of oppressing non-Arab Sudanese.  It is also refered to as the "War in Darfur" and "Darfur Genocide."</description>
+			<location>
+				<country>Sudan</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://www.mtholyoke.edu/~gerla22f/classweb/website/images/Darfur-Map.gif</source>
+					<description>Darfur in Sudan</description>
+				</image>
+			</images>
+			<maps>
+				<map>
+					<source>http://goo.gl/maps/l8U03</source>
+					<description>Darfur region of Sudan</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>USLDoIiFzzg</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@SudanActionNow</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/War_in_Darfur</source>
+					<description>Wiki</description>
+				</citation>
+				<citation>
+					<source>http://www.history.com/topics/darfur-conflict</source>
+					<description>History</description>
+				</citation>
+				<citation>
+					<source>http://news.bbc.co.uk/2/hi/africa/3496731.stm</source>
+					<description>BBC</description>
+				</citation>
+				<citation>
+					<source>http://www.frontier-economics.com/_library/pdfs/frontier%20report%20-%20the%20cost%20of%20future%20conflict%20in%20sudan.pdf</source>
+					<description>Frontier Economics</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.helpsudaninternational.org/</source>
+					<description>How to help 1</description>
+				</external-link>
+				<external-link>
+					<source>http://www.savedarfur.org/</source>
+					<description>How to help 2</description>
+				</external-link>
+			</external-links>
+			<start-date>2003-01-01T00:00:00</start-date>
+			<end-date>2011-01-01T00:00:00</end-date>
+			<!-- end common data -->
+			<human-impact>
+				<!-- 0 or more of these -->
+				<statistic>500,000 Deaths</statistic>
+			</human-impact>
+			<economic-impact>
+				<!-- 0 or more of these -->
+				<statistic>52 Billion USD</statistic>
+			</economic-impact>
+			<resources-needed>
+				<!-- 0 or more of these -->
+				<resource>money</resource>
+				<resource>donations</resource>
+			</resources-needed>
+			<ways-to-help>
+				<!-- 0 or more of these -->
+				<way>donations</way>
+				<way>volunteering</way>
+				<way>fundraising</way>
+				<way>support</way>
+			</ways-to-help>
+		</crisis>
+	</crises>
+	<organizations>
+		<organization>
+		
+		</organization>
+		<organization>
+		
+		</organization>
+		<organization>
+		
+		</organization>
+	</organizations>
+	<people>
+		<person>
+		
+		</person>
+		<person>
+		
+		</person>
+		<person>
+		
+		</person>
+	</people>
+</world-crises>
