@@ -308,25 +308,441 @@
 		</crisis>
 	</crises>
 	<organizations>
-		<organization>
-		
+		<!-- 0 or more of these -->
+		<organization id="o-doctorswithoutborders">
+			<!-- common data -->
+			<name>Doctors Without Borders</name>
+			<kind>Secular humanitarian-aid NGO</kind>
+			<description>Formed during the Nigerian Cival War of 1967 to 1970. A number of French doctors volunteered to work in hospitals and feeding centers. The doctors were attacked by the Nigerian army and witnessed innocent civilians
+			being killed. The doctors critisized the Nigerian government and the Red Cross who was complicit with their behavior. They agreed a new organization was needed that would ignore government and religious boundaries and prioritize the aid of those in need.
+			At the same time a second group called Secours Medical Francais (French Medical Relief) was providing aid to those affected by the 1970 Bhola cyclone. The leader of the group, Raymond Borel, had inteded to recruit doctors to provide aid to victims of natural disaters.
+			On 20 December 1971, these two groups merged to form Medecins Sans Frontieres (Doctors Without Borders).</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>New York</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://i.imgur.com/TbbPF.png?1</source>
+					<description>docotors_wb_logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://i.imgur.com/bMmUE.png?1</source>
+					<description>Mission Areas</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>73zMcdGfXGE</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@MSF_USA</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/M%C3%A9decins_Sans_Fronti%C3%A8res</source>
+					<description>Doctors Without Borders Wiki</description>				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://doctorswithoutborders.org/</source>
+					<description>Doctors Without Borders homepage</description>
+				</external-link>
+			</external-links>
+			<address>333 7th Avenue, 2nd Floor New York, NY 10001-5004 USA</address>
+			<email>office-ldn@london.msf.org</email>
+			<phone>212-679-6800</phone>
+			<!-- end common data -->
 		</organization>
-		<organization>
-		
+		<organization id="o-friendsoftoms">
+			<!-- common data -->
+			<name>Friends of Toms</name>
+			<kind>Non-profit Charity</kind>
+			<description>Founded in 2006, TOMS shoes was founded on the idea that for every pair sold, a new pair would be given to a child in need.</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>Santa Monica</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/en/6/6f/Tom-Logo.jpg</source>
+					<description>TOMS shoes logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/8WAfw</source>
+					<description>Headquarters</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>dXDWXX5NzXI</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@TOMS</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Toms_Shoes</source>
+					<description>TOMS Shoes Wiki</description>
+				</citation>
+				<citation>
+					<source>http://blog.toms.com/</source>
+					<description>TOMS blog</description>
+				</citation>
+				<citation>
+					<source>http://www2.guidestar.org/organizations/20-5555180/friends-toms.aspx</source>
+					<description>NPO Guide</description>
+				</citation>
+				<citation>
+					<source>http://www.volunteermatch.org/search/org94072.jsp</source>
+					<description>Volunteer Profile</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://doctorswithoutborders.org/</source>
+					<description>Doctors Without Borders homepage</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
 		</organization>
-		<organization>
-		
+		<organization id="o-invisiblechildren">
+			<!-- common data -->
+			<name>Invisible Children</name>
+			<kind>Non-profit Organization</kind>
+			<description>Invisible Children, Inc. is an organization founded in 2004 to bring awareness to the activities of the Lord's Resistance Army (LRA) in Central Africa, and its leader, Joseph Kony. Specifically, the group seeks to put an end to the practices of the LRA which include abductions and abuse of children, and forcing them to serve as soldiers. To this end, Invisible Children urges the United States government to take military action in the central region of Africa.</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>San Diego</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/en/d/d7/Invisible_Children_Official_Logo.jpg</source>
+					<description>TOMS shoes logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/4CEFg</source>
+					<description>Headquarters</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>JOrzBOauLyo</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@Invisible</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Invisible_Children,_Inc.</source>
+					<description>Invisible Children Wiki</description>
+				</citation>
+				<citation>
+					<source>http://www.invisiblechildren.com/</source>
+					<description>Invisible Children Website</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.invisiblechildren.com/</source>
+					<description>Invisible Children homepage</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
+		</organization>
+		<organization id="o-oxfam">
+			<!-- common data -->
+			<name>Oxfam</name>
+			<kind>International Confederation of Organizations</kind>
+			<description>The Oxford Committee for Famine Relief was founded in 1896 to relieve famine in Greece during WWII. in 1942, the name changed to Oxfam. Oxfam International was founded in 1995 by a group of independent non-governmental organizations</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>Summertown</city> 
+				<country>United Kingdom</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://www.modernizeaid.net/wp-content/uploads/2009/09/Oxfam.jpg</source>
+					<description>Oxfam logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/u9YM5</source>
+					<description>Headquarters</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>lf_5Kuzb2sM</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@Oxfam</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://www.oxfam.org/</source>
+					<description>Oxfam homepage</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+			</external-links>
+			<!-- end common data -->
 		</organization>
 	</organizations>
 	<people>
-		<person>
-		
+		<!-- 0 or more of these -->
+		<person id="p-algore">
+
+			<!-- common data -->
+			<name>Albert Arnold Gore, Jr.</name>
+			<alternate-names>
+				<!-- optional -->
+				<alternate-name>Al Gore</alternate-name>
+			</alternate-names>
+			<kind>Former US Vice President</kind>
+			<description>Al Gore served as the 45th Vice President of the United States (1993-2001), under President Bill Clinton. He is currently an author and eviromental activist, and has founded a number for non-profit organizations</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>Nashville</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://i.imgur.com/4tDLo.jpg?1</source>
+					<description>Al_gore_shot</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/AzyxR</source>
+					<description>Nashville, Tennesse</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>kIC9bE8CYg4</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@algore</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Al_Gorek</source>
+					<description>Al Gore Wiki</description>				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.algore.com/ </source>
+					<description>Al Gore homepage</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
 		</person>
-		<person>
-		
+		<person id="p-bono">
+			<!-- common data -->
+			<name>Paul David Hewson</name>
+			<alternate-names>
+				<!-- optional -->
+					<alternate-name>Bono</alternate-name>
+			</alternate-names>
+			<kind>Singer</kind>
+			<description>Paul David Hewson, most commonly known by his stage name Bono, is an Irish singer, musician, and humanitarian best known for being the main vocalist of the Dublin-based rock band U2.</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>Dublin</city> 
+				<country>Ireland</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://images.tonic.com/legacy_variable/83713-595-bonojpg.jpg</source>
+					<description>Bono_mugshot1</description>
+				</image>
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Bono_at_the_2009_Tribeca_Film_Festival.jpg/221px-Bono_at_the_2009_Tribeca_Film_Festival.jpg</source>
+					<description>Bono_mugshot2</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/ImkC5</source>
+					<description>Dublin, Ireland</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>c97guVqONSo</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@u2com</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Bono#Humanitarian_work</source>
+					<description>Bono Wiki</description>				</citation>
+				<citation>
+					<source>http://www.biography.com/people/bono-16257407</source>
+					<description>Bono bio</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.ted.com/speakers/bono.html</source>
+					<description>Bono Ted talks</description>
+				</external-link>
+				<external-link>
+					<source>http://www.tonic.com/post/bono/</source>
+					<description>Bono on tonic.com</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
 		</person>
-		<person>
-		
+		<person id="p-felipecalderon">
+			<!-- common data -->
+			<name>Felipe Calderon</name>
+			<kind>President</kind>
+			<description>Felipe de Jesús Calderón Hinojosa is the current President of Mexico. He assumed office on December 1, 2006, and was elected for a single six-year term through 2012. He is a member of the Partido Acción Nacional (PAN), one of the three major Mexican political parties. Felipe Calderón passed several reforms during his presidency, breaking through some of the gridlock faced since Mexico's transition to democracy. He would like to be remembered for building hospitals, fortifying education and legal institutions, and his environmental initiatives, but would likely be remembered for the drug war.</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>Mexico City</city> 
+				<country>Mexico</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://influentialaccess.files.wordpress.com/2012/06/felipe-calderon.jpg</source>
+					<description>Felipe Calderon</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/I3H1G</source>
+					<description>Mexico</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>_OV3IKgjWS8</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@FelipeCalderon</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Felipe_Calder%C3%B3n</source>
+					<description>Wiki</description>			</citation>
+				<citation>
+					<source>http://latinamericanhistory.about.com/od/presidentsofmexico/p/fcalderon.htm</source>
+					<description>About Page</description>			</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.bbc.co.uk/news/world-latin-america-12242685</source>
+					<description>BBC article</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
+		</person>
+		<person id="p-jimmycarter">
+			<!-- common data -->
+			<name>Jimmy Carter</name>
+			<kind>President</kind>
+			<description>In 1982, Jimmy Carter became University Distinguished Professor at Emory University in Atlanta, Ga., and founded The Carter Center. Actively guided by President Carter, the nonpartisan and nonprofit Center addresses national and international issues of public policy. Carter Center fellows, associates, and staff join with President Carter in efforts to resolve conflict, promote democracy, protect human rights, and prevent disease and other afflictions.Through the Global 2000 programs, the Center advances health and agriculture in the developing world. It has spearheaded the international effort to eradicate Guinea worm disease, which will be the second disease in history to be eliminated. On Dec.10, 2002, the Norwegian Nobel Committee awarded the Nobel Peace Prize for 2002 to Mr. Carter "for his decades of untiring effort to find peaceful solutions to international conflicts, to advance democracy and human rights, and to promote economic and social development."</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>Plains</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/JimmyCarterPortrait2.jpg/220px-JimmyCarterPortrait2.jpg</source>
+					<description>Jimmy Carter</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/8jbRH</source>
+					<description>Plains, Georgia</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>yFcWhyzFR4M</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@CarterCenter</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Jimmy_Carter</source>
+					<description>Wiki</description>				</citation>
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Presidency_of_Jimmy_Carter</source>
+					<description>Wiki</description>				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.cartercenter.org/about/index.html</source>
+					<description>Carter Center</description>
+				</external-link>
+				<external-link>
+					<source>http://www.georgiaencyclopedia.org/nge/Article.jsp?id=h-676</source>
+					<description>Georgia Encyclopedia</description>
+				</external-link>
+				<external-link>
+					<source>http://www.washingtonmonthly.com/features/2004/0405.kaplan.html</source>
+					<description>Article</description>
+				</external-link>
+			</external-links>
+			<!-- end common data -->
 		</person>
 	</people>
 </world-crises>
