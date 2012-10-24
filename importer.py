@@ -44,6 +44,7 @@ import datetime
 # TODO: conversions of types?
 # TODO: error handling as specified by project properties
 def process_crisis(crisis):
+    result = {}
     print crisis
     c = {}
     # iterates through list of dictionaries
@@ -73,7 +74,16 @@ def process_crisis(crisis):
                     if 'longitude' in value:
                         c['us_longitude'] = str(value['longitude'])
             # TODO: images
+            elif k == 'images':
+                images = []
+                for image in v:
+                    images.append(image['image'])
             # TODO: maps
+            elif k == 'maps':
+                maps = []
+                for map in v:
+                    maps.append(map['map'])
+                result['maps']
             # TODO: videos
             # TODO: social
             # TODO: citations
@@ -103,6 +113,12 @@ def process_crisis(crisis):
                     ways.append(way['way'])
                 c['us_waysToHelp'] = ways
     crisis_instance = Crisis(**c)
+
+    #
+    #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}
+    # result['crisis'] =  crisis_instance
+    # return result
+
     return crisis_instance
 
 def process_organization(element):
