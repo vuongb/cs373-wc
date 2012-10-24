@@ -1,5 +1,5 @@
 from google.appengine.ext import db
-from Models import Crisis
+from Models import *
 import datetime
 import logging
 

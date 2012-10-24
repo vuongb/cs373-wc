@@ -13,9 +13,7 @@
 			On 20 December 1971, these two groups merged to form Medecins Sans Frontieres (Doctors Without Borders).</description>
 			<location>
 				<!-- either city/country, long/lat, or both (in this order) -->
-				<city>
-					New York
-				</city> 
+				<city>New York</city> 
 				<country>United States</country>
 			</location>
 			<images>

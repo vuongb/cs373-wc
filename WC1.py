@@ -44,7 +44,7 @@ def etree_to_dict(t):
 class ImportHandler(webapp2.RequestHandler):
     def get(self):
         SCHEMA  ='cassie-schema-statistics.xsd'
-        tree    = get_tree_and_validate('xml_instances/crisis-breast_cancer.xml', SCHEMA)
+        tree    = get_tree_and_validate('xml_instances/organization-doctors_without_borders.xml', SCHEMA)
         root    = tree.getroot()
         # iterate over types
         for i in root.iter():
