@@ -14,15 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from StringIO import StringIO
 import webapp2
 from google.appengine.ext import db
 from minixsv import pyxsval as xsv
 import xml.etree.ElementTree as ET
 from importer import process_crisis, process_organization, process_person
-from Models import *
 import logging
-import xml.etree.ElementTree as ETree
-from xml.etree.ElementTree import Element
 import exporter
 
 
@@ -32,8 +30,8 @@ def application_key(application_name = None):
 
 def get_tree_and_validate(data, schema):
     try:
-        wrapper = xsv.parseAndValidateXmlInput(data, schema, xmlIfClass=xsv.XMLIF_ELEMENTTREE)
-        return ET.parse(data)
+        xsv.parseAndValidateXmlInputString(data, schema, xmlIfClass=xsv.XMLIF_ELEMENTTREE)
+        return ET.parse(StringIO(data))
     except xsv.XsvalError as e:
         print("XML did not validate\n"+str(e))
 
@@ -51,18 +49,18 @@ class ImportHandler(webapp2.RequestHandler):
         password = self.request.get('pass')
         if password == 'hunter2':
 
-            self.response.out.write('Authorized.');
+            self.response.out.write('Authorized.')
             upload_request = self.request.get('uploaded_file')
-            
+
             if upload_request != '':
-                received_data = upload_request
-                xml_file = db.Blob(received_data)
-                
-            
+
+#                xml_data = XMLData(content=db.Blob(upload_request))
+#                xml_data.put()
+
                 SCHEMA  ='cassie-schema-statistics.xsd'
-                
+
                 #tree    = get_tree_and_validate('xml_instances/person-bono.xml', SCHEMA)
-                tree = get_tree_and_validate(xml_file, SCHEMA)
+                tree = get_tree_and_validate(upload_request, open(SCHEMA, 'r').read())
                 
                 root    = tree.getroot()
                 # iterate over types
@@ -140,7 +138,7 @@ class ImportHandler(webapp2.RequestHandler):
                                 person_instance.put()
         else:
             self.response.out.write("""<h1>Please enter a password</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data" action="/import">
 <input type="file" name="uploaded_file"/>
 <input type="password" name="pass"/>
 <input type="submit" value="login"/>
@@ -154,7 +152,7 @@ class ExportHandler(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "text/xml; charset=utf-8"
         root = exporter.buildTree()
-        output = ETree.tostring(root)
+        output = ET.tostring(root)
         self.response.out.write(unicode(output,"UTF-8"))
 
 
