@@ -142,9 +142,9 @@ def process_crisis(crisis):
                     result['citations']         = parse_links(v, "citation")
                 except Exception:
                     logging.warn("Empty tag found for citations")
-            elif k == 'external_links':
+            elif k == 'external-links':
                 try:
-                    result['external_links']    = parse_links(v, "external_link")
+                    result['external_links']    = parse_links(v, "external-link")
                 except Exception:
                     logging.warn("Empty tag found for external_links")
 

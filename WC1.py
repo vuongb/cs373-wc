@@ -22,6 +22,7 @@ import xml.etree.ElementTree as ET
 from importer import process_crisis, process_organization, process_person
 import logging
 import exporter
+from Models import Image, Video, Map, Social, ExternalLink, Citation
 
 
 
@@ -65,57 +66,58 @@ class ImportHandler(webapp2.RequestHandler):
                         d = etree_to_dict(i)
                         for c in d.get('crises'):
                             if type(c) != str:
-                                crisis_instance = process_crisis(c)
-                                crisis_instance.put()
+                                result_dict = process_crisis(c)
+                                crisis = result_dict.get('crisis')
+                                crisis.put()
                                 # this is nuts. If you have questions, debug.
-#                                videos          = result_dict.get('videos')
-#                                if videos:
-#                                    for video in videos:
-#                                        builder                 = {}
-#                                        builder['video_type']   = video.items()[0][0]
-#                                        builder['video_id']     = video.items()[0][1]
-#                                        builder['assoc_object'] = c
-#                                        Video(**builder).put()
-#                                social          = result_dict.get('social')
-#                                if social:
-#                                    for media in social:
-#                                        builder                 = {}
-#                                        builder['social_type']  = media.items()[0][0]
-#                                        builder['social_id']    = media.items()[0][1]
-#                                        builder['assoc_object'] = c
-#                                        Social(**builder).put()
-#                                images          = result_dict.get('images')
-#                                if images:
-#                                    for image in images:
-#                                        builder                 = {}
-#                                        builder['source']       = image.get('source')
-#                                        builder['description']  = image.get('description')
-#                                        builder['assoc_object'] = c
-#                                        Image(**builder).put()
-#                                maps            = result_dict.get('maps')
-#                                if maps:
-#                                    for map in maps:
-#                                        builder                 = {}
-#                                        builder['source']       = map.get('source')
-#                                        builder['description']  = map.get('description')
-#                                        builder['assoc_object'] = c
-#                                        Map(**builder).put()
-#                                citations       = result_dict.get('citations')
-#                                if citations:
-#                                    for citation in citations:
-#                                        builder                 = {}
-#                                        builder['source']       = citation.get('source')
-#                                        builder['description']  = citation.get('description')
-#                                        builder['assoc_object'] = c
-#                                        Citation(**builder).put()
-#                                external_links  = result_dict.get('external_links')
-#                                if external_links:
-#                                    for link in external_links:
-#                                        builder                 = {}
-#                                        builder['source']       = link.get('source')
-#                                        builder['description']  = link.get('description')
-#                                        builder['assoc_object'] = c
-#                                        ExternalLink(**builder).put()
+                                videos          = result_dict.get('videos')
+                                if videos:
+                                    for video in videos:
+                                        builder                 = {}
+                                        builder['video_type']   = video.items()[0][0]
+                                        builder['video_id']     = video.items()[0][1]
+                                        builder['assoc_object'] = crisis
+                                        Video(**builder).put()
+                                social          = result_dict.get('social')
+                                if social:
+                                    for media in social:
+                                        builder                 = {}
+                                        builder['social_type']  = media.items()[0][0]
+                                        builder['social_id']    = media.items()[0][1]
+                                        builder['assoc_object'] = crisis
+                                        Social(**builder).put()
+                                images          = result_dict.get('images')
+                                if images:
+                                    for image in images:
+                                        builder                 = {}
+                                        builder['source']       = image.get('source')
+                                        builder['description']  = image.get('description')
+                                        builder['assoc_object'] = crisis
+                                        Image(**builder).put()
+                                maps            = result_dict.get('maps')
+                                if maps:
+                                    for map in maps:
+                                        builder                 = {}
+                                        builder['source']       = map.get('source')
+                                        builder['description']  = map.get('description')
+                                        builder['assoc_object'] = crisis
+                                        Map(**builder).put()
+                                citations       = result_dict.get('citations')
+                                if citations:
+                                    for citation in citations:
+                                        builder                 = {}
+                                        builder['source']       = citation.get('source')
+                                        builder['description']  = citation.get('description')
+                                        builder['assoc_object'] = crisis
+                                        Citation(**builder).put()
+                                external_links  = result_dict.get('external_links')
+                                if external_links:
+                                    for link in external_links:
+                                        builder                 = {}
+                                        builder['source']       = link.get('source')
+                                        builder['description']  = link.get('description')
+                                        builder['assoc_object'] = crisis
+                                        ExternalLink(**builder).put()
                     elif i.tag == 'organizations':
                         # iterate through all organizations
                         d = etree_to_dict(i)
@@ -197,6 +199,51 @@ class MainHandler(webapp2.RequestHandler):
                            "WHERE ANCESTOR IS :1 "
                            "ORDER BY us_name DESC",
                             application_key(self.application_name))
+
+    def get_externalLink(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM ExternalLink "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY description DESC",
+                            application_key(self.application_name))
+
+    def get_citation(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM Citation "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY description DESC",
+                            application_key(self.application_name))
+
+    def get_map(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM Map "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY description DESC",
+                            application_key(self.application_name))
+
+    def get_image(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM Image "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY description DESC",
+                            application_key(self.application_name))
+
+    def get_social(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM Social "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY social_id DESC",
+                            application_key(self.application_name))
+
+    def get_video(self):
+        return db.GqlQuery("SELECT * "
+                           "FROM Video "
+                           "WHERE ANCESTOR IS :1 "
+                           "ORDER BY video_id DESC",
+                            application_key(self.application_name))
+
+
+
     def to_ul(self, col):
         return "<ul>" + "\n".join(["<li>" + str(item) + "</li>" for item in col]) + "</ul>"
 
