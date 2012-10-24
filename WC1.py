@@ -35,9 +35,9 @@ def get_tree_and_validate(data, schema):
         return ET.parse(StringIO(data))
     except xsv.XsvalError as e:
         print("XML did not validate\n"+str(e))
+        return 0
     except Exception as e:
         logging.info('bad file\n' + str(e))
-    finally:
         return 0
 
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
