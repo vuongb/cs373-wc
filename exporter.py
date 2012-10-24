@@ -354,7 +354,7 @@ def addPerson(person):
     """
   
   ele = Element('person')
-  ele.attrib['id'] = person.key().name()
+#  ele.attrib['id'] = person.key().name()
 
   name = Element('name')
   name.text = person.us_name
