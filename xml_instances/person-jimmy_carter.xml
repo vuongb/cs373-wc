@@ -12,9 +12,7 @@
 			<description>In 1982, Jimmy Carter became University Distinguished Professor at Emory University in Atlanta, Ga., and founded The Carter Center. Actively guided by President Carter, the nonpartisan and nonprofit Center addresses national and international issues of public policy. Carter Center fellows, associates, and staff join with President Carter in efforts to resolve conflict, promote democracy, protect human rights, and prevent disease and other afflictions.Through the Global 2000 programs, the Center advances health and agriculture in the developing world. It has spearheaded the international effort to eradicate Guinea worm disease, which will be the second disease in history to be eliminated. On Dec.10, 2002, the Norwegian Nobel Committee awarded the Nobel Peace Prize for 2002 to Mr. Carter "for his decades of untiring effort to find peaceful solutions to international conflicts, to advance democracy and human rights, and to promote economic and social development."</description>
 			<location>
 				<!-- either city/country, long/lat, or both (in this order) -->
-				<city>
-					Plains
-				</city> 
+				<city>Plains</city> 
 				<country>United States</country>
 			</location>
 			<images>

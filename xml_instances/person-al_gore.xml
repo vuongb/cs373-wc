@@ -17,9 +17,7 @@
 			<description>Al Gore served as the 45th Vice President of the United States (1993-2001), under President Bill Clinton. He is currently an author and eviromental activist, and has founded a number for non-profit organizations</description>
 			<location>
 				<!-- either city/country, long/lat, or both (in this order) -->
-				<city>
-					Nashville
-				</city> 
+				<city>Nashville</city> 
 				<country>United States</country>
 			</location>
 			<images>

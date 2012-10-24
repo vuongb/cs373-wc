@@ -10,9 +10,7 @@
 			<description>Founded in 2006, TOMS shoes was founded on the idea that for every pair sold, a new pair would be given to a child in need.</description>
 			<location>
 				<!-- either city/country, long/lat, or both (in this order) -->
-				<city>
-					Santa Monica
-				</city> 
+				<city>Santa Monica</city> 
 				<country>United States</country>
 			</location>
 			<images>

@@ -12,9 +12,7 @@
 			<description>Felipe de Jesús Calderón Hinojosa is the current President of Mexico. He assumed office on December 1, 2006, and was elected for a single six-year term through 2012. He is a member of the Partido Acción Nacional (PAN), one of the three major Mexican political parties. Felipe Calderón passed several reforms during his presidency, breaking through some of the gridlock faced since Mexico's transition to democracy. He would like to be remembered for building hospitals, fortifying education and legal institutions, and his environmental initiatives, but would likely be remembered for the drug war.</description>
 			<location>
 				<!-- either city/country, long/lat, or both (in this order) -->
-				<city>
-					Mexico City
-				</city> 
+				<city>Mexico City</city> 
 				<country>Mexico</country>
 			</location>
 			<images>

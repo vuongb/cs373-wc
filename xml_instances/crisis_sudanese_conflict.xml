@@ -1,0 +1,80 @@
+<world-crises>
+	<crises>
+		<!-- 0 or more of these -->
+		<crisis id="c-sudanese-conflict">
+			<!-- common data -->
+			<name>Sudanese Conflict</name>
+			<kind>Cancer</kind>
+			<description>The conflict began when many groups took up arms, accusing the Sudanese government of oppressing non-Arab Sudanese.  It is also refered to as the "War in Darfur" and "Darfur Genocide."</description>
+			<location>
+				<country>Sudan</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://www.mtholyoke.edu/~gerla22f/classweb/website/images/Darfur-Map.gif</source>
+					<description>Darfur in Sudan</description>
+				</image>
+			</images>
+			<maps>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>USLDoIiFzzg</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@SudanActionNow</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://en.wikipedia.org/wiki/War_in_Darfur</source>
+					<description>Wiki</description>
+				</citation>
+				<citation>
+					<source>http://www.history.com/topics/darfur-conflict</source>
+					<description>History</description>
+				</citation>
+				<citation>
+					<source>http://news.bbc.co.uk/2/hi/africa/3496731.stm</source>
+					<description>BBC</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+				<external-link>
+					<source>http://www.helpsudaninternational.org/</source>
+					<description>How to help 1</description>
+				</external-link>
+				<external-link>
+					<source>http://www.savedarfur.org/</source>
+					<description>How to help 2</description>
+				</external-link>
+			</external-links>
+			<start-date>2003-01-01T00:00:00</start-date>
+			<end-date>2011-01-01T00:00:00</end-date>
+			<!-- end common data -->
+			<human-impact>
+				<!-- 0 or more of these -->
+				<statistic>500,000 Deaths</statistic>
+			</human-impact>
+			<resources-needed>
+				<!-- 0 or more of these -->
+				<resource>money</resource>
+				<resource>donations</resource>
+			</resources-needed>
+			<ways-to-help>
+				<!-- 0 or more of these -->
+				<way>donations</way>
+				<way>volunteering</way>
+				<way>fundraising</way>
+				<way>support</way>
+			</ways-to-help>
+		</crisis>
+	</crises>
+	<organizations>
+	</organizations>
+	<people>
+	</people>
+</world-crises>
