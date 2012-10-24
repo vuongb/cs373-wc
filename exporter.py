@@ -12,9 +12,11 @@ def buildTree():
   crises = Element('crises')
   crises_objects = db.GqlQuery("SELECT * FROM Crisis")
 
+  idNum = 1
   # Build XML for crises
   for crisis_object in crises_objects:
-    crisis = addCrisis(crisis_object)
+    crisis = addCrisis(crisis_object, idNum)
+    idNum += 1
     crises.append(crisis)
   root.append(crises)
 
@@ -22,7 +24,8 @@ def buildTree():
   organizations = Element('organizations')
   organizations_objects = db.GqlQuery("SELECT * FROM Organization")
   for organization_object in organizations_objects:
-    organization = addOrganization(organization_object)
+    organization = addOrganization(organization_object, idNum)
+    idNum += 1
     organizations.append(organization)
   root.append(organizations)
 
@@ -30,13 +33,14 @@ def buildTree():
   people = Element('people')
   people_objects = db.GqlQuery("SELECT * FROM Person")
   for person_object in people_objects:
-    person = addPerson(person_object)
+    person = addPerson(person_object, idNum)
+    idNum += 1
     people.append(person)
   root.append(people)
 
   return root
 
-def addCrisis(crisis):
+def addCrisis(crisis, idNum):
   """
     build xml crisis element based on WC1.xsd (hard coded, meaning changes to xsd will not reflect here)
     crisis is a Crisis object from the GAE datastore
@@ -44,7 +48,7 @@ def addCrisis(crisis):
     """
 
   ele = Element('crisis')
-  ele.attrib['id'] = crisis.key().name()
+  ele.attrib['id'] = str(idNum)
   
   name = Element('name')
   name.text = crisis.us_name
@@ -124,7 +128,7 @@ def addCrisis(crisis):
   ele.append(resources)
 
   ways = Element('ways-to-help')
-  for way in crisis.ways_to_help:
+  for way in crisis.us_waysToHelp:
     way_ele = Element('way')
     way_ele.text = way
     ways.append(way_ele)
@@ -198,9 +202,7 @@ def addCrisis(crisis):
 
   return ele
 
-def addOrganization(organization):
-
-# MISSING HISTORY
+def addOrganization(organization, idNum):
 
   """
     build xml organization element based on WC1.xsd (hard coded, meaning changes to xsd will not reflect here)
@@ -208,7 +210,8 @@ def addOrganization(organization):
     return organization xml element
     """
   ele = Element('organization')
-  ele.attrib['id'] = organization.key().name()
+  #ele.attrib['id'] = organization.us_name
+  ele.attrib['id'] = str(idNum)
 
   name = Element('name')
   name.text = organization.us_name
@@ -346,7 +349,7 @@ def addOrganization(organization):
 
   return ele
   
-def addPerson(person):
+def addPerson(person, idNum):
   """
     build xml person element based on WC1.xsd (hard coded, meaning changes to xsd will not reflect here)
     person is a Person object from the GAE datastore
@@ -354,7 +357,8 @@ def addPerson(person):
     """
   
   ele = Element('person')
-  ele.attrib['id'] = person.key().name()
+#  ele.attrib['id'] = person.key().name()
+  ele.attrib['id'] = str(idNum)
 
   name = Element('name')
   name.text = person.us_name

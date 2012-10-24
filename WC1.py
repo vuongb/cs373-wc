@@ -35,6 +35,10 @@ def get_tree_and_validate(data, schema):
         return ET.parse(StringIO(data))
     except xsv.XsvalError as e:
         print("XML did not validate\n"+str(e))
+        return 0
+    except Exception as e:
+        logging.info('bad file\n' + str(e))
+        return 0
 
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
 def etree_to_dict(t):
@@ -107,10 +111,14 @@ class ImportHandler(webapp2.RequestHandler):
 
             if upload_request != '':
 
-                SCHEMA  ='cassie-schema-statistics.xsd'
+                SCHEMA  ='unicornSteroids.xsd'
 
                 tree = get_tree_and_validate(upload_request, open(SCHEMA, 'r').read())
-                
+                if tree == 0:
+                    self.response.out.write('The file you uploaded is not valid. Please try again')
+                else:
+                    self.response.out.write('Your file has validated')
+
                 root    = tree.getroot()
                 # iterate over types
                 for i in root.iter():
@@ -150,7 +158,7 @@ class ImportHandler(webapp2.RequestHandler):
 <input type="password" name="pass"/>
 <input type="submit" value="login"/>
 </form>""")
-            
+
     def get(self):
         self.post()
 
@@ -159,6 +167,7 @@ class ExportHandler(webapp2.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = "text/xml; charset=utf-8"
         root = exporter.buildTree()
+        logging.info("root: %s", root)
         output = ET.tostring(root)
         self.response.out.write(unicode(output,"UTF-8"))
 
