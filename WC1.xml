@@ -1,0 +1,230 @@
+<world-crises>
+	<crises>
+		<crisis id="c-breast_cancer">
+			<name>Breast Cancer</name>
+			<kind>Cancer</kind>
+			<description>Breast cancer is a type of cancer originating from breast tissue, most commonly from the inner lining of milk ducts or the lobules that supply the ducts with milk.</description>
+			<location>
+				<country>USA</country>
+			</location>
+			<images>
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mammo_breast_cancer.jpg/230px-Mammo_breast_cancer.jpg</source>
+					<description>Breast Cancer</description>
+				</image>
+			</images>
+			<maps>
+			</maps>
+			<videos>
+				<youtube>YNUBnX9JHQs</youtube>
+			</videos>
+			<social>
+				<twitter>@BrstCancerNews</twitter>
+			</social>
+			<citations>
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Breast_cancer</source>
+					<description>Wiki</description>
+				</citation>
+				<citation>
+					<source>http://www.ncbi.nlm.nih.gov/pubmed/17345557</source>
+					<description>Economic Impact</description>
+				</citation>
+				<citation>
+					<source>http://c-changetogether.org/Websites/cchange/images/Publications%20and%20Reports/Reports/Disparities%20Report.pdf</source>
+					<description>Societal Impact</description>
+				</citation>
+				<citation>
+					<source>http://www.cancer.gov/cancertopics/types/breast</source>
+					<description>Cancer.gov on breast cancer</description>
+				</citation>
+			</citations>
+			<external-links>
+				<external-link>
+					<source>http://www.nationalbreastcancer.org/breast-cancer-support</source>
+					<description>How to help 1</description>
+				</external-link>
+				<external-link>
+					<source>http://www.bcsupport.org/</source>
+					<description>How to help 2</description>
+				</external-link>
+				<external-link>
+					<source>http://www.huffingtonpost.com/hayley-rose-horzepa/breast-cancer-awareness_b_1990310.html</source>
+					<description>Awareness 1</description>
+				</external-link>
+				<external-link>
+					<source>http://www.nationalpartnership.org</source>
+					<description>Awareness 2</description>
+				</external-link>
+			</external-links>
+			<start-date>1776-07-04T00:00:00</start-date>
+			<end-date>2012-10-22T00:00:00</end-date>
+			<human-impact>
+				<statistic>230,480 people per year</statistic>
+			</human-impact>
+			<economic-impact>
+				<statistic>$60,000 per person</statistic>
+			</economic-impact>
+			<resources-needed>
+				<resource>money</resource>
+				<resource>donations</resource>
+				<resource>research</resource>
+			</resources-needed>
+			<ways-to-help>
+				<way>donations</way>
+				<way>volunteering</way>
+				<way>fundraising</way>
+				<way>pink ribbons</way>
+				<way>support</way>
+			</ways-to-help>
+		</crisis>
+	</crises>
+	<organizations>
+		<organization id="o-doctorswithoutborders">
+			<name>Doctors Without Borders</name>
+			<kind>Secular humanitarian-aid NGO</kind>
+			<description>Formed during the Nigerian Cival War of 1967 to 1970. A number of French doctors volunteered to work in hospitals and feeding centers. The doctors were attacked by the Nigerian army and witnessed innocent civilians
+			being killed. The doctors critisized the Nigerian government and the Red Cross who was complicit with their behavior. They agreed a new organization was needed that would ignore government and religious boundaries and prioritize the aid of those in need.
+			At the same time a second group called Secours Medical Francais (French Medical Relief) was providing aid to those affected by the 1970 Bhola cyclone. The leader of the group, Raymond Borel, had inteded to recruit doctors to provide aid to victims of natural disaters.
+			On 20 December 1971, these two groups merged to form Medecins Sans Frontieres (Doctors Without Borders).</description>
+			<location>
+				<city>
+					New York
+				</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<image>
+					<source>http://i.imgur.com/TbbPF.png?1</source>
+					<description>docotors_wb_logo</description>
+				</image>
+			</images>
+			<maps>
+				<map>
+					<source>http://i.imgur.com/bMmUE.png?1</source>
+					<description>Mission Areas</description>
+				</map>
+			</maps>
+			<videos>
+				<youtube>73zMcdGfXGE</youtube>
+			</videos>
+			<social>
+				<twitter>@MSF_USA</twitter>
+			</social>
+			<citations>
+				<citation>
+					<source>http://en.wikipedia.org/wiki/M%C3%A9decins_Sans_Fronti%C3%A8res</source>
+					<description>Doctors Without Borders Wiki</description>				</citation>
+			</citations>
+			<external-links>
+				<external-link>
+					<source>http://doctorswithoutborders.org/</source>
+					<description>Doctors Without Borders homepage</description>
+				</external-link>
+			</external-links>
+			<address>333 7th Avenue, 2nd Floor New York, NY 10001-5004 USA</address>
+			<email>office-ldn@london.msf.org</email>
+			<phone>212-679-6800</phone>
+		</organization>
+	</organizations>
+	<people>
+		<person id="p-algore">
+			<name>Albert Arnold Gore, Jr.</name>
+			<alternate-names>
+				Al Gore
+			</alternate-names>
+			<kind>Former US Vice President</kind>
+			<description>Al Gore served as the 45th Vice President of the United States (1993-2001), under President Bill Clinton. He is currently an author and eviromental activist, and has founded a number for non-profit organizations</description>
+			<location>
+				<city>
+					Nashville
+				</city> 
+				<country>United States</country>
+			</location>
+			<images>
+				<image>
+					<source>http://i.imgur.com/4tDLo.jpg?1</source>
+					<description>Al_gore_shot</description>
+				</image>
+			</images>
+			<maps>
+				<map>
+					<source>http://goo.gl/maps/AzyxR</source>
+					<description>Nashville, Tennesse</description>
+				</map>
+			</maps>
+			<videos>
+				<youtube>kIC9bE8CYg4</youtube>
+			</videos>
+			<social>
+				<twitter>@algore</twitter>
+			</social>
+			<citations>
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Al_Gorek</source>
+					<description>Al Gore Wiki</description>				</citation>
+			</citations>
+			<external-links>
+				<external-link>
+					<source>http://www.algore.com/ </source>
+					<description>Al Gore homepage</description>
+				</external-link>
+			</external-links>
+		</person>
+		<person id="p-bono">
+			<name>Paul David Hewson</name>
+			<alternate-names>
+				Bono
+			</alternate-names>
+			<kind>Singer</kind>
+			<description>Paul David Hewson, most commonly known by his stage name Bono, is an Irish singer, musician, and humanitarian best known for being the main vocalist of the Dublin-based rock band U2.</description>
+			<location>
+				<city>
+					Dublin
+				</city> 
+				<country>Ireland</country>
+			</location>
+			<images>
+				<image>
+					<source>http://images.tonic.com/legacy_variable/83713-595-bonojpg.jpg</source>
+					<description>Bono_mugshot1</description>
+				</image>
+				<image>
+					<source>http://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Bono_at_the_2009_Tribeca_Film_Festival.jpg/221px-Bono_at_the_2009_Tribeca_Film_Festival.jpg</source>
+					<description>Bono_mugshot2</description>
+				</image>
+			</images>
+			<maps>
+				<map>
+					<source>http://goo.gl/maps/ImkC5</source>
+					<description>Dublin, Ireland</description>
+				</map>
+			</maps>
+			<videos>
+				<youtube>c97guVqONSo</youtube>
+			</videos>
+			<social>
+				<twitter>@u2com</twitter>
+			</social>
+			<citations>
+				<citation>
+					<source>http://en.wikipedia.org/wiki/Bono#Humanitarian_work</source>
+					<description>Bono Wiki</description>				</citation>
+				<citation>
+					<source>http://www.biography.com/people/bono-16257407</source>
+					<description>Bono bio</description>
+				</citation>
+			</citations>
+			<external-links>
+				<external-link>
+					<source>http://www.ted.com/speakers/bono.html</source>
+					<description>Bono Ted talks</description>
+				</external-link>
+				<external-link>
+					<source>http://www.tonic.com/post/bono/</source>
+					<description>Bono on tonic.com</description>
+				</external-link>
+			</external-links>
+		</person>
+	</people>
+</world-crises>
