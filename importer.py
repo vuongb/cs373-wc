@@ -55,9 +55,14 @@ def process_crisis(crisis):
         for k,v in attribute_dictionary.items():
             if k == 'name':
                 c['us_name'] = str(v)
+##            elif k == 'alternate-names':
+##                #TODO: test this with xml containing alternate names
+##                c['us_alternateNames'] = v
             elif k == 'alternate-names':
-                #TODO: test this with xml containing alternate names
-                c['us_alternateNames'] = v
+                altNames = []
+                for name in v:
+                    altNames.append(name)
+                c['us_alternateNames'] = altNames
             elif k == 'kind':
                 c['us_type'] = str(v)
             elif k == 'description':
@@ -204,8 +209,10 @@ def process_person(person):
             if k == 'name':
                 p['us_name'] = str(v)
             elif k == 'alternate-names':
-                #TODO: test this with xml containing alternate names
-                p['us_alternateNames'] = v
+                altNames = []
+                for name in v:
+                    altNames.append(name)
+                p['us_alternateNames'] = altNames
             elif k == 'kind':
                 p['us_type'] = str(v)
             elif k == 'description':
@@ -238,7 +245,7 @@ def process_person(person):
             # TODO: social
             # TODO: citations
             # TODO: external links
-    person_instance = Person(**o)
+    person_instance = Person(**p)
 
     #
     #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}

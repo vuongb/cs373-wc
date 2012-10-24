@@ -8,10 +8,6 @@
 		<person id="p-bono">
 			<!-- common data -->
 			<name>Paul David Hewson</name>
-			<alternate-names>
-				<!-- optional -->
-					<alternate-name>Bono</alternate-name>
-			</alternate-names>
 			<kind>Singer</kind>
 			<description>Paul David Hewson, most commonly known by his stage name Bono, is an Irish singer, musician, and humanitarian best known for being the main vocalist of the Dublin-based rock band U2.</description>
 			<location>

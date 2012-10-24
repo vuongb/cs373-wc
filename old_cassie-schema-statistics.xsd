@@ -163,17 +163,11 @@ elementFormDefault="qualified">
     </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="alternate-names">
-	<xs:sequence>
-		<xs:element name="alternate-name" type="short-token" minOccurs="0" maxOccurs="unbounded"/>
-	</xs:sequence>
-</xs:complexType>
-
 <!--common-data group declaration-->
 <xs:group name="common-data">
     <xs:sequence>
         <xs:element name="name" type="short-token"/>
-		<xs:element name="alternate-names" type="alternate-names" minOccurs="0"/>
+        <xs:element name="alternate-names" type="short-token" minOccurs="0"/>
         <xs:element name="kind" type="short-token"/>
         <xs:element name="description" type="xs:string"/>
         <xs:element name="location" type="location"/>
@@ -216,9 +210,8 @@ elementFormDefault="qualified">
 
 <xs:complexType name="person">
     <xs:sequence>
-		<xs:element name="alternate-names" type="alternate-names" minOccurs="0"/>
         <xs:group ref="common-data"/>
-		
+
         <!--IDREFS-->
         <xs:element name="crisis-refs" type="xs:IDREFS" minOccurs="0"/>
         <xs:element name="organization-refs" type="xs:IDREFS" minOccurs="0"/>
