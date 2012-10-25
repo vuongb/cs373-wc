@@ -1,10 +1,6 @@
 import unittest
-import datetime
-from google.appengine.ext import db
-import xml.etree.ElementTree as ETree
 from WC1 import get_tree_and_validate, etree_to_dict, store_special_classes
 import importer
-import Models
 
 class TestImport(unittest.TestCase):
     def setUp(self):
