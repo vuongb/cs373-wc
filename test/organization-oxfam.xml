@@ -1,0 +1,53 @@
+<world-crises>
+	<crises>
+	</crises>
+	<organizations>
+		<!-- 0 or more of these -->
+		<organization id="o-oxfam">
+			<!-- common data -->
+			<name>Oxfam</name>
+			<kind>International Confederation of Organizations</kind>
+			<description>The Oxford Committee for Famine Relief was founded in 1896 to relieve famine in Greece during WWII. in 1942, the name changed to Oxfam. Oxfam International was founded in 1995 by a group of independent non-governmental organizations</description>
+			<location>
+				<!-- either city/country, long/lat, or both (in this order) -->
+				<city>Summertown</city> 
+				<country>United Kingdom</country>
+			</location>
+			<images>
+				<!-- 0 or more of these -->
+				<image>
+					<source>http://www.modernizeaid.net/wp-content/uploads/2009/09/Oxfam.jpg</source>
+					<description>Oxfam logo</description>
+				</image>
+			</images>
+			<maps>
+				<!-- 0 or more of these -->
+				<map>
+					<source>http://goo.gl/maps/u9YM5</source>
+					<description>Headquarters</description>
+				</map>
+			</maps>
+			<videos>
+				<!-- 0 or more of these -->
+				<youtube>lf_5Kuzb2sM</youtube>
+			</videos>
+			<social>
+				<!-- 0 or more of these -->
+				<twitter>@Oxfam</twitter>
+			</social>
+			<citations>
+				<!-- 0 or more of these -->
+				<citation>
+					<source>http://www.oxfam.org/</source>
+					<description>Oxfam homepage</description>
+				</citation>
+			</citations>
+			<external-links>
+				<!-- 0 or more of these -->
+			</external-links>
+			<!-- end common data -->
+		</organization>
+	</organizations>
+	<people>
+	</people>
+</world-crises>
