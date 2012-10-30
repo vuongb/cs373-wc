@@ -102,7 +102,7 @@ def store_special_classes(result_dict, assoc_obj):
 class ImportHandler(webapp2.RequestHandler):
     """ Handles the interaction between the client and the server for importing xml files into our datastore
     """
-    SCHEMA  ='unicornSteroids.xsd' # the schema that all xml is validated against
+    SCHEMA  ='WC2.xsd' # the schema that all xml is validated against
     PASSWORD = 'hunter2' # the password required for upload and import functionality
 
     def post(self):
