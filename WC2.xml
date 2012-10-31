@@ -518,10 +518,7 @@
 
 			<!-- common data -->
 			<name>Albert Arnold Gore, Jr.</name>
-			<alternate-names>
-				<!-- optional -->
-				<alternate-name>Al Gore</alternate-name>
-			</alternate-names>
+			<alternate-names>Al Gore</alternate-names>
 			<kind>Former US Vice President</kind>
 			<description>Al Gore served as the 45th Vice President of the United States (1993-2001), under President Bill Clinton. He is currently an author and eviromental activist, and has founded a number for non-profit organizations</description>
 			<location>
@@ -569,10 +566,7 @@
 		<person id="p-bono">
 			<!-- common data -->
 			<name>Paul David Hewson</name>
-			<alternate-names>
-				<!-- optional -->
-					<alternate-name>Bono</alternate-name>
-			</alternate-names>
+			<alternate-names>Bono</alternate-names>
 			<kind>Singer</kind>
 			<description>Paul David Hewson, most commonly known by his stage name Bono, is an Irish singer, musician, and humanitarian best known for being the main vocalist of the Dublin-based rock band U2.</description>
 			<location>
