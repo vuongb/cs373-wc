@@ -44,6 +44,10 @@
 					<source>http://www.cancer.gov/cancertopics/types/breast</source>
 					<description>Cancer.gov on breast cancer</description>
 				</citation>
+				<citation>
+					<source>http://www.cancer.org/cancer/cancerbasics/economic-impact-of-cancer</source>
+					<description>Cost of cancer in the US</description>
+				</citation>
 			</citations>
 			<external-links>
 				<!-- 0 or more of these -->
@@ -69,12 +73,9 @@
 			<!-- end common data -->
 			<human-impact>
 				<!-- 0 or more of these -->
-				<statistic>230,480 people per year</statistic>
+				<deaths>40000</deaths>
 			</human-impact>
-			<economic-impact>
-				<!-- 0 or more of these -->
-				<statistic>$60,000 per person</statistic>
-			</economic-impact>
+			<economic-impact>209000000000</economic-impact>
 			<resources-needed>
 				<!-- 0 or more of these -->
 				<resource>money</resource>
@@ -140,14 +141,11 @@
 			<!-- end common data -->
 			<human-impact>
 				<!-- 0 or more of these -->
-				<statistic>Deaths: 20,000 - 30,000</statistic>
-				<statistic>Missing: 4,000</statistic>
-				<statistic>Injured: 50,000</statistic>
+				<deaths>25000</deaths>
+				<missing>4000</missing>
+				<injured>50000</injured>
 			</human-impact>
-			<economic-impact>
-				<!-- 0 or more of these -->
-				<statistic>15 Billion USD</statistic>
-			</economic-impact>
+			<economic-impact>15000000000</economic-impact>
 			<resources-needed>
 				<!-- 0 or more of these -->
 				<resource>money</resource>
@@ -204,14 +202,11 @@
 			<!-- end common data -->
 			<human-impact>
 				<!-- 0 or more of these -->
-				<statistic>Deaths: 54,927</statistic>
-				<statistic>Missing (est): 10,000</statistic>
-				<statistic>Displaced (est): 1.6 Million</statistic>
+				<deaths>54927</deaths>
+				<missing>10000</missing>
+				<displaced>16000000</displaced>
 			</human-impact>
-			<economic-impact>
-				<!-- 0 or more of these -->
-				<statistic>65 Billion USD</statistic>
-			</economic-impact>
+			<economic-impact>65000000000</economic-impact>
 			<resources-needed>
 				<!-- 0 or more of these -->
 				<resource>Money</resource>
@@ -290,9 +285,7 @@
 				<deaths>500000</deaths>
 				<displaced>2850000</displaced>
 			</human-impact>
-			<economic-impact>
-				52000000000
-			</economic-impact>
+			<economic-impact>52000000000</economic-impact>
 			<resources-needed>
 				<!-- 0 or more of these -->
 				<resource>money</resource>
