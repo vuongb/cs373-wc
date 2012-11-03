@@ -82,8 +82,12 @@ class Crisis(db.Model):
     # Other Data
     us_startDate       = db.DateTimeProperty()
     us_endDate         = db.DateTimeProperty()
-    us_economicImpact  = db.StringListProperty(required=True)
-    us_humanImpact     = db.StringListProperty(required=True)
+    us_economicImpact  = db.IntegerProperty(required=True)
+    us_humanDeaths     = db.IntegerProperty()
+    us_humanMissing    = db.IntegerProperty()
+    us_humanInjured    = db.IntegerProperty()
+    us_humanDisplaced  = db.IntegerProperty()
+
     us_resoucesNeeded  = db.StringListProperty(required=True)
     us_waysToHelp      = db.StringListProperty(required=True)
 

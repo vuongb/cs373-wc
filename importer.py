@@ -61,15 +61,17 @@ def process_crisis(crisis):
             elif k == 'end-date':
                 c['us_endDate'] = datetime.datetime.strptime(v, '%Y-%m-%dT%H:%M:%S')
             elif k == 'economic-impact':
-                stats = []
-                for statistic in v:
-                    stats.append(statistic['statistic'])
-                c['us_economicImpact'] = stats
+                c['us_economicImpact'] = int(v)
             elif k == 'human-impact':
-                stats = []
-                for statistic in v:
-                    stats.append(statistic['statistic'])
-                c['us_humanImpact'] = stats
+                for dict in v:
+                    if "deaths" in dict:
+                        c['us_humanDeaths']     = int(dict['deaths'])
+                    if "missing" in dict:
+                        c['us_humanMissing']    = int(dict['missing'])
+                    if "injured" in dict:
+                        c['us_humanInjured']    = int(dict['injured'])
+                    if "displaced" in dict:
+                        c['us_humanDisplaced']  = int(dict['displaced'])
             elif k == 'resources-needed':
                 res = []
                 for resource in v:
@@ -209,7 +211,7 @@ def process_person(person):
         for k,v in attribute_dictionary.items():
             if k == 'name':
                 p['us_name'] = str(v)
-            elif k == 'alternate-names':
+            if k == 'alternate-names':
                 altNames = []
                 for name in v:
                     altNames.append(name['alternate-name'])
