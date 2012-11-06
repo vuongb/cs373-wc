@@ -55,12 +55,12 @@ def addCrisis(crisis, idNum):
   ele.append(name)
 
   # Alternate Names is stored as a list in datastore
-  # Export as: <alternate-names><alternate-name>.....</alternate-name></alternate-names>
+  # Export as: <alternate-names>...</alternate-names>
   if crisis.us_alternateNames:
-    for name in crisis.us_alternateNames:
-      altName = Element('alternate-names')
-      altName.text = name
-      ele.append(altName)
+    assert type(crisis.us_alternateNames) == str
+    altName = Element('alternate-names')
+    altName.text = crisis.us_alternateNames
+    ele.append(altName)
 
   kind = Element('kind')
   kind.text = crisis.us_type
@@ -191,29 +191,31 @@ def addCrisis(crisis, idNum):
   human_impact = Element('human-impact')
   if crisis.us_humanDeaths:
     humImp_Ele = Element('deaths')
-    humImp_Ele.text = crisis.us_humanMissing
+    humImp_Ele.text = str(crisis.us_humanDeaths)
     human_impact.append(humImp_Ele)
   if crisis.us_humanMissing:
     humImp_Ele = Element('missing')
-    humImp_Ele.text = crisis.us_humanDeaths
+    humImp_Ele.text = str(crisis.us_humanMissing)
     human_impact.append(humImp_Ele)
   if crisis.us_humanInjured:
     humImp_Ele = Element('injured')
-    humImp_Ele.text = crisis.us_humanInjured
+    humImp_Ele.text = str(crisis.us_humanInjured)
     human_impact.append(humImp_Ele)
   if crisis.us_humanDisplaced:
     humImp_Ele = Element('displaced')
-    humImp_Ele.text = crisis.us_humanDisplaced
+    humImp_Ele.text = str(crisis.us_humanDisplaced)
     human_impact.append(humImp_Ele)
 
   ele.append(human_impact)
 
   # economic impact is stored as a list in GAE
   # Export as: <economic-impact>...</economic-impact>
-##  if crisis.us_economicImpact:
-##    econ_impact = Element('economic-impact')
-##    econ_impact.text = str(crisis.us_economicImpact)
-##    ele.append(econ_impact)
+  if crisis.us_economicImpact:
+    econ_impact = Element('economic-impact')
+    assert type(crisis.us_economicImpact) == long
+    econ_impact.text = str(crisis.us_economicImpact)
+    ele.append(econ_impact)
+
 
   # resources needed is stored as a list in GAE
   # Export as: <resources-needed><resource>...</resource></resources-needed>
@@ -267,12 +269,11 @@ def addOrganization(organization, idNum):
   ele.append(name)
 
   # Alternate Names is stored as a list in datastore
-  # Export as: <alternate-names><alternate-name>.....</alternate-name></alternate-names>
+  # Export as: <alternate-names>...</alternate-names>
   if organization.us_alternateNames:
-    for name in organization.us_alternateNames:
-      altName = Element('alternate-names')
-      altName.text = name
-      ele.append(altName)
+    altName = Element('alternate-names')
+    altName.text = organization.us_alternateNames
+    ele.append(altName)
 
   kind = Element('kind')
   kind.text = organization.us_type
@@ -435,12 +436,11 @@ def addPerson(person, idNum):
   ele.append(name)
 
   # Alternate Names is stored as a list in datastore
-  # Export as: <alternate-names><alternate-name>.....</alternate-name></alternate-names>
+  # Export as: <alternate-names>...</alternate-names>
   if person.us_alternateNames:
-    for name in person.us_alternateNames:
-      altName = Element('alternate-names')
-      altName.text = name
-      ele.append(altName)
+    altName = Element('alternate-names')
+    altName.text = person.us_alternateNames
+    ele.append(altName)
 
   kind = Element('kind')
   kind.text = person.us_type
