@@ -65,7 +65,6 @@ class Person(db.Model):
     us_longitude       = db.StringProperty()
 
 class Crisis(db.Model):
-    #todo removed required properties for name, type, description, economicimpact, humanimpact, resourcesneeded, waystohelp
     # Base Data
     us_name            = db.StringProperty(required=True)
     us_alternateNames  = db.StringProperty()
