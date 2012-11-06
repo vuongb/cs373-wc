@@ -16,88 +16,9 @@
 #
 from StringIO import StringIO
 import webapp2
-from minixsv import pyxsval as xsv
-import xml.etree.ElementTree as ET
-from importer import process_crisis, process_organization, process_person
+from importer import process_crisis, process_organization, process_person, etree_to_dict, get_tree_and_validate, store_special_classes, str_from_tree
 import logging
 import exporter
-from Models import Image, Video, Map, Social, ExternalLink, Citation
-
-
-
-def get_tree_and_validate(data, schema):
-    """validate an xml string against a schema string and return an ETree representation if it is valid
-    data is the xml data to validate and build a tree from
-    schema is the schema to validate against
-    returns 0 if the xml is invalid, and an ETree if it is
-    """
-    try:
-        xsv.parseAndValidateXmlInputString(data, schema, xmlIfClass=xsv.XMLIF_ELEMENTTREE)
-        return ET.parse(StringIO(data))
-    except xsv.XsvalError as e:
-        return 0
-
-#http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
-def etree_to_dict(t):
-    """recursively converts an ETree into a dict"""
-    if t.getchildren() == []:
-        d = {t.tag: t.text}
-    else:
-        d = {t.tag : map(etree_to_dict, t.getchildren())}
-    return d
-
-
-def store_special_classes(result_dict, assoc_obj):
-    """ creates relational/child objects like videos, social, images, maps, etc from dict data
-    """
-    videos          = result_dict.get('videos')
-    if videos:
-        for video in videos:
-            builder                 = {}
-            builder['video_type']   = video.items()[0][0]
-            builder['video_id']     = video.items()[0][1]
-            builder['assoc_object'] = assoc_obj
-            Video(**builder).put()
-    social          = result_dict.get('social')
-    if social:
-        for media in social:
-            builder                 = {}
-            builder['social_type']  = media.items()[0][0]
-            builder['social_id']    = media.items()[0][1]
-            builder['assoc_object'] = assoc_obj
-            Social(**builder).put()
-    images          = result_dict.get('images')
-    if images:
-        for image in images:
-            builder                 = {}
-            builder['source']       = image.get('source')
-            builder['description']  = image.get('description')
-            builder['assoc_object'] = assoc_obj
-            Image(**builder).put()
-    maps            = result_dict.get('maps')
-    if maps:
-        for map in maps:
-            builder                 = {}
-            builder['source']       = map.get('source')
-            builder['description']  = map.get('description')
-            builder['assoc_object'] = assoc_obj
-            Map(**builder).put()
-    citations       = result_dict.get('citations')
-    if citations:
-        for citation in citations:
-            builder                 = {}
-            builder['source']       = citation.get('source')
-            builder['description']  = citation.get('description')
-            builder['assoc_object'] = assoc_obj
-            Citation(**builder).put()
-    external_links  = result_dict.get('external_links')
-    if external_links:
-        for link in external_links:
-            builder                 = {}
-            builder['source']       = link.get('source')
-            builder['description']  = link.get('description')
-            builder['assoc_object'] = assoc_obj
-            ExternalLink(**builder).put()
 
 class ImportHandler(webapp2.RequestHandler):
     """ Handles the interaction between the client and the server for importing xml files into our datastore
@@ -173,7 +94,7 @@ class ExportHandler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "text/xml; charset=utf-8"
         root = exporter.buildTree()
         logging.info("root: %s", root)
-        output = ET.tostring(root)
+        output = str_from_tree(root)
         self.response.out.write(unicode(output,"UTF-8"))
 
 
