@@ -212,10 +212,7 @@ def process_person(person):
             if k == 'name':
                 p['us_name'] = str(v)
             if k == 'alternate-names':
-                altNames = []
-                for name in v:
-                    altNames.append(name['alternate-name'])
-                p['us_alternateNames'] = altNames
+                p['us_alternateNames'] = v
             elif k == 'kind':
                 p['us_type'] = str(v)
             elif k == 'description':

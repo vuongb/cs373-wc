@@ -34,7 +34,7 @@ class Video(db.Model):
 class Organization(db.Model):
     # Base Data
     us_name            = db.StringProperty(required=True)
-    us_alternateNames  = db.StringListProperty()
+    us_alternateNames  = db.StringProperty()
     us_type            = db.StringProperty(required=True)
     us_description     = db.TextProperty(required=True)
 
@@ -53,7 +53,7 @@ class Organization(db.Model):
 class Person(db.Model):
     # Base Data
     us_name            = db.StringProperty(required=True)
-    us_alternateNames  = db.StringListProperty()
+    us_alternateNames  = db.StringProperty()
     us_type            = db.StringProperty(required=True)
     us_description     = db.TextProperty(required=True)
 
@@ -68,7 +68,7 @@ class Crisis(db.Model):
     #todo removed required properties for name, type, description, economicimpact, humanimpact, resourcesneeded, waystohelp
     # Base Data
     us_name            = db.StringProperty(required=True)
-    us_alternateNames  = db.StringListProperty()
+    us_alternateNames  = db.StringProperty()
     us_type            = db.StringProperty(required=True)
     us_description     = db.TextProperty(required=True)
 
