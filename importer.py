@@ -81,7 +81,13 @@ def store_special_classes(result_dict, assoc_obj):
             ExternalLink(**builder).put()
 
 def str_from_tree(etree):
+    """
+    Get the string representation of an ElementTree object
+    etree is the desired root of the ElementTree
+    returns a string representation using ElementTree.tos   tring()
+    """
     return ET.tostring(etree)
+
 # The handling of links is really gross. They're all individual dictionaries wrapped in lists
 # We re-package them as a list of dictionaries with keys {source, description} so we can extract them in WC1.py
 
