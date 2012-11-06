@@ -1,0 +1,148 @@
+{% extends "index.phtml" %}
+
+{% block title %}{{ object.us_name }} - {% block type %}{% endblock %} -{% endblock %}
+
+{% block content %}
+    <h1>{{object.us_name}}</h1>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>{{object.key.name}}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{object.us_name}}</td>
+            </tr>
+            <tr>
+                <td>Alternate Names</td>
+                <td>{{object.us_alternateNames}}</td>
+            </tr>
+            <tr>
+                <td>Kind</td>
+                <td>{{object.us_type}}</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>{{object.getLocation}}</td>
+            </tr>
+            {% block unique_data %}
+
+            {% endblock %}
+            {% if object.us_description %}
+            <tr>
+                <td>Description</td>
+                <td>{{object.us_description}}</td>
+            </tr>
+            {% endif %}
+            {% if object.citations.count %}
+            <tr>
+                <td>Citations</td>
+                <td>
+                    <ul>
+                        {% for link in object.citations %}
+                            <li>
+                                <a target="_blank" href="{{link.source}}">{{link.description}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+            {% if object.external_links.count %}
+            <tr>
+                <td>External Links</td>
+                <td>
+                    <ul>
+                        {% for link in object.external_links %}
+                            <li>
+                                <a target="_blank" href="{{link.source}}">{{link.description}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <div class="media">    
+    <h3>Maps</h3>
+    <ul>
+        <li>
+            <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{object.getLocation}}&amp;output=embed"></iframe>
+        </li>
+    </ul>
+    {% if object.social.count %}
+    <h3>Social Feeds</h3>
+    <ul>
+        {% for feed in object.social %}
+            <li>
+                {% if feed.social_type == "facebook" %}
+                    <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2F{{feed.social_id}}&amp;width=292&amp;height=395&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=true&amp;header=false&amp;appId=219013201490757" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:395px;" allowTransparency="true"></iframe>                
+                {% endif %}
+                {% if feed.social_type == "twitter" %}
+                    <ul>
+                    {% for tweet in feed.get_twitter_feed %}
+                        <li>@{{tweet.user.screen_name}} : {{tweet.text}}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if object.images.count %}
+    <h3>Images</h3>
+    <ul>
+        {% for image in object.images %}
+            <li>
+                <a target="_blank" href="{{image.source}}" class="thumbnail">
+                      <img src="{{image.source}}" alt="{{image.description}}">
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if object.videos.count %}
+    <h3>Videos</h3>
+    <ul>
+        {% for video in object.videos %}
+            <li>
+                {% if video.video_type == "youtube" %}
+                    <iframe width="560" height="315" src="http://www.youtube.com/embed/{{video.video_id}}" frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+                {% if video.video_type == "vimeo" %}
+                    <iframe src="http://player.vimeo.com/video/{{video.video_id}}" width="500" height="281" frameborder="0" allowFullScreen></iframe>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </div>
+    <div class="related-objects">
+    {% if object.crises %}
+        <h3>Related Crises</h3>
+        <ul>
+        {% for a in object.crises %}
+            <li><a href="{{ a.crisis.getUrl }}">{{ a.crisis.us_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if object.organizations %}
+        <h3>Related Organizations</h3>
+        <ul>
+        {% for a in object.organizations %}
+            <li><a href="{{ a.organization.getUrl }}">{{ a.organization.us_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if object.people %}
+        <h3>Related People</h3>
+        <ul>
+        {% for a in object.people %}
+            <li><a href="{{ a.person.getUrl }}">{{ a.person.us_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+{% endblock %}

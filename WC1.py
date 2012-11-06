@@ -19,6 +19,10 @@ import webapp2
 from importer import process_crisis, process_organization, process_person, etree_to_dict, get_tree_and_validate, store_special_classes, str_from_tree
 import logging
 import exporter
+from Models import Image, Video, Map, Social, ExternalLink, Citation, Crisis, Organization, Person
+from google.appengine.ext import db
+from google.appengine.ext.webapp import template
+import os
 
 class ImportHandler(webapp2.RequestHandler):
     """ Handles the interaction between the client and the server for importing xml files into our datastore
@@ -97,9 +101,97 @@ class ExportHandler(webapp2.RequestHandler):
         output = str_from_tree(root)
         self.response.out.write(unicode(output,"UTF-8"))
 
+class IndexPage(webapp2.RequestHandler):
+    """ Renders the home page
+    """
+    def get(self):
+        crises = db.GqlQuery("SELECT * FROM Crisis")
+        organizations = db.GqlQuery("SELECT * FROM Organization")
+        people = db.GqlQuery("SELECT * FROM Person")
+        data = {
+          'title' : "Home",
+          'crises' : crises,
+          'organizations' : organizations,
+          'people' : people,
+          'h_active' : "active"
+        }
+        path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+        self.response.out.write(template.render(path, data))
+
+class CrisisPage(webapp2.RequestHandler):
+  def get(self, id=None):
+    if id == None:
+      #Base Crisis Page
+      path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+      #Get list of crises and print links
+      crises = db.GqlQuery("SELECT * FROM Crisis")
+      data = {
+        'title' : "Crises",
+        'crises' : crises
+      }
+    else :
+      #Individual Crisis Page
+      path = os.path.join(os.path.dirname(__file__), 'templates/crisis.phtml')
+      crisis = Crisis.get_by_id(int(id))
+      #Get individual crisis object from id
+      data = {
+        'object' : crisis
+      }
+    data['c_active'] = "active"
+    self.response.out.write(template.render(path, data))
+
+class OrganizationPage(webapp2.RequestHandler):
+  def get(self, id=None):
+    if id == None:
+      #Base Organization Page
+      path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+      #Get list of organizations and print links
+      organizations = db.GqlQuery("SELECT * FROM Organization")
+      data = {
+        'title' : "Organizations",
+        'organizations' : organizations
+      }
+    else :
+      #Individual Organization Page
+      path = os.path.join(os.path.dirname(__file__), 'templates/organization.phtml')
+      organization = Organization.get_by_id(int(id))
+      #Get individual organization object from id
+      data = {
+        'object' : organization
+      }
+    data['o_active'] = "active"
+    self.response.out.write(template.render(path, data))
+
+class PersonPage(webapp2.RequestHandler):
+  def get(self, id=None):
+    if id == None:
+      #Base Person Page
+      path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+      #Get list of crises and print links
+      people = db.GqlQuery("SELECT * FROM Person")
+      data = {
+        'title' : "People",
+        'people' : people
+      }
+    else :
+      #Individual Person Page
+      path = os.path.join(os.path.dirname(__file__), 'templates/person.phtml')
+      person = Person.get_by_id(int(id))
+      #Get individual crisis object from id
+      data = {
+        'object' : person
+      }
+    data['p_active'] = "active"
+    self.response.out.write(template.render(path, data))
 
 app = webapp2.WSGIApplication([
-#    ('/', MainHandler),
+    ('/', IndexPage),
+    ('/c/?', CrisisPage),
+    (r'/c/(.+)', CrisisPage),
+    ('/o/?', OrganizationPage),
+    (r'/o/(.+)', OrganizationPage),
+    ('/p/?', PersonPage),
+    (r'/p/(.+)', PersonPage),
     ('/import', ImportHandler),
     ('/export', ExportHandler)
 ], debug=True)

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ title }} -{% endblock %} World Crises Database - Team Unicorn Steroids</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="World Crises Database">
+    <meta name="author" content="Unicorn Steroids">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+    <h1>World Crises Database</h1>
+    <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/c">Crises</a></li>
+        <li><a href="/o">Organizations</a></li>
+        <li><a href="/p">People</a></li>
+        <li><a href="/import">Import</a></li>
+        <li><a href="/export">Export</a></li>
+        <li><a href="/test">Tests</a></li>
+    </ul>
+    {% block content %}
+        {% if crises %}
+            <h1>Crises</h1>
+            <ul>
+            {% for crisis in crises %}
+                <li><a href="{{ crisis.getUrl }}">{{ crisis.us_name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% if organizations %}
+            <h1>Organizations</h1>
+            <ul>
+            {% for organization in organizations %}
+                <li><a href="{{ organization.getUrl }}">{{ organization.us_name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% if people %}
+            <h1>People</h1>
+            <ul>
+            {% for person in people %}
+                <li><a href="{{ person.getUrl }}">{{ person.us_name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock content %}
+    <p>
+        Created by Team Unicorn Steroids : Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman
+    </p>
+</body>
+</html>
