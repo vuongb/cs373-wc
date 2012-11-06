@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 from StringIO import StringIO
+from google.appengine.ext import db
 import webapp2
 from importer import process_crisis, process_organization, process_person, etree_to_dict, get_tree_and_validate, store_special_classes, str_from_tree
 import logging
@@ -97,9 +98,27 @@ class ExportHandler(webapp2.RequestHandler):
         output = str_from_tree(root)
         self.response.out.write(unicode(output,"UTF-8"))
 
+class MainHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write(self.get_header())
+        self.get_crises()
+        self.response.write(self.get_footer())
+
+    def get_header(self):
+        return "<html><body>"
+
+    def get_footer(self):
+        return "</body></html>"
+
+    def get_crises(self, lim=5):
+        q = db.GqlQuery("""SELECT * FROM Crisis ORDER BY us_name DESC""")
+        self.response.write("<ul>")
+        for c in q.run(limit=lim):
+            self.response.write("<li>%s<ul><li>%s</li></ul></li>" % (c.us_name, c.us_description))
+        self.response.write("</ul>")
 
 app = webapp2.WSGIApplication([
-#    ('/', MainHandler),
+    ('/', MainHandler),
     ('/import', ImportHandler),
     ('/export', ExportHandler)
 ], debug=True)
