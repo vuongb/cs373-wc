@@ -8,13 +8,10 @@ class TestImport(unittest.TestCase):
         self.org_xml    = open('test/organization-oxfam.xml', 'r').read()
         self.person_xml = open('test/person-bono.xml', 'r').read()
 
-        self.SCHEMA = 'unicornSteroids.xsd'
-
-
+        self.SCHEMA = 'WC2.xsd'
         self.crisis_tree = get_tree_and_validate(self.crisis_xml, open(self.SCHEMA, 'r').read())
         self.org_tree = get_tree_and_validate(self.org_xml, open(self.SCHEMA, 'r').read())
         self.person_tree = get_tree_and_validate(self.person_xml, open(self.SCHEMA, 'r').read())
-
 
     ##################################################################################
 
