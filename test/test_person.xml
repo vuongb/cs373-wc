@@ -1,0 +1,47 @@
+<world-crises>
+    <crises>
+    </crises>
+    <organizations>
+    </organizations>
+    <people>
+        <person id="p-algore">
+            <name>Bob TestPerson</name>
+            <alternate-names>TestDude</alternate-names>
+            <kind>TestPersonKind</kind>
+            <description>PersonTestDescription</description>
+            <location>
+                <city>Test Person City</city>
+                <country>United States</country>
+            </location>
+            <images>
+                <image>
+                    <source>http://www.testimage.com</source>
+                    <description>Description of TestImage</description>
+                </image>
+            </images>
+            <maps>
+                <map>
+                    <source>http://maps.google.com</source>
+                    <description>Map Description</description>
+                </map>
+            </maps>
+            <videos>
+                <youtube>r_8om4dsEmw</youtube>
+            </videos>
+            <social>
+                <twitter>@billgates</twitter>
+            </social>
+            <citations>
+                <citation>
+                    <source>http://en.wikipedia.org/wiki/Test</source>
+                    <description>Wiki</description>				</citation>
+            </citations>
+            <external-links>
+                <external-link>
+                    <source>http://www.zombo.com/</source>
+                    <description>Test Link</description>
+                </external-link>
+            </external-links>
+        </person>
+    </people>
+</world-crises>

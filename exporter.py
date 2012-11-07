@@ -1,5 +1,4 @@
 from xml.etree.ElementTree import Element
-from Models import *
 from google.appengine.ext import db
 
 def buildTree():
