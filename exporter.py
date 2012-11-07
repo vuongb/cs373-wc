@@ -11,11 +11,9 @@ def buildTree():
   crises = Element('crises')
   crises_objects = db.GqlQuery("SELECT * FROM Crisis")
 
-  idNum = 1
   # Build XML for crises
   for crisis_object in crises_objects:
-    crisis = addCrisis(crisis_object, idNum)
-    idNum += 1
+    crisis = addCrisis(crisis_object)
     crises.append(crisis)
   root.append(crises)
 
@@ -23,8 +21,7 @@ def buildTree():
   organizations = Element('organizations')
   organizations_objects = db.GqlQuery("SELECT * FROM Organization")
   for organization_object in organizations_objects:
-    organization = addOrganization(organization_object, idNum)
-    idNum += 1
+    organization = addOrganization(organization_object)
     organizations.append(organization)
   root.append(organizations)
 
@@ -32,14 +29,13 @@ def buildTree():
   people = Element('people')
   people_objects = db.GqlQuery("SELECT * FROM Person")
   for person_object in people_objects:
-    person = addPerson(person_object, idNum)
-    idNum += 1
+    person = addPerson(person_object)
     people.append(person)
   root.append(people)
 
   return root
 
-def addCrisis(crisis, idNum):
+def addCrisis(crisis):
   """
     build xml crisis element based on WC2.xsd (hard coded, meaning changes to xsd will not reflect here)
     crisis is a Crisis object from the GAE datastore
@@ -47,7 +43,7 @@ def addCrisis(crisis, idNum):
     """
 
   ele = Element('crisis')
-  ele.attrib['id'] = 'c' + str(idNum)
+  ele.attrib['id'] = 'c' + str(crisis.key().id())
   
   name = Element('name')
   assert type(crisis.us_name) == str or type(crisis.us_name) == unicode
@@ -260,17 +256,33 @@ def addCrisis(crisis, idNum):
 ##  org_refs_ele = Element('organization-refs')
 ##  org_refs_ele.text = " ".join(org_refs)
 ##  ele.append(org_refs_ele)
-##
+
 ##  p_refs = []
 ##  for p in crisis.people:
-##    p_refs.append(p.person.key().name())
+##    p_refs.append(p.person.key().id())
 ##  p_refs_ele = Element('person-refs')
 ##  p_refs_ele.text = " ".join(p_refs)
 ##  ele.append(p_refs_ele)
 
+  org_refs = []
+  for org in crisis.organizations:
+    org_refs.append('o' + str(org.organization.key().id()))
+  if len(org_refs) > 0:
+    org_refs_ele = Element('organization-refs')
+    org_refs_ele.text = " ".join(org_refs)
+    ele.append(org_refs_ele)
+
+  p_refs = []
+  for p in crisis.people:
+    p_refs.append('p' + str(p.person.key().id()))
+  if len(p_refs) > 0:
+    p_refs_ele = Element('person-refs')
+    p_refs_ele.text = " ".join(p_refs)
+    ele.append(p_refs_ele)
+
   return ele
 
-def addOrganization(organization, idNum):
+def addOrganization(organization):
 
   """
     build xml organization element based on WC2.xsd (hard coded, meaning changes to xsd will not reflect here)
@@ -280,7 +292,7 @@ def addOrganization(organization, idNum):
   
   ele = Element('organization')
   #ele.attrib['id'] = organization.us_name
-  ele.attrib['id'] = 'o' + str(idNum)
+  ele.attrib['id'] = 'o' + str(organization.key().id())
 
   name = Element('name')
   assert type(organization.us_name) == str or type(organization.us_name) == unicode
@@ -454,9 +466,27 @@ def addOrganization(organization, idNum):
 ##  p_refs_ele.text = " ".join(p_refs)
 ##  ele.append(p_refs_ele)
 
+
+  c_refs = []
+  for c in organization.crises:
+    c_refs.append('c' + str(c.crisis.key().id()))
+  if len(c_refs) > 0:
+    c_refs_ele = Element('crisis-refs')
+    c_refs_ele.text = " ".join(c_refs)
+    ele.append(c_refs_ele)
+
+  p_refs = []
+  for p in organization.people:
+    p_refs.append('p' + str(p.person.key().id()))
+  if len(p_refs) > 0:
+    p_refs_ele = Element('person-refs')
+    p_refs_ele.text = " ".join(p_refs)
+    ele.append(p_refs_ele)
+
+    
   return ele
   
-def addPerson(person, idNum):
+def addPerson(person):
   """
     build xml person element based on WC2.xsd (hard coded, meaning changes to xsd will not reflect here)
     person is a Person object from the GAE datastore
@@ -465,7 +495,7 @@ def addPerson(person, idNum):
   
   ele = Element('person')
 #  ele.attrib['id'] = person.key().name()
-  ele.attrib['id'] = 'p' + str(idNum)
+  ele.attrib['id'] = 'p' + str(person.key().id())
 
   name = Element('name')
   assert type(person.us_name) == str or type(person.us_name) == unicode
@@ -607,6 +637,23 @@ def addPerson(person, idNum):
     link_ele.append(descrip_Elem)
     extLink_main.append(link_ele)
   ele.append(extLink_main)
+
+  c_refs = []
+  for c in person.crises:
+    c_refs.append('c' + str(c.crisis.key().id()))
+  if len(c_refs) > 0:
+    c_refs_ele = Element('crisis-refs')
+    c_refs_ele.text = " ".join(c_refs)
+    ele.append(c_refs_ele)
+
+  org_refs = []
+  for org in person.organizations:
+    org_refs.append('o' + str(org.organization.key().id()))
+  if len(org_refs) > 0:
+    org_refs_ele = Element('organization-refs')
+    org_refs_ele.text = " ".join(org_refs)
+    ele.append(org_refs_ele)
+
 
 ##  c_refs = []
 ##  for c in person.crises:
