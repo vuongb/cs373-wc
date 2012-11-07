@@ -7,46 +7,60 @@
     <meta name="description" content="World Crises Database">
     <meta name="author" content="Unicorn Steroids">
     <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 <body>
-    <h1>World Crises Database</h1>
-    <ul class="nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/c">Crises</a></li>
-        <li><a href="/o">Organizations</a></li>
-        <li><a href="/p">People</a></li>
-        <li><a href="/import">Import</a></li>
-        <li><a href="/export">Export</a></li>
-        <li><a href="/test">Tests</a></li>
-    </ul>
-    {% block content %}
-        {% if crises %}
-            <h1>Crises</h1>
-            <ul>
-            {% for crisis in crises %}
-                <li><a href="{{ crisis.getUrl }}">{{ crisis.us_name }}</a></li>
-            {% endfor %}
+    <div class="container">
+        <div class="masthead">
+            <h1>World Crises Database</h1>
+            <ul class="nav nav-tabs">
+                <li class="{{home_active}}"><a href="/">Home</a></li>
+                <li class="{{crises_active}}"><a href="/c">Crises</a></li>
+                <li class="{{organizations_active}}"><a href="/o">Organizations</a></li>
+                <li class="{{people_active}}"><a href="/p">People</a></li>
+                <li class="{{import_active}}"><a href="/import">Import</a></li>
+                <li><a target="_blank" href="/export">Export</a></li>
+                <li><a target="_blank" href="/test">Tests</a></li>
             </ul>
-        {% endif %}
-        {% if organizations %}
-            <h1>Organizations</h1>
-            <ul>
-            {% for organization in organizations %}
-                <li><a href="{{ organization.getUrl }}">{{ organization.us_name }}</a></li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-        {% if people %}
-            <h1>People</h1>
-            <ul>
-            {% for person in people %}
-                <li><a href="{{ person.getUrl }}">{{ person.us_name }}</a></li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endblock content %}
-    <p>
-        Created by Team Unicorn Steroids : Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman
-    </p>
+        </div>
+        <div class="row">
+            <div class="span12">
+                {% block content %}
+                    {% if crises %}
+                        <h2>Crises</h2>
+                        <ul>
+                        {% for crisis in crises %}
+                            <li><a href="{{ crisis.getUrl }}">{{ crisis.us_name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if organizations %}
+                        <h2>Organizations</h2>
+                        <ul>
+                        {% for organization in organizations %}
+                            <li><a href="{{ organization.getUrl }}">{{ organization.us_name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% if people %}
+                        <h2>People</h2>
+                        <ul>
+                        {% for person in people %}
+                            <li><a href="{{ person.getUrl }}">{{ person.us_name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endblock content %}
+                <p>
+                    <small>
+                        Created by Team Unicorn Steroids : Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="static/js/bootstrap.js"></script>
 </body>
 </html>

@@ -3,12 +3,12 @@
 {% block title %}{{ object.us_name }} - {% block type %}{% endblock %} -{% endblock %}
 
 {% block content %}
-    <h1>{{object.us_name}}</h1>
+    <h2>{{object.us_name}}</h2>
     <table class="table table-striped">
         <tbody>
             <tr>
                 <td>ID</td>
-                <td>{{object.key.name}}</td>
+                <td>{{object.key.id}}</td>
             </tr>
             <tr>
                 <td>Name</td>
@@ -65,25 +65,35 @@
             {% endif %}
         </tbody>
     </table>
-    <div class="media">    
+    <div class="media-objects">    
     <h3>Maps</h3>
-    <ul>
+    <ul class="unstyled">
         <li>
             <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{object.getLocation}}&amp;output=embed"></iframe>
         </li>
     </ul>
     {% if object.social.count %}
     <h3>Social Feeds</h3>
-    <ul>
+    <ul class="unstyled">
         {% for feed in object.social %}
             <li>
                 {% if feed.social_type == "facebook" %}
+                    <h5>Facebook</h5>
                     <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2F{{feed.social_id}}&amp;width=292&amp;height=395&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=true&amp;header=false&amp;appId=219013201490757" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:395px;" allowTransparency="true"></iframe>                
                 {% endif %}
                 {% if feed.social_type == "twitter" %}
-                    <ul>
+                    <h5>Twitter</h5>
+                    <ul class="media-list">
                     {% for tweet in feed.get_twitter_feed %}
-                        <li>@{{tweet.user.screen_name}} : {{tweet.text}}</li>
+                        <li class="media">
+                            <a class="pull-left" href="http://www.twitter.com/{{tweet.user.screen_name}}">
+                                <img class="media-object" src="{{tweet.user.profile_image_url}}">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="http://www.twitter.com/{{tweet.user.screen_name}}">@{{tweet.user.screen_name}}</a></h4>
+                                {{tweet.text}}
+                            </div>
+                        </li>
                     {% endfor %}
                     </ul>
                 {% endif %}
@@ -93,9 +103,9 @@
     {% endif %}
     {% if object.images.count %}
     <h3>Images</h3>
-    <ul>
+    <ul class="thumbnails">
         {% for image in object.images %}
-            <li>
+            <li class="span4">
                 <a target="_blank" href="{{image.source}}" class="thumbnail">
                       <img src="{{image.source}}" alt="{{image.description}}">
                 </a>
@@ -105,7 +115,7 @@
     {% endif %}
     {% if object.videos.count %}
     <h3>Videos</h3>
-    <ul>
+    <ul class="unstyled">
         {% for video in object.videos %}
             <li>
                 {% if video.video_type == "youtube" %}
@@ -120,7 +130,7 @@
     {% endif %}
     </div>
     <div class="related-objects">
-    {% if object.crises %}
+    {% if object.crises.count %}
         <h3>Related Crises</h3>
         <ul>
         {% for a in object.crises %}
@@ -128,7 +138,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    {% if object.organizations %}
+    {% if object.organizations.count %}
         <h3>Related Organizations</h3>
         <ul>
         {% for a in object.organizations %}
@@ -136,7 +146,7 @@
         {% endfor %}
         </ul>
     {% endif %}
-    {% if object.people %}
+    {% if object.people.count %}
         <h3>Related People</h3>
         <ul>
         {% for a in object.people %}

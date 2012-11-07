@@ -31,39 +31,38 @@ class ImportHandler(webapp2.RequestHandler):
     PASSWORD = 'hunter2' # the password required for upload and import functionality
 
     def post(self):
-        self.response.out.write("<html><body>")
+        data = {
+            'title': "Import",
+            'import_active': "active"
+        }
         password = self.request.get('pass')
         if password == 'hunter2':
-            self.response.out.write('<h2>Access Granted</h2>')
+            data['login'] = True
             upload_request = self.request.get('uploaded_file') #upload request contains the raw data from the file
-
             if upload_request != '':
                 # We only want to reach this section if the user actually attempted to upload a file
-
                 tree = get_tree_and_validate(upload_request, open(self.SCHEMA, 'r').read())
-
-                if tree == 0:
-                    self.response.out.write('<p>The file you uploaded did not validate.<br />Please try again</p>')
-                else:
-                    self.response.out.write('<p>Your file has validated</p>')
-
+                if tree != 0:
+                    data['valid'] = True
                     root = tree.getroot()
-                    if not put_objects(root):
-                        self.response.out.write("<p>There was an error adding your file to the database</p>")
-                    else:
-                        self.response.out.write("<p>Your file was successfully added to the database</p>")
+                    if put_objects(root):
+                        data['success'] = True
+            else:
+                data['no_file'] = True
+                data['login'] = False
         else:
-            self.response.out.write("""<h1>Please enter a password</h1>
-                                        <form method="post" enctype="multipart/form-data" action="/import">
-                                        <input type="file" name="uploaded_file"/>
-                                        <input type="password" name="pass"/>
-                                        <input type="submit" value="login"/>
-                                        </form>""")
-        self.response.out.write("</body></html>")
+            data['login_failure'] = True
+        path = os.path.join(os.path.dirname(__file__), 'templates/import.phtml')
+        self.response.out.write(template.render(path, data))
 
     def get(self):
         # This section is reached when a user clicks on "Import" on the main page, but we want a post, not a get.
-        self.post()
+        data = {
+            'title': "Import",
+            'import_active': "active"
+        }
+        path = os.path.join(os.path.dirname(__file__), 'templates/import.phtml')
+        self.response.out.write(template.render(path, data))
 
 
 class ExportHandler(webapp2.RequestHandler):
@@ -91,7 +90,7 @@ class IndexPage(webapp2.RequestHandler):
             'crises': crises,
             'organizations': organizations,
             'people': people,
-            'h_active': "active"
+            'home_active': "active"
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
         self.response.out.write(template.render(path, data))
@@ -116,7 +115,7 @@ class CrisisPage(webapp2.RequestHandler):
             data = {
                 'object': crisis
             }
-        data['c_active'] = "active"
+        data['crises_active'] = "active"
         self.response.out.write(template.render(path, data))
 
 
@@ -139,7 +138,7 @@ class OrganizationPage(webapp2.RequestHandler):
             data = {
                 'object': organization
             }
-        data['o_active'] = "active"
+        data['organizations_active'] = "active"
         self.response.out.write(template.render(path, data))
 
 
@@ -162,7 +161,7 @@ class PersonPage(webapp2.RequestHandler):
             data = {
                 'object': person
             }
-        data['p_active'] = "active"
+        data['people_active'] = "active"
         self.response.out.write(template.render(path, data))
 
 app = webapp2.WSGIApplication([
