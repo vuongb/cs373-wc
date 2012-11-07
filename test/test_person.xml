@@ -1,8 +1,6 @@
 <world-crises>
-    <crises>
-    </crises>
-    <organizations>
-    </organizations>
+    <crises/>
+    <organizations/>
     <people>
         <person id="p-algore">
             <name>Bob TestPerson</name>
