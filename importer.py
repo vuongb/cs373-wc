@@ -48,31 +48,21 @@ def store_references(references):
                 if k == 'person-refs':
                     object2 = Person.gql("WHERE us_id = :objname", objname = v).get()
             except Exception as e:
-                print "Error: " + str(e) + ".\n"
-                print "Exception getting object from datastore. Most likely a name doesn't match. Object1 = " + str(object1) + " v = " + str(v)
-                print
+                logging.error("Exception getting reference into datastore. %s", e)
 
             try:
-                # TODO: clean this up, should the xml still validate if an error is thrown?
+                # TODO: should the xml still validate if an error is thrown?
                 # CrisisOrganization
                 if (type(object1) == Crisis) and (type(object2) == Organization):
                     CrisisOrganization(crisis=object1, organization=object2).put()
-                elif (type(object1) == Organization) and (type(object2) == Crisis):
-                    CrisisOrganization(organization=object1, crisis=object2).put()
                 # CrisisPerson
                 elif (type(object1) == Crisis) and (type(object2) == Person):
                     CrisisPerson(crisis=object1, person=object2).put()
-                elif (type(object1) == Person) and (type(object2) == Crisis):
-                    CrisisPerson(person=object1, crisis=object2).put()
                 # OrganizationPerson
                 elif (type(object1) == Organization) and (type(object2) == Person):
                     OrganizationPerson(organization=object1, person=object2).put()
-                elif (type(object1) == Person) and (type(object2) == Organization):
-                    OrganizationPerson(person=object1, organization=object2).put()
             except Exception as e:
-                print "Error: " + str(e) + ".\n"
-                print "Exception putting reference into datastore. Object1 = " + str(object1) + " Object2 = " + str(object2)
-                print
+                logging.error("Exception putting reference into datastore. %s", e)
 
 
 

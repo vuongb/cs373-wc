@@ -54,11 +54,11 @@ class ImportHandler(webapp2.RequestHandler):
                         self.response.out.write("<p>Your file was successfully added to the database</p>")
         else:
             self.response.out.write("""<h1>Please enter a password</h1>
-<form method="post" enctype="multipart/form-data" action="/import">
-<input type="file" name="uploaded_file"/>
-<input type="password" name="pass"/>
-<input type="submit" value="login"/>
-</form>""")
+                                        <form method="post" enctype="multipart/form-data" action="/import">
+                                        <input type="file" name="uploaded_file"/>
+                                        <input type="password" name="pass"/>
+                                        <input type="submit" value="login"/>
+                                        </form>""")
         self.response.out.write("</body></html>")
 
     def get(self):
