@@ -1,4 +1,5 @@
 import unittest
+import logging
 from WC1 import get_tree_and_validate, etree_to_dict
 import importer
 
@@ -46,7 +47,38 @@ class TestImport(unittest.TestCase):
         """ElementTree should fully convert to dict
         """
         person_d = etree_to_dict(self.person_tree.getroot())
-        print(str(person_d))
+        assert person_d == {
+            'world-crises': [
+                {'crises': None},
+                {'organizations': None},
+                {'people': [
+                    {'person': [
+                        {'name': 'Bob TestPerson'},
+                        {'alternate-names': 'TestDude'},
+                        {'kind': 'TestPersonKind'},
+                        {'description': 'PersonTestDescription'},
+                        {'location': [
+                            {'city': 'Test Person City'},
+                            {'country': 'United States'}]},
+                        {'images': [
+                            {'image': [
+                                {'source': 'http://www.testimage.com'},
+                                {'description': 'Description of TestImage'}]}]},
+                        {'maps': [
+                            {'map': [
+                                {'source': 'http://maps.google.com'},
+                                {'description': 'Map Description'}]}]},
+                        {'videos': [{'youtube': 'r_8om4dsEmw'}]},
+                        {'social': [{'twitter': '@billgates'}]},
+                        {'citations': [
+                            {'citation': [
+                                {'source': 'http://en.wikipedia.org/wiki/Test'},
+                                {'description': 'Wiki'}]}]},
+                        {'external-links': [
+                            {'external-link': [
+                                {'source': 'http://www.zombo.com/'},
+                                {'description': 'Test Link'}]}]}],
+                     'id': 'p-algore'}]}]}
 
     def test_import_crisis(self):
         """should import a crisis"""
