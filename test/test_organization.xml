@@ -2,7 +2,7 @@
     <crises>
     </crises>
     <organizations>
-        <organization>
+        <organization id="o-test_org">
             <name>Test Organization</name>
             <kind>TestOrgKind</kind>
             <description>TestOrgDescription</description>
@@ -11,12 +11,35 @@
                 <country>USA</country>
             </location>
             <images>
+                <image>
+                    <source>http://www.testimage.com</source>
+                    <description>Description of TestImage</description>
+                </image>
             </images>
             <maps>
+                <map>
+                    <source>http://maps.google.com</source>
+                    <description>Map Description</description>
+                </map>
             </maps>
             <videos>
-                <youtube>CWyrp3hu4KE</youtube>
+                <youtube>r_8om4dsEmw</youtube>
             </videos>
+            <social>
+                <twitter>@billgates</twitter>
+            </social>
+            <citations>
+                <citation>
+                    <source>http://en.wikipedia.org/wiki/Test</source>
+                    <description>Wiki</description>
+                </citation>
+            </citations>
+            <external-links>
+                <external-link>
+                    <source>http://www.google.com</source>
+                    <description>Google</description>
+                </external-link>
+            </external-links>
         </organization>
     </organizations>
     <people>

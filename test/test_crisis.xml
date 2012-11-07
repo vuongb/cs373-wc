@@ -10,12 +10,22 @@
                 <country>USA</country>
             </location>
             <images>
+                <image>
+                    <source>http://www.testimage.com</source>
+                    <description>Description of TestImage</description>
+                </image>
             </images>
             <maps>
+                <map>
+                    <source>http://maps.google.com</source>
+                    <description>Map Description</description>
+                </map>
             </maps>
             <videos>
+                <youtube>r_8om4dsEmw</youtube>
             </videos>
             <social>
+                <twitter>@billgates</twitter>
             </social>
             <citations>
                 <!-- 0 or more of these -->

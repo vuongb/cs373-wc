@@ -15,19 +15,21 @@
             </location>
             <images>
                 <image>
-                    <source>http://i.imgur.com/oTidQ.jpg?1</source>
-                    <description>TestImage</description>
+                    <source>http://www.testimage.com</source>
+                    <description>Description of TestImage</description>
                 </image>
             </images>
             <maps>
                 <map>
-                    <source>http://goo.gl/maps/A23d</source>
-                    <description>Addis Ababa, Ethiopia</description>
+                    <source>http://maps.google.com</source>
+                    <description>Map Description</description>
                 </map>
             </maps>
             <videos>
+                <youtube>r_8om4dsEmw</youtube>
             </videos>
             <social>
+                <twitter>@billgates</twitter>
             </social>
             <citations>
                 <citation>
