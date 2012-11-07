@@ -65,8 +65,6 @@
             </ways-to-help>
         </crisis>
     </crises>
-    <organizations>
-    </organizations>
-    <people>
-    </people>
+    <organizations/>
+    <people/>
 </world-crises>

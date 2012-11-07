@@ -1,6 +1,5 @@
 <world-crises>
-    <crises>
-    </crises>
+    <crises/>
     <organizations>
         <organization id="o-test_org">
             <name>Test Organization</name>
@@ -42,6 +41,5 @@
             </external-links>
         </organization>
     </organizations>
-    <people>
-    </people>
+    <people/>
 </world-crises>
