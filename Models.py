@@ -1,4 +1,6 @@
 from google.appengine.ext import db
+import urllib
+import json
 
 # One to Many Relationships
 class ExternalLink(db.Model):
@@ -26,45 +28,24 @@ class Social(db.Model):
     social_type = db.StringProperty(choices=('facebook', 'twitter', 'youtube'), required=True)
     assoc_object = db.ReferenceProperty(None, collection_name='social', required=True)
 
+    def get_twitter_feed(self):
+        if self.social_type != 'twitter':
+            return False
+        elif self.social_id[0] == "@":
+            url = "https://api.twitter.com/1/statuses/user_timeline.json?include_entities=false&include_rts=false&screen_name=%s&count=5" % self.social_id[1:]
+        elif self.social_id[0] == "#":
+            url = "http://search.twitter.com/search.json?q=%s&rpp=5&include_entities=false&result_type=mixed" % self.social_id[1:]
+        else:
+            return False
+        return json.loads(urllib.urlopen(url).read())
+
 class Video(db.Model):
     video_id = db.StringProperty(required=True)
     video_type = db.StringProperty(choices=('youtube', 'vimeo'), required=True)
     assoc_object = db.ReferenceProperty(None, collection_name='videos', required=True)
 
-class Organization(db.Model):
-    # Base Data
-    us_name            = db.StringProperty(required=True)
-    us_alternateNames  = db.StringProperty()
-    us_type            = db.StringProperty(required=True)
-    us_description     = db.TextProperty(required=True)
-
-    # Location
-    us_city            = db.StringProperty()
-    us_state           = db.StringProperty()
-    us_country         = db.StringProperty()
-    us_latitude        = db.StringProperty()
-    us_longitude       = db.StringProperty()
-
-    # Contact Info
-    us_address         = db.TextProperty()
-    us_email           = db.StringProperty()
-    us_phone           = db.StringProperty()
-
-class Person(db.Model):
-    # Base Data
-    us_name            = db.StringProperty(required=True)
-    us_alternateNames  = db.StringProperty()
-    us_type            = db.StringProperty(required=True)
-    us_description     = db.TextProperty(required=True)
-
-    # Location
-    us_city            = db.StringProperty()
-    us_state           = db.StringProperty()
-    us_country         = db.StringProperty()
-    us_latitude        = db.StringProperty()
-    us_longitude       = db.StringProperty()
-
 class Crisis(db.Model):
+    #todo removed required properties for name, type, description, economicimpact, humanimpact, resourcesneeded, waystohelp
     # Base Data
     us_name            = db.StringProperty(required=True)
     us_alternateNames  = db.StringProperty()
@@ -90,6 +71,74 @@ class Crisis(db.Model):
     us_resoucesNeeded  = db.StringListProperty(required=True)
     us_waysToHelp      = db.StringListProperty(required=True)
 
+    def getUrl(self):
+        return "/c/" + str(self.key().id())
+
+    def getLocation(self):
+        location = []
+        if self.us_city :
+          location.append(str(self.us_city))
+        if self.us_state :
+          location.append(str(self.us_state))
+        location.append(str(self.us_country))
+        return ", ".join(location)
+
+class Organization(db.Model):
+    # Base Data
+    us_name            = db.StringProperty(required=True)
+    us_alternateNames  = db.StringProperty()
+    us_type            = db.StringProperty(required=True)
+    us_description     = db.TextProperty(required=True)
+
+    # Location
+    us_city            = db.StringProperty()
+    us_state           = db.StringProperty()
+    us_country         = db.StringProperty()
+    us_latitude        = db.StringProperty()
+    us_longitude       = db.StringProperty()
+
+    # Contact Info
+    us_address         = db.TextProperty()
+    us_email           = db.StringProperty()
+    us_phone           = db.StringProperty()
+
+    def getUrl(self):
+        return "/o/" + str(self.key().id())
+
+    def getLocation(self):
+        location = []
+        if self.us_city :
+          location.append(str(self.us_city))
+        if self.us_state :
+          location.append(str(self.us_state))
+        location.append(str(self.us_country))
+        return ", ".join(location)
+
+class Person(db.Model):
+    # Base Data
+    us_name            = db.StringProperty(required=True)
+    us_alternateNames  = db.StringProperty()
+    us_type            = db.StringProperty(required=True)
+    us_description     = db.TextProperty(required=True)
+
+    # Location
+    us_city            = db.StringProperty()
+    us_state           = db.StringProperty()
+    us_country         = db.StringProperty()
+    us_latitude        = db.StringProperty()
+    us_longitude       = db.StringProperty()
+
+    def getUrl(self):
+        return "/p/" + str(self.key().id())
+
+    def getLocation(self):
+        location = []
+        if self.us_city :
+          location.append(str(self.us_city))
+        if self.us_state :
+          location.append(str(self.us_state))
+        location.append(str(self.us_country))
+        return ", ".join(location)
 
 # Many to many relationships
 class CrisisOrganization(db.Model):

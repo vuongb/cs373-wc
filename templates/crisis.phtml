@@ -1,0 +1,67 @@
+{% extends "object.phtml" %}
+
+{% block type %}Crisis{% endblock %}
+
+{% block unique_data %}
+            <tr>
+                <td>Start Date</td>
+                <td>{{object.us_startDate|date:"F jS, Y"}}</td>
+            </tr>
+            {% if object.us_endDate %}
+            <tr>
+                <td>End Date</td>
+                <td>{{object.us_endDate|date:"F jS, Y"}}</td>
+            </tr>
+            {% endif %}
+            {% if object.us_humanImpact %}
+            <tr>
+                <td>Human Impact</td>
+                <td>
+                    <ul>
+                        {% if object.us_humanDeaths %}
+                            <li>{{object.us_humanDeaths}} deaths</li>
+                        {% endif %}
+                        {% if object.us_humanMissing %}
+                            <li>{{object.us_humanMissing}} missing</li>
+                        {% endif %}
+                        {% if object.us_humanInjured %}
+                            <li>{{object.us_humanInjured}} injured</li>
+                        {% endif %}
+                        {% if object.us_humanDisplaced %}
+                            <li>{{object.us_humanDisplaced}} displaced</li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+            {% if object.us_economicImpact %}
+            <tr>
+                <td>Economic Impact</td>
+                <td>USD ${{object.us_economicImpact}}</td>
+            </tr>
+            {% endif %}
+            {% if object.us_resourcesNeeded.count %}
+            <tr>
+                <td>Resources Needed</td>
+                <td>
+                    <ul>
+                        {% for resource in object.us_resourcesNeeded %}
+                            <li>{{resource}}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+            {% if object.us_waysToHelp.count %}
+            <tr>
+                <td>Ways to Help</td>
+                <td>
+                    <ul>
+                        {% for way in object.us_waysToHelp %}
+                            <li>{{way}}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+{% endblock %}
