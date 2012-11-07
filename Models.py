@@ -45,7 +45,6 @@ class Video(db.Model):
     assoc_object = db.ReferenceProperty(None, collection_name='videos', required=True)
 
 class Crisis(db.Model):
-    #todo removed required properties for name, type, description, economicimpact, humanimpact, resourcesneeded, waystohelp
     # Base Data
     us_name            = db.StringProperty(required=True)
     us_alternateNames  = db.StringProperty()
