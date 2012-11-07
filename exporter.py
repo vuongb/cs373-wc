@@ -51,18 +51,20 @@ def addCrisis(crisis, idNum):
   ele.attrib['id'] = 'c' + str(idNum)
   
   name = Element('name')
+  assert type(crisis.us_name) == str or type(crisis.us_name) == unicode
   name.text = crisis.us_name
   ele.append(name)
 
   # Alternate Names is stored as a list in datastore
   # Export as: <alternate-names>...</alternate-names>
   if crisis.us_alternateNames:
-    assert type(crisis.us_alternateNames) == str
+    assert type(crisis.us_alternateNames) == str or type(crisis.us_alternateNames) == unicode
     altName = Element('alternate-names')
     altName.text = crisis.us_alternateNames
     ele.append(altName)
 
   kind = Element('kind')
+  assert type(crisis.us_type) == str or type(crisis.us_type) == unicode
   kind.text = crisis.us_type
   ele.append(kind)
 
@@ -74,25 +76,30 @@ def addCrisis(crisis, idNum):
   # Export as: <location><>.....</></location>
   location = Element('location')
   if crisis.us_city:
+    assert type(crisis.us_city) == str or type(crisis.us_city) == unicode
     city = Element('city')
     city.text = crisis.us_city
     location.append(city)
 
   if crisis.us_state:
+    assert type(crisis.us_state) == str or type(crisis.us_state) == unicode
     state = Element('state')
     state.text = crisis.us_state
     location.append(state)
 
+  assert type(crisis.us_country) == str or type(crisis.us_country) == unicode
   country = Element('country')
   country.text = crisis.us_country
   location.append(country)
 
   if crisis.us_latitude:
+    assert type(crisis.us_latitude) == str or type(crisis.us_latitude) == unicode
     latitude = Element('latitude')
     latitude.text = crisis.us_latitude
     location.append(latitude)
 
   if crisis.us_longitude:
+    assert type(crisis.us_longitude) == str or type(crisis.us_longitude) == unicode
     longitude = Element('longitude')
     longitude.text = crisis.us_longitude
     location.append(longitude)
@@ -108,6 +115,7 @@ def addCrisis(crisis, idNum):
     link.text = image.source
     image_ele.append(link)
     if image.description:
+      assert type(image.description) == str or type(image.description) == unicode
       des_ele = Element('description')
       des_ele.text = image.description
       image_ele.append(des_ele)
@@ -123,6 +131,7 @@ def addCrisis(crisis, idNum):
     link.text = map.source
     map_ele.append(link)
     if map.description:
+      assert type(map.description) == str or type(map.description) == unicode
       des_ele = Element('description')
       des_ele.text = map.description
       map_ele.append(des_ele)
@@ -133,6 +142,8 @@ def addCrisis(crisis, idNum):
   # Export as: <videos><..>..</..></videos>
   video_main = Element('videos')
   for video in crisis.videos:
+    assert type(video.video_type) == str or type(video.video_type) == unicode
+    assert type(video.video_id) == str or type(video.video_id) == unicode
     video_ele = Element(video.video_type)
     video_ele.text = video.video_id
     video_main.append(video_ele)
@@ -142,6 +153,8 @@ def addCrisis(crisis, idNum):
   # Export as: <social><..>..</..></social>
   social_main = Element('social')
   for social in crisis.social:
+    assert type(social.social_type) == str or type(social.social_type) == unicode
+    assert type(social.social_id) == str or type(social.social_id) == unicode
     social_ele = Element(social.social_type)
     social_ele.text = social.social_id
     social_main.append(social_ele)
@@ -156,6 +169,7 @@ def addCrisis(crisis, idNum):
     link.text = citation.source
     citation_ele.append(link)
     if citation.description:
+      assert type(citation.description) == str or type(citation.description) == unicode
       des_ele = Element('description')
       des_ele.text = citation.description
       citation_ele.append(des_ele)
@@ -171,6 +185,7 @@ def addCrisis(crisis, idNum):
     source_Elem.text = link.source
     link_ele.append(source_Elem)
     descrip_Elem = Element('description')
+    assert type(link.description) == str or type(link.description) == unicode
     descrip_Elem.text = link.description
     link_ele.append(descrip_Elem)
     extLink_main.append(link_ele)
@@ -191,18 +206,22 @@ def addCrisis(crisis, idNum):
   human_impact = Element('human-impact')
   if crisis.us_humanDeaths:
     humImp_Ele = Element('deaths')
+    assert type(crisis.us_humanDeaths) == long or type(crisis.us_humanDeaths) == int
     humImp_Ele.text = str(crisis.us_humanDeaths)
     human_impact.append(humImp_Ele)
   if crisis.us_humanMissing:
     humImp_Ele = Element('missing')
+    assert type(crisis.us_humanMissing) == long or type(crisis.us_humanMissing) == int
     humImp_Ele.text = str(crisis.us_humanMissing)
     human_impact.append(humImp_Ele)
   if crisis.us_humanInjured:
     humImp_Ele = Element('injured')
+    assert type(crisis.us_humanInjured) == long or type(crisis.us_humanInjured) == int
     humImp_Ele.text = str(crisis.us_humanInjured)
     human_impact.append(humImp_Ele)
   if crisis.us_humanDisplaced:
     humImp_Ele = Element('displaced')
+    assert type(crisis.us_humanDisplaced) == long or type(crisis.us_humanDisplaced) == int
     humImp_Ele.text = str(crisis.us_humanDisplaced)
     human_impact.append(humImp_Ele)
 
@@ -212,7 +231,7 @@ def addCrisis(crisis, idNum):
   # Export as: <economic-impact>...</economic-impact>
   if crisis.us_economicImpact:
     econ_impact = Element('economic-impact')
-    assert type(crisis.us_economicImpact) == long
+    assert type(crisis.us_economicImpact) == long or type(crisis.us_economicImpact) == int
     econ_impact.text = str(crisis.us_economicImpact)
     ele.append(econ_impact)
 
@@ -265,6 +284,7 @@ def addOrganization(organization, idNum):
   ele.attrib['id'] = 'o' + str(idNum)
 
   name = Element('name')
+  assert type(organization.us_name) == str or type(organization.us_name) == unicode
   name.text = organization.us_name
   ele.append(name)
 
@@ -272,10 +292,12 @@ def addOrganization(organization, idNum):
   # Export as: <alternate-names>...</alternate-names>
   if organization.us_alternateNames:
     altName = Element('alternate-names')
+    assert type(organization.us_alternateNames) == str or type(organization.us_alternateNames) == unicode
     altName.text = organization.us_alternateNames
     ele.append(altName)
 
   kind = Element('kind')
+  assert type(organization.us_type) == str or type(organization.us_type) == unicode
   kind.text = organization.us_type
   ele.append(kind)
 
@@ -288,32 +310,37 @@ def addOrganization(organization, idNum):
   location = Element('location')
   if organization.us_city:
     city = Element('city')
+    assert type(organization.us_city) == str or type(organization.us_city) == unicode
     city.text = organization.us_city
     location.append(city)
 
   if organization.us_state:
     state = Element('state')
+    assert type(organization.us_state) == str or type(organization.us_state) == unicode
     state.text = organization.us_state
     location.append(state)
 
+  assert type(organization.us_country) == str or type(organization.us_country) == unicode
   country = Element('country')
   country.text = organization.us_country
   location.append(country)
 
   if organization.us_latitude:
     latitude = Element('latitude')
+    assert type(organization.us_latitude) == str or type(organization.us_latitude) == unicode
     latitude.text = organization.us_latitude
     location.append(latitude)
 
   if organization.us_longitude:
     longitude = Element('longitude')
+    assert type(organization.us_longitude) == str or type(organization.us_longitude) == unicode
     longitude.text = organization.us_longitude
     location.append(longitude)
     
   ele.append(location)
 
   # Images is another entity in GAE
-  # Export as: <images><image><source>...</source><description>...</description></image></images>    
+  # Export as: <images><image><source>...</source><description>...</description></image></images>
   image_main = Element('images')
   for image in organization.images:
     image_ele = Element('image')
@@ -321,6 +348,7 @@ def addOrganization(organization, idNum):
     link.text = image.source
     image_ele.append(link)
     if image.description:
+      assert type(image.description) == str or type(image.description) == unicode
       des_ele = Element('description')
       des_ele.text = image.description
       image_ele.append(des_ele)
@@ -336,6 +364,7 @@ def addOrganization(organization, idNum):
     link.text = map.source
     map_ele.append(link)
     if map.description:
+      assert type(map.description) == str or type(map.description) == unicode
       des_ele = Element('description')
       des_ele.text = map.description
       map_ele.append(des_ele)
@@ -346,6 +375,8 @@ def addOrganization(organization, idNum):
   # Export as: <videos><..>..</..></videos>
   video_main = Element('videos')
   for video in organization.videos:
+    assert type(video.video_type) == str or type(video.video_type) == unicode
+    assert type(video.video_id) == str or type(video.video_id) == unicode
     video_ele = Element(video.video_type)
     video_ele.text = video.video_id
     video_main.append(video_ele)
@@ -355,6 +386,8 @@ def addOrganization(organization, idNum):
   # Export as: <social><..>..</..></social>
   social_main = Element('social')
   for social in organization.social:
+    assert type(social.social_type) == str or type(social.social_type) == unicode
+    assert type(social.social_id) == str or type(social.social_id) == unicode
     social_ele = Element(social.social_type)
     social_ele.text = social.social_id
     social_main.append(social_ele)
@@ -369,12 +402,13 @@ def addOrganization(organization, idNum):
     link.text = citation.source
     citation_ele.append(link)
     if citation.description:
+      assert type(citation.description) == str or type(citation.description) == unicode
       des_ele = Element('description')
       des_ele.text = citation.description
       citation_ele.append(des_ele)
     citations_main.append(citation_ele)
   ele.append(citations_main)
-  
+
   # External-Links is another entity in GAE
   # Export as: <external-links><external-link><source>...</source><description>...</description></external-link></external-links>
   extLink_main = Element('external-links')
@@ -384,6 +418,7 @@ def addOrganization(organization, idNum):
     source_Elem.text = link.source
     link_ele.append(source_Elem)
     descrip_Elem = Element('description')
+    assert type(link.description) == str or type(link.description) == unicode
     descrip_Elem.text = link.description
     link_ele.append(descrip_Elem)
     extLink_main.append(link_ele)
@@ -396,11 +431,13 @@ def addOrganization(organization, idNum):
 
   if organization.us_email:
     email = Element('email')
+    assert type(organization.us_email) == str or type(organization.us_email) == unicode
     email.text = organization.us_email
     ele.append(email)
 
   if organization.us_phone:
     phone = Element('phone')
+    assert type(organization.us_phone) == str or type(organization.us_phone) == unicode
     phone.text = organization.us_phone
     ele.append(phone)
 
@@ -432,6 +469,7 @@ def addPerson(person, idNum):
   ele.attrib['id'] = 'p' + str(idNum)
 
   name = Element('name')
+  assert type(person.us_name) == str or type(person.us_name) == unicode
   name.text = person.us_name
   ele.append(name)
 
@@ -439,10 +477,12 @@ def addPerson(person, idNum):
   # Export as: <alternate-names>...</alternate-names>
   if person.us_alternateNames:
     altName = Element('alternate-names')
+    assert type(person.us_alternateNames) == str or type(person.us_alternateNames) == unicode
     altName.text = person.us_alternateNames
     ele.append(altName)
 
   kind = Element('kind')
+  assert type(person.us_type) == str or type(person.us_type) == unicode
   kind.text = person.us_type
   ele.append(kind)
 
@@ -455,25 +495,30 @@ def addPerson(person, idNum):
   location = Element('location')
   if person.us_city:
     city = Element('city')
+    assert type(person.us_city) == str or type(person.us_city) == unicode
     city.text = person.us_city
     location.append(city)
 
   if person.us_state:
     state = Element('state')
+    assert type(person.us_state) == str or type(person.us_state) == unicode
     state.text = person.us_state
     location.append(state)
 
   country = Element('country')
+  assert type(person.us_country) == str or type(person.us_country) == unicode
   country.text = person.us_country
   location.append(country)
 
   if person.us_latitude:
     latitude = Element('latitude')
+    assert type(person.us_latitude) == str or type(person.us_latitude) == unicode
     latitude.text = person.us_latitude
     location.append(latitude)
 
   if person.us_longitude:
     longitude = Element('longitude')
+    assert type(person.us_longitude) == str or type(person.us_longitude) == unicode
     longitude.text = person.us_longitude
     location.append(longitude)
     
@@ -488,6 +533,7 @@ def addPerson(person, idNum):
     link.text = image.source
     image_ele.append(link)
     if image.description:
+      assert type(image.description) == str or type(image.description) == unicode
       des_ele = Element('description')
       des_ele.text = image.description
       image_ele.append(des_ele)
@@ -503,6 +549,7 @@ def addPerson(person, idNum):
     link.text = map.source
     map_ele.append(link)
     if map.description:
+      assert type(map.description) == str or type(map.description) == unicode
       des_ele = Element('description')
       des_ele.text = map.description
       map_ele.append(des_ele)
@@ -513,6 +560,8 @@ def addPerson(person, idNum):
   # Export as: <videos><..>..</..></videos>
   video_main = Element('videos')
   for video in person.videos:
+    assert type(video.video_type) == str or type(video.video_type) == unicode
+    assert type(video.video_id) == str or type(video.video_id) == unicode
     video_ele = Element(video.video_type)
     video_ele.text = video.video_id
     video_main.append(video_ele)
@@ -522,6 +571,8 @@ def addPerson(person, idNum):
   # Export as: <social><..>..</..></social>
   social_main = Element('social')
   for social in person.social:
+    assert type(social.social_type) == str or type(social.social_type) == unicode
+    assert type(social.social_id) == str or type(social.social_id) == unicode
     social_ele = Element(social.social_type)
     social_ele.text = social.social_id
     social_main.append(social_ele)
@@ -536,6 +587,7 @@ def addPerson(person, idNum):
     link.text = citation.source
     citation_ele.append(link)
     if citation.description:
+      assert type(citation.description) == str or type(citation.description) == unicode
       des_ele = Element('description')
       des_ele.text = citation.description
       citation_ele.append(des_ele)
@@ -551,6 +603,7 @@ def addPerson(person, idNum):
     source_Elem.text = link.source
     link_ele.append(source_Elem)
     descrip_Elem = Element('description')
+    assert type(link.description) == str or type(link.description) == unicode
     descrip_Elem.text = link.description
     link_ele.append(descrip_Elem)
     extLink_main.append(link_ele)
