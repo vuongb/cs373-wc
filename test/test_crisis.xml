@@ -1,0 +1,62 @@
+<world-crises>
+    <crises>
+        <!-- 0 or more of these -->
+        <crisis id="c-test_crisis">
+            <!-- common data -->
+            <name>Test Crisis</name>
+            <kind>TestKind</kind>
+            <description>Description of test crisis</description>
+            <location>
+                <country>USA</country>
+            </location>
+            <images>
+            </images>
+            <maps>
+            </maps>
+            <videos>
+            </videos>
+            <social>
+            </social>
+            <citations>
+                <!-- 0 or more of these -->
+                <citation>
+                    <source>http://en.wikipedia.org/wiki/Test</source>
+                    <description>Wiki</description>
+                </citation>
+            </citations>
+            <external-links>
+                <!-- 0 or more of these -->
+                <external-link>
+                    <source>http://www.google.com</source>
+                    <description>Google</description>
+                </external-link>
+                <external-link>
+                    <source>http://www.yahoo.com</source>
+                    <description>Yahoo</description>
+                </external-link>
+            </external-links>
+            <start-date>1776-07-04T00:00:00</start-date>
+            <end-date>2012-10-22T00:00:00</end-date>
+            <!-- end common data -->
+            <human-impact>
+                <!-- 0 or more of these -->
+                <deaths>12345</deaths>
+            </human-impact>
+            <economic-impact>1234567890</economic-impact>
+            <resources-needed>
+                <!-- 0 or more of these -->
+                <resource>money</resource>
+                <resource>donations</resource>
+            </resources-needed>
+            <ways-to-help>
+                <!-- 0 or more of these -->
+                <way>donations</way>
+                <way>volunteering</way>
+            </ways-to-help>
+        </crisis>
+    </crises>
+    <organizations>
+    </organizations>
+    <people>
+    </people>
+</world-crises>
