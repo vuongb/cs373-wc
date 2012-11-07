@@ -286,3 +286,45 @@ def process_person(person):
     person_instance     = Person(**p)
     result['person']    = person_instance
     return result
+
+def put_objects(root):
+    """
+    processes and inserts objects from the tree into the data store
+    root is the root of an ElementTree
+    return True if successful, otherwise False
+    """
+    # iterate over types
+    try:
+        for i in root.iter():
+            if i.tag == 'crises':
+                # iterate through all crises
+                d = etree_to_dict(i)
+                for c in d.get('crises'):
+                    if type(c) != str:
+                        result_dict     = process_crisis(c)
+                        crisis          = result_dict.get('crisis')
+                        crisis.put()
+                        store_special_classes(result_dict, crisis)
+            elif i.tag == 'organizations':
+                # iterate through all organizations
+                d = etree_to_dict(i)
+#                logging.info(d)
+                for o in d.get('organizations'):
+                    if type(o) != str:
+                        result_dict     = process_organization(o)
+                        organization    = result_dict.get('organization')
+                        organization.put()
+                        store_special_classes(result_dict, organization)
+            elif i.tag == 'people':
+                # iterate through all person
+                d = etree_to_dict(i)
+                for p in d.get('people'):
+                    if type(p) != str:
+                        result_dict     = process_person(p)
+                        person          = result_dict.get('person')
+                        person.put()
+                        store_special_classes(result_dict, person)
+        return True
+    except BaseException as e:
+        print(e)
+        return False
