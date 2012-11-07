@@ -7,7 +7,8 @@ import datetime
 import logging
 
 def get_tree_and_validate(data, schema):
-    """validate an xml string against a schema string and return an ETree representation if it is valid
+    """
+    validate an xml string against a schema string and return an ETree representation if it is valid
     data is the xml data to validate and build a tree from
     schema is the schema to validate against
     returns 0 if the xml is invalid, and an ETree if it is
@@ -24,8 +25,55 @@ def etree_to_dict(t):
     if t.getchildren() == []:
         d = {t.tag: t.text}
     else:
-        d = {t.tag : map(etree_to_dict, t.getchildren())}
+        if t.attrib:
+            assert type(t.attrib) == dict
+            d = {t.tag : map(etree_to_dict, t.getchildren()), "id" : t.attrib['id']}
+        else:
+            d = {t.tag : map(etree_to_dict, t.getchildren())}
     return d
+
+
+def store_references(references):
+    assert type(references) == dict
+    for object1, refs in references.items():
+
+        assert type(refs) == dict
+        for k, v in refs.items():
+            # https://developers.google.com/appengine/docs/python/datastore/gqlqueryclass
+            try:
+                if k == 'crisis-refs':
+                    object2 = Crisis.gql("WHERE us_id = :objname", objname = v).get()
+                if k == 'organization-refs':
+                    object2 = Organization.gql("WHERE us_id = :objname", objname = v).get()
+                if k == 'person-refs':
+                    object2 = Person.gql("WHERE us_id = :objname", objname = v).get()
+            except Exception as e:
+                print "Error: " + str(e) + ".\n"
+                print "Exception getting object from datastore. Most likely a name doesn't match. Object1 = " + str(object1) + " v = " + str(v)
+                print
+
+            try:
+                # TODO: clean this up, should the xml still validate if an error is thrown?
+                # CrisisOrganization
+                if (type(object1) == Crisis) and (type(object2) == Organization):
+                    CrisisOrganization(crisis=object1, organization=object2).put()
+                elif (type(object1) == Organization) and (type(object2) == Crisis):
+                    CrisisOrganization(organization=object1, crisis=object2).put()
+                # CrisisPerson
+                elif (type(object1) == Crisis) and (type(object2) == Person):
+                    CrisisPerson(crisis=object1, person=object2).put()
+                elif (type(object1) == Person) and (type(object2) == Crisis):
+                    CrisisPerson(person=object1, crisis=object2).put()
+                # OrganizationPerson
+                elif (type(object1) == Organization) and (type(object2) == Person):
+                    OrganizationPerson(organization=object1, person=object2).put()
+                elif (type(object1) == Person) and (type(object2) == Organization):
+                    OrganizationPerson(person=object1, organization=object2).put()
+            except Exception as e:
+                print "Error: " + str(e) + ".\n"
+                print "Exception putting reference into datastore. Object1 = " + str(object1) + " Object2 = " + str(object2)
+                print
+
 
 
 def store_special_classes(result_dict, assoc_obj):
@@ -146,6 +194,7 @@ def process_special_data(key, xml_value, result_dict):
     '''
     assert type(result_dict) == dict
 
+    value_inserted = True
     if key == 'videos':
         videos = []
         for video in xml_value:
@@ -176,18 +225,45 @@ def process_special_data(key, xml_value, result_dict):
             result_dict['external_links']    = parse_links(xml_value, "external-link")
         except Exception:
             logging.warn("Empty tag found for external_links")
+    else:
+        value_inserted = False
+    return value_inserted
+
+
+def process_references(xml_key, xml_value, references_dict):
+    '''
+    Processes references to other objects. Modifies a mutable dictionary passed as an argument
+    '''
+    assert type(references_dict) == dict
+
+    value_inserted = True
+    if xml_key == 'crisis-refs' :
+        references_dict['crisis-refs']          = xml_value
+    if xml_key == 'person-refs' :
+        references_dict['person-refs']          = xml_value
+    if xml_key == 'organization-refs' :
+        references_dict['organization-refs']    = xml_value
+    else:
+        value_inserted = False
+    return value_inserted
 
 
 def process_crisis(crisis):
     '''
     Parses crisis xml data into a dictionary to eventually end up in a model.
     '''
-
-    result = {}
-    logging.info(str(crisis))
-    c = {}
     assert type(crisis) == dict
-    # iterates through list of dictionaries
+
+    logging.info(str(crisis))
+    references  = {}
+    result      = {}
+    c           = {}
+
+    # id is handled a bit differently in the XML
+    assert crisis['id']
+    c['us_id']  = crisis['id']
+
+    # iterates through list of dictionaries (elements of XML object)
     for attribute_dictionary in crisis['crisis']:
         assert type(attribute_dictionary) == dict
         # iterates through attribute dictionary
@@ -222,12 +298,14 @@ def process_crisis(crisis):
                 for way in v:
                     ways.append(way['way'])
                 c['us_waysToHelp'] = ways
+            elif process_special_data(k, v, result):
+                pass
             else:
-                process_special_data(k, v, result)
+                process_references(k, v, references)
 
     crisis_instance     = Crisis(**c)
     result['crisis']    = crisis_instance
-    #   {crisis_instance: crisis_instance, external_links: [{source, description}], citations: [()]}
+    result['references']= references
     return result
 
 
@@ -235,11 +313,18 @@ def process_organization(organization):
     '''
     Parses organization xml data into a dictionary to eventually end up in a model.
     '''
+    assert type(organization) == dict
 
-    result = {}
-    logging.info(organization)
-    o = {}
-    # iterates through list of dictionaries
+    logging.info(str(organization))
+    references  = {}
+    result      = {}
+    o           = {}
+
+    # id is handled a bit differently in the XML
+    assert organization['id']
+    o['us_id']  = organization['id']
+
+    # iterates through list of dictionaries (elements of XML object)
     for attribute_dictionary in organization['organization']:
         # iterates through attribute dictionary
         for k,v in attribute_dictionary.items():
@@ -259,11 +344,14 @@ def process_organization(organization):
                 o['us_email'] = str(v)
             elif k == 'phone':
                 o['us_phone'] = str(v)
+            elif process_special_data(k, v, result):
+                pass
             else:
-                process_special_data(k, v, result)
+                process_references(k, v, references)
 
     org_instance            = Organization(**o)
     result['organization']  = org_instance
+    result['references']= references
     return result
 
 
@@ -271,18 +359,29 @@ def process_person(person):
     '''
     Parses person xml data into a dictionary to eventually end up in a model.
     '''
+    assert type(person) == dict
 
-    result = {}
-    p = {}
-    # iterates through list of dictionaries
+    logging.info(str(person))
+    references  = {}
+    result      = {}
+    p           = {}
+
+    # id is handled a bit differently in the XML
+    assert person['id']
+    p['us_id']  = person['id']
+
+    # iterates through list of dictionaries (elements of XML object)
     for attribute_dictionary in person['person']:
         # iterates through attribute dictionary
         for k,v in attribute_dictionary.items():
             if proccess_common_data(k, v, p):
                 pass
+            elif process_special_data(k, v, result):
+                pass
             else:
-                process_special_data(k, v, result)
+                process_references(k, v, references)
 
     person_instance     = Person(**p)
     result['person']    = person_instance
+    result['references']= references
     return result

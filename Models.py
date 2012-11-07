@@ -47,6 +47,7 @@ class Video(db.Model):
 class Crisis(db.Model):
     #todo removed required properties for name, type, description, economicimpact, humanimpact, resourcesneeded, waystohelp
     # Base Data
+    us_id              = db.StringProperty(required=True)
     us_name            = db.StringProperty(required=True)
     us_alternateNames  = db.StringProperty()
     us_type            = db.StringProperty(required=True)
@@ -85,6 +86,7 @@ class Crisis(db.Model):
 
 class Organization(db.Model):
     # Base Data
+    us_id              = db.StringProperty(required=True)
     us_name            = db.StringProperty(required=True)
     us_alternateNames  = db.StringProperty()
     us_type            = db.StringProperty(required=True)
@@ -116,6 +118,7 @@ class Organization(db.Model):
 
 class Person(db.Model):
     # Base Data
+    us_id              = db.StringProperty(required=True)
     us_name            = db.StringProperty(required=True)
     us_alternateNames  = db.StringProperty()
     us_type            = db.StringProperty(required=True)
