@@ -25,12 +25,14 @@ class TestExport(unittest.TestCase):
     ##################################################################################
 
     def test_buildTree(self):
+        """should build Element Tree pulled from imported elements"""
         root = buildTree()
         assert root.getchildren()[0].getchildren()[0].attrib['id'] == 'c1'
         assert root.getchildren()[1].getchildren()[0].attrib['id'] == 'o2'
         assert root.getchildren()[2].getchildren()[0].attrib['id'] == 'p3'
 
     def test_addCrisis(self):
+        """should build Element Tree pulled from imported Crisis"""
         #fetch the object from the datastore
         crises_obj = db.GqlQuery("SELECT * FROM Crisis")
         crisis = addCrisis(crises_obj.run().next(), 1)
@@ -60,6 +62,7 @@ class TestExport(unittest.TestCase):
             'id': 'c1'}
 
     def test_addOrganization(self):
+        """should build element tree pulled from imported Organization"""
         #fetch the object form the datastore
         org_obj = db.GqlQuery("SELECT * FROM Organization")
         organization = addOrganization(org_obj.run().next(), 1)
@@ -89,6 +92,7 @@ class TestExport(unittest.TestCase):
             'id': 'o1'}
 
     def test_addPerson(self):
+        """shoudl build element tree pulled from imported Person"""
         person_obj = db.GqlQuery("SELECT * FROM Person")
         person = addPerson(person_obj.run().next(), 1)
 
