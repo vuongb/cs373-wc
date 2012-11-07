@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified">
+
+<!--restrictions-->
+<!--short tokenized strings (no extra whitespace)-->
+<!--length restriction suitable for short text string entities-->
+<xs:simpleType name="short-token">
+    <xs:restriction base="xs:token">
+	<xs:maxLength value="500"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="strict-uri">
+    <xs:restriction base="xs:anyURI">
+        <xs:pattern value="(https?://)?([^\./]+\.)*[^\./]+\.[^\./]+(/.*)?"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="state">
+    <xs:restriction base="xs:token">
+        <xs:pattern value="[A-Z][A-Z]"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="email">
+    <xs:restriction base="xs:token">
+        <xs:pattern value="[^@]+@[^\.]+(\.[^\.]+)+"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="facebook">
+    <xs:restriction base="xs:token">
+        <xs:pattern value="[A-Za-z0-9.]+"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="twitter">
+    <xs:restriction base="xs:token">
+	<xs:pattern value="(@|#)[^\s#@]+"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="youtube">
+    <xs:restriction base="xs:token">
+        <xs:pattern value="[A-Za-z0-9_-]+"/>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="vimeo">
+    <xs:restriction base="xs:integer"/>
+</xs:simpleType>
+
+<!--group declarations-->
+<xs:group name="city-state-country">
+    <xs:sequence>
+        <xs:element name="city" type="short-token" minOccurs="0"/>
+        <xs:element name="state" type="state" minOccurs="0"/>
+        <xs:element name="country" type="short-token"/>
+    </xs:sequence>
+</xs:group>
+
+<xs:group name="latitude-longitude">
+    <xs:sequence>
+        <!--negative values represent S, positve represent N-->
+	    <xs:element name="latitude" type="xs:double"/>
+        <!--negative values represent W, positve represent E-->
+        <xs:element name="longitude" type="xs:double"/>
+    </xs:sequence>
+</xs:group>
+
+<xs:group name="contact-info">
+    <xs:sequence>
+        <xs:element name="address" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="email" type="email" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="phone" type="short-token" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+</xs:group>
+
+<xs:group name="media">
+    <xs:sequence>
+        <xs:element name="images" type="images" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="maps" type="maps" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="videos" type="videos" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="social" type="social" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+</xs:group>
+
+<!--complex type declarations-->
+<xs:complexType name="location">
+    <!--this type forces us to provide one, or the other, or both-->
+    <xs:choice>
+	<xs:sequence>
+	    <xs:group ref="city-state-country"/>
+	    <xs:group ref="latitude-longitude" minOccurs="0"/>
+	</xs:sequence>
+	<xs:sequence>
+	    <xs:group ref="latitude-longitude"/>
+	</xs:sequence>
+    </xs:choice>
+</xs:complexType>
+
+<xs:complexType name="link">
+    <xs:sequence>
+	<xs:element name="source" type="strict-uri"/>
+	<xs:element name="description" type="short-token"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="images">
+    <xs:sequence>
+	<xs:element name="image" type="link" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="maps">
+    <xs:sequence>
+    <xs:element name="map" type="link" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="videos">
+    <xs:sequence>
+	<xs:element name="youtube" type="youtube" minOccurs="0" maxOccurs="unbounded"/>
+	<xs:element name="vimeo" type="vimeo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="social">
+    <xs:sequence>
+	<xs:element name="facebook" type="facebook" minOccurs="0" maxOccurs="unbounded"/>
+	<xs:element name="twitter" type="twitter" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:element name="youtube" type="youtube" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="citations">
+    <xs:sequence>
+	<xs:element name="citation" type="link" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="external-links">
+    <xs:sequence>
+	<xs:element name="external-link" type="link" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="resources-needed">
+    <xs:sequence>
+	<xs:element name="resource" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ways-to-help">
+    <xs:sequence>
+	<xs:element name="way" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="human-impact">
+    <xs:sequence>
+        <xs:element name="deaths" type="xs:nonNegativeInteger" minOccurs="0"/>
+        <xs:element name="missing" type="xs:nonNegativeInteger" minOccurs="0"/>
+        <xs:element name="injured" type="xs:nonNegativeInteger" minOccurs="0"/>
+        <xs:element name="displaced" type="xs:nonNegativeInteger" minOccurs="0"/>
+    </xs:sequence>
+</xs:complexType>
+
+<!--common-data group declaration-->
+<xs:group name="common-data">
+    <xs:sequence>
+        <xs:element name="name" type="short-token"/>
+        <xs:element name="alternate-names" type="short-token" minOccurs="0"/>
+        <xs:element name="kind" type="short-token"/>
+        <xs:element name="description" type="xs:string"/>
+        <xs:element name="location" type="location"/>
+        <xs:group ref="media"/>
+        <xs:element name="citations" type="citations" maxOccurs="unbounded"/>
+        <xs:element name="external-links" type="external-links" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:group>
+
+<!--main complex type declarations-->
+<xs:complexType name="crisis">
+    <xs:sequence>
+        <xs:group ref="common-data"/>
+        <!--dates YYYY-MM-DDTHH:MM:SS (24 hour format, T is just the character T) -->
+        <xs:element name="start-date" type="xs:dateTime"/>
+        <xs:element name="end-date" type="xs:dateTime" minOccurs="0"/>
+        <xs:element name="human-impact" type="human-impact" />
+        <xs:element name="economic-impact" type="xs:nonNegativeInteger"/>
+        <xs:element name="resources-needed" type="resources-needed"/>
+        <xs:element name="ways-to-help" type="ways-to-help"/>
+
+        <!--IDREFS-->
+        <xs:element name="organization-refs" type="xs:IDREFS" minOccurs="0"/>
+        <xs:element name="person-refs" type="xs:IDREFS" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="organization">
+    <xs:sequence>
+        <xs:group ref="common-data"/>
+        <xs:group ref="contact-info"/>
+
+        <!--IDREFS-->
+        <xs:element name="crisis-refs" type="xs:IDREFS" minOccurs="0"/>
+        <xs:element name="person-refs" type="xs:IDREFS" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="person">
+    <xs:sequence>
+        <xs:group ref="common-data"/>
+
+        <!--IDREFS-->
+        <xs:element name="crisis-refs" type="xs:IDREFS" minOccurs="0"/>
+        <xs:element name="organization-refs" type="xs:IDREFS" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="crises">
+    <xs:sequence>
+        <xs:element name="crisis" type="crisis" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="organizations">
+    <xs:sequence>
+        <xs:element name="organization" type="organization" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="people">
+    <xs:sequence>
+        <xs:element name="person" type="person" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:element name="world-crises">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="crises" type="crises"/>
+            <xs:element name="organizations" type="organizations"/>
+            <xs:element name="people" type="people"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>
