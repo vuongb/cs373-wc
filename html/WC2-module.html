@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>WC1</title>
+  <title>WC2</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -37,7 +37,7 @@
   <tr valign="top">
     <td width="100%">
       <span class="breadcrumbs">
-        Module&nbsp;WC1
+        Module&nbsp;WC2
       </span>
     </td>
     <td>
@@ -47,14 +47,14 @@
     onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
         <tr><td align="right"><span class="options"
             >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="WC1-module.html"
+            >]&nbsp;|&nbsp;<a href="WC2-module.html"
             target="_top">no&nbsp;frames</a>]</span></td></tr>
       </table>
     </td>
   </tr>
 </table>
 <!-- ==================== MODULE DESCRIPTION ==================== -->
-<h1 class="epydoc">Module WC1</h1><p class="nomargin-top"><span class="codelink"><a href="WC1-pysrc.html">source&nbsp;code</a></span></p>
+<h1 class="epydoc">Module WC2</h1><p class="nomargin-top"><span class="codelink"><a href="WC2-pysrc.html">source&nbsp;code</a></span></p>
 <!-- ==================== CLASSES ==================== -->
 <a name="section-Classes"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -76,7 +76,7 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="WC1.ImportHandler-class.html" class="summary-name">ImportHandler</a><br />
+        <a href="WC2.ImportHandler-class.html" class="summary-name">ImportHandler</a><br />
       Handles the interaction between the client and the server for 
       importing xml files into our datastore
     </td>
@@ -85,83 +85,37 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="WC1.ExportHandler-class.html" class="summary-name">ExportHandler</a><br />
+        <a href="WC2.ExportHandler-class.html" class="summary-name">ExportHandler</a><br />
       Renders the page for exporting objects from our datastore to XML
     </td>
   </tr>
-</table>
-<!-- ==================== FUNCTIONS ==================== -->
-<a name="section-Functions"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Functions</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Functions"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="get_tree_and_validate"></a><span class="summary-sig-name">get_tree_and_validate</span>(<span class="summary-sig-arg">data</span>,
-        <span class="summary-sig-arg">schema</span>)</span><br />
-      validate an xml string against a schema string and return an ETree 
-      representation if it is valid data is the xml data to validate and 
-      build a tree from schema is the schema to validate against returns 0 
-      if the xml is invalid, and an ETree if it is</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="WC1-pysrc.html#get_tree_and_validate">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
+        <a href="WC2.IndexPage-class.html" class="summary-name">IndexPage</a><br />
+      Renders the home page
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="etree_to_dict"></a><span class="summary-sig-name">etree_to_dict</span>(<span class="summary-sig-arg">t</span>)</span><br />
-      recursively converts an ETree into a dict</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="WC1-pysrc.html#etree_to_dict">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
+        <a href="WC2.CrisisPage-class.html" class="summary-name">CrisisPage</a>
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td><span class="summary-sig"><a name="store_special_classes"></a><span class="summary-sig-name">store_special_classes</span>(<span class="summary-sig-arg">result_dict</span>,
-        <span class="summary-sig-arg">assoc_obj</span>)</span><br />
-      creates relational/child objects like videos, social, images, maps, 
-      etc from dict data</td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="WC1-pysrc.html#store_special_classes">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
+        <a href="WC2.OrganizationPage-class.html" class="summary-name">OrganizationPage</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="WC2.PersonPage-class.html" class="summary-name">PersonPage</a>
     </td>
   </tr>
 </table>
@@ -186,8 +140,10 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="WC1-module.html#app" class="summary-name">app</a> = <code title="webapp2.WSGIApplication([('/import', ImportHandler), ('/export', Expor\
-tHandler)], debug= True)">webapp2.WSGIApplication([('/import', ImportHandler), ('/<code class="variable-ellipsis">...</code></code>
+        <a href="WC2-module.html#app" class="summary-name">app</a> = <code title="webapp2.WSGIApplication([('/', IndexPage), ('/c/?', CrisisPage), (r'/c\
+/(.+)', CrisisPage), ('/o/?', OrganizationPage), (r'/o/(.+)', Organiza\
+tionPage), ('/p/?', PersonPage), (r'/p/(.+)', PersonPage), ('/import',\
+ ImportHandler), ('/export', ExportHandler)], debug= True)">webapp2.WSGIApplication([('/', IndexPage), ('/c/?', Cris<code class="variable-ellipsis">...</code></code>
     </td>
   </tr>
 </table>
@@ -221,8 +177,10 @@ tHandler)], debug= True)">webapp2.WSGIApplication([('/import', ImportHandler), (
   <dl class="fields">
     <dt>Value:</dt>
       <dd><table><tr><td><pre class="variable">
-webapp2.WSGIApplication([('/import', ImportHandler), ('/export', Expor<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
-tHandler)], debug= True)
+webapp2.WSGIApplication([('/', IndexPage), ('/c/?', CrisisPage), (r'/c<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+/(.+)', CrisisPage), ('/o/?', OrganizationPage), (r'/o/(.+)', Organiza<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+tionPage), ('/p/?', PersonPage), (r'/p/(.+)', PersonPage), ('/import',<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ ImportHandler), ('/export', ExportHandler)], debug= True)
 </pre></td></tr></table>
 </dd>
   </dl>
@@ -255,7 +213,7 @@ tHandler)], debug= True)
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Oct 24 19:48:17 2012
+    Generated by Epydoc 3.0.1 on Wed Nov  7 16:29:02 2012
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
