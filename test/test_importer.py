@@ -1,5 +1,4 @@
 import unittest
-import logging
 from WC1 import get_tree_and_validate, etree_to_dict
 import importer
 
@@ -49,8 +48,8 @@ class TestImport(unittest.TestCase):
         person_d = etree_to_dict(self.person_tree.getroot())
         assert person_d == {
             'world-crises': [
-                {'crises': None},
-                {'organizations': None},
+                {'crises': []},
+                {'organizations': []},
                 {'people': [
                     {'person': [
                         {'name': 'Bob TestPerson'},
