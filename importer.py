@@ -23,7 +23,11 @@ def get_tree_and_validate(data, schema):
 def etree_to_dict(t):
     """recursively converts an ETree into a dict"""
     if t.getchildren() == []:
-        d = {t.tag: t.text}
+        # checks for shorthand empty XML tag
+        if t.text == None:
+            d = {t.tag: []}
+        else:
+            d = {t.tag: t.text}
     else:
         if t.attrib:
             assert type(t.attrib) == dict
