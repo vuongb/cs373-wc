@@ -86,8 +86,8 @@
                     <ul class="media-list">
                     {% for tweet in feed.get_twitter_feed %}
                         <li class="media">
-                            <a class="pull-left" href="http://www.twitter.com/{{tweet.user.screen_name}}">
-                                <img class="media-object" src="{{tweet.user.profile_image_url}}">
+                            <a class="pull-left thumbnail" href="http://www.twitter.com/{{tweet.user.screen_name}}">
+                                <img class="media-object" style="width:50px" src="{{tweet.user.profile_image_url}}">
                             </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="http://www.twitter.com/{{tweet.user.screen_name}}">@{{tweet.user.screen_name}}</a></h4>
