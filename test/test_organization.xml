@@ -1,0 +1,24 @@
+<world-crises>
+    <crises>
+    </crises>
+    <organizations>
+        <organization>
+            <name>Test Organization</name>
+            <kind>TestOrgKind</kind>
+            <description>TestOrgDescription</description>
+            <location>
+                <city>Organization City</city>
+                <country>USA</country>
+            </location>
+            <images>
+            </images>
+            <maps>
+            </maps>
+            <videos>
+                <youtube>CWyrp3hu4KE</youtube>
+            </videos>
+        </organization>
+    </organizations>
+    <people>
+    </people>
+</world-crises>
