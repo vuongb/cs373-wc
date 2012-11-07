@@ -394,35 +394,65 @@ def put_objects(root):
     """
     # iterate over types
     try:
+        references = {}
+        # iterate over types
         for i in root.iter():
             if i.tag == 'crises':
                 # iterate through all crises
                 d = etree_to_dict(i)
                 for c in d.get('crises'):
-                    if type(c) != str:
+                    if type(c) != str:  # TODO: what is this? Can we remove it?
                         result_dict     = process_crisis(c)
+
+                        # get the crisis dictionary from result dict and put it in the datastore
                         crisis          = result_dict.get('crisis')
                         crisis.put()
+
+                        # TODO: clean up by returning a 'media' dict which we send to store_special_classes
                         store_special_classes(result_dict, crisis)
+
+                        # Get the references for this object and store them for later (after obj processing)
+                        references_dict     = result_dict.get('references')
+                        if references_dict:
+                            references[crisis]  = references_dict
             elif i.tag == 'organizations':
                 # iterate through all organizations
                 d = etree_to_dict(i)
-#                logging.info(d)
+                logging.info(d)
                 for o in d.get('organizations'):
                     if type(o) != str:
                         result_dict     = process_organization(o)
+
+                        # get the organization dictionary from result dict and put it in the datastore
                         organization    = result_dict.get('organization')
                         organization.put()
+
+                        # TODO: clean up by returning a 'media' dict which we send to store_special_classes
                         store_special_classes(result_dict, organization)
+
+                        # Get the references for this object and store them for later (after obj processing)
+                        references_dict             = result_dict.get('references')
+                        if references_dict:
+                            references[organization]    = references_dict
             elif i.tag == 'people':
                 # iterate through all person
                 d = etree_to_dict(i)
                 for p in d.get('people'):
                     if type(p) != str:
                         result_dict     = process_person(p)
+
+                        # get the person dictionary from result dict and put it in the datastore
                         person          = result_dict.get('person')
                         person.put()
+
+                        # TODO: clean up by returning a 'media' dict which we send to store_special_classes
                         store_special_classes(result_dict, person)
+
+                        # Get the references for this object and store them for later (after obj processing)
+                        references_dict     = result_dict.get('references')
+                        if references_dict:
+                            references[person]  = references_dict
+        store_references(references)
         return True
     except BaseException as e:
         print(e)
