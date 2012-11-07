@@ -56,7 +56,8 @@ class TestExport(unittest.TestCase):
                        {'human-impact': [{'deaths': '12345'}]},
                        {'economic-impact': '1234567890'},
                        {'resources-needed': None},
-                       {'ways-to-help': [{'way': u'donations'}, {'way': u'volunteering'}]}]}
+                       {'ways-to-help': [{'way': u'donations'}, {'way': u'volunteering'}]}],
+            'id': 'c1'}
 
     def test_addOrganization(self):
         #fetch the object form the datastore
@@ -84,7 +85,8 @@ class TestExport(unittest.TestCase):
                              {'external-links': [
                                  {'external-link': [
                                     {'source': u'http://www.google.com'},
-                                        {'description': u'Google'}]}]}]}
+                                        {'description': u'Google'}]}]}],
+            'id': 'o1'}
 
     def test_addPerson(self):
         person_obj = db.GqlQuery("SELECT * FROM Person")
@@ -106,4 +108,5 @@ class TestExport(unittest.TestCase):
                 {'citations': [
                     {'citation': [{'source': u'http://maps.google.com'}, {'description': u'Map Description'}]}]},
                 {'external-links': [
-                    {'external-link': [{'source': u'http://www.zombo.com/'}, {'description': u'Test Link'}]}]}]}
+                    {'external-link': [{'source': u'http://www.zombo.com/'}, {'description': u'Test Link'}]}]}],
+            'id': 'p1'}
