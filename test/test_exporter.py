@@ -1,5 +1,5 @@
 import unittest
-from WC1 import get_tree_and_validate
+from WC2 import get_tree_and_validate
 from exporter import buildTree, addCrisis, addOrganization, addPerson
 from google.appengine.ext import db
 import importer

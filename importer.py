@@ -133,7 +133,7 @@ def str_from_tree(etree):
     return ET.tostring(etree)
 
 # The handling of links is really gross. They're all individual dictionaries wrapped in lists
-# We re-package them as a list of dictionaries with keys {source, description} so we can extract them in WC1.py
+# We re-package them as a list of dictionaries with keys {source, description} so we can extract them in WC2.py
 
 def parse_links(dict_value, type_as_string):
     assert type(type_as_string) == str

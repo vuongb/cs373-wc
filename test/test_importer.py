@@ -1,5 +1,5 @@
 import unittest
-from WC1 import get_tree_and_validate, etree_to_dict
+from WC2 import get_tree_and_validate, etree_to_dict
 import importer
 
 class TestImport(unittest.TestCase):
