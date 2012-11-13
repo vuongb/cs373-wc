@@ -14,9 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from StringIO import StringIO
 import webapp2
-from importer import process_crisis, process_organization, process_person, etree_to_dict, get_tree_and_validate, store_special_classes, str_from_tree, store_references, put_objects
+from importer import get_tree_and_validate, str_from_tree, put_objects
 import logging
 import exporter
 from Models import Crisis, Organization, Person
@@ -98,7 +97,7 @@ class IndexPage(webapp2.RequestHandler):
 
 class CrisisPage(webapp2.RequestHandler):
     def get(self, id=None):
-        if id == None:
+        if id is None:
             #Base Crisis Page
             path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
             #Get list of crises and print links
@@ -121,7 +120,7 @@ class CrisisPage(webapp2.RequestHandler):
 
 class OrganizationPage(webapp2.RequestHandler):
     def get(self, id=None):
-        if id == None:
+        if id is None:
             #Base Organization Page
             path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
             #Get list of organizations and print links
@@ -144,7 +143,7 @@ class OrganizationPage(webapp2.RequestHandler):
 
 class PersonPage(webapp2.RequestHandler):
     def get(self, id=None):
-        if id == None:
+        if id is None:
             #Base Person Page
             path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
             #Get list of crises and print links
