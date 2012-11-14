@@ -43,7 +43,7 @@ def addCrisis(crisis):
     """
 
   ele = Element('crisis')
-  ele.attrib['id'] = 'c' + str(crisis.key().id())
+  ele.attrib['id'] = str(crisis.us_id)
   
   name = Element('name')
   assert type(crisis.us_name) == str or type(crisis.us_name) == unicode
@@ -249,24 +249,10 @@ def addCrisis(crisis):
     way_ele.text = way
     ways.append(way_ele)
   ele.append(ways)
-
-##  org_refs = []
-##  for org in crisis.organizations:
-##    org_refs.append(org.organization.key().name())
-##  org_refs_ele = Element('organization-refs')
-##  org_refs_ele.text = " ".join(org_refs)
-##  ele.append(org_refs_ele)
-
-##  p_refs = []
-##  for p in crisis.people:
-##    p_refs.append(p.person.key().id())
-##  p_refs_ele = Element('person-refs')
-##  p_refs_ele.text = " ".join(p_refs)
-##  ele.append(p_refs_ele)
-
+  
   org_refs = []
   for org in crisis.organizations:
-    org_refs.append('o' + str(org.organization.key().id()))
+    org_refs.append(str(org.organization.us_id))
   if len(org_refs) > 0:
     org_refs_ele = Element('organization-refs')
     org_refs_ele.text = " ".join(org_refs)
@@ -274,7 +260,7 @@ def addCrisis(crisis):
 
   p_refs = []
   for p in crisis.people:
-    p_refs.append('p' + str(p.person.key().id()))
+    p_refs.append(str(p.person.us_id))
   if len(p_refs) > 0:
     p_refs_ele = Element('person-refs')
     p_refs_ele.text = " ".join(p_refs)
@@ -291,8 +277,7 @@ def addOrganization(organization):
     """
   
   ele = Element('organization')
-  #ele.attrib['id'] = organization.us_name
-  ele.attrib['id'] = 'o' + str(organization.key().id())
+  ele.attrib['id'] = str(organization.us_id)
 
   name = Element('name')
   assert type(organization.us_name) == str or type(organization.us_name) == unicode
@@ -452,24 +437,9 @@ def addOrganization(organization):
     phone.text = organization.us_phone
     ele.append(phone)
 
-##  c_refs = []
-##  for c in organization.crises:
-##    c_refs.append(c.crisis.key().name())
-##  c_refs_ele = Element('crisis-refs')
-##  c_refs_ele.text = " ".join(c_refs)
-##  ele.append(c_refs_ele)
-##
-##  p_refs = []
-##  for p in organization.people:
-##    p_refs.append(p.person.key().name())
-##  p_refs_ele = Element('person-refs')
-##  p_refs_ele.text = " ".join(p_refs)
-##  ele.append(p_refs_ele)
-
-
   c_refs = []
   for c in organization.crises:
-    c_refs.append('c' + str(c.crisis.key().id()))
+    c_refs.append(str(c.crisis.us_id))
   if len(c_refs) > 0:
     c_refs_ele = Element('crisis-refs')
     c_refs_ele.text = " ".join(c_refs)
@@ -477,7 +447,7 @@ def addOrganization(organization):
 
   p_refs = []
   for p in organization.people:
-    p_refs.append('p' + str(p.person.key().id()))
+    p_refs.append('p' + str(p.person.us_id))
   if len(p_refs) > 0:
     p_refs_ele = Element('person-refs')
     p_refs_ele.text = " ".join(p_refs)
@@ -494,8 +464,7 @@ def addPerson(person):
     """
   
   ele = Element('person')
-#  ele.attrib['id'] = person.key().name()
-  ele.attrib['id'] = 'p' + str(person.key().id())
+  ele.attrib['id'] = str(person.us_id)
 
   name = Element('name')
   assert type(person.us_name) == str or type(person.us_name) == unicode
@@ -640,7 +609,7 @@ def addPerson(person):
 
   c_refs = []
   for c in person.crises:
-    c_refs.append('c' + str(c.crisis.key().id()))
+    c_refs.append(str(c.crisis.us_id))
   if len(c_refs) > 0:
     c_refs_ele = Element('crisis-refs')
     c_refs_ele.text = " ".join(c_refs)
@@ -648,25 +617,9 @@ def addPerson(person):
 
   org_refs = []
   for org in person.organizations:
-    org_refs.append('o' + str(org.organization.key().id()))
+    org_refs.append(str(org.organization.us_id))
   if len(org_refs) > 0:
     org_refs_ele = Element('organization-refs')
     org_refs_ele.text = " ".join(org_refs)
     ele.append(org_refs_ele)
-
-
-##  c_refs = []
-##  for c in person.crises:
-##    c_refs.append(c.crisis.key().name())
-##  c_refs_ele = Element('crisis-refs')
-##  c_refs_ele.text = " ".join(c_refs)
-##  ele.append(c_refs_ele)
-##
-##  org_refs = []
-##  for org in person.organizations:
-##    org_refs.append(org.organization.key().name())
-##  org_refs_ele = Element('organization-refs')
-##  org_refs_ele.text = " ".join(org_refs)
-##  ele.append(org_refs_ele)
-
   return ele
