@@ -17,6 +17,7 @@ def get_tree_and_validate(data, schema):
         xsv.parseAndValidateXmlInputString(data, schema, xmlIfClass=xsv.XMLIF_ELEMENTTREE)
         return ET.parse(StringIO(data))
     except xsv.XsvalError as e:
+        logging.debug("XML NOT VALID. Trace: \n" + str(e))
         return 0
 
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
