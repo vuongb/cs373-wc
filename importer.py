@@ -22,9 +22,9 @@ def get_tree_and_validate(data, schema):
 #http://stackoverflow.com/questions/7684333/converting-xml-to-dictionary-using-elementtree
 def etree_to_dict(t):
     """recursively converts an ETree into a dict"""
-    if t.getchildren() == []:
+    if not t.getchildren():
         # checks for shorthand empty XML tag
-        if t.text == None:
+        if t.text is None:
             d = {t.tag: []}
         else:
             d = {t.tag: t.text}
@@ -78,50 +78,44 @@ def store_special_classes(result_dict, assoc_obj):
     videos          = result_dict.get('videos')
     if videos:
         for video in videos:
-            builder                 = {}
-            builder['video_type']   = video.items()[0][0]
-            builder['video_id']     = video.items()[0][1]
-            builder['assoc_object'] = assoc_obj
+            builder                 = {'video_type': video.items()[0][0],
+                                       'video_id': video.items()[0][1],
+                                       'assoc_object': assoc_obj}
             Video(**builder).put()
     social          = result_dict.get('social')
     if social:
         for media in social:
-            builder                 = {}
-            builder['social_type']  = media.items()[0][0]
-            builder['social_id']    = media.items()[0][1]
-            builder['assoc_object'] = assoc_obj
+            builder                 = {'social_type': media.items()[0][0],
+                                       'social_id': media.items()[0][1],
+                                       'assoc_object': assoc_obj}
             Social(**builder).put()
     images          = result_dict.get('images')
     if images:
         for image in images:
-            builder                 = {}
-            builder['source']       = image.get('source')
-            builder['description']  = image.get('description')
-            builder['assoc_object'] = assoc_obj
+            builder                 = {'source': image.get('source'),
+                                       'description': image.get('description'),
+                                       'assoc_object': assoc_obj}
             Image(**builder).put()
     maps            = result_dict.get('maps')
     if maps:
         for map in maps:
-            builder                 = {}
-            builder['source']       = map.get('source')
-            builder['description']  = map.get('description')
-            builder['assoc_object'] = assoc_obj
+            builder                 = {'source': map.get('source'),
+                                       'description': map.get('description'),
+                                       'assoc_object': assoc_obj}
             Map(**builder).put()
     citations       = result_dict.get('citations')
     if citations:
         for citation in citations:
-            builder                 = {}
-            builder['source']       = citation.get('source')
-            builder['description']  = citation.get('description')
-            builder['assoc_object'] = assoc_obj
+            builder                 = {'source': citation.get('source'),
+                                       'description': citation.get('description'),
+                                       'assoc_object': assoc_obj}
             Citation(**builder).put()
     external_links  = result_dict.get('external_links')
     if external_links:
         for link in external_links:
-            builder                 = {}
-            builder['source']       = link.get('source')
-            builder['description']  = link.get('description')
-            builder['assoc_object'] = assoc_obj
+            builder                 = {'source': link.get('source'),
+                                       'description': link.get('description'),
+                                       'assoc_object': assoc_obj}
             ExternalLink(**builder).put()
 
 def str_from_tree(etree):
@@ -151,9 +145,9 @@ def parse_links(dict_value, type_as_string):
 
 
 def proccess_common_data(key, xml_value, result_dict):
-    '''
+    """
     Processes common data for Organization, Person, and Crisis. Modifies a mutable dictionary passed as an argument
-    '''
+    """
     assert type(result_dict) == dict
 
     value_inserted = True
@@ -183,9 +177,9 @@ def proccess_common_data(key, xml_value, result_dict):
 
 
 def process_special_data(key, xml_value, result_dict):
-    '''
+    """
     Processes special data such as videos, social media, etc. for Organization, Person, and Crisis
-    '''
+    """
     assert type(result_dict) == dict
 
     value_inserted = True
@@ -202,22 +196,22 @@ def process_special_data(key, xml_value, result_dict):
     elif key == 'images':
         try:
             result_dict['images']            = parse_links(xml_value, "image")
-        except Exception:
+        except KeyError:
             logging.warn("Empty tag found for images")
     elif key == 'maps':
         try:
             result_dict['maps']              = parse_links(xml_value, "map")
-        except Exception:
+        except KeyError:
             logging.warn("Empty tag found for maps")
     elif key == 'citations':
         try:
             result_dict['citations']         = parse_links(xml_value, "citation")
-        except Exception:
+        except KeyError:
             logging.warn("Empty tag found for citations")
     elif key == 'external-links':
         try:
             result_dict['external_links']    = parse_links(xml_value, "external-link")
-        except Exception:
+        except KeyError:
             logging.warn("Empty tag found for external_links")
     else:
         value_inserted = False
@@ -225,9 +219,9 @@ def process_special_data(key, xml_value, result_dict):
 
 
 def process_references(xml_key, xml_value, references_dict):
-    '''
+    """
     Processes references to other objects. Modifies a mutable dictionary passed as an argument
-    '''
+    """
     assert type(references_dict) == dict
 
     value_inserted = True
@@ -243,9 +237,9 @@ def process_references(xml_key, xml_value, references_dict):
 
 
 def process_crisis(crisis):
-    '''
+    """
     Parses crisis xml data into a dictionary to eventually end up in a model.
-    '''
+    """
     assert type(crisis) == dict
 
     logging.info(str(crisis))
@@ -304,9 +298,9 @@ def process_crisis(crisis):
 
 
 def process_organization(organization):
-    '''
+    """
     Parses organization xml data into a dictionary to eventually end up in a model.
-    '''
+    """
     assert type(organization) == dict
 
     logging.info(str(organization))
@@ -350,9 +344,9 @@ def process_organization(organization):
 
 
 def process_person(person):
-    '''
+    """
     Parses person xml data into a dictionary to eventually end up in a model.
-    '''
+    """
     assert type(person) == dict
 
     logging.info(str(person))
