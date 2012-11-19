@@ -460,14 +460,7 @@ def put_objects(root):
 def checkDuplicate(dataType, idNum):
     assert dataType != ''
 
-    if dataType = 'crisis':
-        objects = db.GqlQuery("SELECT * FROM Crisis")
-
-    elif dataType == 'organization':
-        objects = db.GqlQuery("SELECT * FROM Organization")
-
-    elif dataType == 'person':
-        objects = db.GqlQuery("SELECT * FROM Person")
+    objects = db.GqlQuery("SELECT * FROM " + str(dataType).capitalize() + " WHERE us_id = " + str(idNum))
 
     for obj in objects:
         if obj.us_id == idNum:
@@ -483,8 +476,11 @@ def dsMerge(dsObject, newObject, dataType):
     # Process/merge common data
 
     # Process/merge specific data
-    if dataType = 'crisis':
+    if dataType == 'crisis':
+        raise
 
-    elif dataType = 'organization':
+    elif dataType == 'organization':
+        raise
 
-    elif dataType = 'person':
+    elif dataType == 'person':
+        raise
