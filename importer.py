@@ -250,8 +250,8 @@ def process_crisis(crisis):
 
     # id is handled a bit differently in the XML
     assert crisis['id']
+        
     c['us_id']  = crisis['id']
-
     # iterates through list of dictionaries (elements of XML object)
     for attribute_dictionary in crisis['crisis']:
         assert type(attribute_dictionary) == dict
@@ -311,8 +311,8 @@ def process_organization(organization):
 
     # id is handled a bit differently in the XML
     assert organization['id']
-    o['us_id']  = organization['id']
 
+    o['us_id']  = organization['id']
     # iterates through list of dictionaries (elements of XML object)
     for attribute_dictionary in organization['organization']:
         # iterates through attribute dictionary
@@ -357,6 +357,7 @@ def process_person(person):
 
     # id is handled a bit differently in the XML
     assert person['id']
+
     p['us_id']  = person['id']
 
     # iterates through list of dictionaries (elements of XML object)
@@ -395,8 +396,12 @@ def put_objects(root):
 
                         # get the crisis dictionary from result dict and put it in the datastore
                         crisis          = result_dict.get('crisis')
+                        
+                        duplicate = checkDuplicate('crisis', c['id'])
+                        if(duplicate != None):            # Need to Merge       
+                            crisis = dsMerge('crisis', duplicate, crisis)
+                            
                         crisis.put()
-
                         # TODO: clean up by returning a 'media' dict which we send to store_special_classes
                         store_special_classes(result_dict, crisis)
 
@@ -414,6 +419,11 @@ def put_objects(root):
 
                         # get the organization dictionary from result dict and put it in the datastore
                         organization    = result_dict.get('organization')
+                        
+                        duplicate = checkDuplicate('organization', o['id'])
+                        if(duplicate != None):            # Need to Merge       
+                            organization = dsMerge('organization', duplicate, organization)
+                            
                         organization.put()
 
                         # TODO: clean up by returning a 'media' dict which we send to store_special_classes
@@ -446,3 +456,35 @@ def put_objects(root):
     except BaseException as e:
         print(e)
         return False
+
+def checkDuplicate(dataType, idNum):
+    assert dataType != ''
+
+    if dataType = 'crisis':
+        objects = db.GqlQuery("SELECT * FROM Crisis")
+
+    elif dataType == 'organization':
+        objects = db.GqlQuery("SELECT * FROM Organization")
+
+    elif dataType == 'person':
+        objects = db.GqlQuery("SELECT * FROM Person")
+
+    for obj in objects:
+        if obj.us_id == idNum:
+            return obj
+    else:
+        return None
+
+def dsMerge(dsObject, newObject, dataType):
+
+    assert dsObject.us_id == newObject.us_id
+    assert dataType != ""
+    
+    # Process/merge common data
+
+    # Process/merge specific data
+    if dataType = 'crisis':
+
+    elif dataType = 'organization':
+
+    elif dataType = 'person':
