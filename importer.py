@@ -3,6 +3,7 @@ from minixsv import pyxsval as xsv
 import xml.etree.ElementTree as ET
 from google.appengine.ext import db
 from Models import *
+from search import add_to_index, create_crisis_document
 import datetime
 import logging
 
@@ -25,7 +26,7 @@ def etree_to_dict(t):
     """recursively converts an ETree into a dict"""
     if not t.getchildren():
         # checks for shorthand empty XML tag
-        if t.text is None:
+        if (t.text is None) or (t.text.strip('\n\t') == ""):
             d = {t.tag: []}
         else:
             d = {t.tag: t.text}
@@ -396,11 +397,17 @@ def put_objects(root):
 
                         # get the crisis dictionary from result dict and put it in the datastore
                         crisis          = result_dict.get('crisis')
-                        
-                        duplicate = checkDuplicate('crisis', c['id'])
-                        if(duplicate != None):            # Need to Merge       
-                            crisis = dsMerge('crisis', duplicate, crisis)
-                            
+
+                        # TODO: we don't need to check for duplicate Crises, right? Or must we account for a double import of the same instance?
+#                        duplicate = checkDuplicate('crisis', c['id'])
+#                        if(duplicate != None):            # Need to Merge
+#                            crisis = dsMerge('crisis', duplicate, crisis)
+
+#                        # Create a crisis search document
+#                        document = create_crisis_document(crisis)
+#                        # Add crisis object to search index
+#                        add_to_index(document)
+
                         crisis.put()
                         # TODO: clean up by returning a 'media' dict which we send to store_special_classes
                         store_special_classes(result_dict, crisis)
@@ -420,9 +427,9 @@ def put_objects(root):
                         # get the organization dictionary from result dict and put it in the datastore
                         organization    = result_dict.get('organization')
                         
-                        duplicate = checkDuplicate('organization', o['id'])
-                        if(duplicate != None):            # Need to Merge       
-                            organization = dsMerge('organization', duplicate, organization)
+#                        duplicate = checkDuplicate('organization', o['id'])
+#                        if(duplicate != None):            # Need to Merge
+#                            organization = dsMerge('organization', duplicate, organization)
                             
                         organization.put()
 
@@ -454,7 +461,7 @@ def put_objects(root):
         store_references(references)
         return True
     except BaseException as e:
-        print(e)
+        logging.exception(e)
         return False
 
 def checkDuplicate(dataType, idNum):

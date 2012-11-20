@@ -44,6 +44,7 @@ class ImportHandler(webapp2.RequestHandler):
                 if tree != 0:
                     data['valid'] = True
                     root = tree.getroot()
+                    # If we successfully loaded xml data into the datastore
                     if put_objects(root):
                         data['success'] = True
             else:
