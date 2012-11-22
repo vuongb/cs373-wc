@@ -3,7 +3,7 @@ from minixsv import pyxsval as xsv
 import xml.etree.ElementTree as ET
 from google.appengine.ext import db
 from Models import *
-from search import add_to_index, create_crisis_document
+from search import add_to_index, create_document
 import datetime
 import logging
 
@@ -134,7 +134,6 @@ def str_from_tree(etree):
 def parse_links(dict_value, type_as_string):
     assert type(type_as_string) == str
 
-    logging.info("type: %s", type_as_string)
     links = []
     for link in dict_value:
         link_data               = {}
@@ -244,7 +243,6 @@ def process_crisis(crisis):
     """
     assert type(crisis) == dict
 
-    logging.info(str(crisis))
     references  = {}
     result      = {}
     c           = {}
@@ -293,8 +291,7 @@ def process_crisis(crisis):
             else:
                 process_references(k, v, references)
 
-    crisis_instance     = Crisis(**c)
-    result['crisis']    = crisis_instance
+    result['crisis']    = c
     result['references']= references
     return result
 
@@ -305,7 +302,6 @@ def process_organization(organization):
     """
     assert type(organization) == dict
 
-    logging.info(str(organization))
     references  = {}
     result      = {}
     o           = {}
@@ -351,7 +347,6 @@ def process_person(person):
     """
     assert type(person) == dict
 
-    logging.info(str(person))
     references  = {}
     result      = {}
     p           = {}
@@ -396,17 +391,18 @@ def put_objects(root):
                         result_dict     = process_crisis(c)
 
                         # get the crisis dictionary from result dict and put it in the datastore
-                        crisis          = result_dict.get('crisis')
+                        crisis_dict     = result_dict.get('crisis')
+                        crisis          = Crisis(**crisis_dict)
 
                         # TODO: we don't need to check for duplicate Crises, right? Or must we account for a double import of the same instance?
 #                        duplicate = checkDuplicate('crisis', c['id'])
 #                        if(duplicate != None):            # Need to Merge
 #                            crisis = dsMerge('crisis', duplicate, crisis)
 
-#                        # Create a crisis search document
-#                        document = create_crisis_document(crisis)
-#                        # Add crisis object to search index
-#                        add_to_index(document)
+                        # Create a crisis search document
+                        document = create_document(crisis_dict)
+                        # Add crisis object to search index
+                        add_to_index(document)
 
                         crisis.put()
                         # TODO: clean up by returning a 'media' dict which we send to store_special_classes
@@ -419,7 +415,6 @@ def put_objects(root):
             elif i.tag == 'organizations':
                 # iterate through all organizations
                 d = etree_to_dict(i)
-                logging.info(d)
                 for o in d.get('organizations'):
                     if type(o) != str:
                         result_dict     = process_organization(o)
