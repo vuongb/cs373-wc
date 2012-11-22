@@ -22,10 +22,11 @@ from Models import Crisis, Organization, Person
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
 import os
+import urllib
 
 class ImportHandler(webapp2.RequestHandler):
-    """ Handles the interaction between the client and the server for importing xml files into our datastore
-    """
+    """ Handles the interaction between the client and the server for importing xml files into our datastore """
+    
     SCHEMA = 'WC2.xsd' # the schema that all xml is validated against
     PASSWORD = 'hunter2' # the password required for upload and import functionality
 
@@ -66,8 +67,7 @@ class ImportHandler(webapp2.RequestHandler):
 
 
 class ExportHandler(webapp2.RequestHandler):
-    """ Renders the page for exporting objects from our datastore to XML
-    """
+    """ Renders the page for exporting objects from our datastore to XML """
 
     def get(self):
         self.response.headers['Content-Type'] = "text/xml; charset=utf-8"
@@ -78,8 +78,7 @@ class ExportHandler(webapp2.RequestHandler):
 
 
 class IndexPage(webapp2.RequestHandler):
-    """ Renders the home page
-    """
+    """ Renders the home page """
 
     def get(self):
         crises = db.GqlQuery("SELECT * FROM Crisis")
@@ -164,6 +163,19 @@ class PersonPage(webapp2.RequestHandler):
         data['people_active'] = "active"
         self.response.out.write(template.render(path, data))
 
+class Search(webapp2.RequestHandler):
+    """ Handles a search request """
+
+    def post(self):
+        query = self.request.get('search_query')
+        if query:
+            self.redirect('/?' + urllib.urlencode(
+            #{'query': query}))
+            {'query': query.encode('utf-8')}))
+        else:
+            self.redirect('/')
+
+
 app = webapp2.WSGIApplication([
     ('/', IndexPage),
     ('/c/?', CrisisPage),
@@ -173,5 +185,6 @@ app = webapp2.WSGIApplication([
     ('/p/?', PersonPage),
     (r'/p/(.+)', PersonPage),
     ('/import', ImportHandler),
-    ('/export', ExportHandler)
+    ('/export', ExportHandler),
+    ('/search', Search)
 ], debug=True)
