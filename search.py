@@ -62,3 +62,45 @@ def build_crisis_fields(crisis):
         fields.append(search.TextField(name='resourcesNeeded',    value = str(crisis.get('us_resourcesNeeded'))))
     if crisis.get('us_waysToHelp'):
         fields.append(search.TextField(name='waysToHelp',         value = str(crisis.get('us_waysToHelp'))))
+    return fields
+
+
+def process_search_query(queryString):
+
+    results = find_documents(queryString)
+    if results:
+        for scored_document in results:
+            # process scored_document
+            for field in scored_document.fields:
+                if field.name == "name":
+                    return field.value
+    return "something went wrong"
+
+
+def find_documents(queryString):
+    assert type(queryString) == str
+
+    # construct the terms to search against
+    expr_list = [search.SortExpression(
+        expression='name',
+        default_value='',
+        direction=search.SortExpression.DESCENDING)]
+
+    # construct the sort options
+    sort_opts = search.SortOptions(
+        expressions=expr_list)
+
+    # construct the options for returned query
+    query_options = search.QueryOptions(
+        limit           = 3,
+        sort_options    = sort_opts,
+        returned_fields = ['name'])
+
+    query_obj = search.Query(query_string=queryString, options=query_options)
+
+    # For debugging purposes, lists index schemas
+    for index in search.get_indexes(fetch_schema=True):
+        logging.info("index %s", index.name)
+        logging.info("schema: %s", index.schema)
+
+    return search.Index(name=_INDEX_NAME).search(query=query_obj)

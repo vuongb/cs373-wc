@@ -19,14 +19,16 @@ from importer import get_tree_and_validate, str_from_tree, put_objects
 import logging
 import exporter
 from Models import Crisis, Organization, Person
+from search import process_search_query
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
 import os
 import urllib
+from urlparse import urlparse, parse_qs
 
 class ImportHandler(webapp2.RequestHandler):
     """ Handles the interaction between the client and the server for importing xml files into our datastore """
-    
+
     SCHEMA = 'WC2.xsd' # the schema that all xml is validated against
     PASSWORD = 'hunter2' # the password required for upload and import functionality
 
@@ -81,15 +83,27 @@ class IndexPage(webapp2.RequestHandler):
     """ Renders the home page """
 
     def get(self):
-        crises = db.GqlQuery("SELECT * FROM Crisis")
-        organizations = db.GqlQuery("SELECT * FROM Organization")
-        people = db.GqlQuery("SELECT * FROM Person")
+
+        search_results = {}
+
+        # Parse out the search query (if any)
+        uri     = urlparse(self.request.uri)
+        query   = ''
+        if uri.query:
+            query = parse_qs(uri.query)
+            query = query['query'][0]
+            search_results = process_search_query(query)
+
+        crises          = db.GqlQuery("SELECT * FROM Crisis")
+        organizations   = db.GqlQuery("SELECT * FROM Organization")
+        people          = db.GqlQuery("SELECT * FROM Person")
         data = {
-            'title': "Home",
-            'crises': crises,
-            'organizations': organizations,
-            'people': people,
-            'home_active': "active"
+            'title'         : "Home",
+            'crises'        : crises,
+            'organizations' : organizations,
+            'people'        : people,
+            'home_active'   : "active",
+            'search_results': search_results
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
         self.response.out.write(template.render(path, data))
