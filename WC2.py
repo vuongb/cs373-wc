@@ -88,7 +88,6 @@ class IndexPage(webapp2.RequestHandler):
 
         # Parse out the search query (if any)
         uri     = urlparse(self.request.uri)
-        query   = ''
         if uri.query:
             query = parse_qs(uri.query)
             query = query['query'][0]

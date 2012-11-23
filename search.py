@@ -65,16 +65,74 @@ def build_crisis_fields(crisis):
     return fields
 
 
+# TODO: See Piazza post @134. Because of checking for empty values, this method calls .get() twice for each attribute. Inefficient.
+def build_organization_fields(organization):
+    fields = []
+    if organization.get('us_name'):
+        fields.append(search.TextField(name='name',             value = organization.get('us_name')))
+    if organization.get('us_alternateNames'):
+        fields.append(search.TextField(name='alternate_names',  value = organization.get('us_alternateNames')))
+    if organization.get('us_type'):
+        fields.append(search.TextField(name='type',             value = organization.get('us_type')))
+    if organization.get('us_description'):
+        fields.append(search.TextField(name='description',      value = organization.get('us_description')))
+    if organization.get('us_city'):
+        fields.append(search.TextField(name='city',             value = organization.get('us_city')))
+    if organization.get('us_state'):
+        fields.append(search.TextField(name='state',            value = organization.get('us_state')))
+    if organization.get('us_country'):
+        fields.append(search.TextField(name='country',          value = organization.get('us_country')))
+    if organization.get('us_latitude') and organization.get('us_longitude'):
+        fields.append(search.GeoField(name='place',             value = search.GeoPoint(organization.get('us_latitude'), organization.get('us_longitude'))))
+    if organization.get('us_address'):
+        fields.append(search.TextField(name='address',          value = organization.get('us_address')))
+    if organization.get('us_email'):
+        fields.append(search.TextField(name='email',            value = organization.get('us_email')))
+    if organization.get('us_phone'):
+        fields.append(search.TextField(name='phone',            value = organization.get('us_phone')))
+
+
+# TODO: See Piazza post @134. Because of checking for empty values, this method calls .get() twice for each attribute. Inefficient.
+def build_person_fields(person):
+    fields = []
+    if person.get('us_name'):
+        fields.append(search.TextField(name='name',             value = person.get('us_name')))
+    if person.get('us_alternateNames'):
+        fields.append(search.TextField(name='alternate_names',  value = person.get('us_alternateNames')))
+    if person.get('us_type'):
+        fields.append(search.TextField(name='type',             value = person.get('us_type')))
+    if person.get('us_description'):
+        fields.append(search.TextField(name='description',      value = person.get('us_description')))
+    if person.get('us_city'):
+        fields.append(search.TextField(name='city',             value = person.get('us_city')))
+    if person.get('us_state'):
+        fields.append(search.TextField(name='state',            value = person.get('us_state')))
+    if person.get('us_country'):
+        fields.append(search.TextField(name='country',          value = person.get('us_country')))
+    if person.get('us_latitude') and person.get('us_longitude'):
+        fields.append(search.GeoField(name='place',             value = search.GeoPoint(person.get('us_latitude'), person.get('us_longitude'))))
+        
+
 def process_search_query(queryString):
 
-    results = find_documents(queryString)
-    if results:
-        for scored_document in results:
+    search_results = {}
+
+    document_results = find_documents(queryString)
+
+    if document_results:
+        for scored_document in document_results:
             # process scored_document
-            for field in scored_document.fields:
+            for index, field in enumerate(scored_document.fields):
+                # Right now, only include names as results
                 if field.name == "name":
-                    return field.value
-    return "something went wrong"
+                    name = field.value
+                    # if there's a snippet, include it
+                    if scored_document.expressions[index]:
+                        snippet = scored_document.expressions[index].value
+                    else:
+                        snippet = ""
+                    search_results[name] = snippet
+    return search_results
 
 
 def find_documents(queryString):
@@ -94,7 +152,8 @@ def find_documents(queryString):
     query_options = search.QueryOptions(
         limit           = 3,
         sort_options    = sort_opts,
-        returned_fields = ['name'])
+        returned_fields = ['name'],
+        snippeted_fields= ['description'])
 
     query_obj = search.Query(query_string=queryString, options=query_options)
 

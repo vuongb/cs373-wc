@@ -335,9 +335,8 @@ def process_organization(organization):
             else:
                 process_references(k, v, references)
 
-    org_instance            = Organization(**o)
-    result['organization']  = org_instance
-    result['references']= references
+    result['organization']  = o
+    result['references']    = references
     return result
 
 
@@ -367,9 +366,8 @@ def process_person(person):
             else:
                 process_references(k, v, references)
 
-    person_instance     = Person(**p)
-    result['person']    = person_instance
-    result['references']= references
+    result['person']        = p
+    result['references']    = references
     return result
 
 def put_objects(root):
@@ -420,11 +418,17 @@ def put_objects(root):
                         result_dict     = process_organization(o)
 
                         # get the organization dictionary from result dict and put it in the datastore
-                        organization    = result_dict.get('organization')
+                        organization_dict     = result_dict.get('organization')
+                        organization          = Organization(**organization_dict)
                         
 #                        duplicate = checkDuplicate('organization', o['id'])
 #                        if(duplicate != None):            # Need to Merge
 #                            organization = dsMerge('organization', duplicate, organization)
+
+                        # Create a organization search document
+                        document = create_document(organization_dict)
+                        # Add organization object to search index
+                        add_to_index(document)
                             
                         organization.put()
 
@@ -443,7 +447,14 @@ def put_objects(root):
                         result_dict     = process_person(p)
 
                         # get the person dictionary from result dict and put it in the datastore
-                        person          = result_dict.get('person')
+                        person_dict     = result_dict.get('person')
+                        person          = Person(**person_dict)
+
+                        # Create a person search document
+                        document = create_document(person_dict)
+                        # Add person object to search index
+                        add_to_index(document)
+
                         person.put()
 
                         # TODO: clean up by returning a 'media' dict which we send to store_special_classes
