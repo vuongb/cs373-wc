@@ -181,7 +181,7 @@ class SearchHandler(webapp2.RequestHandler):
     def get(self):
         """ Parses query and redirects to Search Results page"""
 
-        search_results  = []
+        search_results  = {}
         data            = dict()
         valid           = True
 
@@ -204,12 +204,11 @@ class SearchHandler(webapp2.RequestHandler):
                         gql_results = db.GqlQuery("SELECT * FROM Organization WHERE us_id =:1", id)
                     assert gql_results
 
-                # built a list of type [ [result name, result url, [descriptions] ] ]
-                for object in gql_results:
-                    object_properties = (object.getUrl(),
-                                         descriptions)
-                    if object.us_name not in search_results:
-                        search_results[object.us_name] = object_properties
+                    # built a list of type [ [result name, result url, [descriptions] ] ]
+                    for object in gql_results:
+                        object_properties = (object.getUrl(), descriptions)
+                        if object.us_name not in search_results:
+                            search_results[object.us_name] = object_properties
 
             data = {
                 'title'         : "Search Results",
