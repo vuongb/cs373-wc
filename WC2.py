@@ -182,6 +182,7 @@ class SearchHandler(webapp2.RequestHandler):
         """ Parses query and redirects to Search Results page"""
 
         search_results = []
+        data = dict()
 
         # Parse out the search query (if any)
         uri     = urlparse(self.request.uri)
@@ -208,11 +209,11 @@ class SearchHandler(webapp2.RequestHandler):
                     object_properties.append(descriptions)
                     search_results.append(object_properties)
 
-        data = {
-            'title'         : "Search Results",
-            'search_terms'  : query,
-            'search_results': search_results
-        }
+            data = {
+                'title'         : "Search Results",
+                'search_terms'  : query,
+                'search_results': search_results
+            }
         path = os.path.join(os.path.dirname(__file__), 'templates/search.html')
         self.response.out.write(template.render(path, data))
 
