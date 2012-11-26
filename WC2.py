@@ -181,7 +181,7 @@ class SearchHandler(webapp2.RequestHandler):
     def get(self):
         """ Parses query and redirects to Search Results page"""
 
-        search_results = []
+        search_results = {}
         data = dict()
 
         # Parse out the search query (if any)
@@ -203,11 +203,10 @@ class SearchHandler(webapp2.RequestHandler):
 
                 # built a list of type [ [result name, result url, [descriptions] ] ]
                 for object in gql_results:
-                    object_properties = []
-                    object_properties.append(object.us_name)
-                    object_properties.append(object.getUrl())
-                    object_properties.append(descriptions)
-                    search_results.append(object_properties)
+                    object_properties = (object.getUrl(),
+                                         descriptions)
+                    if object.us_name not in search_results:
+                        search_results[object.us_name] = object_properties
 
             data = {
                 'title'         : "Search Results",
