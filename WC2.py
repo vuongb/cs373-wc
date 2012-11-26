@@ -216,7 +216,7 @@ class SearchHandler(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'templates/search.html')
         self.response.out.write(template.render(path, data))
 
-def query_distinct(self, s):
+def query_distinct(s):
     """
     performs a google query and filters non-unique results by us_name
     s is a str representation of a query to execute
