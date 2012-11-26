@@ -3,7 +3,7 @@
 {% block title %}{{ title }} -{% endblock %}
 
 {% block content %}
-    <h2>Search Results</h2>
+    <h2>Search Results for "{{ search_terms }}"</h2>
     {% if search_results %}
         {% for result in search_results %}
             <a href="{{ result.1 }}">{{ result.0 }}</a>

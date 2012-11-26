@@ -223,6 +223,7 @@ class SearchHandler(webapp2.RequestHandler):
 
         data = {
             'title'         : "Search Results",
+            'search_terms'  : query,
             'search_results': search_results
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/search.html')
