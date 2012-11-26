@@ -1,0 +1,13 @@
+body{
+    background-color: #222;
+}
+
+#header-image{
+    float: left;
+    margin-right: 10px;
+    width: 85px;
+}
+
+#searchbar{
+    margin: 0;
+}

@@ -92,7 +92,7 @@ class IndexPage(webapp2.RequestHandler):
             'people': people,
             'home_active': "active"
         }
-        path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+        path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
         self.response.out.write(template.render(path, data))
 
 
@@ -100,7 +100,7 @@ class CrisisPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id == None:
             #Base Crisis Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+            path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
             #Get list of crises and print links
             crises = db.GqlQuery("SELECT * FROM Crisis")
             data = {
@@ -123,7 +123,7 @@ class OrganizationPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id == None:
             #Base Organization Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+            path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
             #Get list of organizations and print links
             organizations = db.GqlQuery("SELECT * FROM Organization")
             data = {
@@ -146,7 +146,7 @@ class PersonPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id == None:
             #Base Person Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
+            path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
             #Get list of crises and print links
             people = db.GqlQuery("SELECT * FROM Person")
             data = {

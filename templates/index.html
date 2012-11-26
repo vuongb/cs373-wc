@@ -9,26 +9,36 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="masthead">
-            <h1>World Crises Database</h1>
-            <ul class="nav nav-tabs">
-                <li class="{{home_active}}"><a href="/">Home</a></li>
-                <li class="{{crises_active}}"><a href="/c">Crises</a></li>
-                <li class="{{organizations_active}}"><a href="/o">Organizations</a></li>
-                <li class="{{people_active}}"><a href="/p">People</a></li>
-                <li class="{{import_active}}"><a href="/import">Import</a></li>
-                <li><a target="_blank" href="/export">Export</a></li>
-                <li><a target="_blank" href="/test">Tests</a></li>
-                <li>
-                    <form action="/search" method="post">
-                      <input type="text" name="search_query" rows="1" cols="60"></input>
-                      <input type="submit" value="Search"/>
-                    </form>
-                </li>
-            </ul>
+            <div>
+                <img id="header-image" src="https://github.com/images/error/angry_unicorn.png">
+                <h1 id="header-text">World Crises Database</h1>
+                <h5>Presented by: Team UNICORN STEROIDS</h5>
+                <ul class="nav nav-tabs">
+                    <li class="{{home_active}}"><a href="/">Home</a></li>
+                    <li class="{{crises_active}}"><a href="/c">Crises</a></li>
+                    <li class="{{organizations_active}}"><a href="/o">Organizations</a></li>
+                    <li class="{{people_active}}"><a href="/p">People</a></li>
+                    <li class="{{import_active}}"><a href="/import">Import</a></li>
+                    <li><a target="_blank" href="/export">Export</a></li>
+                    <li><a target="_blank" href="/test">Tests</a></li>
+                    <li>
+                        <form id="searchbar" action="/search" method="post">
+                          <input type="text" name="search_query" rows="1" cols="60"></input>
+                          <input type="submit" value="Search"/>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="welcome">
+            Welcome to The World Crisis Database, hosted and presented by Team Unicorn Steroids.<br/>
+            Here you will find resources and information for crises worldwide, as well as similar data for associated organizations and humanitarians.
+
         </div>
         <div class="row">
             <div class="span12">
