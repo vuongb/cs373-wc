@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from google.appengine.ext import db
 
 def get_location(model_class, id):
@@ -33,11 +34,17 @@ def distinct(l):
     #todo: How important is order? Should this be rewritten to return a list honoring order of l?
     return set(l)
 
-def merge(id, model_class):
-    query = db.GqlQuery("SELECT * FROM " + model_class.__name__ + " WHERE us_id = " + str(id))
+def merge(id, model_str):
+    """
+    creates a dictionary containing all the merged data for a model of a specific id to render to html
+    id is the id of the object to render
+    model_class is the class of the object, ie Organization, Person, Crisis
+    returns a dictionary with attribute names as keys and string results as values
+    """
+    query = db.GqlQuery("SELECT * FROM " + model_str + " WHERE us_id = :1", id)
 
     ## result dict
-    result = {'ID': str(id)}
+    result = OrderedDict({'ID': str(id)})
 
     ## merge common data
     for obj in query:
@@ -49,26 +56,43 @@ def merge(id, model_class):
             result['Name'] = obj.us_name
 
         if 'Alternate Names' in result:
-            for name in obj.us_alternateName.split(','):
-                if name not in result['Alternate Names']:
-                    result['Alternate Names'] += ', ' + name
+            if obj.us_alternateNames is not None:
+                for name in obj.us_alternateNames.split(','):
+                    if name not in result['Alternate Names']:
+                        result['Alternate Names'] += ', ' + name
         else:
             result['Alternate Names'] = obj.us_name
 
         if 'Kind' in result:
-            pass
+            for kind in obj.us_type.split(','):
+                if kind not in result['Kind']:
+                    result['Kind'] += ', ' + kind
         else:
-            result['Kind'] = obj.us_kind
+            result['Kind'] = obj.us_type
 
         if 'Description' in result:
-            pass
+            for descrip in obj.us_description.split('\n'):
+                if descrip not in result['Description']:
+                    result['Description'] += '\n \n' + descrip
         else:
             result['Description'] = obj.us_description
 
-        merge_location(result, obj)
+        if 'Location' in result:
+            merge_location(result, obj)
+        else:
+            result['Location'] = [(obj.us_city, obj.us_state, obj.us_country)]
+
+    return result
 
 def merge_location(result, obj):
-    pass
+    for location in result['Location']:
+        if location[0] == obj.us_city:
+            return
+        elif obj.us_city is None and obj.us_country == location[2]:
+            return
+
+    result['Location'].append((obj.us_city, obj.us_state, obj.us_country))
+
 
 def merge_org(id):
     pass
