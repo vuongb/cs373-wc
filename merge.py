@@ -35,9 +35,9 @@ def distinct(l):
 
 
 # Test code
-print(distinct([
-    ("New York", "NY", "12345", None, None),
-    ("New York", "NY", "12345", None, None),
-    ("Austin", "TX", "78705", None, None),
-    ("Austin", "TX", "78705", 1, 2)
-]))
+#print(distinct([
+#    ("New York", "NY", "12345", None, None),
+#    ("New York", "NY", "12345", None, None),
+#    ("Austin", "TX", "78705", None, None),
+#    ("Austin", "TX", "78705", 1, 2)
+#]))
