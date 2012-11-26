@@ -44,24 +44,24 @@
                     {% if crises %}
                         <h2>Crises</h2>
                         <ul>
-                        {% for crisis in crises %}
-                            <li><a href="{{ crisis.getUrl }}">{{ crisis.us_name }}</a></li>
+                        {% for crisis in crises.items %}
+                            <li><a href="{{ crisis.1 }}">{{ crisis.0 }}</a></li>
                         {% endfor %}
                         </ul>
                     {% endif %}
                     {% if organizations %}
                         <h2>Organizations</h2>
                         <ul>
-                        {% for organization in organizations %}
-                            <li><a href="{{ organization.getUrl }}">{{ organization.us_name }}</a></li>
+                        {% for organization in organizations.items %}
+                            <li><a href="{{ organization.1 }}">{{ organization.0 }}</a></li>
                         {% endfor %}
                         </ul>
                     {% endif %}
                     {% if people %}
                         <h2>People</h2>
                         <ul>
-                        {% for person in people %}
-                            <li><a href="{{ person.getUrl }}">{{ person.us_name }}</a></li>
+                        {% for person in people.items %}
+                            <li><a href="{{ person.1 }}">{{ person.0 }}</a></li>
                         {% endfor %}
                         </ul>
                     {% endif %}

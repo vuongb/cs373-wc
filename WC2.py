@@ -19,6 +19,7 @@ from importer import get_tree_and_validate, str_from_tree, put_objects
 import logging
 import exporter
 from Models import Crisis, Organization, Person
+from merge import distinct
 from search import process_search_query
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
@@ -93,9 +94,14 @@ class IndexPage(webapp2.RequestHandler):
             query = query['query'][0]
             search_results = process_search_query(query)
 
-        crises          = db.GqlQuery("SELECT * FROM Crisis")
-        organizations   = db.GqlQuery("SELECT * FROM Organization")
-        people          = db.GqlQuery("SELECT * FROM Person")
+        crises_query          = db.GqlQuery("SELECT * FROM Crisis")
+        orgs_query            = db.GqlQuery("SELECT * FROM Organization")
+        people_query          = db.GqlQuery("SELECT * FROM Person")
+
+        crises = self.filter_distinct("SELECT * FROM Crisis")
+        organizations = self.filter_distinct("SELECT * FROM Organization")
+        people = self.filter_distinct("SELECT * FROM Person")
+
         data = {
             'title'         : "Home",
             'crises'        : crises,
@@ -107,6 +113,18 @@ class IndexPage(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
         self.response.out.write(template.render(path, data))
 
+    def filter_distinct(self, s):
+        """
+        performs a google query and filters non-unique results by us_name
+        s is a str representation of a query to execute
+        returns a list with us_name as key and the URL as value
+        """
+        query = db.GqlQuery(s)
+        result = dict()
+        for i in query:
+            if i.us_name not in result:
+                result[i.us_name] = i.getUrl()
+        return result
 
 class CrisisPage(webapp2.RequestHandler):
     def get(self, id=None):
