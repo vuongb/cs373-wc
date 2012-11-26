@@ -3,22 +3,26 @@
 {% block title %}{{ title }} -{% endblock %}
 
 {% block content %}
-    <h2>Search Results for "{{ search_terms }}"</h2>
-    {% if search_results %}
-        {% for result in search_results %}
-            <a href="{{ result.1 }}">{{ result.0 }}</a>
-            <br />
-            {% autoescape off %}
-                <ul>
-                {% for description in result.2 %}
-                    <li>{{ description }}</li>
-                {% endfor %}
-                </ul>
-            {% endautoescape %}
-            <br />
-        {% endfor %}
+    {% if search_terms %}
+        {% if search_results %}
+            <h2>Search Results for "{{ search_terms }}"</h2>
+            {% for result in search_results %}
+                <a href="{{ result.1 }}">{{ result.0 }}</a>
+                <br />
+                {% autoescape off %}
+                    <ul>
+                    {% for description in result.2 %}
+                        <li>{{ description }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endautoescape %}
+                <br />
+            {% endfor %}
+        {% else %}
+            <h2>No results found for "{{ search_terms }}"</h2>
+        {% endif %}
     {% else %}
-        No results found
+        <h2>No search terms entered</h2>
     {% endif %}
 
 {% endblock content %}
