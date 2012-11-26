@@ -207,9 +207,9 @@ class SearchHandler(webapp2.RequestHandler):
             # get the model associated with the search result
             for id, descriptions in query_results.items():
                 gql_results = db.GqlQuery("SELECT * FROM Crisis WHERE us_id =:1", id)
-                if not gql_results:
+                if gql_results.count() < 1:
                     gql_results = db.GqlQuery("SELECT * FROM Person WHERE us_id =:1", id)
-                elif not gql_results:
+                if gql_results.count() < 1:
                     gql_results = db.GqlQuery("SELECT * FROM Organization WHERE us_id =:1", id)
                 assert gql_results
 

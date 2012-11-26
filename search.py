@@ -89,7 +89,7 @@ def build_person_fields(person):
     fields.append(search.TextField(name='country',          value = person.us_country))
     if person.us_latitude and person.us_longitude:
         fields.append(search.GeoField(name='place',             value = search.GeoPoint(person.get('us_latitude'), person.get('us_longitude'))))
-        
+    return fields
 
 def process_search_query(queryString):
 
@@ -121,7 +121,7 @@ def find_documents(queryString):
 
     # construct the options for returned query
     query_options = search.QueryOptions(
-        limit           = 3,
+        limit           = 100,
         sort_options    = sort_opts,
         returned_fields = ['name'],
         snippeted_fields= ['description'])
