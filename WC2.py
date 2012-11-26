@@ -84,9 +84,9 @@ class IndexPage(webapp2.RequestHandler):
     """ Renders the home page """
 
     def get(self):
-        crises = self.filter_distinct("SELECT * FROM Crisis")
-        organizations = self.filter_distinct("SELECT * FROM Organization")
-        people = self.filter_distinct("SELECT * FROM Person")
+        crises          = query_distinct("SELECT * FROM Crisis")
+        organizations   = query_distinct("SELECT * FROM Organization")
+        people          = query_distinct("SELECT * FROM Person")
 
         data = {
             'title'         : "Home",
@@ -98,26 +98,13 @@ class IndexPage(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
         self.response.out.write(template.render(path, data))
 
-    def filter_distinct(self, s):
-        """
-        performs a google query and filters non-unique results by us_name
-        s is a str representation of a query to execute
-        returns a list with us_name as key and the URL as value
-        """
-        query = db.GqlQuery(s)
-        result = dict()
-        for i in query:
-            if i.us_name not in result:
-                result[i.us_name] = i.getUrl()
-        return result
-
 class CrisisPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id is None:
             #Base Crisis Page
             path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
             #Get list of crises and print links
-            crises = db.GqlQuery("SELECT * FROM Crisis")
+            crises = query_distinct("SELECT * FROM Crisis")
             data = {
                 'title': "Crises",
                 'crises': crises
@@ -140,7 +127,7 @@ class OrganizationPage(webapp2.RequestHandler):
             #Base Organization Page
             path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
             #Get list of organizations and print links
-            organizations = db.GqlQuery("SELECT * FROM Organization")
+            organizations = query_distinct("SELECT * FROM Organization")
             data = {
                 'title': "Organizations",
                 'organizations': organizations
@@ -163,7 +150,7 @@ class PersonPage(webapp2.RequestHandler):
             #Base Person Page
             path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
             #Get list of crises and print links
-            people = db.GqlQuery("SELECT * FROM Person")
+            people = query_distinct("SELECT * FROM Person")
             data = {
                 'title': "People",
                 'people': people
@@ -228,6 +215,19 @@ class SearchHandler(webapp2.RequestHandler):
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/search.html')
         self.response.out.write(template.render(path, data))
+
+def query_distinct(self, s):
+    """
+    performs a google query and filters non-unique results by us_name
+    s is a str representation of a query to execute
+    returns a list with us_name as key and the URL as value
+    """
+    query = db.GqlQuery(s)
+    result = dict()
+    for i in query:
+        if i.us_name not in result:
+            result[i.us_name] = i.getUrl()
+    return result
 
 
 app = webapp2.WSGIApplication([
