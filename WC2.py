@@ -84,16 +84,6 @@ class IndexPage(webapp2.RequestHandler):
     """ Renders the home page """
 
     def get(self):
-
-        search_results = {}
-
-        # Parse out the search query (if any)
-        uri     = urlparse(self.request.uri)
-        if uri.query:
-            query = parse_qs(uri.query)
-            query = query['query'][0]
-            search_results = process_search_query(query)
-
         crises = self.filter_distinct("SELECT * FROM Crisis")
         organizations = self.filter_distinct("SELECT * FROM Organization")
         people = self.filter_distinct("SELECT * FROM Person")
@@ -103,8 +93,7 @@ class IndexPage(webapp2.RequestHandler):
             'crises'        : crises,
             'organizations' : organizations,
             'people'        : people,
-            'home_active'   : "active",
-            'search_results': search_results
+            'home_active'   : "active"
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/index.phtml')
         self.response.out.write(template.render(path, data))
@@ -190,17 +179,54 @@ class PersonPage(webapp2.RequestHandler):
         data['people_active'] = "active"
         self.response.out.write(template.render(path, data))
 
-class Search(webapp2.RequestHandler):
-    """ Handles a search request """
+class SearchHandler(webapp2.RequestHandler):
 
     def post(self):
+        """ Handles a search request and redirects to results """
         query = self.request.get('search_query')
         if query:
-            self.redirect('/?' + urllib.urlencode(
+            self.redirect('/search?' + urllib.urlencode(
             #{'query': query}))
             {'query': query.encode('utf-8')}))
         else:
             self.redirect('/')
+
+    def get(self):
+        """ Parses query and redirects to Search Results page"""
+
+        search_results = []
+
+        # Parse out the search query (if any)
+        uri     = urlparse(self.request.uri)
+        if uri.query:
+            query = parse_qs(uri.query)
+            query = query['query'][0]
+            query_results = process_search_query(query)
+
+            # TODO: THIS IS SLOW
+            # get the model associated with the search result
+            for id, descriptions in query_results.items():
+                gql_results = db.GqlQuery("SELECT * FROM Crisis WHERE us_id =:1", id)
+                if not gql_results:
+                    gql_results = db.GqlQuery("SELECT * FROM Person WHERE us_id =:1", id)
+                elif not gql_results:
+                    gql_results = db.GqlQuery("SELECT * FROM Organization WHERE us_id =:1", id)
+                assert gql_results
+
+                # built a list of type [ [result name, result url, [descriptions] ] ]
+                for object in gql_results:
+                    object_properties = []
+                    object_properties.append(object.us_name)
+                    object_properties.append(object.getUrl())
+                    object_properties.append(descriptions)
+                    search_results.append(object_properties)
+
+        data = {
+            'title'         : "Search Results",
+            'search_results': search_results
+        }
+        path = os.path.join(os.path.dirname(__file__), 'templates/search.html')
+        self.response.out.write(template.render(path, data))
 
 
 app = webapp2.WSGIApplication([
@@ -213,5 +239,5 @@ app = webapp2.WSGIApplication([
     (r'/p/(.+)', PersonPage),
     ('/import', ImportHandler),
     ('/export', ExportHandler),
-    ('/search', Search)
+    ('/search', SearchHandler)
 ], debug=True)

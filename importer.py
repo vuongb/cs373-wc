@@ -398,7 +398,7 @@ def put_objects(root):
 #                            crisis = dsMerge('crisis', duplicate, crisis)
 
                         # Create a crisis search document
-                        document = create_document(crisis_dict)
+                        document = create_document(crisis)
                         # Add crisis object to search index
                         add_to_index(document)
 
@@ -426,7 +426,7 @@ def put_objects(root):
 #                            organization = dsMerge('organization', duplicate, organization)
 
                         # Create a organization search document
-                        document = create_document(organization_dict)
+                        document = create_document(organization)
                         # Add organization object to search index
                         add_to_index(document)
                             
@@ -451,7 +451,7 @@ def put_objects(root):
                         person          = Person(**person_dict)
 
                         # Create a person search document
-                        document = create_document(person_dict)
+                        document = create_document(person)
                         # Add person object to search index
                         add_to_index(document)
 

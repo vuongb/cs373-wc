@@ -68,7 +68,7 @@ class Crisis(db.Model):
     us_humanInjured    = db.IntegerProperty()
     us_humanDisplaced  = db.IntegerProperty()
 
-    us_resoucesNeeded  = db.StringListProperty(required=True)
+    us_resourcesNeeded  = db.StringListProperty(required=True)
     us_waysToHelp      = db.StringListProperty(required=True)
 
     def getUrl(self):
