@@ -1,6 +1,6 @@
 <world-crises>
 	<crises>
-		<crisis id="c-breast_cancer">
+		<crisis id="breast-cancer">
 			<name>Breast Cancer</name>
 			<kind>Cancer</kind>
 			<description>Breast cancer is a type of cancer originating from breast tissue, most commonly from the inner lining of milk ducts or the lobules that supply the ducts with milk.</description>
@@ -79,7 +79,7 @@
 				<way>support</way>
 			</ways-to-help>
 		</crisis>
-		<crisis id="c-libyanwar">
+		<crisis id="libyan-war">
 			<name>Libyan Civil War</name>
 			<kind>Civil War</kind>
 			<description>The Libyan civil war, also referred to as the Libyan revolution[38] was an armed conflict in the North African state of Libya, fought between forces loyal to Colonel Muammar Gaddafi and those seeking to oust his government. The war was preceded by protests in Benghazi beginning on Tuesday, 15 February 2011, which led to clashes with security forces that fired on the crowd. The protests escalated into a rebellion that spread across the country.</description>
@@ -134,7 +134,7 @@
 				<way>donations</way>
 			</ways-to-help>
 		</crisis>
-		<crisis id="c-mexicandrugwar">
+		<crisis id="mexican-drug-war">
 			<name>Mexican Drug War</name>
 			<kind>Armed Conflict</kind>
 			<description>The Mexican Drug War is an ongoing armed conflict taking place among rival drug cartels fighting each other for regional control, and Mexican government forces seeking to combat drug trafficking. However, the government's principal goal has been to put down the drug-related violence that was raging between different rival drug cartels in Mexico before any military intervention was made. In addition, the Mexican government has claimed that their primary focus is on dismantling the powerful drug cartels, rather than on drug trafficking prevention, which is left to U.S. functionaries.</description>
@@ -185,7 +185,7 @@
 			</ways-to-help>
 			<person-refs>p-felipecalderon</person-refs>
 		</crisis>
-		<crisis id="c-sudanese-conflict">
+		<crisis id="sudanese-conflict">
 			<name>Sudanese Conflict</name>
 			<kind>Cancer</kind>
 			<description>The conflict began when many groups took up arms, accusing the Sudanese government of oppressing non-Arab Sudanese.  It is also refered to as the "War in Darfur" and "Darfur Genocide."</description>
@@ -258,7 +258,7 @@
 		</crisis>
 	</crises>
 	<organizations>
-		<organization id="o-doctorswithoutborders">
+		<organization id="doctors-without-borders">
 			<name>Doctors Without Borders</name>
 			<kind>Secular humanitarian-aid NGO</kind>
 			<description>Formed during the Nigerian Cival War of 1967 to 1970. A number of French doctors volunteered to work in hospitals and feeding centers. The doctors were attacked by the Nigerian army and witnessed innocent civilians
@@ -303,7 +303,7 @@
 			<email>office-ldn@london.msf.org</email>
 			<phone>212-679-6800</phone>
 		</organization>
-		<organization id="o-friendsoftoms">
+		<organization id="friends-of-toms">
 			<name>Friends of Toms</name>
 			<kind>Non-profit Charity</kind>
 			<description>Founded in 2006, TOMS shoes was founded on the idea that for every pair sold, a new pair would be given to a child in need.</description>
@@ -354,7 +354,7 @@
 				</external-link>
 			</external-links>
 		</organization>
-		<organization id="o-invisiblechildren">
+		<organization id="invisible-children">
 			<name>Invisible Children</name>
 			<kind>Non-profit Organization</kind>
 			<description>Invisible Children, Inc. is an organization founded in 2004 to bring awareness to the activities of the Lord's Resistance Army (LRA) in Central Africa, and its leader, Joseph Kony. Specifically, the group seeks to put an end to the practices of the LRA which include abductions and abuse of children, and forcing them to serve as soldiers. To this end, Invisible Children urges the United States government to take military action in the central region of Africa.</description>
@@ -397,7 +397,7 @@
 				</external-link>
 			</external-links>
 		</organization>
-		<organization id="o-oxfam">
+		<organization id="oxfam">
 			<name>Oxfam</name>
 			<kind>International Confederation of Organizations</kind>
 			<description>The Oxford Committee for Famine Relief was founded in 1896 to relieve famine in Greece during WWII. in 1942, the name changed to Oxfam. Oxfam International was founded in 1995 by a group of independent non-governmental organizations</description>
@@ -435,7 +435,7 @@
 		</organization>
 	</organizations>
 	<people>
-		<person id="p-algore">
+		<person id="al-gore">
 			<name>Albert Arnold Gore, Jr.</name>
 			<alternate-names>Al Gore</alternate-names>
 			<kind>Former US Vice President</kind>
@@ -474,7 +474,7 @@
 				</external-link>
 			</external-links>
 		</person>
-		<person id="p-bono">
+		<person id="paul-hewson">
 			<name>Paul David Hewson</name>
 			<alternate-names>Bono</alternate-names>
 			<kind>Singer</kind>
@@ -526,7 +526,7 @@
 			</external-links>
 			<organization-refs>o-oxfam</organization-refs>
 		</person>
-		<person id="p-felipecalderon">
+		<person id="felipe-calderon">
 			<name>Felipe Calderon</name>
 			<kind>President</kind>
 			<description>Felipe de Jesus Calderon Hinojosa is the current President of Mexico. He assumed office on December 1, 2006, and was elected for a single six-year term through 2012. He is a member of the Partido Accion Nacional (PAN), one of the three major Mexican political parties. Felipe Calderon passed several reforms during his presidency, breaking through some of the gridlock faced since Mexico's transition to democracy. He would like to be remembered for building hospitals, fortifying education and legal institutions, and his environmental initiatives, but would likely be remembered for the drug war.</description>
@@ -568,7 +568,7 @@
 			</external-links>
 			<crisis-refs>c-mexicandrugwar</crisis-refs>
 		</person>
-		<person id="p-jimmycarter">
+		<person id="jimmy-carter">
 			<name>Jimmy Carter</name>
 			<kind>President</kind>
 			<description>In 1982, Jimmy Carter became University Distinguished Professor at Emory University in Atlanta, Ga., and founded The Carter Center. Actively guided by President Carter, the nonpartisan and nonprofit Center addresses national and international issues of public policy. Carter Center fellows, associates, and staff join with President Carter in efforts to resolve conflict, promote democracy, protect human rights, and prevent disease and other afflictions.Through the Global 2000 programs, the Center advances health and agriculture in the developing world. It has spearheaded the international effort to eradicate Guinea worm disease, which will be the second disease in history to be eliminated. On Dec.10, 2002, the Norwegian Nobel Committee awarded the Nobel Peace Prize for 2002 to Mr. Carter "for his decades of untiring effort to find peaceful solutions to international conflicts, to advance democracy and human rights, and to promote economic and social development."</description>

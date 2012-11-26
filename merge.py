@@ -33,6 +33,48 @@ def distinct(l):
     #todo: How important is order? Should this be rewritten to return a list honoring order of l?
     return set(l)
 
+def merge(id, model_class):
+    query = db.GqlQuery("SELECT * FROM " + model_class.__name__ + " WHERE us_id = " + str(id))
+
+    ## result dict
+    result = {'ID': str(id)}
+
+    ## merge common data
+    for obj in query:
+        if 'Name' in result:
+            if 'Alternate Names' in result:
+                if obj.us_name not in result['Alternate Names'].split(','):
+                    result['Alternate Names'] += ', ' + obj.us_name
+        else:
+            result['Name'] = obj.us_name
+
+        if 'Alternate Names' in result:
+            for name in obj.us_alternateName.split(','):
+                if name not in result['Alternate Names']:
+                    result['Alternate Names'] += ', ' + name
+        else:
+            result['Alternate Names'] = obj.us_name
+
+        if 'Kind' in result:
+            pass
+        else:
+            result['Kind'] = obj.us_kind
+
+        if 'Description' in result:
+            pass
+        else:
+            result['Description'] = obj.us_description
+
+        merge_location(result, obj)
+
+def merge_location(result, obj):
+    pass
+
+def merge_org(id):
+    pass
+
+def merge_person(id):
+    pass
 
 # Test code
 #print(distinct([

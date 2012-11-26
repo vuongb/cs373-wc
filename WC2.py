@@ -204,13 +204,12 @@ class SearchHandler(webapp2.RequestHandler):
                         gql_results = db.GqlQuery("SELECT * FROM Organization WHERE us_id =:1", id)
                     assert gql_results
 
-                    # built a list of type [ [result name, result url, [descriptions] ] ]
-                    for object in gql_results:
-                        object_properties = []
-                        object_properties.append(object.us_name)
-                        object_properties.append(object.getUrl())
-                        object_properties.append(descriptions)
-                        search_results.append(object_properties)
+                # built a list of type [ [result name, result url, [descriptions] ] ]
+                for object in gql_results:
+                    object_properties = (object.getUrl(),
+                                         descriptions)
+                    if object.us_name not in search_results:
+                        search_results[object.us_name] = object_properties
 
             data = {
                 'title'         : "Search Results",

@@ -3,18 +3,19 @@
 {% block title %}{{ title }} -{% endblock %}
 
 {% block content %}
+<<<<<<< HEAD
     {% if not valid %}
         Something in your search was invalid. Please consult <a href="https://developers.google.com/appengine/docs/python/search/overview#Simple_Queries">the Google search documentation</a> for performing a proper search.
     {% else %}
         {% if search_terms %}
             {% if search_results %}
                 <h2>Search Results for: "{{ search_terms }}"</h2>
-                {% for result in search_results %}
-                    <a href="{{ result.1 }}">{{ result.0 }}</a>
+                {% for result in search_results.items %}
+                    <a href="{{ result.1.0 }}">{{ result.0 }}</a>
                     <br />
                     {% autoescape off %}
                         <ul>
-                        {% for description in result.2 %}
+                        {% for description in result.1.1 %}
                             <li>{{ description }}</li>
                         {% endfor %}
                         </ul>
