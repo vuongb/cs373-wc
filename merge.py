@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from google.appengine.ext import db
 
 def get_location(model_class, id):
@@ -43,7 +44,7 @@ def merge(id, model_str):
     query = db.GqlQuery("SELECT * FROM " + model_str + " WHERE us_id = :1", id)
 
     ## result dict
-    result = {'ID': str(id)}
+    result = OrderedDict({'ID': str(id)})
 
     ## merge common data
     for obj in query:
