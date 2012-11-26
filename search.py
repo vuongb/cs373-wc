@@ -93,9 +93,14 @@ def build_person_fields(person):
 
 def process_search_query(queryString):
 
-    search_results = {}
+    search_results      = {}
 
-    document_results = find_documents(queryString)
+    # Catch search errors (such as single double-quotes or illegal characters)
+    try:
+        document_results = find_documents(queryString)
+    except Exception as e:
+        logging.error(e)
+        return "invalid"
 
     if document_results:
         for scored_document in document_results:

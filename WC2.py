@@ -181,38 +181,42 @@ class SearchHandler(webapp2.RequestHandler):
     def get(self):
         """ Parses query and redirects to Search Results page"""
 
-        search_results = []
-        data = dict()
+        search_results  = []
+        data            = dict()
+        valid           = True
 
         # Parse out the search query (if any)
-        uri     = urlparse(self.request.uri)
+        uri = urlparse(self.request.uri)
         if uri.query:
             query = parse_qs(uri.query)
             query = query['query'][0]
             query_results = process_search_query(query)
 
-            # TODO: THIS IS SLOW
-            # get the model associated with the search result
-            for id, descriptions in query_results.items():
-                gql_results = db.GqlQuery("SELECT * FROM Crisis WHERE us_id =:1", id)
-                if gql_results.count() < 1:
-                    gql_results = db.GqlQuery("SELECT * FROM Person WHERE us_id =:1", id)
-                if gql_results.count() < 1:
-                    gql_results = db.GqlQuery("SELECT * FROM Organization WHERE us_id =:1", id)
-                assert gql_results
+            if query_results == "invalid":
+                valid = False
+            else:
+                # get the model associated with the search result
+                for id, descriptions in query_results.items():
+                    gql_results = db.GqlQuery("SELECT * FROM Crisis WHERE us_id =:1", id)
+                    if gql_results.count() < 1:
+                        gql_results = db.GqlQuery("SELECT * FROM Person WHERE us_id =:1", id)
+                    if gql_results.count() < 1:
+                        gql_results = db.GqlQuery("SELECT * FROM Organization WHERE us_id =:1", id)
+                    assert gql_results
 
-                # built a list of type [ [result name, result url, [descriptions] ] ]
-                for object in gql_results:
-                    object_properties = []
-                    object_properties.append(object.us_name)
-                    object_properties.append(object.getUrl())
-                    object_properties.append(descriptions)
-                    search_results.append(object_properties)
+                    # built a list of type [ [result name, result url, [descriptions] ] ]
+                    for object in gql_results:
+                        object_properties = []
+                        object_properties.append(object.us_name)
+                        object_properties.append(object.getUrl())
+                        object_properties.append(descriptions)
+                        search_results.append(object_properties)
 
             data = {
                 'title'         : "Search Results",
                 'search_terms'  : query,
-                'search_results': search_results
+                'search_results': search_results,
+                'valid'         : valid
             }
         path = os.path.join(os.path.dirname(__file__), 'templates/search.html')
         self.response.out.write(template.render(path, data))
