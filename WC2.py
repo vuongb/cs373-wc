@@ -94,10 +94,6 @@ class IndexPage(webapp2.RequestHandler):
             query = query['query'][0]
             search_results = process_search_query(query)
 
-        crises_query          = db.GqlQuery("SELECT * FROM Crisis")
-        orgs_query            = db.GqlQuery("SELECT * FROM Organization")
-        people_query          = db.GqlQuery("SELECT * FROM Person")
-
         crises = self.filter_distinct("SELECT * FROM Crisis")
         organizations = self.filter_distinct("SELECT * FROM Organization")
         people = self.filter_distinct("SELECT * FROM Person")
