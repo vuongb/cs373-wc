@@ -2,19 +2,31 @@ body{
     background-image: url('../img/gray_jean.png');
 }
 
+.container{
+    box-shadow: 0 4px 22px 1px;
+    background-color: white;
+}
+
+.masthead{
+    background-color: #222;
+}
+
 .nav{
     margin-bottom: 0;
 }
 
-.nav-tabs{
-    border-bottom: 1px solid #222;
+/*.nav-tabs{*/
+    /*border-bottom: 1px solid #222;*/
+/*}*/
+
+li a:hover{
+    color: white;
 }
 
 #content-box{
     background: white;
-    border: 1px solid #222;
+    /*border: 1px solid #222;*/
     border-top: none;
-    box-shadow: 0 4px 22px 1px;
     width: 1170px;
 }
 
@@ -29,7 +41,7 @@ body{
 }
 
 #welcome{
-    margin: -10px 50px 25px 50px;
+    margin: 0 50px 25px 50px;
 }
 
 #subtypes{
