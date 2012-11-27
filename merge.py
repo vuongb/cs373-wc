@@ -85,9 +85,13 @@ def merge(id, model_str):
             result['Location'] = [(obj.us_city, obj.us_state, obj.us_country)]
 
         if 'Citations' in result:
-            result['Citations'] += list(set(result['Citations'] + list(obj.citations)))
+            for citation in obj.citations:
+                if citation.source not in result['Citations']:
+                    result['Citations'][citation.source] = citation.description
         else:
-            result['Citations'] = list(obj.citations)
+            result['Citations'] = dict()
+            for citation in obj.citations:
+                result['Citations'][citation.source] = citation.description
 
     #render location
     result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "<br />" for i in result['Location'])
@@ -95,13 +99,11 @@ def merge(id, model_str):
     #render citations
     if 'Citations' in result:
         citations = "<ul>"
-        for i in xrange(len(result['Citations'])):
-            citation = "<li>" + \
-                       "<a target=\"_blank\" href=\"" +\
-                            result['Citations'][i].source + "\">" + result['Citations'][i].description + '</a>' + \
-                       "</li>"
-            if citation not in citations:
-                citations += citation
+        for citation in result['Citations']:
+            citations += "<li>" +\
+                 "<a target=\"_blank\" href=\"" + citation + "\">" +\
+                  result['Citations'][citation] + '</a>' + \
+                         "</li>"
         citations += "</ul>"
         result['Citations'] = citations
 
