@@ -44,10 +44,12 @@ def merge(id, model_str):
     query = db.GqlQuery("SELECT * FROM " + model_str + " WHERE us_id = :1", id)
 
     ## result dict
-    result = OrderedDict({'ID': str(id)})
+    result = OrderedDict()
 
     ## merge common data
     for obj in query:
+#        if 'ID' not in result:
+#            result['ID'] = obj.id
         if 'Name' in result:
             if 'Alternate Names' in result:
                 if obj.us_name not in result['Alternate Names'].split(','):
@@ -82,6 +84,8 @@ def merge(id, model_str):
         else:
             result['Location'] = [(obj.us_city, obj.us_state, obj.us_country)]
 
+    #render location
+    result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "; " for i in result['Location'])
     return result
 
 def merge_location(result, obj):
