@@ -1,0 +1,24 @@
+
+#group-header{
+    height: 200px;
+    margin: 25px 50px 25px 50px;
+}
+
+#group-text{
+    float: left
+}
+
+#group-image{
+    float: right;
+    height: 150px;
+    margin-right: 75px;
+    width: 150px;
+}
+
+#group-listing{
+    margin: auto;
+    text-align: center;
+}
+    #group-listing ul{
+        margin: auto;
+    }

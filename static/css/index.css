@@ -14,6 +14,7 @@ body{
     background: white;
     border: 1px solid #222;
     border-top: none;
+    box-shadow: 0 4px 22px 1px;
     width: 1170px;
 }
 
@@ -28,20 +29,20 @@ body{
 }
 
 #welcome{
-    margin-bottom: 20px;
+    margin: -10px 50px 25px 50px;
 }
 
 #subtypes{
     border-top: 1px solid #222;
-    height: 420px;
+    height: 460px;
 }
 
 .subtype{
     float: left;
-    margin: auto;
+    height: 375px;
+    margin: 40px 0 40px 0;
     text-align: center;
     width: 33%;
-    height: 100%;
 }
     .subtype-image{
         width: 210px;

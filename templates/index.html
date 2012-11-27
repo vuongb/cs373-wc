@@ -10,6 +10,7 @@
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/static/css/index.css" rel="stylesheet">
+    <link href="/static/css/group.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -35,34 +36,40 @@
         <div id="content-box">
             {% block content %}
                 <div id="welcome">
-                    <img id="header-image" src="https://github.com/images/error/angry_unicorn.png">
+                    <img id="header-image" src="/static/img/angry_unicorn.png">
                     <h1 id="header-text">World Crises Database</h1>
                     <h5>Presented by: Team UNICORN STEROIDS</h5>
                     A resource for information on crises worldwide, as well as similar data for associated organizations and humanitarians.
 
                 </div>
                 <div id="subtypes">
-                    <div id="crises" class="subtype">
-                        <h2>Crises</h2>
-                        <img class="subtype-image" src="../static/img/stock_crisis.jpg">
-                        <div class="subtype-text">
-                            With the growth in population and rise of technology, new situations and conflicts present themselves everyday. In addition, natural disasters still persist and we often have no defense. Here you will find up-to-date information on international crises.
+                    <a href="/c">
+                        <div id="crises" class="subtype">
+                            <h2>Crises</h2>
+                            <img class="subtype-image" src="../static/img/stock_crisis.jpg">
+                            <div class="subtype-text">
+                                With the growth in population and rise of technology, new situations and conflicts present themselves everyday. In addition, natural disasters still persist and we often have no defense. Here you will find up-to-date information on international crises.
+                            </div>
                         </div>
-                    </div>
-                    <div id="organizations" class="subtype">
-                        <h2>Organizations</h2>
-                        <img class="subtype-image" src="../static/img/stock_organization.jpg">
-                        <div class="subtype-text">
-                            Everyone wants to save the world, but sometimes we can't do it alone. These organizations provide a connection between resources and aid, allowing help to arrive efficiently and fast. Here you will find details on associated organizations.
+                    </a>
+                    <a href="/o">
+                        <div id="organizations" class="subtype">
+                            <h2>Organizations</h2>
+                            <img class="subtype-image" src="../static/img/stock_organization.jpg">
+                            <div class="subtype-text">
+                                Everyone wants to save the world, but sometimes we can't do it alone. These organizations provide a connection between resources and aid, allowing help to arrive efficiently and fast. Here you will find details on associated organizations.
+                            </div>
                         </div>
-                    </div>
-                    <div id="people" class="subtype">
-                        <h2>People</h2>
-                        <img class="subtype-image" src="../static/img/stock_humanitarian.jpg">
-                        <div class="subtype-text">
-                            Some people truly stand out, and when those people focus their efforts on helping the world, they can acheive great things. Here you will find descriptions of people related to world crises and what impact they've had.
+                    </a>
+                    <a href="/p">
+                        <div id="people" class="subtype">
+                            <h2>People</h2>
+                            <img class="subtype-image" src="../static/img/stock_humanitarian.jpg">
+                            <div class="subtype-text">
+                                Some people truly stand out, and when those people focus their efforts on helping the world, they can acheive great things. Here you will find descriptions of people related to world crises and what impact they've had.
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% endblock content %}
             <!--<p>-->

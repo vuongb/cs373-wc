@@ -102,12 +102,12 @@ class CrisisPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id is None:
             #Base Crisis Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
+            path = os.path.join(os.path.dirname(__file__), 'templates/group-crises.html')
             #Get list of crises and print links
             crises = query_distinct("SELECT * FROM Crisis")
             data = {
                 'title': "Crises",
-                'crises': crises
+                'group': crises
             }
         else:
             #Individual Crisis Page
@@ -125,12 +125,12 @@ class OrganizationPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id is None:
             #Base Organization Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
+            path = os.path.join(os.path.dirname(__file__), 'templates/group-organizations.html')
             #Get list of organizations and print links
             organizations = query_distinct("SELECT * FROM Organization")
             data = {
                 'title': "Organizations",
-                'organizations': organizations
+                'group': organizations
             }
         else:
             #Individual Organization Page
@@ -148,12 +148,12 @@ class PersonPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id is None:
             #Base Person Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
+            path = os.path.join(os.path.dirname(__file__), 'templates/group-people.html')
             #Get list of crises and print links
             people = query_distinct("SELECT * FROM Person")
             data = {
                 'title': "People",
-                'people': people
+                'group': people
             }
         else:
             #Individual Person Page

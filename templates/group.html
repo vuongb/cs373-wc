@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+        <div id="group-header">
+            <div id="group-text">
+                <h2>{{ title }}</h2>
+                <div id="group-description">
+                    {% block group_description %}{% endblock group_description %}
+                </div>
+            </div>
+            <div id="group-image">
+                {% block group_image %}{% endblock group_image %}
+            </div>
+        </div>
+        <div id="group-listing">
+            <ul>
+                {% for object in group.items %}
+                {{object.us_name}}
+                    <li><a href="{{ object.1 }}">{{ object.0 }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+{% endblock content %}
