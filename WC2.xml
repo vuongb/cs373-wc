@@ -183,7 +183,7 @@
 				<way>Increased aid to Mexico</way>
 				<way>Reduced Drug and Weapon smuggling</way>
 			</ways-to-help>
-			<person-refs>p-felipecalderon</person-refs>
+			<person-refs>felipe-calderon</person-refs>
 		</crisis>
 		<crisis id="sudanese-conflict">
 			<name>Sudanese Conflict</name>
@@ -431,7 +431,7 @@
 			</citations>
 			<external-links>
 			</external-links>
-			<person-refs>p-bono</person-refs>
+			<person-refs>paul-hewson</person-refs>
 		</organization>
 	</organizations>
 	<people>
@@ -524,7 +524,7 @@
 					<description>Bono on tonic.com</description>
 				</external-link>
 			</external-links>
-			<organization-refs>o-oxfam</organization-refs>
+			<organization-refs>oxfam</organization-refs>
 		</person>
 		<person id="felipe-calderon">
 			<name>Felipe Calderon</name>
@@ -566,7 +566,7 @@
 					<description>BBC article</description>
 				</external-link>
 			</external-links>
-			<crisis-refs>c-mexicandrugwar</crisis-refs>
+			<crisis-refs>mexican-drug-war</crisis-refs>
 		</person>
 		<person id="jimmy-carter">
 			<name>Jimmy Carter</name>
