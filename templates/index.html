@@ -43,30 +43,36 @@
         <div class="row">
             <div class="span12">
                 {% block content %}
-                    {% if crises %}
-                        <h2>Crises</h2>
-                        <ul>
-                        {% for crisis in crises.items %}
-                            <li><a href="{{ crisis.1 }}">{{ crisis.0 }}</a></li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {% if organizations %}
-                        <h2>Organizations</h2>
-                        <ul>
-                        {% for organization in organizations.items %}
-                            <li><a href="{{ organization.1 }}">{{ organization.0 }}</a></li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {% if people %}
-                        <h2>People</h2>
-                        <ul>
-                        {% for person in people.items %}
-                            <li><a href="{{ person.1 }}">{{ person.0 }}</a></li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
+                    <div id="crises">
+                        {% if crises %}
+                            <h2>Crises</h2>
+                            <ul>
+                            {% for crisis in crises.items %}
+                                <li><a href="{{ crisis.1 }}">{{ crisis.0 }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div id="organizations">
+                        {% if organizations %}
+                            <h2>Organizations</h2>
+                            <ul>
+                            {% for organization in organizations.items %}
+                                <li><a href="{{ organization.1 }}">{{ organization.0 }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div id="people">
+                        {% if people %}
+                            <h2>People</h2>
+                            <ul>
+                            {% for person in people.items %}
+                                <li><a href="{{ person.1 }}">{{ person.0 }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
                 {% endblock content %}
                 <p>
                     <small>

@@ -52,7 +52,7 @@ class ImportHandler(webapp2.RequestHandler):
                 data['login'] = False
         else:
             data['login_failure'] = True
-        path = os.path.join(os.path.dirname(__file__), 'templates/import.phtml')
+        path = os.path.join(os.path.dirname(__file__), 'templates/import.html')
         self.response.out.write(template.render(path, data))
 
     def get(self):
@@ -61,7 +61,7 @@ class ImportHandler(webapp2.RequestHandler):
             'title': "Import",
             'import_active': "active"
         }
-        path = os.path.join(os.path.dirname(__file__), 'templates/import.phtml')
+        path = os.path.join(os.path.dirname(__file__), 'templates/import.html')
         self.response.out.write(template.render(path, data))
 
 
@@ -109,7 +109,7 @@ class CrisisPage(webapp2.RequestHandler):
             }
         else:
             #Individual Crisis Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/crisis.phtml')
+            path = os.path.join(os.path.dirname(__file__), 'templates/crisis.html')
             crisis = Crisis.get_by_id(int(id))
             #Get individual crisis object from id
             data = {
@@ -132,7 +132,7 @@ class OrganizationPage(webapp2.RequestHandler):
             }
         else:
             #Individual Organization Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/organization.phtml')
+            path = os.path.join(os.path.dirname(__file__), 'templates/organization.html')
             organization = Organization.get_by_id(int(id))
             #Get individual organization object from id
             data = {
@@ -155,7 +155,7 @@ class PersonPage(webapp2.RequestHandler):
             }
         else:
             #Individual Person Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/person.phtml')
+            path = os.path.join(os.path.dirname(__file__), 'templates/person.html')
             person = Person.get_by_id(int(id))
             #Get individual crisis object from id
             data = {
