@@ -1,6 +1,9 @@
 body{
-    background-color: #222;
     background-image: url('../img/debut_dark.png');
+}
+
+.container{
+    width: 100%;
 }
 
 #header-image{
@@ -11,4 +14,13 @@ body{
 
 #searchbar{
     margin: 0;
+}
+
+#crises{
+}
+
+#organizations{
+}
+
+#people{
 }
