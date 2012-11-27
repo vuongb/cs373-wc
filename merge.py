@@ -52,7 +52,7 @@ def merge(id, model_str):
 #            result['ID'] = obj.id
         if 'Name' in result:
             if 'Alternate Names' in result:
-                if obj.us_name not in result['Alternate Names'].split(','):
+                if result['Alternate Names'] and obj.us_name not in result['Alternate Names'].split(','):
                     result['Alternate Names'] += ', ' + obj.us_name
         else:
             result['Name'] = obj.us_name
@@ -63,7 +63,7 @@ def merge(id, model_str):
                     if name not in result['Alternate Names']:
                         result['Alternate Names'] += ', ' + name
         else:
-            result['Alternate Names'] = obj.us_name
+            result['Alternate Names'] = obj.us_alternateNames
 
         if 'Kind' in result:
             for kind in obj.us_type.split(','):
@@ -75,7 +75,7 @@ def merge(id, model_str):
         if 'Description' in result:
             for descrip in obj.us_description.split('\n'):
                 if descrip not in result['Description']:
-                    result['Description'] += '\n \n' + descrip
+                    result['Description'] += '<p /><p />' + descrip
         else:
             result['Description'] = obj.us_description
 
@@ -84,8 +84,27 @@ def merge(id, model_str):
         else:
             result['Location'] = [(obj.us_city, obj.us_state, obj.us_country)]
 
+        if 'Citations' in result:
+            result['Citations'] += list(set(result['Citations'] + list(obj.citations)))
+        else:
+            result['Citations'] = list(obj.citations)
+
     #render location
-    result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "; " for i in result['Location'])
+    result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "<br />" for i in result['Location'])
+
+    #render citations
+    if 'Citations' in result:
+        citations = "<ul>"
+        for i in xrange(len(result['Citations'])):
+            citation = "<li>" + \
+                       "<a target=\"_blank\" href=\"" +\
+                            result['Citations'][i].source + "\">" + result['Citations'][i].description + '</a>' + \
+                       "</li>"
+            if citation not in citations:
+                citations += citation
+        citations += "</ul>"
+        result['Citations'] = citations
+
     return result
 
 def merge_location(result, obj):
