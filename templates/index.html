@@ -15,9 +15,6 @@
     <div class="container">
         <div class="masthead">
             <div>
-                <img id="header-image" src="https://github.com/images/error/angry_unicorn.png">
-                <h1 id="header-text">World Crises Database</h1>
-                <h5>Presented by: Team UNICORN STEROIDS</h5>
                 <ul class="nav nav-tabs">
                     <li class="{{home_active}}"><a href="/">Home</a></li>
                     <li class="{{crises_active}}"><a href="/c">Crises</a></li>
@@ -35,51 +32,44 @@
                 </ul>
             </div>
         </div>
-        <div id="welcome">
-            Welcome to The World Crisis Database, hosted and presented by Team Unicorn Steroids.<br/>
-            Here you will find resources and information for crises worldwide, as well as similar data for associated organizations and humanitarians.
+        <div id="content-box">
+            {% block content %}
+                <div id="welcome">
+                    <img id="header-image" src="https://github.com/images/error/angry_unicorn.png">
+                    <h1 id="header-text">World Crises Database</h1>
+                    <h5>Presented by: Team UNICORN STEROIDS</h5>
+                    A resource for information on crises worldwide, as well as similar data for associated organizations and humanitarians.
 
-        </div>
-        <div class="row">
-            <div class="span12">
-                {% block content %}
-                    <div id="crises">
-                        {% if crises %}
-                            <h2>Crises</h2>
-                            <ul>
-                            {% for crisis in crises.items %}
-                                <li><a href="{{ crisis.1 }}">{{ crisis.0 }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
+                </div>
+                <div id="subtypes">
+                    <div id="crises" class="subtype">
+                        <h2>Crises</h2>
+                        <img class="subtype-image" src="../static/img/stock_crisis.jpg">
+                        <div class="subtype-text">
+                            With the growth in population and rise of technology, new situations and conflicts present themselves everyday. In addition, natural disasters still persist and we often have no defense. Here you will find up-to-date information on international crises.
+                        </div>
                     </div>
-                    <div id="organizations">
-                        {% if organizations %}
-                            <h2>Organizations</h2>
-                            <ul>
-                            {% for organization in organizations.items %}
-                                <li><a href="{{ organization.1 }}">{{ organization.0 }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
+                    <div id="organizations" class="subtype">
+                        <h2>Organizations</h2>
+                        <img class="subtype-image" src="../static/img/stock_organization.jpg">
+                        <div class="subtype-text">
+                            Everyone wants to save the world, but sometimes we can't do it alone. These organizations provide a connection between resources and aid, allowing help to arrive efficiently and fast. Here you will find details on associated organizations.
+                        </div>
                     </div>
-                    <div id="people">
-                        {% if people %}
-                            <h2>People</h2>
-                            <ul>
-                            {% for person in people.items %}
-                                <li><a href="{{ person.1 }}">{{ person.0 }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        {% endif %}
+                    <div id="people" class="subtype">
+                        <h2>People</h2>
+                        <img class="subtype-image" src="../static/img/stock_humanitarian.jpg">
+                        <div class="subtype-text">
+                            Some people truly stand out, and when those people focus their efforts on helping the world, they can acheive great things. Here you will find descriptions of people related to world crises and what impact they've had.
+                        </div>
                     </div>
-                {% endblock content %}
-                <p>
-                    <small>
-                        Created by Team Unicorn Steroids : Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman
-                    </small>
-                </p>
-            </div>
+                </div>
+            {% endblock content %}
+            <!--<p>-->
+                <!--<small>-->
+                    <!--Created by Team Unicorn Steroids : Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman-->
+                <!--</small>-->
+            <!--</p>-->
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>

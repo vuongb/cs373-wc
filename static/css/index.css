@@ -1,9 +1,20 @@
 body{
-    background-image: url('../img/debut_dark.png');
+    background-image: url('../img/gray_jean.png');
 }
 
-.container{
-    width: 100%;
+.nav{
+    margin-bottom: 0;
+}
+
+.nav-tabs{
+    border-bottom: 1px solid #222;
+}
+
+#content-box{
+    background: white;
+    border: 1px solid #222;
+    border-top: none;
+    width: 1170px;
 }
 
 #header-image{
@@ -16,11 +27,35 @@ body{
     margin: 0;
 }
 
-#crises{
+#welcome{
+    margin-bottom: 20px;
 }
 
-#organizations{
+#subtypes{
+    border-top: 1px solid #222;
+    height: 420px;
 }
 
-#people{
+.subtype{
+    float: left;
+    margin: auto;
+    text-align: center;
+    width: 33%;
+    height: 100%;
 }
+    .subtype-image{
+        width: 210px;
+        height: 215px;
+    }
+
+    .subtype-text{
+        margin: 10px 10px 0 10px;
+    }
+
+    #organizations{
+        border-left: 1px solid #222;
+    }
+
+    #people{
+        border-left: 1px solid #222;
+    }
