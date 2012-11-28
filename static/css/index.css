@@ -2,9 +2,13 @@ body{
     background-image: url('../img/gray_jean.png');
 }
 
+a{
+    color: #CC5500;
+}
+
 .container{
     box-shadow: 0 4px 22px 1px;
-    background-color: white;
+    background-color: #E7E5FA;
 }
 
 .masthead{
@@ -24,7 +28,7 @@ li a:hover{
 }
 
 #content-box{
-    background: white;
+    /*background: white;*/
     /*border: 1px solid #222;*/
     border-top: none;
     width: 1170px;
@@ -49,7 +53,12 @@ li a:hover{
     height: 460px;
 }
 
+#subtypes a:hover .subtype{
+    color: #CC5500;
+}
+
 .subtype{
+    color: #444;
     float: left;
     height: 375px;
     margin: 40px 0 40px 0;
