@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from google.appengine.ext import db
+from Models import Organization
 
 def get_location(model_class, id):
     """
@@ -38,7 +39,7 @@ def merge(id, model_str):
     """
     creates a dictionary containing all the merged data for a model of a specific id to render to html
     id is the id of the object to render
-    model_class is the class of the object, ie Organization, Person, Crisis
+    model_str is the class of the object, ie Organization, Person, Crisis
     returns a dictionary with attribute names as keys and string results as values
     """
     query = db.GqlQuery("SELECT * FROM " + model_str + " WHERE us_id = :1", id)
@@ -123,6 +124,11 @@ def merge(id, model_str):
         else:
             result['Social'] = list(obj.social)
 
+        if model_str == 'Organization':
+            merge_org(result, obj)
+        elif model_str == 'Person':
+            merge_person(result, obj)
+
         if 'Related Crises' in result:
             result['Related Crises'] += list(set(result['Related Crises'] + list(obj.crises)))
         elif hasattr(obj, 'crises'):
@@ -131,7 +137,7 @@ def merge(id, model_str):
         if 'Related Organizations' in result:
             result['Related Organizations'] += list(set(result['Related Organizations'] + list(obj.organizations)))
         elif hasattr(obj, 'organizations'):
-            result['Organizations'] = list(obj.organizations)
+            result['Related Organizations'] = list(obj.organizations)
 
         if 'Related People' in result:
             result['Related People'] += list(set(result['Related People'] + list(obj.people)))
@@ -232,6 +238,10 @@ def merge(id, model_str):
 
         result['Videos'] = videos
 
+    #Render proprietary data
+    if model_str == "Organization":
+        render_org(result)
+
     #Render Related Objects
     if 'Related Crises' in result:
         crises = "<ul>"
@@ -278,10 +288,20 @@ def merge_location(result, obj):
     result['Location'].append((obj.us_city, obj.us_state, obj.us_country))
 
 
-def merge_org(id):
-    pass
+def merge_org(result, obj):
+    if obj.us_phone:
+        if 'Phone Number' in result:
+            if obj.us_phone not in result['Phone Number']:
+                result['Phone Number'].append(obj.us_phone)
+        else:
+            result['Phone Number'] = [obj.us_phone]
 
-def merge_person(id):
+def render_org(result):
+    if 'Phone Number' in result:
+        # render Phone Number
+        result['Phone Number'] = ", ".join(filter(None, result['Phone Number']))
+
+def merge_person(result, id):
     pass
 
 # Test code
