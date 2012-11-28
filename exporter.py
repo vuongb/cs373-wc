@@ -234,7 +234,7 @@ def addCrisis(crisis):
   # resources needed is stored as a list in GAE
   # Export as: <resources-needed><resource>...</resource></resources-needed>
   resources = Element('resources-needed')
-  for resource in crisis.us_resoucesNeeded:
+  for resource in crisis.us_resourcesNeeded:
     resource_ele = Element('resource')
     resource_ele.text = resource
     resources.append(resource_ele)
