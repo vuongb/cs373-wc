@@ -89,6 +89,16 @@ def merge(id, model_str):
         else:
             result['Citations'] = list(obj.citations)
 
+        if 'Social' in result:
+            result['Social'] += list(set(result['Social'] + list(obj.social)))
+        else:
+            result['Social'] = list(obj.social)
+
+        if 'Videos' in result:
+            result['Videos'] += list(set(result['Videos'] + list(obj.videos)))
+        else:
+            result['Videos'] = list(obj.videos)
+
     #render location
     result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "<br />" for i in result['Location'])
 
@@ -105,6 +115,57 @@ def merge(id, model_str):
         citations += "</ul>"
         result['Citations'] = citations
 
+    #render Social
+    if 'Social' in result:
+        socials = "<ul class=\"unstyled\">"
+        for i in xrange(len(result['Social'])):
+            social = "<li>"
+            if result['Social'][i].social_type == 'facebook':
+                social += "<h5>Facebook</h5>" + \
+                              "<iframe src=\"//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2F" + \
+                              result['Social'][i].social_id + \
+                              "&amp;width=292&amp;height=395&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=true&amp;header=false&amp;appId=219013201490757\"scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:292px; height:395px;\" allowTransparency=\"true\"></iframe>"
+								
+            elif result['Social'][i].social_type == 'twitter':
+                social += "<h5>Twitter</h5><ul class=\"media-list\">"
+		for tweet in result['Social'][i].get_twitter_feed():
+                    assert type(tweet) == dict
+                    social += "<li class=\"media\">" + \
+                              "<a class=\"pull-left thumbnail\" href=\"http://www.twitter.com/" + \
+                              tweet['user']['screen_name'] + "\">" + \
+                              "<img class=\media-object\" style=\"width:50px\" src=\"" + \
+                              tweet['user']['profile_image_url'] + "\"></a>" + \
+                              "<div class=\"media-body\">" + \
+                              "<h4 class=\"media-heading\"><a href=\"http://www.twitter.com/" + \
+                              tweet['user']['screen_name'] + "\">@" + tweet['user']['screen_name'] + "</a></h4>" + \
+                              tweet['text'] + "</div></li>"
+		social += "</ul>"				
+            social += "</li>"
+            if social not in socials:
+                socials += social
+        socials += "</ul>"
+
+        result['Social'] = socials
+
+    #Render Videos
+    if 'Videos' in result:
+        videos = "<h3>Videos</h3><ul class=\"unstyled\""
+        for i in xrange(len(result['Videos'])):
+            video = "<li>"
+            if result['Videos'][i].video_type == 'youtube':
+                video += "<iframe width=\"560\" height=\"315\" src=\"http://www.youtube.com/embed/" + \
+                    result['Videos'][i].video_id + \
+                    "\" frameborder=\"0\" allowfullscreen></iframe>"
+            elif result['Videos'][i].video_type == 'vimeo':
+                video += "<iframe src=\"http://player.vimeo.com/video/" + \
+                              result['Videos'][i].video_id + \
+                              "\" width=\"500\" height=\"281\" frameborder=\"0\" allowFullScreen></iframe>"
+            video += "</li>"
+            if video not in videos:
+                videos += video
+        videos += "</ul>"
+
+        result['Videos'] = videos
     return result
 
 def merge_location(result, obj):
