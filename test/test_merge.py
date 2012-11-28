@@ -1,5 +1,7 @@
 import unittest
+from importer import get_tree_and_validate
 import merge
+
 
 class TestMerge(unittest.TestCase):
     def setUp(self):

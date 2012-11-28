@@ -1,5 +1,5 @@
 import unittest
-from WC2 import get_tree_and_validate
+from importer import get_tree_and_validate
 import importer
 
 class TestImport(unittest.TestCase):
