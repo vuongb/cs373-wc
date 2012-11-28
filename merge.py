@@ -221,7 +221,7 @@ def merge(id, model_str):
                 else:
                     if 'errors' in feed:
                         social += feed['errors'][0]['message']
-                    elif feed['results']:
+                    elif 'results' in feed:
                         for search_result in feed['results']:
                             logging.info("RESULT IS " + str(search_result))
                             social += "<li class=\"media\">" +\
