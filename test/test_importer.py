@@ -1,5 +1,5 @@
 import unittest
-from WC2 import get_tree_and_validate, etree_to_dict
+from WC2 import get_tree_and_validate
 import importer
 
 class TestImport(unittest.TestCase):
@@ -45,7 +45,7 @@ class TestImport(unittest.TestCase):
     def test_etree_to_dict(self):
         """ElementTree should fully convert to dict
         """
-        person_d = etree_to_dict(self.person_tree.getroot())
+        person_d = importer.etree_to_dict(self.person_tree.getroot())
         assert person_d == {
             'world-crises': [
                 {'crises': []},
