@@ -1,0 +1,84 @@
+<world-crises>
+    <crises/>
+    <organizations/>
+    <people>
+        <person id="p-algore">
+            <name>Bob TestPerson</name>
+            <alternate-names>TestDude</alternate-names>
+            <kind>TestPersonKind</kind>
+            <description>PersonTestDescription</description>
+            <location>
+                <city>Test Person City</city>
+                <country>United States</country>
+            </location>
+            <images>
+                <image>
+                    <source>http://www.testimage.com</source>
+                    <description>Description of TestImage</description>
+                </image>
+            </images>
+            <maps>
+                <map>
+                    <source>http://maps.google.com</source>
+                    <description>Map Description</description>
+                </map>
+            </maps>
+            <videos>
+                <youtube>r_8om4dsEmw</youtube>
+            </videos>
+            <social>
+                <twitter>@billgates</twitter>
+            </social>
+            <citations>
+                <citation>
+                    <source>http://en.wikipedia.org/wiki/Test</source>
+                    <description>Wiki</description>				</citation>
+            </citations>
+            <external-links>
+                <external-link>
+                    <source>http://www.zombo.com/</source>
+                    <description>Test Link</description>
+                </external-link>
+            </external-links>
+        </person>
+		<person id="p-algore">
+            <name>Al</name>
+            <alternate-names>Testy</alternate-names>
+            <kind>kind</kind>
+            <description>dsf;jads;fihas;dfh</description>
+            <location>
+                <city>City</city>
+                <country>States</country>
+            </location>
+            <images>
+                <image>
+                    <source>http://web.scott.k12.va.us/martha2/dmbtest.gif</source>
+                    <description>TestPic</description>
+                </image>
+            </images>
+            <maps>
+                <map>
+                    <source>https://www.google.com/maps?q=austin,+tx&hl=en&ll=30.26737,-97.742615&spn=0.681994,1.234589&sll=30.307761,-97.753401&sspn=0.681713,1.234589&hnear=Austin,+Travis,+Texas&t=m&z=10</source>
+                    <description>Austin Map<description>
+                </map>
+            </maps>
+            <videos>
+                <youtube>ikbEBp5BeCM</youtube>
+            </videos>
+            <social>
+                <twitter>@Oxfam</twitter>
+            </social>
+            <citations>
+                <citation>
+                    <source>http://en.wikipedia.org/wiki/Hello</source>
+                    <description>Wiki Hello</description>				</citation>
+            </citations>
+            <external-links>
+                <external-link>
+                    <source>http://www.yahoo.com/</source>
+                    <description>Yahoo</description>
+                </external-link>
+            </external-links>
+        </person>
+    </people>
+</world-crises>

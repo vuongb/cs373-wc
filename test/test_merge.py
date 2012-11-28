@@ -1,20 +1,21 @@
 import unittest
 from importer import get_tree_and_validate
-import importer
+import merge
 
-class TestImport(unittest.TestCase):
+
+class TestMerge(unittest.TestCase):
     def setUp(self):
         self.crisis_xml  = open('test/test_crisis.xml', 'r').read()
         self.invalid_xml = open('test/test_invalid.xml', 'r').read()
-        self.org_xml     = open('test/test_organization.xml', 'r').read()
-        self.person_xml  = open('test/test_person.xml', 'r').read()
-        self.wc2_xml     = open('WC2.xml', 'r').read()
+        self.org_xml     = open('test/test_merge_organization.xml', 'r').read()
+        self.person_xml  = open('test/test_merge_person.xml', 'r').read()
+        self.wc2_xml     = open('WC3.xml', 'r').read()
 
-        self.SCHEMA      = 'WC2.xsd'
+        self.SCHEMA      = 'WC3.xsd'
         self.crisis_tree = get_tree_and_validate(self.crisis_xml, open(self.SCHEMA, 'r').read())
         self.org_tree    = get_tree_and_validate(self.org_xml, open(self.SCHEMA, 'r').read())
         self.person_tree = get_tree_and_validate(self.person_xml, open(self.SCHEMA, 'r').read())
-        self.wc2_tree    = get_tree_and_validate(self.wc2_xml, open(self.SCHEMA, 'r').read())
+        self.wc3_tree    = get_tree_and_validate(self.wc2_xml, open(self.SCHEMA, 'r').read())
 
     ##################################################################################
 
