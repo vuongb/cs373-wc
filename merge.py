@@ -97,7 +97,7 @@ def merge(id, model_str):
             for citation in obj.citations:
                 if citation.source not in result['Citations']:
                     result['Citations'][citation.source] = citation.description
-        else:
+        elif obj.citations:
             result['Citations'] = dict()
             for citation in obj.citations:
                 result['Citations'][citation.source] = citation.description
@@ -106,7 +106,7 @@ def merge(id, model_str):
             for link in obj.external_links:
                 if link.source not in result['External Links']:
                     result['External Links'][link.source] = link.description
-        else:
+        elif obj.external_links:
             result['External Links'] = dict()
             for link in obj.external_links:
                 result['External Links'][link.source] = link.description
