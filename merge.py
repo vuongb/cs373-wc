@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from google.appengine.ext import db
+import logging
 from Models import Organization
 
 def get_location(model_class, id):
@@ -202,18 +203,57 @@ def merge(id, model_str):
 
             elif result['Social'][i].social_type == 'twitter':
                 social += "<h5>Twitter</h5><ul class=\"media-list\">"
-                for tweet in result['Social'][i].get_twitter_feed():
-                    assert type(tweet) == dict
-                    social += "<li class=\"media\">" +\
-                              "<a class=\"pull-left thumbnail\" href=\"http://www.twitter.com/" +\
-                              tweet['user']['screen_name'] + "\">" +\
-                              "<img class=\media-object\" style=\"width:50px\" src=\"" +\
-                              tweet['user']['profile_image_url'] + "\"></a>" +\
-                              "<div class=\"media-body\">" +\
-                              "<h4 class=\"media-heading\"><a href=\"http://www.twitter.com/" +\
-                              tweet['user']['screen_name'] + "\">@" + tweet['user']['screen_name'] + "</a></h4>" +\
-                              tweet['text'] + "</div></li>"
-                social += "</ul>"
+                feed = result['Social'][i].get_twitter_feed()
+                logging.info("FEED IS" + str(feed))
+                if type(feed) != dict:
+                    for tweet in feed:
+                        assert type(tweet) == dict
+                        social += "<li class=\"media\">" +\
+                                  "<a class=\"pull-left thumbnail\" href=\"http://www.twitter.com/" +\
+                                  tweet['user']['screen_name'] + "\">" +\
+                                  "<img class=\media-object\" style=\"width:50px\" src=\"" +\
+                                  tweet['user']['profile_image_url'] + "\"></a>" +\
+                                  "<div class=\"media-body\">" +\
+                                  "<h4 class=\"media-heading\"><a href=\"http://www.twitter.com/" +\
+                                  tweet['user']['screen_name'] + "\">@" + tweet['user']['screen_name'] + "</a></h4>" +\
+                                  tweet['text'] + "</div></li>"
+                    social += "</ul>"
+                else:
+                    if feed['results']:
+                        for search_result in feed['results']:
+                            logging.info("RESULT IS " + str(search_result))
+                            social += "<li class=\"media\">" +\
+                                      "<a class=\"pull-left thumbnail\" href=\"http://www.twitter.com/" +\
+                                      search_result['from_user_name'] + "\">" +\
+                                      "<img class=\media-object\" style=\"width:50px\" src=\"" +\
+                                      search_result['profile_image_url'] + "\"></a>" +\
+                                      "<div class=\"media-body\">" +\
+                                      "<h4 class=\"media-heading\"><a href=\"http://www.twitter.com/" +\
+                                      search_result['from_user'] + "\">@" + search_result['from_user'] + "</a></h4>" +\
+                                      search_result['text'] + "</div></li>"
+                    else:
+                        social += "No results found for \"" + feed['query'] + "\""
+                    social += "</ul>"
+
+#                        social += """
+#<div class="twitstatus_badge_container" id="twitstat_badge_165"></div>
+#<script type="text/javascript" src="http://twitstat.us/twitstat.us-min.js"></script>
+#<script type="text/javascript">
+#twitstat.badge.init({
+#    badge_container: "twitstat_badge_165",
+#    title: Results for """ + result['query'] + """,
+#    keywords: """ + result['query'] + """,
+#    max: 5,
+#    border_color: "#ffffff",
+#    header_background: "#302d2d",
+#    header_font_color: "#bda8ed",
+#    content_background_color: "#ffffff",
+#    content_font_color: "#333333",
+#    link_color: "#ffffff",
+#    width: 292
+#});
+#</script>"""
+
             social += "</li>"
             if social not in socials:
                 socials += social
