@@ -22,30 +22,4 @@
             {% endfor %}
         </tbody>
     </table>
-    <div class="related-objects">
-    {% if object.crises.count %}
-        <h3>Related Crises</h3>
-        <ul>
-        {% for a in object.crises %}
-            <li><a href="{{ a.crisis.getUrl }}">{{ a.crisis.us_name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    {% if object.organizations.count %}
-        <h3>Related Organizations</h3>
-        <ul>
-        {% for a in object.organizations %}
-            <li><a href="{{ a.organization.getUrl }}">{{ a.organization.us_name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    {% if object.people.count %}
-        <h3>Related People</h3>
-        <ul>
-        {% for a in object.people %}
-            <li><a href="{{ a.person.getUrl }}">{{ a.person.us_name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    </div>
 {% endblock %}

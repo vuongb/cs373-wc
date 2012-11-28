@@ -126,7 +126,8 @@ class CrisisPage(webapp2.RequestHandler):
             crisis = Crisis.get_by_id(int(id))
             #Get individual crisis object from id
             data = {
-                'object': crisis
+                'object': crisis,
+                'results': merge(crisis.us_id, "Crisis")
             }
         data['crises_active'] = "active"
         self.response.out.write(template.render(path, data))
@@ -195,7 +196,8 @@ class PersonPage(webapp2.RequestHandler):
             person = Person.get_by_id(int(id))
             #Get individual crisis object from id
             data = {
-                'object': person
+                'object': person,
+                'results': merge(person.us_id, "Person")
             }
         data['people_active'] = "active"
         self.response.out.write(template.render(path, data))
