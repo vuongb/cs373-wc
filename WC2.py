@@ -23,6 +23,7 @@ from merge import distinct, merge
 from search import process_search_query
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
+from google.appengine.api import taskqueue
 import os
 import urllib
 from urlparse import urlparse, parse_qs
@@ -50,6 +51,8 @@ class ImportHandler(webapp2.RequestHandler):
                     root = tree.getroot()
                     # If we successfully loaded xml data into the datastore
                     if put_objects(root):
+                        logging.info("Adding Task To Default Queue")
+                        taskqueue.add(url='/importtask')
                         data['success'] = True
             else:
                 data['no_file'] = True
@@ -68,7 +71,13 @@ class ImportHandler(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'templates/import.html')
         self.response.out.write(template.render(path, data))
 
-
+class ImportTaskHandler(webapp2.RequestHandler):
+    def post(self):
+        logging.info("Running Task Test123")
+        def test():
+            logging.info("Running Task Test456")
+        db.run_in_transaction(test)
+            
 class ExportHandler(webapp2.RequestHandler):
     """ Renders the page for exporting objects from our datastore to XML """
 
@@ -293,5 +302,6 @@ app = webapp2.WSGIApplication([
     ('/import', ImportHandler),
     ('/export', ExportHandler),
     ('/search', SearchHandler),
+    ('/importtask', ImportTaskHandler),
     ('/about', AboutPage)
 ], debug=True)
