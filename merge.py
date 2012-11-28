@@ -161,7 +161,8 @@ def merge(id, model_str):
 
 
     #render location
-    result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "<br />" for i in result['Location'])
+    if 'Location' in result:
+        result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "<br />" for i in result['Location'])
 
     #render citations
     if 'Citations' in result:
