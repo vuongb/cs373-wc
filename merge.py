@@ -88,6 +88,11 @@ def merge(id, model_str):
         else:
             result['Location'] = [(obj.us_city, obj.us_state, obj.us_country)]
 
+        if model_str == 'Organization':
+            merge_org(result, obj)
+        elif model_str == 'Crisis':
+            merge_crisis(result, obj)
+
         if 'Citations' in result:
             for citation in obj.citations:
                 if citation.source not in result['Citations']:
@@ -126,9 +131,6 @@ def merge(id, model_str):
             result['Social'] += list(set(result['Social'] + list(obj.social)))
         else:
             result['Social'] = list(obj.social)
-
-        if model_str == 'Organization':
-            merge_org(result, obj)
 
         if 'Related Crises' in result:
             for crisis in obj.crises:
@@ -329,3 +331,34 @@ def render_org(result):
         for contact in result['Contact Info']:
             contact_info += "<li>" + "<br />".join(map(str, filter(None, contact))) + "</li>"
         result['Contact Info'] = contact_info + "</ul>"
+
+def merge_crisis(result, obj):
+    if obj.us_startDate:
+        result['Start Date'] = str(obj.us_startDate)
+
+    if obj.us_endDate:
+        result['End Date'] = str(obj.us_endDate)
+
+    result['Economic Impact'] = str(obj.us_economicImpact)
+
+    if obj.us_humanDeaths:
+        result['Deaths'] = obj.us_humanDeaths
+
+    if obj.us_humanMissing:
+        result['Missing'] = obj.us_humanMissing
+
+    if obj.us_humanInjured:
+        result['Injured'] = obj.us_humanInjured
+
+    if obj.us_humanDisplaced:
+        result['Displaced'] = obj.us_humanDisplaced
+
+    resources_needed = []
+    for resource in obj.us_resourcesNeeded:
+        resources_needed.append(resource)
+    result['Resources Needed'] = ', '.join(resources_needed)
+
+    ways_to_help = []
+    for way in obj.us_waysToHelp:
+        ways_to_help.append(way)
+    result['Ways To Help'] = ', '.join(ways_to_help)
