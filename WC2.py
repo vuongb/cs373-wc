@@ -19,7 +19,7 @@ from importer import get_tree_and_validate, str_from_tree, put_objects
 import logging
 import exporter
 from Models import Crisis, Organization, Person
-from merge import distinct
+from merge import distinct, merge
 from search import process_search_query
 from google.appengine.ext import db
 from google.appengine.ext.webapp import template
@@ -138,7 +138,8 @@ class OrganizationPage(webapp2.RequestHandler):
             organization = Organization.get_by_id(int(id))
             #Get individual organization object from id
             data = {
-                'object': organization
+                'object': organization,
+                'results': merge(organization.us_id, "Organization")
             }
         data['organizations_active'] = "active"
         self.response.out.write(template.render(path, data))
