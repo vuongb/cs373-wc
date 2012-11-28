@@ -52,9 +52,11 @@ def merge(id, model_str):
 #        if 'ID' not in result:
 #            result['ID'] = obj.id
         if 'Name' in result:
-            if 'Alternate Names' in result:
-                if result['Alternate Names'] and obj.us_name not in result['Alternate Names'].split(','):
+            if 'Alternate Names' in result and result['Alternate Names']:
+                if obj.us_name not in result['Alternate Names'].split(','):
                     result['Alternate Names'] += ', ' + obj.us_name
+            else:
+                result['Alternate Names'] = obj.us_name
         else:
             result['Name'] = obj.us_name
 
@@ -303,5 +305,5 @@ def render_org(result):
     contact_info = "<ul>"
     if 'Contact Info' in result:
         for contact in result['Contact Info']:
-            contact_info = "<li>" + "<br />".join(map(str, filter(None, contact))) + "</li>"
+            contact_info += "<li>" + "<br />".join(map(str, filter(None, contact))) + "</li>"
         result['Contact Info'] = contact_info + "</ul>"
