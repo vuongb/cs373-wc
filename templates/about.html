@@ -3,19 +3,40 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="container">
-	<h1>ABOUT</h1>
-	</br>
-	<h2>The Project</h2>
-	<p>
-		The World Crises Database is a project for CS 373: Software Engineering from the University of Texas at Austin. The class is overseen by Professor Glenn Downing. 
-		The final end product of the Database incorporates various technologies including CSS, XML, HTML, Google App Engine, and Python.
-		In order to properly meet requirements and deadlines, teamwork is essential.
-		</br></br>
-		The objective of the World Crises Database is to provide a centralized location on the interwebs that gives users easy, simple access to any and all information for past, present, and future crises.
-	</p>
-    <p>
-        <small>Created by Team Unicorn Steroids : Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman</small>
-    </p>
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div id="about-header">
+        <h1>About Team UNICORN STEROIDS</h1>
+        <img id="about-image" src="/static/img/team_us.jpg">
+    </div>
+    <div id="about-content">
+        <p>
+            The <a href="http://www.unicornsteroids.appspot.com"><b>World Crises Database</b></a> is a project for <a href="https://www.cs.utexas.edu/users/downing/cs373/drupal/"><b>CS 373: Software Engineering</b></a> from the <a href="http://www.utexas.edu"><b>University of Texas at Austin</b></a>. The class is overseen by Professor Glenn Downing.
+            The World Crises Database is a centralized location on the interwebs that gives users easy, direct access to information for past and present worldwide crises, as well as associated organizations and individuals.
+        </p>
+        <p>
+            The objective of the project is to implement a python webapp via <a href="https://developers.google.com/appengine/docs/python/overview"><b>Google App Engine</b></a> that takes advantage of the <a href="https://developers.google.com/appengine/docs/python/datastore/"><b>cloud datastore</b></a>.
+        </p>
+        <p>
+            Data is uploaded to the site via XML instances that conform to an <a href="/static/files/WC_schema.xsd"><b>XML schema</b></a>, created and standardized by the class.
+        </p>
+        <p>
+            Various other requirements are given, including the creation of a <a href="/static/img/uml_diagram.png"><b>UML diagram</b></a> to represent the GAE datastore, a technical report, and unit testing.
+        </p>
+        <p>
+            The project was divided into three parts, which can be viewed <a href="http://www.cs.utexas.edu/users/downing/cs373/drupal/wc1"><b>here</b></a>, <a href="http://www.cs.utexas.edu/users/downing/cs373/drupal/wc2"><b>here</b></a>, and <a href="http://www.cs.utexas.edu/users/downing/cs373/drupal/wc3"><b>here</b></a>. (Links available until 1/13)
+        </p>
+        <p>
+            The front-end work is done with HTML, CSS3, <a href="http://twitter.github.com/bootstrap/"><b>Twitter Bootstrap</b></a>, and <a href="https://docs.djangoproject.com/en/dev/topics/templates/"><b>Django Templating</b></a>.
+        </p>
+        <p>
+            In order to properly meet requirements and deadlines, the team is composed of six members:
+        </p>
+        <p>
+            <b>Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman</b>.
+        </p>
+        <p>
+            Collaboration and issue tracking was done via <a href="http://www.github.com"><b>GitHub</b></a>.
+        </p>
+    </div>
 </div>
 {% endblock content %}

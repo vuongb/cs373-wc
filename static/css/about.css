@@ -1,0 +1,17 @@
+
+#about-header{
+    margin: auto;
+    text-align: center;
+}
+
+#about-image{
+    margin: auto;
+    height: 300px;
+    text-align: center;
+}
+
+#about-content{
+    margin: 20px auto 0 auto;
+    text-align: center;
+    width: 70%;
+}
