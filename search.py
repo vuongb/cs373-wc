@@ -44,7 +44,7 @@ def build_crisis_fields(crisis):
     fields.append(search.TextField(name='state',              value = crisis.us_state))
     fields.append(search.TextField(name='country',            value = crisis.us_country))
     if crisis.us_latitude and crisis.us_longitude:
-        fields.append(search.GeoField(name='place',               value = search.GeoPoint(crisis.us_latitude, crisis.us_longitude)))
+        fields.append(search.GeoField(name='place',               value = search.GeoPoint(float(crisis.us_latitude), float(crisis.us_longitude))))
     if crisis.us_startDate:
         fields.append(search.DateField(name='startDate',          value = crisis.us_startDate))
     if crisis.us_endDate:
@@ -71,7 +71,7 @@ def build_organization_fields(organization):
     fields.append(search.TextField(name='state',            value = organization.us_state))
     fields.append(search.TextField(name='country',          value = organization.us_country))
     if organization.us_latitude and organization.us_longitude:
-        fields.append(search.GeoField(name='place',             value = search.GeoPoint(organization.us_latitude, organization.us_longitude)))
+        fields.append(search.GeoField(name='place',             value = search.GeoPoint(float(organization.us_latitude), float(organization.us_longitude))))
     fields.append(search.TextField(name='address',          value = organization.us_address))
     fields.append(search.TextField(name='email',            value = organization.us_email))
     fields.append(search.TextField(name='phone',            value = organization.us_phone))
@@ -88,7 +88,7 @@ def build_person_fields(person):
     fields.append(search.TextField(name='state',            value = person.us_state))
     fields.append(search.TextField(name='country',          value = person.us_country))
     if person.us_latitude and person.us_longitude:
-        fields.append(search.GeoField(name='place',             value = search.GeoPoint(person.get('us_latitude'), person.get('us_longitude'))))
+        fields.append(search.GeoField(name='place',             value = search.GeoPoint(float(person.us_latitude), float(person.us_longitude))))
     return fields
 
 def process_search_query(queryString):
