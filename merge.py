@@ -236,26 +236,6 @@ def merge(id, model_str):
                     else:
                         social += "No results found for \"" + feed['query'] + "\""
                     social += "</ul>"
-
-#                        social += """
-#<div class="twitstatus_badge_container" id="twitstat_badge_165"></div>
-#<script type="text/javascript" src="http://twitstat.us/twitstat.us-min.js"></script>
-#<script type="text/javascript">
-#twitstat.badge.init({
-#    badge_container: "twitstat_badge_165",
-#    title: Results for """ + result['query'] + """,
-#    keywords: """ + result['query'] + """,
-#    max: 5,
-#    border_color: "#ffffff",
-#    header_background: "#302d2d",
-#    header_font_color: "#bda8ed",
-#    content_background_color: "#ffffff",
-#    content_font_color: "#333333",
-#    link_color: "#ffffff",
-#    width: 292
-#});
-#</script>"""
-
             social += "</li>"
             if social not in socials:
                 socials += social
