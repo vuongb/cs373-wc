@@ -107,6 +107,11 @@ class IndexPage(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
         self.response.out.write(template.render(path, data))
 
+
+def divide_group(group, n):
+    return [group[i:i+n] for i in range(0, len(group), n)]
+
+
 class CrisisPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id is None:
@@ -115,19 +120,12 @@ class CrisisPage(webapp2.RequestHandler):
             #Get list of crises and print links
             crises  = query_distinct("SELECT * FROM Crisis")
 
-            # Split results into fourths (for displaying in templates)
-            list_fourth  = len(crises)/4
-            group1      = crises.items()[0                  : list_fourth]
-            group2      = crises.items()[list_fourth        : (2 * list_fourth)]
-            group3      = crises.items()[(2 * list_fourth)  : (3 * list_fourth)]
-            group4      = crises.items()[(3 * list_fourth)  : ]
+            # build a structure for a 4-column table
+            group_data = divide_group(crises.items(), 4)
 
             data = {
                 'title': "Crises",
-                'group1': group1,
-                'group2': group2,
-                'group3': group3,
-                'group4': group4
+                'group_data': group_data
             }
         else:
             #Individual Crisis Page
@@ -150,19 +148,12 @@ class OrganizationPage(webapp2.RequestHandler):
             #Get list of organizations and print links
             organizations = query_distinct("SELECT * FROM Organization")
 
-            # Split results into fourths (for displaying in templates)
-            list_fourth  = len(organizations)/4
-            group1      = organizations.items()[0                  : list_fourth]
-            group2      = organizations.items()[list_fourth        : (2 * list_fourth)]
-            group3      = organizations.items()[(2 * list_fourth)  : (3 * list_fourth)]
-            group4      = organizations.items()[(3 * list_fourth)  : ]
+            # build a structure for a 4-column table
+            group_data = divide_group(organizations.items(), 4)
             
             data = {
                 'title': "Organizations",
-                'group1': group1,
-                'group2': group2,
-                'group3': group3,
-                'group4': group4
+                'group_data': group_data
             }
         else:
             #Individual Organization Page
@@ -185,19 +176,12 @@ class PersonPage(webapp2.RequestHandler):
             #Get list of crises and print links
             people = query_distinct("SELECT * FROM Person")
 
-            # Split results into fourths (for displaying in templates)
-            list_fourth  = len(people)/4
-            group1      = people.items()[0                  : list_fourth]
-            group2      = people.items()[list_fourth        : (2 * list_fourth)]
-            group3      = people.items()[(2 * list_fourth)  : (3 * list_fourth)]
-            group4      = people.items()[(3 * list_fourth)  : ]
+            # build a structure for a 4-column table
+            group_data = divide_group(people.items(), 4)
             
             data = {
                 'title': "People",
-                'group1': group1,
-                'group2': group2,
-                'group3': group3,
-                'group4': group4
+                'group_data' : group_data
             }
         else:
             #Individual Person Page
