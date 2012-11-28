@@ -102,12 +102,23 @@ class CrisisPage(webapp2.RequestHandler):
     def get(self, id=None):
         if id is None:
             #Base Crisis Page
-            path = os.path.join(os.path.dirname(__file__), 'templates/group-crises.html')
+            path    = os.path.join(os.path.dirname(__file__), 'templates/group-crises.html')
             #Get list of crises and print links
-            crises = query_distinct("SELECT * FROM Crisis")
+            crises  = query_distinct("SELECT * FROM Crisis")
+
+            # Split results into fourths (for displaying in templates)
+            list_fourth  = len(crises)/4
+            group1      = crises.items()[0                  : list_fourth]
+            group2      = crises.items()[list_fourth        : (2 * list_fourth)]
+            group3      = crises.items()[(2 * list_fourth)  : (3 * list_fourth)]
+            group4      = crises.items()[(3 * list_fourth)  : ]
+
             data = {
                 'title': "Crises",
-                'group': crises
+                'group1': group1,
+                'group2': group2,
+                'group3': group3,
+                'group4': group4
             }
         else:
             #Individual Crisis Page
@@ -128,9 +139,20 @@ class OrganizationPage(webapp2.RequestHandler):
             path = os.path.join(os.path.dirname(__file__), 'templates/group-organizations.html')
             #Get list of organizations and print links
             organizations = query_distinct("SELECT * FROM Organization")
+
+            # Split results into fourths (for displaying in templates)
+            list_fourth  = len(organizations)/4
+            group1      = organizations.items()[0                  : list_fourth]
+            group2      = organizations.items()[list_fourth        : (2 * list_fourth)]
+            group3      = organizations.items()[(2 * list_fourth)  : (3 * list_fourth)]
+            group4      = organizations.items()[(3 * list_fourth)  : ]
+            
             data = {
                 'title': "Organizations",
-                'group': organizations
+                'group1': group1,
+                'group2': group2,
+                'group3': group3,
+                'group4': group4
             }
         else:
             #Individual Organization Page
@@ -151,9 +173,20 @@ class PersonPage(webapp2.RequestHandler):
             path = os.path.join(os.path.dirname(__file__), 'templates/group-people.html')
             #Get list of crises and print links
             people = query_distinct("SELECT * FROM Person")
+
+            # Split results into fourths (for displaying in templates)
+            list_fourth  = len(people)/4
+            group1      = people.items()[0                  : list_fourth]
+            group2      = people.items()[list_fourth        : (2 * list_fourth)]
+            group3      = people.items()[(2 * list_fourth)  : (3 * list_fourth)]
+            group4      = people.items()[(3 * list_fourth)  : ]
+            
             data = {
                 'title': "People",
-                'group': people
+                'group1': group1,
+                'group2': group2,
+                'group3': group3,
+                'group4': group4
             }
         else:
             #Individual Person Page

@@ -6,20 +6,46 @@
         <div id="group-header" class="{% block banner %}{% endblock banner %}">
             <div id="group-text">
                 <h1>{{ title }}</h1>
-                <!--<div id="group-description">-->
-                    <!--{% block group_description %}{% endblock group_description %}-->
-                <!--</div>-->
             </div>
             <!--<div id="group-image">-->
                 <!--{% block group_image %}{% endblock group_image %}-->
             <!--</div>-->
         </div>
         <div id="group-listing">
-            <ul>
-                {% for object in group.items %}
-                {{object.us_name}}
+            <div id="group-description">
+                {% block group_description %}{% endblock group_description %}
+            </div>
+            <div id="group1" class="group">
+                <ul>
+                    {% for object in group1 %}
+                        {{object.us_name}}
+                        <li><a href="{{ object.1 }}">{{ object.0 }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="group2" class="group">
+                <ul>
+                    {% for object in group2 %}
+                        {{object.us_name}}
+                        <li><a href="{{ object.1 }}">{{ object.0 }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="group3" class="group">
+                <ul>
+                    {% for object in group3 %}
+                        {{object.us_name}}
+                        <li><a href="{{ object.1 }}">{{ object.0 }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="group4" class="group">
+                <ul>
+                    {% for object in group4 %}
+                    {{object.us_name}}
                     <li><a href="{{ object.1 }}">{{ object.0 }}</a></li>
-                {% endfor %}
-            </ul>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
 {% endblock content %}
