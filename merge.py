@@ -123,10 +123,23 @@ def merge(id, model_str):
         else:
             result['Social'] = list(obj.social)
 
+        if 'Crises' in result:
+            result['Crises'] += list(set(result['Crises'] + list(obj.crises)))
+        elif hasattr(obj, 'crises'):
+            result['Crises'] = list(obj.crises)
+
+        if 'Organizations' in result:
+            result['Organizations'] += list(set(result['Organizations'] + list(obj.organizations)))
+        elif hasattr(obj, 'organizations'):
+            result['Organizations'] = list(obj.organizations)
+
+        if 'People' in result:
+            result['People'] += list(set(result['People'] + list(obj.people)))
+        elif hasattr(obj, 'people'):
+            result['People'] = list(obj.people)
 
 
-
-#render location
+    #render location
     result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "<br />" for i in result['Location'])
 
     #render citations
@@ -219,6 +232,40 @@ def merge(id, model_str):
 
         result['Videos'] = videos
     return result
+
+    #Render Related Objects
+    if 'Crises' in result:
+        crises = "<div class=\"related-objects\"><h3>Related Crises</h3><ul>"
+        for i in xrange(len(result['Crises'])):
+            crisis = "<li><a href=\"" + \
+                     result['Crises'][i].crisis.getURL + "\">" + \
+                     result['Crises'][i].crisis.us_name + "</a></li>"
+        if crisis not in crises:
+            crises += crisis
+        crises += "</ul>"
+        result['Crises'] = crises
+            
+    if 'Organizations' in result:
+        orgs = "<div class=\"related-objects\"><h3>Related Organizations</h3><ul>"
+        for i in xrange(len(result['Organizations'])):
+            org = "<li><a href=\"" + \
+                     result['Organizations'][i].organization.getURL + "\">" + \
+                     result['Organizations'][i].organization.us_name + "</a></li>"
+        if org not in orgs:
+            orgs += org
+        orgs += "</ul>"
+        result['Organizations'] = orgs
+
+    if 'People' in result:
+        people = "<div class=\"related-objects\"><h3>Related People</h3><ul>"
+        for i in xrange(len(result['People'])):
+            person = "<li><a href=\"" + \
+                     result['People'][i].person.getURL + "\">" + \
+                     result['People'][i].person.us_name + "</a></li>"
+        if person not in peple:
+            people += person
+        people += "</ul>"
+        result['People'] = people
 
 def merge_location(result, obj):
     for location in result['Location']:
