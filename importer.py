@@ -156,7 +156,7 @@ def proccess_common_data(key, xml_value, result_dict):
     if key == 'name':
         result_dict['us_name'] = str(xml_value)
     elif key == 'alternate-names':
-        result_dict['us_alternateNames'] = xml_value
+        result_dict['us_alternateNames'] = str(xml_value).strip()
     elif key == 'kind':
         result_dict['us_type'] = str(xml_value)
     elif key == 'description':
