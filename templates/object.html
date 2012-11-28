@@ -11,6 +11,7 @@
                 <td>{{object.key.id}}</td>
             </tr>
             {% for item in results.items %}
+                {% if item.1 %}
                 <tr>
                     <td>{{item.0}}</td>
                     <td>
@@ -19,6 +20,7 @@
                         {% endautoescape %}
                     </td>
                 </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>

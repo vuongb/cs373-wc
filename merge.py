@@ -128,19 +128,31 @@ def merge(id, model_str):
             merge_org(result, obj)
 
         if 'Related Crises' in result:
-            result['Related Crises'] += list(set(result['Related Crises'] + list(obj.crises)))
+            for crisis in obj.crises:
+                if crisis.us_name not in result['Related Crises']:
+                    result['Related Crises'][crisis.crisis.us_name] = crisis.crisis.getUrl()
         elif hasattr(obj, 'crises'):
-            result['Related Crises'] = list(obj.crises)
+            result['Related Crises'] = dict()
+            for crisis in obj.crises:
+                result['Related Crises'][crisis.crisis.us_name] = crisis.crisis.getUrl()
 
         if 'Related Organizations' in result:
-            result['Related Organizations'] += list(set(result['Related Organizations'] + list(obj.organizations)))
+            for organization.us_name in obj.organizations:
+                if organization not in result['Related Organizations']:
+                    result['Related Organizations'][organization.organization.us_name] = organization.organization.getUrl()
         elif hasattr(obj, 'organizations'):
-            result['Related Organizations'] = list(obj.organizations)
+            result['Related Organizations'] = dict()
+            for organization in obj.organizations:
+                result['Related Organizations'][organization.organization.us_name] = organization.organization.getUrl()
 
         if 'Related People' in result:
-            result['Related People'] += list(set(result['Related People'] + list(obj.people)))
+            for person in obj.people:
+                if person.us_name in result['Related People']:
+                    result['Related People'][person.person.us_name] = person.person.getUrl()
         elif hasattr(obj, 'people'):
-            result['Related People'] = list(obj.people)
+            result['Related People'] = dict()
+            for person in obj.people:
+                result['Related People'][person.person.us_name] = person.person.getUrl()
 
 
     #render location
@@ -243,35 +255,27 @@ def merge(id, model_str):
     #Render Related Objects
     if 'Related Crises' in result:
         crises = "<ul>"
-        for i in xrange(len(result['Related Crises'])):
-            crisis = "<li><a href=\"" + \
-                     result['Related Crises'][i].crisis.getUrl() + "\">" + \
-                     result['Related Crises'][i].crisis.us_name + "</a></li>"
-            if crisis not in crises:
-                crises += crisis
-        crises += "</ul>"
-        result['Related Crises'] = crises
+        for crisis in result['Related Crises']:
+            crises += "<li><a href=\"" +\
+                    result['Related Crises'][crisis] + "\">" +\
+                    crisis + "</a></li>"
+        result['Related Crises'] = crises + "</ul>"
             
     if 'Related Organizations' in result:
         orgs = "<ul>"
-        for i in xrange(len(result['Related Organizations'])):
-            org = "<li><a href=\"" + \
-                     result['Related Organizations'][i].organization.getUrl() + "\">" + \
-                     result['Related Organizations'][i].organization.us_name + "</a></li>"
-            if org not in orgs:
-                orgs += org
-        result['Related Organizations'] = orgs
+        for org in result['Related Organizations']:
+            orgs += "<li><a href=\"" + \
+                     result['Related Organizations'][org] + "\">" + \
+                     org + "</a></li>"
+        result['Related Organizations'] = orgs + "</ul>"
 
     if 'Related People' in result:
         people = "<ul>"
-        for i in xrange(len(result['Related People'])):
-            person = "<li><a href=\"" + \
-                     result['Related People'][i].person.getUrl() + "\">" + \
-                     result['Related People'][i].person.us_name + "</a></li>"
-            if person not in people:
-                people += person
-        people += "</ul>"
-        result['Related People'] = people
+        for person in result['Related People']:
+            people += "<li><a href=\"" + \
+                     result['Related People'][person] + "\">" + \
+                     person + "</a></li>"
+        result['Related People'] = people + "</ul>"
 
     return result
 
