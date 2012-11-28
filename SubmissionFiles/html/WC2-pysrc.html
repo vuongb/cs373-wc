@@ -1,297 +1,0 @@
-<?xml version="1.0" encoding="ascii"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-          "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <title>WC2</title>
-  <link rel="stylesheet" href="epydoc.css" type="text/css" />
-  <script type="text/javascript" src="epydoc.js"></script>
-</head>
-
-<body bgcolor="white" text="black" link="blue" vlink="#204080"
-      alink="#204080">
-<!-- ==================== NAVIGATION BAR ==================== -->
-<table class="navbar" border="0" width="100%" cellpadding="0"
-       bgcolor="#a0c0ff" cellspacing="0">
-  <tr valign="middle">
-  <!-- Home link -->
-      <th bgcolor="#70b0f0" class="navbar-select"
-          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Tree link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Index link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Help link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
-
-      <th class="navbar" width="100%"></th>
-  </tr>
-</table>
-<table width="100%" cellpadding="0" cellspacing="0">
-  <tr valign="top">
-    <td width="100%">
-      <span class="breadcrumbs">
-        Module&nbsp;WC2
-      </span>
-    </td>
-    <td>
-      <table cellpadding="0" cellspacing="0">
-        <!-- hide/show private -->
-        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
-    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
-        <tr><td align="right"><span class="options"
-            >[<a href="frames.html" target="_top">frames</a
-            >]&nbsp;|&nbsp;<a href="WC2-pysrc.html"
-            target="_top">no&nbsp;frames</a>]</span></td></tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<h1 class="epydoc">Source Code for <a href="WC2-module.html">Module WC2</a></h1>
-<pre class="py-src">
-<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
-<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
-<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2007 Google Inc.</tt> </tt>
-<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
-<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># Licensed under the Apache License, Version 2.0 (the "License");</tt> </tt>
-<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># you may not use this file except in compliance with the License.</tt> </tt>
-<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># You may obtain a copy of the License at</tt> </tt>
-<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
-<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#     http://www.apache.org/licenses/LICENSE-2.0</tt> </tt>
-<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
-<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># Unless required by applicable law or agreed to in writing, software</tt> </tt>
-<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># distributed under the License is distributed on an "AS IS" BASIS,</tt> </tt>
-<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</tt> </tt>
-<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># See the License for the specific language governing permissions and</tt> </tt>
-<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment"># limitations under the License.</tt> </tt>
-<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
-<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">StringIO</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringIO</tt> </tt>
-<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">webapp2</tt> </tt>
-<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">importer</tt> <tt class="py-keyword">import</tt> <tt class="py-name">process_crisis</tt><tt class="py-op">,</tt> <tt class="py-name">process_organization</tt><tt class="py-op">,</tt> <tt class="py-name">process_person</tt><tt class="py-op">,</tt> <tt class="py-name">etree_to_dict</tt><tt class="py-op">,</tt> <tt class="py-name">get_tree_and_validate</tt><tt class="py-op">,</tt> <tt class="py-name">store_special_classes</tt><tt class="py-op">,</tt> <tt class="py-name">str_from_tree</tt><tt class="py-op">,</tt> <tt class="py-name">store_references</tt><tt class="py-op">,</tt> <tt class="py-name">put_objects</tt> </tt>
-<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
-<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">exporter</tt> </tt>
-<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">Models</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Crisis</tt><tt class="py-op">,</tt> <tt class="py-name">Organization</tt><tt class="py-op">,</tt> <tt class="py-name">Person</tt> </tt>
-<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt> <tt class="py-keyword">import</tt> <tt class="py-name">db</tt> </tt>
-<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt><tt class="py-op">.</tt><tt class="py-name">webapp</tt> <tt class="py-keyword">import</tt> <tt class="py-name">template</tt> </tt>
-<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
-<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
-<a name="ImportHandler"></a><div id="ImportHandler-def"><a name="L27"></a><tt class="py-lineno"> 27</tt> <a class="py-toggle" href="#" id="ImportHandler-toggle" onclick="return toggle('ImportHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="WC2.ImportHandler-class.html">ImportHandler</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ImportHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ImportHandler-expanded"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-docstring">""" Handles the interaction between the client and the server for importing xml files into our datastore</tt> </tt>
-<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
-<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable WC2.ImportHandler.SCHEMA=WC2.ImportHandler-class.html#SCHEMA"><a title="WC2.ImportHandler.SCHEMA" class="py-name" href="#" onclick="return doclink('link-0', 'SCHEMA', 'link-0');">SCHEMA</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'WC2.xsd'</tt> <tt class="py-comment"># the schema that all xml is validated against</tt> </tt>
-<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable WC2.ImportHandler.PASSWORD=WC2.ImportHandler-class.html#PASSWORD"><a title="WC2.ImportHandler.PASSWORD" class="py-name" href="#" onclick="return doclink('link-1', 'PASSWORD', 'link-1');">PASSWORD</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'hunter2'</tt> <tt class="py-comment"># the password required for upload and import functionality</tt> </tt>
-<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
-<a name="ImportHandler.post"></a><div id="ImportHandler.post-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="ImportHandler.post-toggle" onclick="return toggle('ImportHandler.post');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="WC2.ImportHandler-class.html#post">post</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ImportHandler.post-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ImportHandler.post-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">            <tt class="py-string">'title'</tt><tt class="py-op">:</tt> <tt class="py-string">"Import"</tt><tt class="py-op">,</tt> </tt>
-<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">            <tt class="py-string">'import_active'</tt><tt class="py-op">:</tt> <tt class="py-string">"active"</tt> </tt>
-<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
-<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">password</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method WC2.CrisisPage.get()=WC2.CrisisPage-class.html#get,Method WC2.ExportHandler.get()=WC2.ExportHandler-class.html#get,Method WC2.ImportHandler.get()=WC2.ImportHandler-class.html#get,Method WC2.IndexPage.get()=WC2.IndexPage-class.html#get,Method WC2.OrganizationPage.get()=WC2.OrganizationPage-class.html#get,Method WC2.PersonPage.get()=WC2.PersonPage-class.html#get"><a title="WC2.CrisisPage.get
-WC2.ExportHandler.get
-WC2.ImportHandler.get
-WC2.IndexPage.get
-WC2.OrganizationPage.get
-WC2.PersonPage.get" class="py-name" href="#" onclick="return doclink('link-2', 'get', 'link-2');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'pass'</tt><tt class="py-op">)</tt> </tt>
-<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">password</tt> <tt class="py-op">==</tt> <tt class="py-string">'hunter2'</tt><tt class="py-op">:</tt> </tt>
-<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">            <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'login'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
-<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">            <tt class="py-name">upload_request</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="WC2.CrisisPage.get
-WC2.ExportHandler.get
-WC2.ImportHandler.get
-WC2.IndexPage.get
-WC2.OrganizationPage.get
-WC2.PersonPage.get" class="py-name" href="#" onclick="return doclink('link-3', 'get', 'link-2');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'uploaded_file'</tt><tt class="py-op">)</tt> <tt class="py-comment">#upload request contains the raw data from the file</tt> </tt>
-<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">upload_request</tt> <tt class="py-op">!=</tt> <tt class="py-string">''</tt><tt class="py-op">:</tt> </tt>
-<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt class="py-comment"># We only want to reach this section if the user actually attempted to upload a file</tt> </tt>
-<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">                <tt class="py-name">tree</tt> <tt class="py-op">=</tt> <tt class="py-name">get_tree_and_validate</tt><tt class="py-op">(</tt><tt class="py-name">upload_request</tt><tt class="py-op">,</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="WC2.ImportHandler.SCHEMA" class="py-name" href="#" onclick="return doclink('link-4', 'SCHEMA', 'link-0');">SCHEMA</a></tt><tt class="py-op">,</tt> <tt class="py-string">'r'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">tree</tt> <tt class="py-op">!=</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
-<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                    <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'valid'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
-<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                    <tt class="py-name">root</tt> <tt class="py-op">=</tt> <tt class="py-name">tree</tt><tt class="py-op">.</tt><tt class="py-name">getroot</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">put_objects</tt><tt class="py-op">(</tt><tt class="py-name">root</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">                        <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'success'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
-<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'no_file'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
-<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">                <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'login'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
-<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">            <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'login_failure'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
-<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/import.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
-<a name="ImportHandler.get"></a><div id="ImportHandler.get-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="ImportHandler.get-toggle" onclick="return toggle('ImportHandler.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="WC2.ImportHandler-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ImportHandler.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ImportHandler.get-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-comment"># This section is reached when a user clicks on "Import" on the main page, but we want a post, not a get.</tt> </tt>
-<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-string">'title'</tt><tt class="py-op">:</tt> <tt class="py-string">"Import"</tt><tt class="py-op">,</tt> </tt>
-<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">            <tt class="py-string">'import_active'</tt><tt class="py-op">:</tt> <tt class="py-string">"active"</tt> </tt>
-<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
-<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/import.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
-<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
-<a name="ExportHandler"></a><div id="ExportHandler-def"><a name="L68"></a><tt class="py-lineno"> 68</tt> <a class="py-toggle" href="#" id="ExportHandler-toggle" onclick="return toggle('ExportHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="WC2.ExportHandler-class.html">ExportHandler</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ExportHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ExportHandler-expanded"><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-docstring">""" Renders the page for exporting objects from our datastore to XML</tt> </tt>
-<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
-<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
-<a name="ExportHandler.get"></a><div id="ExportHandler.get-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="ExportHandler.get-toggle" onclick="return toggle('ExportHandler.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="WC2.ExportHandler-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="ExportHandler.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ExportHandler.get-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">[</tt><tt class="py-string">'Content-Type'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">"text/xml; charset=utf-8"</tt> </tt>
-<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">root</tt> <tt class="py-op">=</tt> <tt class="py-name">exporter</tt><tt class="py-op">.</tt><tt class="py-name">buildTree</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
-<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">info</tt><tt class="py-op">(</tt><tt class="py-string">"root: %s"</tt><tt class="py-op">,</tt> <tt class="py-name">root</tt><tt class="py-op">)</tt> </tt>
-<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-name">output</tt> <tt class="py-op">=</tt> <tt class="py-name">str_from_tree</tt><tt class="py-op">(</tt><tt class="py-name">root</tt><tt class="py-op">)</tt> </tt>
-<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">unicode</tt><tt class="py-op">(</tt><tt class="py-name">output</tt><tt class="py-op">,</tt> <tt class="py-string">"UTF-8"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
-<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
-<a name="IndexPage"></a><div id="IndexPage-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="IndexPage-toggle" onclick="return toggle('IndexPage');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="WC2.IndexPage-class.html">IndexPage</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="IndexPage-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="IndexPage-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-docstring">""" Renders the home page</tt> </tt>
-<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
-<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
-<a name="IndexPage.get"></a><div id="IndexPage.get-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="IndexPage.get-toggle" onclick="return toggle('IndexPage.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="WC2.IndexPage-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="IndexPage.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="IndexPage.get-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">crises</tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">GqlQuery</tt><tt class="py-op">(</tt><tt class="py-string">"SELECT * FROM Crisis"</tt><tt class="py-op">)</tt> </tt>
-<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-name">organizations</tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">GqlQuery</tt><tt class="py-op">(</tt><tt class="py-string">"SELECT * FROM Organization"</tt><tt class="py-op">)</tt> </tt>
-<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">people</tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">GqlQuery</tt><tt class="py-op">(</tt><tt class="py-string">"SELECT * FROM Person"</tt><tt class="py-op">)</tt> </tt>
-<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-string">'title'</tt><tt class="py-op">:</tt> <tt class="py-string">"Home"</tt><tt class="py-op">,</tt> </tt>
-<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-string">'crises'</tt><tt class="py-op">:</tt> <tt class="py-name">crises</tt><tt class="py-op">,</tt> </tt>
-<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-string">'organizations'</tt><tt class="py-op">:</tt> <tt class="py-name">organizations</tt><tt class="py-op">,</tt> </tt>
-<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt class="py-string">'people'</tt><tt class="py-op">:</tt> <tt class="py-name">people</tt><tt class="py-op">,</tt> </tt>
-<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-string">'home_active'</tt><tt class="py-op">:</tt> <tt class="py-string">"active"</tt> </tt>
-<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
-<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/index.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
-<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"> </tt>
-<a name="CrisisPage"></a><div id="CrisisPage-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="CrisisPage-toggle" onclick="return toggle('CrisisPage');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="WC2.CrisisPage-class.html">CrisisPage</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="CrisisPage-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CrisisPage-expanded"><a name="CrisisPage.get"></a><div id="CrisisPage.get-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="CrisisPage.get-toggle" onclick="return toggle('CrisisPage.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="WC2.CrisisPage-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">id</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="CrisisPage.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CrisisPage.get-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">id</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
-<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt class="py-comment">#Base Crisis Page</tt> </tt>
-<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/index.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-comment">#Get list of crises and print links</tt> </tt>
-<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-name">crises</tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">GqlQuery</tt><tt class="py-op">(</tt><tt class="py-string">"SELECT * FROM Crisis"</tt><tt class="py-op">)</tt> </tt>
-<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                <tt class="py-string">'title'</tt><tt class="py-op">:</tt> <tt class="py-string">"Crises"</tt><tt class="py-op">,</tt> </tt>
-<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                <tt class="py-string">'crises'</tt><tt class="py-op">:</tt> <tt class="py-name">crises</tt> </tt>
-<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
-<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-comment">#Individual Crisis Page</tt> </tt>
-<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/crisis.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">            <tt class="py-name">crisis</tt> <tt class="py-op">=</tt> <tt class="py-name">Crisis</tt><tt class="py-op">.</tt><tt class="py-name">get_by_id</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-comment">#Get individual crisis object from id</tt> </tt>
-<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                <tt class="py-string">'object'</tt><tt class="py-op">:</tt> <tt class="py-name">crisis</tt> </tt>
-<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
-<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'crises_active'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">"active"</tt> </tt>
-<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
-<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
-<a name="OrganizationPage"></a><div id="OrganizationPage-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="OrganizationPage-toggle" onclick="return toggle('OrganizationPage');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="WC2.OrganizationPage-class.html">OrganizationPage</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="OrganizationPage-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="OrganizationPage-expanded"><a name="OrganizationPage.get"></a><div id="OrganizationPage.get-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="OrganizationPage.get-toggle" onclick="return toggle('OrganizationPage.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="WC2.OrganizationPage-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">id</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="OrganizationPage.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OrganizationPage.get-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">id</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
-<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-comment">#Base Organization Page</tt> </tt>
-<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/index.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt class="py-comment">#Get list of organizations and print links</tt> </tt>
-<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            <tt class="py-name">organizations</tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">GqlQuery</tt><tt class="py-op">(</tt><tt class="py-string">"SELECT * FROM Organization"</tt><tt class="py-op">)</tt> </tt>
-<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                <tt class="py-string">'title'</tt><tt class="py-op">:</tt> <tt class="py-string">"Organizations"</tt><tt class="py-op">,</tt> </tt>
-<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                <tt class="py-string">'organizations'</tt><tt class="py-op">:</tt> <tt class="py-name">organizations</tt> </tt>
-<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
-<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-comment">#Individual Organization Page</tt> </tt>
-<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/organization.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">            <tt class="py-name">organization</tt> <tt class="py-op">=</tt> <tt class="py-name">Organization</tt><tt class="py-op">.</tt><tt class="py-name">get_by_id</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">            <tt class="py-comment">#Get individual organization object from id</tt> </tt>
-<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                <tt class="py-string">'object'</tt><tt class="py-op">:</tt> <tt class="py-name">organization</tt> </tt>
-<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
-<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'organizations_active'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">"active"</tt> </tt>
-<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt>
-<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
-<a name="PersonPage"></a><div id="PersonPage-def"><a name="L145"></a><tt class="py-lineno">145</tt> <a class="py-toggle" href="#" id="PersonPage-toggle" onclick="return toggle('PersonPage');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="WC2.PersonPage-class.html">PersonPage</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="PersonPage-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PersonPage-expanded"><a name="PersonPage.get"></a><div id="PersonPage.get-def"><a name="L146"></a><tt class="py-lineno">146</tt> <a class="py-toggle" href="#" id="PersonPage.get-toggle" onclick="return toggle('PersonPage.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="WC2.PersonPage-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">id</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="PersonPage.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PersonPage.get-expanded"><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">id</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
-<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-comment">#Base Person Page</tt> </tt>
-<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/index.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">            <tt class="py-comment">#Get list of crises and print links</tt> </tt>
-<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">            <tt class="py-name">people</tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">GqlQuery</tt><tt class="py-op">(</tt><tt class="py-string">"SELECT * FROM Person"</tt><tt class="py-op">)</tt> </tt>
-<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">                <tt class="py-string">'title'</tt><tt class="py-op">:</tt> <tt class="py-string">"People"</tt><tt class="py-op">,</tt> </tt>
-<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">                <tt class="py-string">'people'</tt><tt class="py-op">:</tt> <tt class="py-name">people</tt> </tt>
-<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
-<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
-<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">            <tt class="py-comment">#Individual Person Page</tt> </tt>
-<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">            <tt class="py-name">path</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'templates/person.phtml'</tt><tt class="py-op">)</tt> </tt>
-<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            <tt class="py-name">person</tt> <tt class="py-op">=</tt> <tt class="py-name">Person</tt><tt class="py-op">.</tt><tt class="py-name">get_by_id</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">            <tt class="py-comment">#Get individual crisis object from id</tt> </tt>
-<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">            <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
-<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                <tt class="py-string">'object'</tt><tt class="py-op">:</tt> <tt class="py-name">person</tt> </tt>
-<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
-<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-string">'people_active'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">"active"</tt> </tt>
-<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"> </tt>
-<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable WC2.app=WC2-module.html#app"><a title="WC2.app" class="py-name" href="#" onclick="return doclink('link-5', 'app', 'link-5');">app</a></tt> <tt class="py-op">=</tt> <tt class="py-name">webapp2</tt><tt class="py-op">.</tt><tt class="py-name">WSGIApplication</tt><tt class="py-op">(</tt><tt class="py-op">[</tt> </tt>
-<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">'/'</tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name" targets="Class WC2.IndexPage=WC2.IndexPage-class.html"><a title="WC2.IndexPage" class="py-name" href="#" onclick="return doclink('link-6', 'IndexPage', 'link-6');">IndexPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">'/c/?'</tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name" targets="Class WC2.CrisisPage=WC2.CrisisPage-class.html"><a title="WC2.CrisisPage" class="py-name" href="#" onclick="return doclink('link-7', 'CrisisPage', 'link-7');">CrisisPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">r'/c/(.+)'</tt><tt class="py-op">,</tt> <tt id="link-8" class="py-name"><a title="WC2.CrisisPage" class="py-name" href="#" onclick="return doclink('link-8', 'CrisisPage', 'link-7');">CrisisPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">'/o/?'</tt><tt class="py-op">,</tt> <tt id="link-9" class="py-name" targets="Class WC2.OrganizationPage=WC2.OrganizationPage-class.html"><a title="WC2.OrganizationPage" class="py-name" href="#" onclick="return doclink('link-9', 'OrganizationPage', 'link-9');">OrganizationPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">r'/o/(.+)'</tt><tt class="py-op">,</tt> <tt id="link-10" class="py-name"><a title="WC2.OrganizationPage" class="py-name" href="#" onclick="return doclink('link-10', 'OrganizationPage', 'link-9');">OrganizationPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">'/p/?'</tt><tt class="py-op">,</tt> <tt id="link-11" class="py-name" targets="Class WC2.PersonPage=WC2.PersonPage-class.html"><a title="WC2.PersonPage" class="py-name" href="#" onclick="return doclink('link-11', 'PersonPage', 'link-11');">PersonPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">r'/p/(.+)'</tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name"><a title="WC2.PersonPage" class="py-name" href="#" onclick="return doclink('link-12', 'PersonPage', 'link-11');">PersonPage</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">'/import'</tt><tt class="py-op">,</tt> <tt id="link-13" class="py-name" targets="Class WC2.ImportHandler=WC2.ImportHandler-class.html"><a title="WC2.ImportHandler" class="py-name" href="#" onclick="return doclink('link-13', 'ImportHandler', 'link-13');">ImportHandler</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
-<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">    <tt class="py-op">(</tt><tt class="py-string">'/export'</tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name" targets="Class WC2.ExportHandler=WC2.ExportHandler-class.html"><a title="WC2.ExportHandler" class="py-name" href="#" onclick="return doclink('link-14', 'ExportHandler', 'link-14');">ExportHandler</a></tt><tt class="py-op">)</tt> </tt>
-<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">debug</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
-<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt><script type="text/javascript">
-<!--
-expandto(location.href);
-// -->
-</script>
-</pre>
-<br />
-<!-- ==================== NAVIGATION BAR ==================== -->
-<table class="navbar" border="0" width="100%" cellpadding="0"
-       bgcolor="#a0c0ff" cellspacing="0">
-  <tr valign="middle">
-  <!-- Home link -->
-      <th bgcolor="#70b0f0" class="navbar-select"
-          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Tree link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Index link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
-
-  <!-- Help link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
-
-      <th class="navbar" width="100%"></th>
-  </tr>
-</table>
-<table border="0" cellpadding="0" cellspacing="0" width="100%%">
-  <tr>
-    <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Nov  7 16:29:02 2012
-    </td>
-    <td align="right" class="footer">
-      <a target="mainFrame" href="http://epydoc.sourceforge.net"
-        >http://epydoc.sourceforge.net</a>
-    </td>
-  </tr>
-</table>
-
-<script type="text/javascript">
-  <!--
-  // Private objects are initially displayed (because if
-  // javascript is turned off then we want them to be
-  // visible); but by default, we want to hide them.  So hide
-  // them unless we have a cookie that says to show them.
-  checkCookie();
-  // -->
-</script>
-</body>
-</html>
