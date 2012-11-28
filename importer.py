@@ -29,7 +29,7 @@ def etree_to_dict(t):
         if (t.text is None) or (t.text.strip('\n\t') == ""):
             d = {t.tag: []}
         else:
-            d = {t.tag: t.text}
+            d = {t.tag: t.text.strip('\n\t')}
     else:
         if t.attrib:
             assert type(t.attrib) == dict
@@ -182,38 +182,40 @@ def process_special_data(key, xml_value, result_dict):
     Processes special data such as videos, social media, etc. for Organization, Person, and Crisis
     """
     assert type(result_dict) == dict
-
-    value_inserted = True
-    if key == 'videos':
-        videos = []
-        for video in xml_value:
-            videos.append(video)
-        result_dict['videos']    = videos
-    elif key == 'social':
-        socials = []
-        for social in xml_value:
-            socials.append(social)
-        result_dict['social']    = socials
-    elif key == 'images':
-        try:
-            result_dict['images']            = parse_links(xml_value, "image")
-        except KeyError:
-            logging.warn("Empty tag found for images")
-    elif key == 'maps':
-        try:
-            result_dict['maps']              = parse_links(xml_value, "map")
-        except KeyError:
-            logging.warn("Empty tag found for maps")
-    elif key == 'citations':
-        try:
-            result_dict['citations']         = parse_links(xml_value, "citation")
-        except KeyError:
-            logging.warn("Empty tag found for citations")
-    elif key == 'external-links':
-        try:
-            result_dict['external_links']    = parse_links(xml_value, "external-link")
-        except KeyError:
-            logging.warn("Empty tag found for external_links")
+    if str(xml_value).strip():
+        value_inserted = True
+        if key == 'videos':
+            videos = []
+            for video in xml_value:
+                videos.append(video)
+            result_dict['videos']    = videos
+        elif key == 'social':
+            socials = []
+            for social in xml_value:
+                socials.append(social)
+            result_dict['social']    = socials
+        elif key == 'images':
+            try:
+                result_dict['images']            = parse_links(xml_value, "image")
+            except KeyError:
+                logging.warn("Empty tag found for images")
+        elif key == 'maps':
+            try:
+                result_dict['maps']              = parse_links(xml_value, "map")
+            except KeyError:
+                logging.warn("Empty tag found for maps")
+        elif key == 'citations':
+            try:
+                result_dict['citations']         = parse_links(xml_value, "citation")
+            except KeyError:
+                logging.warn("Empty tag found for citations")
+        elif key == 'external-links':
+            try:
+                result_dict['external_links']    = parse_links(xml_value, "external-link")
+            except KeyError:
+                logging.warn("Empty tag found for external_links")
+        else:
+            value_inserted = False
     else:
         value_inserted = False
     return value_inserted
