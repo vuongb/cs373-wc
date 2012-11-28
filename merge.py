@@ -147,7 +147,7 @@ def merge(id, model_str):
 
         if 'Related People' in result:
             for person in obj.people:
-                if person.us_name in result['Related People']:
+                if person.person.us_name in result['Related People']:
                     result['Related People'][person.person.us_name] = person.person.getUrl()
         elif hasattr(obj, 'people'):
             result['Related People'] = dict()
@@ -292,7 +292,7 @@ def merge_location(result, obj):
 
 def merge_org(result, obj):
     if obj.us_phone or obj.us_email or obj.us_address:
-        contact_info = (obj.us_phone, "<a target=\"_blank\" href=\"mailto:" + obj.us_email + "\">" + obj.us_email + "</a>", obj.us_address)
+        contact_info = (obj.us_phone, "<a target=\"_blank\" href=\"mailto:" + obj.us_email + "\">" + obj.us_email + "</a>" if obj.us_email else obj.us_email, obj.us_address)
         if 'Contact Info' in result:
             if contact_info not in result['Contact Info']:
                 result['Contact Info'].append(contact_info)
