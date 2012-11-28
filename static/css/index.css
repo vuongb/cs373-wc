@@ -8,17 +8,34 @@ a{
 
 .container{
     box-shadow: 0 4px 22px 1px;
-    background-color: #E7E5FA;
+    background-color: #CED5EE;
 }
 
 .masthead{
     background-color: #222;
 }
 
+    .masthead div{
+        margin: auto;
+        width: 70%;
+    }
+
 .nav{
     margin-bottom: 0;
 }
 
+    .nav-tabs{
+        border: none;
+    }
+
+    #searchbar{
+        float: right;
+        margin: 5px 0 6px 5px;
+    }
+
+        #searchbar input{
+            margin: 0;
+        }
 /*.nav-tabs{*/
     /*border-bottom: 1px solid #222;*/
 /*}*/
@@ -38,10 +55,6 @@ li a:hover{
     float: left;
     margin-right: 10px;
     width: 85px;
-}
-
-#searchbar{
-    margin: 0;
 }
 
 #welcome{
