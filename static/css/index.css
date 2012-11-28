@@ -104,3 +104,7 @@ li a:hover{
 #import-box{
     margin-left: 30px;
 }
+
+#object-header{
+    text-align: center;
+}
