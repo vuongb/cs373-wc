@@ -55,7 +55,7 @@ class Crisis(db.Model):
     # Location
     us_city            = db.StringProperty()
     us_state           = db.StringProperty()
-    us_country         = db.StringProperty(required=True)
+    us_country         = db.StringProperty()
     us_latitude        = db.StringProperty()
     us_longitude       = db.StringProperty()
 
@@ -94,7 +94,7 @@ class Organization(db.Model):
     # Location
     us_city            = db.StringProperty()
     us_state           = db.StringProperty()
-    us_country         = db.StringProperty(required=True)
+    us_country         = db.StringProperty()
     us_latitude        = db.StringProperty()
     us_longitude       = db.StringProperty()
 
@@ -126,7 +126,7 @@ class Person(db.Model):
     # Location
     us_city            = db.StringProperty()
     us_state           = db.StringProperty()
-    us_country         = db.StringProperty(required=True)
+    us_country         = db.StringProperty()
     us_latitude        = db.StringProperty()
     us_longitude       = db.StringProperty()
 
