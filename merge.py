@@ -93,6 +93,24 @@ def merge(id, model_str):
             for citation in obj.citations:
                 result['Citations'][citation.source] = citation.description
 
+        if 'External Links' in result:
+            for link in obj.external_links:
+                if link.source not in result['External Links']:
+                    result['External Links'][link.source] = link.description
+        else:
+            result['External Links'] = dict()
+            for link in obj.external_links:
+                result['External Links'][link.source] = link.description
+
+        if 'Maps' in result:
+            location = obj.getLocation()
+            if location not in result['Maps']:
+                result['Maps'].append(location)
+        else:
+            result['Maps'] = [obj.getLocation()]
+
+
+
     #render location
     result['Location'] = "\n".join(', '.join(map(str, filter(None, i))) + "<br />" for i in result['Location'])
 
@@ -106,6 +124,24 @@ def merge(id, model_str):
                          "</li>"
         citations += "</ul>"
         result['Citations'] = citations
+
+    #render external links
+    if 'External Links' in result:
+        links = "<ul>"
+        for link in result['External Links']:
+            links += "<li>" +\
+                         "<a target=\"_blank\" href=\"" + link + "\">" +\
+                         result['External Links'][link] + '</a>' +\
+                         "</li>"
+        links += "</ul>"
+        result['External Links'] = links
+
+    #render maps
+    if 'Maps' in result:
+        maps = "<ul class=\"unstyled\">"
+        for location in result['Maps']:
+            maps += "<li><iframe width=\"425\" height=\"350\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" src=\"https://maps.google.com/maps?q=" + location + "&amp;output=embed\"></iframe></li><br />"
+        result['Maps'] = maps + "</ul>"
 
     return result
 
