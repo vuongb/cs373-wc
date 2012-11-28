@@ -73,7 +73,7 @@ class ImportHandler(webapp2.RequestHandler):
 
 class ImportTaskHandler(webapp2.RequestHandler):
     def post(self):
-        logging.info("Running Import Task")
+        logging.info("Running Import Task ")
         def Import():
             data = {
             'title': "Import",
