@@ -161,6 +161,7 @@ class OrganizationPage(webapp2.RequestHandler):
             organization = Organization.get_by_id(int(id))
             #Get individual organization object from id
             data = {
+                'object': organization,
                 'results': merge(organization.us_id, "Organization")
             }
         data['organizations_active'] = "active"
@@ -195,6 +196,7 @@ class PersonPage(webapp2.RequestHandler):
             person = Person.get_by_id(int(id))
             #Get individual crisis object from id
             data = {
+                'object': person,
                 'results': merge(person.us_id, "Person")
             }
         data['people_active'] = "active"
