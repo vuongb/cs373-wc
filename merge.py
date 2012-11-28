@@ -123,20 +123,20 @@ def merge(id, model_str):
         else:
             result['Social'] = list(obj.social)
 
-        if 'Crises' in result:
-            result['Crises'] += list(set(result['Crises'] + list(obj.crises)))
+        if 'Related Crises' in result:
+            result['Related Crises'] += list(set(result['Related Crises'] + list(obj.crises)))
         elif hasattr(obj, 'crises'):
-            result['Crises'] = list(obj.crises)
+            result['Related Crises'] = list(obj.crises)
 
-        if 'Organizations' in result:
-            result['Organizations'] += list(set(result['Organizations'] + list(obj.organizations)))
+        if 'Related Organizations' in result:
+            result['Related Organizations'] += list(set(result['Related Organizations'] + list(obj.organizations)))
         elif hasattr(obj, 'organizations'):
             result['Organizations'] = list(obj.organizations)
 
-        if 'People' in result:
-            result['People'] += list(set(result['People'] + list(obj.people)))
+        if 'Related People' in result:
+            result['Related People'] += list(set(result['Related People'] + list(obj.people)))
         elif hasattr(obj, 'people'):
-            result['People'] = list(obj.people)
+            result['Related People'] = list(obj.people)
 
 
     #render location
@@ -233,38 +233,37 @@ def merge(id, model_str):
         result['Videos'] = videos
 
     #Render Related Objects
-    if 'Crises' in result:
-        crises = "<h3>Related Crises</h3><ul>"
-        for i in xrange(len(result['Crises'])):
+    if 'Related Crises' in result:
+        crises = "<ul>"
+        for i in xrange(len(result['Related Crises'])):
             crisis = "<li><a href=\"" + \
-                     result['Crises'][i].crisis.getURL() + "\">" + \
-                     result['Crises'][i].crisis.us_name + "</a></li>"
+                     result['Related Crises'][i].crisis.getUrl() + "\">" + \
+                     result['Related Crises'][i].crisis.us_name + "</a></li>"
             if crisis not in crises:
                 crises += crisis
         crises += "</ul>"
-        result['Crises'] = crises
+        result['Related Crises'] = crises
             
-    if 'Organizations' in result:
-        orgs = "<h3>Related Organizations</h3><ul>"
-        for i in xrange(len(result['Organizations'])):
+    if 'Related Organizations' in result:
+        orgs = "<ul>"
+        for i in xrange(len(result['Related Organizations'])):
             org = "<li><a href=\"" + \
-                     result['Organizations'][i].organization.getURL() + "\">" + \
-                     result['Organizations'][i].organization.us_name + "</a></li>"
+                     result['Related Organizations'][i].organization.getUrl() + "\">" + \
+                     result['Related Organizations'][i].organization.us_name + "</a></li>"
             if org not in orgs:
                 orgs += org
-        orgs += "</ul>"
-        result['Organizations'] = orgs
+        result['Related Organizations'] = orgs
 
-    if 'People' in result:
-        people = "<h3>Related People</h3><ul>"
-        for i in xrange(len(result['People'])):
+    if 'Related People' in result:
+        people = "<ul>"
+        for i in xrange(len(result['Related People'])):
             person = "<li><a href=\"" + \
-                     result['People'][i].person.getURL() + "\">" + \
-                     result['People'][i].person.us_name + "</a></li>"
+                     result['Related People'][i].person.getUrl() + "\">" + \
+                     result['Related People'][i].person.us_name + "</a></li>"
             if person not in people:
                 people += person
         people += "</ul>"
-        result['People'] = people
+        result['Related People'] = people
 
     return result
 
