@@ -73,10 +73,34 @@ class ImportHandler(webapp2.RequestHandler):
 
 class ImportTaskHandler(webapp2.RequestHandler):
     def post(self):
-        logging.info("Running Task Test123")
-        def test():
-            logging.info("Running Task Test456")
-        db.run_in_transaction(test)
+        logging.info("Running Import Task")
+        def Import():
+            data = {
+            'title': "Import",
+            'import_active': "active"
+            }
+            password = self.request.get('pass')
+            if password == 'hunter2':
+                logging.info("Running Import Taskkk")
+                data['login'] = True
+                upload_request = self.request.get('uploaded_file') #upload request contains the raw data from the file
+                if upload_request != '':
+                    # We only want to reach this section if the user actually attempted to upload a file
+                    tree = get_tree_and_validate(upload_request, open(self.SCHEMA, 'r').read())
+                    if tree != 0:
+                        data['valid'] = True
+                        root = tree.getroot()
+                        # If we successfully loaded xml data into the datastore
+                        if put_objects(root):
+                            data['success'] = True
+                else:
+                    data['no_file'] = True
+                    data['login'] = False
+            else:
+                data['login_failure'] = True
+            path = os.path.join(os.path.dirname(__file__), 'templates/import.html')
+            self.response.out.write(template.render(path, data))    
+        db.run_in_transaction(Import)
             
 class ExportHandler(webapp2.RequestHandler):
     """ Renders the page for exporting objects from our datastore to XML """
