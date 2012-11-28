@@ -1,6 +1,6 @@
 import unittest
-from WC2 import get_tree_and_validate
 from exporter import buildTree, addCrisis, addOrganization, addPerson
+from WC2 import get_tree_and_validate
 from google.appengine.ext import db
 import importer
 
@@ -25,9 +25,9 @@ class TestExport(unittest.TestCase):
     def test_buildTree(self):
         """should build Element Tree pulled from imported elements"""
         root = buildTree()
-        assert root.getchildren()[0].getchildren()[0].attrib['id'] == 'c1'
-        assert root.getchildren()[1].getchildren()[0].attrib['id'] == 'o9'
-        assert root.getchildren()[2].getchildren()[0].attrib['id'] == 'p16'
+        assert root.getchildren()[0].getchildren()[0].attrib['id'] == 'c-test_crisis'
+        assert root.getchildren()[1].getchildren()[0].attrib['id'] == 'o-test_org'
+        assert root.getchildren()[2].getchildren()[0].attrib['id'] == 'p-algore'
 
     def test_addCrisis(self):
         """should build Element Tree pulled from imported Crisis"""
