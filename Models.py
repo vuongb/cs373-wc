@@ -3,6 +3,8 @@ import urllib
 import json
 
 # One to Many Relationships
+import logging
+
 class ExternalLink(db.Model):
     source = db.LinkProperty(required=True)
     description = db.StringProperty(required=True)
@@ -33,7 +35,7 @@ class Social(db.Model):
             return False
         elif self.social_id[0] == "@":
             url = "https://api.twitter.com/1/statuses/user_timeline.json?include_entities=false&include_rts=false&screen_name=%s&count=5" % self.social_id[1:]
-        elif self.social_id[0] == "#":
+        elif '#' in self.social_id:
             url = "http://search.twitter.com/search.json?q=%s&rpp=5&include_entities=false&result_type=mixed" % self.social_id[1:]
         else:
             return False
