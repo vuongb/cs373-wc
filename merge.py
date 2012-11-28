@@ -300,4 +300,4 @@ def render_org(result):
     if 'Contact Info' in result:
         for contact in result['Contact Info']:
             contact_info = "<li>" + "<br />".join(map(str, filter(None, contact))) + "</li>"
-    result['Contact Info'] = contact_info + "</ul>"
+        result['Contact Info'] = contact_info + "</ul>"
