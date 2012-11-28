@@ -40,22 +40,34 @@ class TestExport(unittest.TestCase):
                 {'kind': u'TestKind'},
                 {'description': u'Description of test crisis'},
                 {'location': [{'country': u'USA'}]},
-                {'images': [
-                    {'image': [{'source': u'http://www.testimage.com'},
-                               {'description': u'Description of TestImage'}]}]},
-                {'maps': [{'map': [{'source': u'http://maps.google.com'}, {'description': u'Map Description'}]}]},
-                {'videos': [{u'youtube': u'r_8om4dsEmw'}]}, {'social': [{u'twitter': u'@billgates'}]},
-                {'citations': [
-                    {'citation': [{'source': u'http://maps.google.com'}, {'description': u'Map Description'}]}]},
-                {'external-links': [
-                    {'external-link': [{'source': u'http://www.google.com'}, {'description': u'Google'}]},
-                    {'external-link': [{'source': u'http://www.yahoo.com'}, {'description': u'Yahoo'}]}]},
+                {'images': [{'image':
+                                 [{'source': u'http://www.testimage.com'},
+                                  {'description': u'Description of TestImage'}]}]},
+                {'maps': [{'map':
+                               [{'source': u'http://maps.google.com'},
+                                {'description': u'Map Description'}]}]},
+                {'videos': [{u'youtube': u'r_8om4dsEmw'}]},
+                {'social': [{u'twitter': u'@billgates'}]},
+                {'citations': [{'citation':
+                                    [{'source': u'http://maps.google.com'},
+                                     {'description': u'Map Description'}]}]},
+                {'external-links':
+                     [{'external-link':
+                           [{'source': u'http://www.google.com'},
+                            {'description': u'Google'}]},
+                      {'external-link':
+                           [{'source': u'http://www.yahoo.com'},
+                            {'description': u'Yahoo'}]}]},
                 {'start-date': '1776-07-04T00:00:00'},
                 {'end-date': '1776-07-04T00:00:00'},
                 {'human-impact': [{'deaths': '12345'}]},
                 {'economic-impact': '1234567890'},
-                {'resources-needed': []},
-                {'ways-to-help': [{'way': u'donations'}, {'way': u'volunteering'}]}] in crisis_d.values()
+                {'resources-needed':
+                     [{'resource': u'money'},
+                      {'resource': u'donations'}]},
+                {'ways-to-help':
+                     [{'way': u'donations'},
+                      {'way': u'volunteering'}]}] in crisis_d.values()
 
     def test_addOrganization(self):
         """should build element tree pulled from imported Organization"""
