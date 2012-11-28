@@ -1,48 +1,51 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <h2>Import</h2>
-    {% if login %}
-    	<p class="text-success">Access granted.</p>
+    <div id="import-box">
+        <h2>So you want to help and import some data?</h2>
+        {% if login %}
+            <p class="text-success">Access granted.</p>
 
-    	{% if valid %}
-    		<p class="text-success">Your file has validated</p>
-    		{% if success %}
-		    	<p class="text-success">Your file was successfully added to the database</p>
-		    {% else %}
-		        <p class="text-error">There was an error adding your file to the database</p>
-		    {% endif %}
-    	{% else %}
-    		<p class="text-error">The file you uploaded did not validate. Please try again</p>
-    	{% endif %}
-	{% endif %}
+            {% if valid %}
+                <p class="text-success">Your file has validated</p>
+                {% if success %}
+                    <p class="text-success">Your file was successfully added to the database</p>
+                {% else %}
+                    <p class="text-error">There was an error adding your file to the database</p>
+                {% endif %}
+            {% else %}
+                <p class="text-error">The file you uploaded did not validate. Please try again</p>
+            {% endif %}
+        {% endif %}
 
-	{% if not success %}
-		{% if no_file %}
-    		<p class="text-error">No file chosen. Please try again.</p>
-    	{% endif %}
-    	{% if login_failure %}
-    		<p class="text-error">Incorrect Password. Please try again.</p>
-    	{% endif %}
-    	<p><strong>Please choose a file and enter a password:</strong></p>
-		<form class="form-horizontal" method="post" enctype="multipart/form-data" action="/import">
-			<div class="control-group">
-			    <label class="control-label" for="inputPassword">XML Instance</label>
-			    <div class="controls">
-			    	<input type="file" name="uploaded_file"/>
-			    </div>
-			</div>
-			<div class="control-group">
-			    <label class="control-label" for="inputPassword">Password</label>
-			    <div class="controls">
-			    	<input type="password" name="pass"/>
-			    </div>
-			</div>
-			<div class="control-group">
-			    <div class="controls">
-			    	<input type="submit" value="Upload"/>
-			    </div>
-			</div>
-		</form>
-    {% endif %}
+        {% if not success %}
+            {% if no_file %}
+                <p class="text-error">No file chosen. Please try again.</p>
+            {% endif %}
+            {% if login_failure %}
+                <p class="text-error">Incorrect Password. Please try again.</p>
+            {% endif %}
+            <p><strong>That's terrific! As long as it conforms to <a href="/static/files/WC_schema.xsd">this schema</a> and you know our password, you'll be fine! ;)</strong></p>
+            <p><strong>Please choose an XML instance and enter ze password:</strong></p>
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/import">
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">XML Instance</label>
+                    <div class="controls">
+                        <input type="file" name="uploaded_file"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">Password</label>
+                    <div class="controls">
+                        <input type="password" name="pass"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" value="Upload"/>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
 {% endblock %}
