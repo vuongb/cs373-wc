@@ -108,3 +108,12 @@ li a:hover{
 #object-header{
     text-align: center;
 }
+
+#search-header{
+    text-align: center;
+}
+
+#search-results{
+    margin: 25px auto 0 auto;
+    width: 90%;
+}

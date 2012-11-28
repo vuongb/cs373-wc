@@ -7,23 +7,25 @@
         Something in your search was invalid. Please consult <a href="https://developers.google.com/appengine/docs/python/search/overview#Simple_Queries">the Google search documentation</a> for performing a proper search.
     {% else %}
         {% if search_terms %}
-            {% if search_results %}
-                <h2>Search Results for: "{{ search_terms }}"</h2>
-                {% for result in search_results.items %}
-                    <a href="{{ result.1.0 }}">{{ result.0 }}</a>
-                    <br />
-                    {% autoescape off %}
-                        <ul>
-                        {% for description in result.1.1 %}
-                            <li>{{ description }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endautoescape %}
-                    <br />
-                {% endfor %}
-            {% else %}
-                <h2>No results found for: "{{ search_terms }}"</h2>
-            {% endif %}
+            <h2 id="search-header">Search Results for: "{{ search_terms }}"</h2>
+            <div id="search-results">
+                {% if search_results %}
+                    {% for result in search_results.items %}
+                        <a href="{{ result.1.0 }}"><b>{{ result.0 }}</b></a>
+                        <br />
+                        {% autoescape off %}
+                            <ul>
+                            {% for description in result.1.1 %}
+                                <li>{{ description }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endautoescape %}
+                        <br />
+                    {% endfor %}
+                {% else %}
+                    <p>No results found for: "{{ search_terms }}"</p>
+                {% endif %}
+            </div>
         {% else %}
             <h2>No search terms entered</h2>
         {% endif %}
