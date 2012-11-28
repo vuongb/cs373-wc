@@ -219,7 +219,7 @@ def merge(id, model_str):
                                   tweet['text'] + "</div></li>"
                     social += "</ul>"
                 else:
-                    if feed['errors']:
+                    if 'errors' in feed:
                         social += feed['errors'][0]['message']
                     elif feed['results']:
                         for search_result in feed['results']:
