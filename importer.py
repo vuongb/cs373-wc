@@ -1,4 +1,5 @@
 from StringIO import StringIO
+import re
 from minixsv import pyxsval as xsv
 import xml.etree.ElementTree as ET
 from google.appengine.ext import db
@@ -258,8 +259,12 @@ def process_crisis(crisis):
             if proccess_common_data(k, v, c):
                 pass
             elif k == 'start-date':
+                if re.search("(\+\d+:\d+|\-\d+:\d+)", v):
+                    v = v[:-6]
                 c['us_startDate'] = datetime.datetime.strptime(v, '%Y-%m-%dT%H:%M:%S')
             elif k == 'end-date':
+                if re.search("(\+\d+:\d+|\-\d+:\d+)", v):
+                    v = v[:-6]
                 c['us_endDate'] = datetime.datetime.strptime(v, '%Y-%m-%dT%H:%M:%S')
             elif k == 'economic-impact':
                 c['us_economicImpact'] = int(v)
