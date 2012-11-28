@@ -126,8 +126,6 @@ def merge(id, model_str):
 
         if model_str == 'Organization':
             merge_org(result, obj)
-        elif model_str == 'Person':
-            merge_person(result, obj)
 
         if 'Related Crises' in result:
             result['Related Crises'] += list(set(result['Related Crises'] + list(obj.crises)))
@@ -289,25 +287,17 @@ def merge_location(result, obj):
 
 
 def merge_org(result, obj):
-    if obj.us_phone:
-        if 'Phone Number' in result:
-            if obj.us_phone not in result['Phone Number']:
-                result['Phone Number'].append(obj.us_phone)
+    if obj.us_phone or obj.us_email or obj.us_address:
+        contact_info = (obj.us_phone, "<a target=\"_blank\" href=\"mailto:" + obj.us_email + "\">" + obj.us_email + "</a>", obj.us_address)
+        if 'Contact Info' in result:
+            if contact_info not in result['Contact Info']:
+                result['Contact Info'].append(contact_info)
         else:
-            result['Phone Number'] = [obj.us_phone]
+            result['Contact Info'] = [contact_info]
 
 def render_org(result):
-    if 'Phone Number' in result:
-        # render Phone Number
-        result['Phone Number'] = ", ".join(filter(None, result['Phone Number']))
-
-def merge_person(result, id):
-    pass
-
-# Test code
-#print(distinct([
-#    ("New York", "NY", "12345", None, None),
-#    ("New York", "NY", "12345", None, None),
-#    ("Austin", "TX", "78705", None, None),
-#    ("Austin", "TX", "78705", 1, 2)
-#]))
+    contact_info = "<ul>"
+    if 'Contact Info' in result:
+        for contact in result['Contact Info']:
+            contact_info = "<li>" + "<br />".join(map(str, filter(None, contact))) + "</li>"
+    result['Contact Info'] = contact_info + "</ul>"
