@@ -89,7 +89,7 @@ def store_special_classes(result_dict, assoc_obj):
     if social:
         for media in social:
             builder                 = {'social_type': media.items()[0][0],
-                                       'social_id': media.items()[0][1],
+                                       'social_id': str(media.items()[0][1]),
                                        'assoc_object': assoc_obj}
             Social(**builder).put()
     images          = result_dict.get('images')
@@ -155,7 +155,7 @@ def proccess_common_data(key, xml_value, result_dict):
     value_inserted = True
     if key == 'name':
         result_dict['us_name'] = str(xml_value)
-    elif key == 'alternate-names':
+    elif key == 'alternate-names' and str(xml_value) != '[]':
         result_dict['us_alternateNames'] = str(xml_value).strip()
     elif key == 'kind':
         result_dict['us_type'] = str(xml_value)
