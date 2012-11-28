@@ -1,11 +1,24 @@
 
 #group-header{
-    height: 200px;
+    background-size: 100%;
+    color: white;
+    height: 300px;
     margin: 25px 50px 25px 50px;
 }
 
+.banner-crises{
+    background-image: url("/static/img/banner_crises.jpg");
+}
+.banner-organizations{
+    background-image: url("/static/img/banner_organizations.jpg");
+}
+.banner-people{
+    background-image: url("/static/img/banner_people.jpg");
+}
+
 #group-text{
-    float: left
+    float: left;
+    margin: 10px 0 0 75px;
 }
 
 #group-image{
