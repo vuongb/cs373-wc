@@ -16,6 +16,7 @@ a{
 }
 
     .masthead div{
+        font-weight: bold;
         margin: auto;
         width: 70%;
     }
@@ -26,6 +27,10 @@ a{
 
     .nav-tabs{
         border: none;
+    }
+
+    .nav .dropdown-toggle .caret {
+        border-top-color: white;
     }
 
     #searchbar{

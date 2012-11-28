@@ -11,6 +11,7 @@
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/static/css/index.css" rel="stylesheet">
     <link href="/static/css/group.css" rel="stylesheet">
+    <link href="/static/css/about.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -21,7 +22,11 @@
                     <li class="nav-active"><a href="/c">Crises</a></li>
                     <li class="nav-active"><a href="/o">Organizations</a></li>
                     <li class="nav-active"><a href="/p">People</a></li>
-                    <li class="nav-active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu</a>
+                    <li class="nav-active dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Menu
+                            <b class="caret"></b>
+                        </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li class="nav-active"><a href="/import">Import</a></li>
                             <li><a target="_blank" href="/export">Export</a></li>
@@ -34,6 +39,7 @@
                           <input type="submit" value="Search"/>
                         </form>
                     </li>
+                    <li class="nav-active"><a href="/about">About</a></li>
                 </ul>
             </div>
         </div>
@@ -42,7 +48,7 @@
                 <div id="welcome">
                     <img id="header-image" src="/static/img/angry_unicorn.png">
                     <h1 id="header-text">World Crises Database</h1>
-                    <h5>Presented by: Team UNICORN STEROIDS</h5>
+                    <h5>Developed and presented by: <a href="/about">Team UNICORN STEROIDS</a></h5>
                     A resource for information on crises worldwide, as well as similar data for associated organizations and humanitarians.
 
                 </div>
@@ -52,7 +58,7 @@
                             <h2>Crises</h2>
                             <img class="subtype-image" src="../static/img/stock_crisis.jpg">
                             <div class="subtype-text">
-                                With the growth in population and rise of technology, new situations and conflicts present themselves everyday. In addition, natural disasters still persist and we often have no defense. Here you will find up-to-date information on international crises.
+                                With the growth in population and rise of technology, new situations and conflicts present themselves everyday. In addition, natural disasters are still tearin' it up and we often have no defense. Here you will find up-to-date information on international crises.
                             </div>
                         </div>
                     </a>
@@ -76,11 +82,6 @@
                     </a>
                 </div>
             {% endblock content %}
-            <!--<p>-->
-                <!--<small>-->
-                    <!--Created by Team Unicorn Steroids : Ryan Prater, Michael Tarng, Bryan Vuong, Boris Jonica, Dereck Sanchez, Cassie Schwendiman-->
-                <!--</small>-->
-            <!--</p>-->
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>

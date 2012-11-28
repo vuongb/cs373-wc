@@ -255,6 +255,19 @@ class SearchHandler(webapp2.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'templates/search.html')
         self.response.out.write(template.render(path, data))
 
+
+class AboutPage(webapp2.RequestHandler):
+    """ Renders the about page """
+
+    def get(self):
+        data = {
+            'title'         : "TEAM UNICORN STEROIDS",
+        }
+        path = os.path.join(os.path.dirname(__file__), 'templates/about.html')
+        self.response.out.write(template.render(path, data))
+
+
+
 def query_distinct(s):
     """
     performs a google query and filters non-unique results by us_name
@@ -279,5 +292,6 @@ app = webapp2.WSGIApplication([
     (r'/p/(.+)', PersonPage),
     ('/import', ImportHandler),
     ('/export', ExportHandler),
-    ('/search', SearchHandler)
+    ('/search', SearchHandler),
+    ('/about', AboutPage)
 ], debug=True)
