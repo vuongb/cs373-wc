@@ -1,5 +1,6 @@
 import unittest
 from importer import get_tree_and_validate
+import search
 import importer
 
 class TestImport(unittest.TestCase):
@@ -38,7 +39,7 @@ class TestImport(unittest.TestCase):
         """
         self.assertEqual(get_tree_and_validate(self.invalid_xml, open(self.SCHEMA, 'r').read()), 0)
 
-    def test_validate_wc2(self):
+    def test_validate_wc3(self):
         """WC2 XML should validate"""
         assert self.wc2_tree != 0
 

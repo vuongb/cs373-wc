@@ -400,11 +400,13 @@ def put_objects(root):
 #                        duplicate = checkDuplicate('crisis', c['id'])
 #                        if(duplicate != None):            # Need to Merge
 #                            crisis = dsMerge('crisis', duplicate, crisis)
-
-                        # Create a crisis search document
-                        document = create_document(crisis)
-                        # Add crisis object to search index
-                        add_to_index(document)
+                        try:
+                            # Create a crisis search document
+                            document = create_document(crisis)
+                            # Add crisis object to search index
+                            add_to_index(document)
+                        except:
+                            pass
 
                         crisis.put()
                         # TODO: clean up by returning a 'media' dict which we send to store_special_classes
@@ -428,11 +430,13 @@ def put_objects(root):
 #                        duplicate = checkDuplicate('organization', o['id'])
 #                        if(duplicate != None):            # Need to Merge
 #                            organization = dsMerge('organization', duplicate, organization)
-
-                        # Create a organization search document
-                        document = create_document(organization)
-                        # Add organization object to search index
-                        add_to_index(document)
+                        try:
+                            # Create a organization search document
+                            document = create_document(organization)
+                            # Add organization object to search index
+                            add_to_index(document)
+                        except:
+                            pass
                             
                         organization.put()
 
@@ -454,10 +458,13 @@ def put_objects(root):
                         person_dict     = result_dict.get('person')
                         person          = Person(**person_dict)
 
-                        # Create a person search document
-                        document = create_document(person)
-                        # Add person object to search index
-                        add_to_index(document)
+                        try:
+                            # Create a person search document
+                            document = create_document(person)
+                            # Add person object to search index
+                            add_to_index(document)
+                        except:
+                            pass
 
                         person.put()
 
