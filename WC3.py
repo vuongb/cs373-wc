@@ -31,7 +31,7 @@ from urlparse import urlparse, parse_qs
 class ImportHandler(webapp2.RequestHandler):
     """ Handles the interaction between the client and the server for importing xml files into our datastore """
 
-    SCHEMA = 'WC2.xsd' # the schema that all xml is validated against
+    SCHEMA = 'WC3.xsd' # the schema that all xml is validated against
     PASSWORD = 'hunter2' # the password required for upload and import functionality
 
     def post(self):

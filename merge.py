@@ -244,7 +244,8 @@ def merge(id, model_str):
                                       search_result['from_user'] + "\">@" + search_result['from_user'] + "</a></h4>" +\
                                       search_result['text'] + "</div></li>"
                     else:
-                        social += "No results found for \"" + feed['query'] + "\""
+                        if 'error' in feed: social += feed['error'] + "<br />Try again by refreshing with CTRL+F5"
+                        else: social += "Could not parse twitter"
                     social += "</ul>"
             social += "</li>"
             if social not in socials:
