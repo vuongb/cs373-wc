@@ -39,7 +39,7 @@ def distinct(l):
 def merge(id, model_str):
     """
     creates a dictionary containing all the merged data for a model of a specific id to render to html
-    id is the id of the object to render
+    id is the id of the object to render; merges all the common data
     model_str is the class of the object, ie Organization, Person, Crisis
     returns a dictionary with attribute names as keys and string results as values
     """
@@ -48,11 +48,9 @@ def merge(id, model_str):
     ## result dict
     result = OrderedDict()
 
-    ## merge common data
     for obj in query:
-#        if 'ID' not in result:
-#            result['ID'] = obj.id
         if 'Name' in result:
+            assert type(result['Name']) == str
             if 'Alternate Names' in result and result['Alternate Names']:
                 if obj.us_name not in result['Alternate Names'].split(','):
                     result['Alternate Names'] += ', ' + obj.us_name
@@ -62,6 +60,7 @@ def merge(id, model_str):
             result['Name'] = obj.us_name
 
         if 'Alternate Names' in result:
+            assert type(result['Alternate Names']) == str
             if obj.us_alternateNames is not None:
                 for name in obj.us_alternateNames.split(','):
                     if name not in result['Alternate Names']:
@@ -70,6 +69,7 @@ def merge(id, model_str):
             result['Alternate Names'] = obj.us_alternateNames
 
         if 'Kind' in result:
+            assert type(result['Kind']) == str
             for kind in obj.us_type.split(','):
                 if kind not in result['Kind']:
                     result['Kind'] += ', ' + kind
@@ -77,6 +77,7 @@ def merge(id, model_str):
             result['Kind'] = obj.us_type
 
         if 'Description' in result:
+            assert type(result['Description']) == str
             for descrip in obj.us_description.split('\n'):
                 if descrip not in result['Description']:
                     result['Description'] += '<p /><p />' + descrip
@@ -94,6 +95,7 @@ def merge(id, model_str):
             merge_crisis(result, obj)
 
         if 'Citations' in result:
+            assert type(result['Citations']) == dict
             for citation in obj.citations:
                 if citation.source not in result['Citations']:
                     result['Citations'][citation.source] = citation.description
@@ -103,6 +105,7 @@ def merge(id, model_str):
                 result['Citations'][citation.source] = citation.description
 
         if 'External Links' in result:
+            assert type(result['External Links']) == dict
             for link in obj.external_links:
                 if link.source not in result['External Links']:
                     result['External Links'][link.source] = link.description
@@ -119,6 +122,7 @@ def merge(id, model_str):
             result['Maps'] = [obj.getLocation()]
 
         if 'Images' in result:
+            assert type(result['Images']) == dict
             for image in obj.images:
                 if image not in result['Images']:
                     result['Images'][image.source] = image.description
@@ -133,6 +137,7 @@ def merge(id, model_str):
             result['Social'] = list(obj.social)
 
         if 'Related Crises' in result:
+            assert type(result['Related Crises']) == dict
             for crisis in obj.crises:
                 if crisis.us_name not in result['Related Crises']:
                     result['Related Crises'][crisis.crisis.us_name] = crisis.crisis.getUrl()
@@ -142,6 +147,7 @@ def merge(id, model_str):
                 result['Related Crises'][crisis.crisis.us_name] = crisis.crisis.getUrl()
 
         if 'Related Organizations' in result:
+            assert type(result['Related Organizations']) == dict
             for organization.us_name in obj.organizations:
                 if organization not in result['Related Organizations']:
                     result['Related Organizations'][organization.organization.us_name] = organization.organization.getUrl()
@@ -151,6 +157,7 @@ def merge(id, model_str):
                 result['Related Organizations'][organization.organization.us_name] = organization.organization.getUrl()
 
         if 'Related People' in result:
+            assert type(result['Related People']) == dict
             for person in obj.people:
                 if person.person.us_name in result['Related People']:
                     result['Related People'][person.person.us_name] = person.person.getUrl()
