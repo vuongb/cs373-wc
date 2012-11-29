@@ -1,14 +1,14 @@
 import unittest
 from exporter import buildTree, addCrisis, addOrganization, addPerson
-from WC2 import get_tree_and_validate
+from WC3 import get_tree_and_validate
 from google.appengine.ext import db
 import importer
 
 class TestExport(unittest.TestCase):
     def setUp(self):
-#        self.wc2_xml = open('WC2.xml', 'r').read()
+#        self.wc2_xml = open('WC3.xml', 'r').read()
 
-        self.SCHEMA = 'WC2.xsd'
+        self.SCHEMA = 'WC3.xsd'
         self.crisis_tree = get_tree_and_validate(open('test/test_crisis.xml', 'r').read(),
             open(self.SCHEMA, 'r').read())
         self.organization_tree = get_tree_and_validate(open('test/test_organization.xml', 'r').read(),

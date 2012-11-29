@@ -3,7 +3,7 @@ from google.appengine.ext import db
 
 def buildTree():
   """
-  builds the tree of all objects in the datastore conforming to WC2.xsd
+  builds the tree of all objects in the datastore conforming to WC3.xsd
   return root element which is the root of the tree or '<world-crises>'
   """
   root = Element('world-crises')
@@ -37,7 +37,7 @@ def buildTree():
 
 def addCrisis(crisis):
   """
-    build xml crisis element based on WC2.xsd (hard coded, meaning changes to xsd will not reflect here)
+    build xml crisis element based on WC3.xsd (hard coded, meaning changes to xsd will not reflect here)
     crisis is a Crisis object from the GAE datastore
     return crisis xml element
     """
@@ -271,7 +271,7 @@ def addCrisis(crisis):
 def addOrganization(organization):
 
   """
-    build xml organization element based on WC2.xsd (hard coded, meaning changes to xsd will not reflect here)
+    build xml organization element based on WC3.xsd (hard coded, meaning changes to xsd will not reflect here)
     organization is an Organization object from the GAE datastore
     return organization xml element
     """
@@ -458,7 +458,7 @@ def addOrganization(organization):
   
 def addPerson(person):
   """
-    build xml person element based on WC2.xsd (hard coded, meaning changes to xsd will not reflect here)
+    build xml person element based on WC3.xsd (hard coded, meaning changes to xsd will not reflect here)
     person is a Person object from the GAE datastore
     return person xml element
     """
