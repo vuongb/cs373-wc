@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>importer</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;importer
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="importer-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module importer</h1><p class="nomargin-top"><span class="codelink"><a href="importer-pysrc.html">source&nbsp;code</a></span></p>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_tree_and_validate"></a><span class="summary-sig-name">get_tree_and_validate</span>(<span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">schema</span>)</span><br />
+      validate an xml string against a schema string and return an ETree 
+      representation if it is valid data is the xml data to validate and 
+      build a tree from schema is the schema to validate against returns 0 
+      if the xml is invalid, and an ETree if it is</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#get_tree_and_validate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="etree_to_dict"></a><span class="summary-sig-name">etree_to_dict</span>(<span class="summary-sig-arg">t</span>)</span><br />
+      recursively converts an ETree into a dict</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#etree_to_dict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="store_references"></a><span class="summary-sig-name">store_references</span>(<span class="summary-sig-arg">references</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#store_references">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="store_special_classes"></a><span class="summary-sig-name">store_special_classes</span>(<span class="summary-sig-arg">result_dict</span>,
+        <span class="summary-sig-arg">assoc_obj</span>)</span><br />
+      creates relational/child objects like videos, social, images, maps, 
+      etc from dict data</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#store_special_classes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="str_from_tree"></a><span class="summary-sig-name">str_from_tree</span>(<span class="summary-sig-arg">etree</span>)</span><br />
+      Get the string representation of an ElementTree object etree is the 
+      desired root of the ElementTree returns a string representation using
+      ElementTree.tos   tring()</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#str_from_tree">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parse_links"></a><span class="summary-sig-name">parse_links</span>(<span class="summary-sig-arg">dict_value</span>,
+        <span class="summary-sig-arg">type_as_string</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#parse_links">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="importer-module.html#proccess_common_data" class="summary-sig-name">proccess_common_data</a>(<span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">xml_value</span>,
+        <span class="summary-sig-arg">result_dict</span>)</span><br />
+      Processes common data for Organization, Person, and Crisis.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#proccess_common_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="importer-module.html#process_special_data" class="summary-sig-name">process_special_data</a>(<span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">xml_value</span>,
+        <span class="summary-sig-arg">result_dict</span>)</span><br />
+      Processes special data such as videos, social media, etc.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#process_special_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="importer-module.html#process_references" class="summary-sig-name">process_references</a>(<span class="summary-sig-arg">xml_key</span>,
+        <span class="summary-sig-arg">xml_value</span>,
+        <span class="summary-sig-arg">references_dict</span>)</span><br />
+      Processes references to other objects.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#process_references">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="process_crisis"></a><span class="summary-sig-name">process_crisis</span>(<span class="summary-sig-arg">crisis</span>)</span><br />
+      Parses crisis xml data into a dictionary to eventually end up in a 
+      model.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#process_crisis">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="process_organization"></a><span class="summary-sig-name">process_organization</span>(<span class="summary-sig-arg">organization</span>)</span><br />
+      Parses organization xml data into a dictionary to eventually end up 
+      in a model.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#process_organization">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="process_person"></a><span class="summary-sig-name">process_person</span>(<span class="summary-sig-arg">person</span>)</span><br />
+      Parses person xml data into a dictionary to eventually end up in a 
+      model.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#process_person">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put_objects"></a><span class="summary-sig-name">put_objects</span>(<span class="summary-sig-arg">root</span>)</span><br />
+      processes and inserts objects from the tree into the data store root 
+      is the root of an ElementTree return True if successful, otherwise 
+      False</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#put_objects">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkDuplicate"></a><span class="summary-sig-name">checkDuplicate</span>(<span class="summary-sig-arg">dataType</span>,
+        <span class="summary-sig-arg">idNum</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#checkDuplicate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="dsMerge"></a><span class="summary-sig-name">dsMerge</span>(<span class="summary-sig-arg">dsObject</span>,
+        <span class="summary-sig-arg">newObject</span>,
+        <span class="summary-sig-arg">dataType</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="importer-pysrc.html#dsMerge">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="proccess_common_data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">proccess_common_data</span>(<span class="sig-arg">key</span>,
+        <span class="sig-arg">xml_value</span>,
+        <span class="sig-arg">result_dict</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="importer-pysrc.html#proccess_common_data">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Processes common data for Organization, Person, and Crisis. Modifies a
+  mutable dictionary passed as an argument</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="process_special_data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">process_special_data</span>(<span class="sig-arg">key</span>,
+        <span class="sig-arg">xml_value</span>,
+        <span class="sig-arg">result_dict</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="importer-pysrc.html#process_special_data">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Processes special data such as videos, social media, etc. for 
+  Organization, Person, and Crisis</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="process_references"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">process_references</span>(<span class="sig-arg">xml_key</span>,
+        <span class="sig-arg">xml_value</span>,
+        <span class="sig-arg">references_dict</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="importer-pysrc.html#process_references">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Processes references to other objects. Modifies a mutable dictionary 
+  passed as an argument</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Nov 28 19:05:49 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

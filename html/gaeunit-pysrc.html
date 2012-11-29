@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>gaeunit</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;gaeunit
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="gaeunit-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="gaeunit-module.html">Module gaeunit</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">'''</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">GAEUnit: Google App Engine Unit Test Framework</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">Usage:</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">1. Put gaeunit.py into your application directory.  Modify 'app.yaml' by</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">   adding the following mapping below the 'handlers:' section:</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">   - url: /test.*</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">     script: gaeunit.py</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">2. Write your own test cases by extending unittest.TestCase.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">3. Launch the development web server.  To run all tests, point your browser to:</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">   http://localhost:8080/test     (Modify the port if necessary.)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">   </tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">   For plain text output add '?format=plain' to the above URL.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">   See README.TXT for information on how to run specific tests.</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">4. The results are displayed as the tests are run.</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">Visit http://code.google.com/p/gaeunit for more information and updates.</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">------------------------------------------------------------------------------</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">Copyright (c) 2008-2009, George Lei and Steven R. Farley.  All rights reserved.</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">Distributed under the following BSD license:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">Redistribution and use in source and binary forms, with or without</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">modification, are permitted provided that the following conditions are met:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">* Redistributions of source code must retain the above copyright notice,</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">  this list of conditions and the following disclaimer.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">* Redistributions in binary form must reproduce the above copyright notice,</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">  this list of conditions and the following disclaimer in the documentation</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">  and/or other materials provided with the distribution.</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">------------------------------------------------------------------------------</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">'''</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"George Lei and Steven R. Farley"</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable gaeunit.__email__=gaeunit-module.html#__email__"><a title="gaeunit.__email__" class="py-name" href="#" onclick="return doclink('link-0', '__email__', 'link-0');">__email__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"George.Z.Lei@Gmail.com"</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"#Revision: 1.2.8 $"</tt><tt class="py-op">[</tt><tt class="py-number">11</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-name">__copyright__</tt><tt class="py-op">=</tt> <tt class="py-string">"Copyright (c) 2008-2009, George Lei and Steven R. Farley"</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"BSD"</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable gaeunit.__url__=gaeunit-module.html#__url__"><a title="gaeunit.__url__" class="py-name" href="#" onclick="return doclink('link-1', '__url__', 'link-1');">__url__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"http://code.google.com/p/gaeunit"</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">cgi</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">json</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt> <tt class="py-keyword">import</tt> <tt class="py-name">webapp</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">api</tt> <tt class="py-keyword">import</tt> <tt class="py-name">apiproxy_stub_map</tt>   </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">api</tt> <tt class="py-keyword">import</tt> <tt class="py-name">datastore_file_stub</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt><tt class="py-op">.</tt><tt class="py-name">webapp</tt><tt class="py-op">.</tt><tt class="py-name">util</tt> <tt class="py-keyword">import</tt> <tt class="py-name">run_wsgi_app</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable gaeunit._LOCAL_TEST_DIR=gaeunit-module.html#_LOCAL_TEST_DIR"><a title="gaeunit._LOCAL_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-2', '_LOCAL_TEST_DIR', 'link-2');">_LOCAL_TEST_DIR</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'test'</tt>  <tt class="py-comment"># location of files</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable gaeunit._WEB_TEST_DIR=gaeunit-module.html#_WEB_TEST_DIR"><a title="gaeunit._WEB_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-3', '_WEB_TEST_DIR', 'link-3');">_WEB_TEST_DIR</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'/test'</tt>   <tt class="py-comment"># how you want to refer to tests on your web server</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-comment"># or:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-comment"># _WEB_TEST_DIR = '/u/test'</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-comment"># then in app.yaml:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-comment">#   - url: /u/test.*</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-comment">#     script: gaeunit.py</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-comment"># Main request handler</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="MainTestPageHandler"></a><div id="MainTestPageHandler-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="MainTestPageHandler-toggle" onclick="return toggle('MainTestPageHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gaeunit.MainTestPageHandler-class.html">MainTestPageHandler</a><tt class="py-op">(</tt><tt class="py-base-class">webapp</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainTestPageHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MainTestPageHandler-expanded"><a name="MainTestPageHandler.get"></a><div id="MainTestPageHandler.get-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="MainTestPageHandler.get-toggle" onclick="return toggle('MainTestPageHandler.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.MainTestPageHandler-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainTestPageHandler.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainTestPageHandler.get-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">unknown_args</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">arg</tt> <tt class="py-keyword">for</tt> <tt class="py-name">arg</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">arguments</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">arg</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">(</tt><tt class="py-string">"format"</tt><tt class="py-op">,</tt> <tt class="py-string">"package"</tt><tt class="py-op">,</tt> <tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">unknown_args</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">            <tt class="py-name">errors</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">arg</tt> <tt class="py-keyword">in</tt> <tt class="py-name">unknown_args</tt><tt class="py-op">:</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                <tt class="py-name">errors</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-4" class="py-name" targets="Function gaeunit._log_error()=gaeunit-module.html#_log_error"><a title="gaeunit._log_error" class="py-name" href="#" onclick="return doclink('link-4', '_log_error', 'link-4');">_log_error</a></tt><tt class="py-op">(</tt><tt class="py-string">"The request parameter '%s' is not valid."</tt> <tt class="py-op">%</tt> <tt class="py-name">arg</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-number">404</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">" "</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">errors</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-name">format</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method WC3.AboutPage.get()=WC3.AboutPage-class.html#get,Method WC3.CrisisPage.get()=WC3.CrisisPage-class.html#get,Method WC3.ExportHandler.get()=WC3.ExportHandler-class.html#get,Method WC3.ImportHandler.get()=WC3.ImportHandler-class.html#get,Method WC3.IndexPage.get()=WC3.IndexPage-class.html#get,Method WC3.OrganizationPage.get()=WC3.OrganizationPage-class.html#get,Method WC3.PersonPage.get()=WC3.PersonPage-class.html#get,Method WC3.SearchHandler.get()=WC3.SearchHandler-class.html#get,Method gaeunit.JsonTestListHandler.get()=gaeunit.JsonTestListHandler-class.html#get,Method gaeunit.JsonTestRunHandler.get()=gaeunit.JsonTestRunHandler-class.html#get,Method gaeunit.MainTestPageHandler.get()=gaeunit.MainTestPageHandler-class.html#get"><a title="WC3.AboutPage.get
+WC3.CrisisPage.get
+WC3.ExportHandler.get
+WC3.ImportHandler.get
+WC3.IndexPage.get
+WC3.OrganizationPage.get
+WC3.PersonPage.get
+WC3.SearchHandler.get
+gaeunit.JsonTestListHandler.get
+gaeunit.JsonTestRunHandler.get
+gaeunit.MainTestPageHandler.get" class="py-name" href="#" onclick="return doclink('link-5', 'get', 'link-5');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">"format"</tt><tt class="py-op">,</tt> <tt class="py-string">"html"</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">format</tt> <tt class="py-op">==</tt> <tt class="py-string">"html"</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method gaeunit.MainTestPageHandler._render_html()=gaeunit.MainTestPageHandler-class.html#_render_html"><a title="gaeunit.MainTestPageHandler._render_html" class="py-name" href="#" onclick="return doclink('link-6', '_render_html', 'link-6');">_render_html</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">format</tt> <tt class="py-op">==</tt> <tt class="py-string">"plain"</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method gaeunit.MainTestPageHandler._render_plain()=gaeunit.MainTestPageHandler-class.html#_render_plain"><a title="gaeunit.MainTestPageHandler._render_plain" class="py-name" href="#" onclick="return doclink('link-7', '_render_plain', 'link-7');">_render_plain</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-name">error</tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="gaeunit._log_error" class="py-name" href="#" onclick="return doclink('link-8', '_log_error', 'link-4');">_log_error</a></tt><tt class="py-op">(</tt><tt class="py-string">"The format '%s' is not valid."</tt> <tt class="py-op">%</tt> <tt class="py-name">cgi</tt><tt class="py-op">.</tt><tt class="py-name">escape</tt><tt class="py-op">(</tt><tt class="py-name">format</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-number">404</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">error</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">             </tt>
+<a name="MainTestPageHandler._render_html"></a><div id="MainTestPageHandler._render_html-def"><a name="L111"></a><tt class="py-lineno">111</tt> <a class="py-toggle" href="#" id="MainTestPageHandler._render_html-toggle" onclick="return toggle('MainTestPageHandler._render_html');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.MainTestPageHandler-class.html#_render_html">_render_html</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainTestPageHandler._render_html-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainTestPageHandler._render_html-expanded"><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">suite</tt><tt class="py-op">,</tt> <tt class="py-name">error</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name" targets="Function gaeunit._create_suite()=gaeunit-module.html#_create_suite"><a title="gaeunit._create_suite" class="py-name" href="#" onclick="return doclink('link-9', '_create_suite', 'link-9');">_create_suite</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">error</tt><tt class="py-op">:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt id="link-10" class="py-name" targets="Variable gaeunit._MAIN_PAGE_CONTENT=gaeunit-module.html#_MAIN_PAGE_CONTENT"><a title="gaeunit._MAIN_PAGE_CONTENT" class="py-name" href="#" onclick="return doclink('link-10', '_MAIN_PAGE_CONTENT', 'link-10');">_MAIN_PAGE_CONTENT</a></tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-11" class="py-name" targets="Function gaeunit._test_suite_to_json()=gaeunit-module.html#_test_suite_to_json"><a title="gaeunit._test_suite_to_json" class="py-name" href="#" onclick="return doclink('link-11', '_test_suite_to_json', 'link-11');">_test_suite_to_json</a></tt><tt class="py-op">(</tt><tt class="py-name">suite</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name"><a title="gaeunit._WEB_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-12', '_WEB_TEST_DIR', 'link-3');">_WEB_TEST_DIR</a></tt><tt class="py-op">,</tt> <tt class="py-name">__version__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-number">404</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">error</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">         </tt>
+<a name="MainTestPageHandler._render_plain"></a><div id="MainTestPageHandler._render_plain-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="MainTestPageHandler._render_plain-toggle" onclick="return toggle('MainTestPageHandler._render_plain');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.MainTestPageHandler-class.html#_render_plain">_render_plain</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MainTestPageHandler._render_plain-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MainTestPageHandler._render_plain-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">[</tt><tt class="py-string">"Content-Type"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">"text/plain"</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">runner</tt> <tt class="py-op">=</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TextTestRunner</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">suite</tt><tt class="py-op">,</tt> <tt class="py-name">error</tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="gaeunit._create_suite" class="py-name" href="#" onclick="return doclink('link-13', '_create_suite', 'link-9');">_create_suite</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">error</tt><tt class="py-op">:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-string">"====================\n"</tt> \ </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                                    <tt class="py-string">"GAEUnit Test Results\n"</tt> \ </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                                    <tt class="py-string">"====================\n\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt id="link-14" class="py-name" targets="Function gaeunit._run_test_suite()=gaeunit-module.html#_run_test_suite"><a title="gaeunit._run_test_suite" class="py-name" href="#" onclick="return doclink('link-14', '_run_test_suite', 'link-14');">_run_test_suite</a></tt><tt class="py-op">(</tt><tt class="py-name">runner</tt><tt class="py-op">,</tt> <tt class="py-name">suite</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-number">404</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">error</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-comment"># JSON test classes</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="JsonTestResult"></a><div id="JsonTestResult-def"><a name="L138"></a><tt class="py-lineno">138</tt> <a class="py-toggle" href="#" id="JsonTestResult-toggle" onclick="return toggle('JsonTestResult');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gaeunit.JsonTestResult-class.html">JsonTestResult</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestResult</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestResult-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="JsonTestResult-expanded"><a name="JsonTestResult.__init__"></a><div id="JsonTestResult.__init__-def"><a name="L139"></a><tt class="py-lineno">139</tt> <a class="py-toggle" href="#" id="JsonTestResult.__init__-toggle" onclick="return toggle('JsonTestResult.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.JsonTestResult-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestResult.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JsonTestResult.__init__-expanded"><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TestResult</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method gaeunit.JsonTestResult.__init__()=gaeunit.JsonTestResult-class.html#__init__"><a title="gaeunit.JsonTestResult.__init__" class="py-name" href="#" onclick="return doclink('link-15', '__init__', 'link-15');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testNumber</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="JsonTestResult.render_to"></a><div id="JsonTestResult.render_to-def"><a name="L143"></a><tt class="py-lineno">143</tt> <a class="py-toggle" href="#" id="JsonTestResult.render_to-toggle" onclick="return toggle('JsonTestResult.render_to');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.JsonTestResult-class.html#render_to">render_to</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">stream</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestResult.render_to-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JsonTestResult.render_to-expanded"><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-string">'runs'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testsRun</tt><tt class="py-op">,</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">            <tt class="py-string">'total'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testNumber</tt><tt class="py-op">,</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">            <tt class="py-string">'errors'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method gaeunit.JsonTestResult._list()=gaeunit.JsonTestResult-class.html#_list"><a title="gaeunit.JsonTestResult._list" class="py-name" href="#" onclick="return doclink('link-16', '_list', 'link-16');">_list</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">errors</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-string">'failures'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="gaeunit.JsonTestResult._list" class="py-name" href="#" onclick="return doclink('link-17', '_list', 'link-16');">_list</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failures</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-name">stream</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">result</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'},'</tt><tt class="py-op">,</tt> <tt class="py-string">'},\n'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"> </tt>
+<a name="JsonTestResult._list"></a><div id="JsonTestResult._list-def"><a name="L153"></a><tt class="py-lineno">153</tt> <a class="py-toggle" href="#" id="JsonTestResult._list-toggle" onclick="return toggle('JsonTestResult._list');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.JsonTestResult-class.html#_list">_list</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">list</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestResult._list-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JsonTestResult._list-expanded"><a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-name">dict</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">test</tt><tt class="py-op">,</tt> <tt class="py-name">err</tt> <tt class="py-keyword">in</tt> <tt class="py-name">list</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-name">d</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt>  </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">              <tt class="py-string">'desc'</tt><tt class="py-op">:</tt> <tt class="py-name">test</tt><tt class="py-op">.</tt><tt class="py-name">shortDescription</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">test</tt><tt class="py-op">)</tt><tt class="py-op">,</tt>  </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">              <tt class="py-string">'detail'</tt><tt class="py-op">:</tt> <tt class="py-name">err</tt><tt class="py-op">,</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">            <tt class="py-name">dict</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">dict</tt> </tt>
+</div></div><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="JsonTestRunner"></a><div id="JsonTestRunner-def"><a name="L164"></a><tt class="py-lineno">164</tt> <a class="py-toggle" href="#" id="JsonTestRunner-toggle" onclick="return toggle('JsonTestRunner');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gaeunit.JsonTestRunner-class.html">JsonTestRunner</a><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestRunner-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="JsonTestRunner-expanded"><a name="JsonTestRunner.run"></a><div id="JsonTestRunner.run-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="JsonTestRunner.run-toggle" onclick="return toggle('JsonTestRunner.run');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.JsonTestRunner-class.html#run">run</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">test</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestRunner.run-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JsonTestRunner.run-expanded"><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name" targets="Class gaeunit.JsonTestResult=gaeunit.JsonTestResult-class.html"><a title="gaeunit.JsonTestResult" class="py-name" href="#" onclick="return doclink('link-18', 'JsonTestResult', 'link-18');">JsonTestResult</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">result</tt><tt class="py-op">.</tt><tt class="py-name">testNumber</tt> <tt class="py-op">=</tt> <tt class="py-name">test</tt><tt class="py-op">.</tt><tt class="py-name">countTestCases</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-name">startTime</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-name">test</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">result</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-name">stopTime</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-name">timeTaken</tt> <tt class="py-op">=</tt> <tt class="py-name">stopTime</tt> <tt class="py-op">-</tt> <tt class="py-name">startTime</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">result</tt> </tt>
+</div></div><a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"> </tt>
+<a name="JsonTestRunHandler"></a><div id="JsonTestRunHandler-def"><a name="L175"></a><tt class="py-lineno">175</tt> <a class="py-toggle" href="#" id="JsonTestRunHandler-toggle" onclick="return toggle('JsonTestRunHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gaeunit.JsonTestRunHandler-class.html">JsonTestRunHandler</a><tt class="py-op">(</tt><tt class="py-base-class">webapp</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestRunHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="JsonTestRunHandler-expanded"><a name="JsonTestRunHandler.get"></a><div id="JsonTestRunHandler.get-def"><a name="L176"></a><tt class="py-lineno">176</tt> <a class="py-toggle" href="#" id="JsonTestRunHandler.get-toggle" onclick="return toggle('JsonTestRunHandler.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.JsonTestRunHandler-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>     </tt>
+</div><a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">[</tt><tt class="py-string">"Content-Type"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">"text/javascript"</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-name">test_name</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="WC3.AboutPage.get
+WC3.CrisisPage.get
+WC3.ExportHandler.get
+WC3.ImportHandler.get
+WC3.IndexPage.get
+WC3.OrganizationPage.get
+WC3.PersonPage.get
+WC3.SearchHandler.get
+gaeunit.JsonTestListHandler.get
+gaeunit.JsonTestRunHandler.get
+gaeunit.MainTestPageHandler.get" class="py-name" href="#" onclick="return doclink('link-19', 'get', 'link-5');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt id="link-20" class="py-name" targets="Function gaeunit._load_default_test_modules()=gaeunit-module.html#_load_default_test_modules"><a title="gaeunit._load_default_test_modules" class="py-name" href="#" onclick="return doclink('link-20', '_load_default_test_modules', 'link-20');">_load_default_test_modules</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-name">suite</tt> <tt class="py-op">=</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">defaultTestLoader</tt><tt class="py-op">.</tt><tt class="py-name">loadTestsFromName</tt><tt class="py-op">(</tt><tt class="py-name">test_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-name">runner</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name" targets="Class gaeunit.JsonTestRunner=gaeunit.JsonTestRunner-class.html"><a title="gaeunit.JsonTestRunner" class="py-name" href="#" onclick="return doclink('link-21', 'JsonTestRunner', 'link-21');">JsonTestRunner</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt id="link-22" class="py-name"><a title="gaeunit._run_test_suite" class="py-name" href="#" onclick="return doclink('link-22', '_run_test_suite', 'link-14');">_run_test_suite</a></tt><tt class="py-op">(</tt><tt class="py-name">runner</tt><tt class="py-op">,</tt> <tt class="py-name">suite</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-name">runner</tt><tt class="py-op">.</tt><tt class="py-name">result</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method gaeunit.JsonTestResult.render_to()=gaeunit.JsonTestResult-class.html#render_to"><a title="gaeunit.JsonTestResult.render_to" class="py-name" href="#" onclick="return doclink('link-23', 'render_to', 'link-23');">render_to</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-comment"># This is not used by the HTML page, but it may be useful for other client test runners.</tt> </tt>
+<a name="JsonTestListHandler"></a><div id="JsonTestListHandler-def"><a name="L187"></a><tt class="py-lineno">187</tt> <a class="py-toggle" href="#" id="JsonTestListHandler-toggle" onclick="return toggle('JsonTestListHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="gaeunit.JsonTestListHandler-class.html">JsonTestListHandler</a><tt class="py-op">(</tt><tt class="py-base-class">webapp</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestListHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="JsonTestListHandler-expanded"><a name="JsonTestListHandler.get"></a><div id="JsonTestListHandler.get-def"><a name="L188"></a><tt class="py-lineno">188</tt> <a class="py-toggle" href="#" id="JsonTestListHandler.get-toggle" onclick="return toggle('JsonTestListHandler.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit.JsonTestListHandler-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JsonTestListHandler.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JsonTestListHandler.get-expanded"><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">[</tt><tt class="py-string">"Content-Type"</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">"text/javascript"</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        <tt class="py-name">suite</tt><tt class="py-op">,</tt> <tt class="py-name">error</tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name"><a title="gaeunit._create_suite" class="py-name" href="#" onclick="return doclink('link-24', '_create_suite', 'link-9');">_create_suite</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">)</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">error</tt><tt class="py-op">:</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt id="link-25" class="py-name"><a title="gaeunit._test_suite_to_json" class="py-name" href="#" onclick="return doclink('link-25', '_test_suite_to_json', 'link-11');">_test_suite_to_json</a></tt><tt class="py-op">(</tt><tt class="py-name">suite</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error</tt><tt class="py-op">(</tt><tt class="py-number">404</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">error</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-comment"># Module helper functions</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"> </tt>
+<a name="_create_suite"></a><div id="_create_suite-def"><a name="L203"></a><tt class="py-lineno">203</tt> <a class="py-toggle" href="#" id="_create_suite-toggle" onclick="return toggle('_create_suite');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit-module.html#_create_suite">_create_suite</a><tt class="py-op">(</tt><tt class="py-param">request</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_create_suite-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_create_suite-expanded"><a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">    <tt class="py-name">package_name</tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="WC3.AboutPage.get
+WC3.CrisisPage.get
+WC3.ExportHandler.get
+WC3.ImportHandler.get
+WC3.IndexPage.get
+WC3.OrganizationPage.get
+WC3.PersonPage.get
+WC3.SearchHandler.get
+gaeunit.JsonTestListHandler.get
+gaeunit.JsonTestRunHandler.get
+gaeunit.MainTestPageHandler.get" class="py-name" href="#" onclick="return doclink('link-26', 'get', 'link-5');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">"package"</tt><tt class="py-op">)</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">    <tt class="py-name">test_name</tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="WC3.AboutPage.get
+WC3.CrisisPage.get
+WC3.ExportHandler.get
+WC3.ImportHandler.get
+WC3.IndexPage.get
+WC3.OrganizationPage.get
+WC3.PersonPage.get
+WC3.SearchHandler.get
+gaeunit.JsonTestListHandler.get
+gaeunit.JsonTestRunHandler.get
+gaeunit.MainTestPageHandler.get" class="py-name" href="#" onclick="return doclink('link-27', 'get', 'link-5');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">    <tt class="py-name">loader</tt> <tt class="py-op">=</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">defaultTestLoader</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">    <tt class="py-name">suite</tt> <tt class="py-op">=</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TestSuite</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">    <tt class="py-name">error</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">package_name</tt> <tt class="py-keyword">and</tt> <tt class="py-keyword">not</tt> <tt class="py-name">test_name</tt><tt class="py-op">:</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">                <tt class="py-name">modules</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="gaeunit._load_default_test_modules" class="py-name" href="#" onclick="return doclink('link-28', '_load_default_test_modules', 'link-20');">_load_default_test_modules</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">module</tt> <tt class="py-keyword">in</tt> <tt class="py-name">modules</tt><tt class="py-op">:</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">                    <tt class="py-name">suite</tt><tt class="py-op">.</tt><tt class="py-name">addTest</tt><tt class="py-op">(</tt><tt class="py-name">loader</tt><tt class="py-op">.</tt><tt class="py-name">loadTestsFromModule</tt><tt class="py-op">(</tt><tt class="py-name">module</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">test_name</tt><tt class="py-op">:</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">                <tt id="link-29" class="py-name"><a title="gaeunit._load_default_test_modules" class="py-name" href="#" onclick="return doclink('link-29', '_load_default_test_modules', 'link-20');">_load_default_test_modules</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">                <tt class="py-name">suite</tt><tt class="py-op">.</tt><tt class="py-name">addTest</tt><tt class="py-op">(</tt><tt class="py-name">loader</tt><tt class="py-op">.</tt><tt class="py-name">loadTestsFromName</tt><tt class="py-op">(</tt><tt class="py-name">test_name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">package_name</tt><tt class="py-op">:</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">                <tt class="py-name">package</tt> <tt class="py-op">=</tt> <tt class="py-name">reload</tt><tt class="py-op">(</tt><tt class="py-name">__import__</tt><tt class="py-op">(</tt><tt class="py-name">package_name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">                <tt class="py-name">module_names</tt> <tt class="py-op">=</tt> <tt class="py-name">package</tt><tt class="py-op">.</tt><tt class="py-name">__all__</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">module_name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">module_names</tt><tt class="py-op">:</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">                    <tt class="py-name">suite</tt><tt class="py-op">.</tt><tt class="py-name">addTest</tt><tt class="py-op">(</tt><tt class="py-name">loader</tt><tt class="py-op">.</tt><tt class="py-name">loadTestsFromName</tt><tt class="py-op">(</tt><tt class="py-string">'%s.%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">package_name</tt><tt class="py-op">,</tt> <tt class="py-name">module_name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">     </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">suite</tt><tt class="py-op">.</tt><tt class="py-name">countTestCases</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">Exception</tt><tt class="py-op">(</tt><tt class="py-string">"'%s' is not found or does not contain any tests."</tt> <tt class="py-op">%</tt>  \ </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">                            <tt class="py-op">(</tt><tt class="py-name">test_name</tt> <tt class="py-keyword">or</tt> <tt class="py-name">package_name</tt> <tt class="py-keyword">or</tt> <tt class="py-string">'local directory: \"%s\"'</tt> <tt class="py-op">%</tt> <tt id="link-30" class="py-name"><a title="gaeunit._LOCAL_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-30', '_LOCAL_TEST_DIR', 'link-2');">_LOCAL_TEST_DIR</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt> <tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-name">error</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt id="link-31" class="py-name"><a title="gaeunit._log_error" class="py-name" href="#" onclick="return doclink('link-31', '_log_error', 'link-4');">_log_error</a></tt><tt class="py-op">(</tt><tt class="py-name">error</tt><tt class="py-op">)</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">suite</tt><tt class="py-op">,</tt> <tt class="py-name">error</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"> </tt>
+<a name="_load_default_test_modules"></a><div id="_load_default_test_modules-def"><a name="L236"></a><tt class="py-lineno">236</tt> <a class="py-toggle" href="#" id="_load_default_test_modules-toggle" onclick="return toggle('_load_default_test_modules');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit-module.html#_load_default_test_modules">_load_default_test_modules</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_load_default_test_modules-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_load_default_test_modules-expanded"><a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-32" class="py-name"><a title="gaeunit._LOCAL_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-32', '_LOCAL_TEST_DIR', 'link-2');">_LOCAL_TEST_DIR</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">:</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-33" class="py-name"><a title="gaeunit._LOCAL_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-33', '_LOCAL_TEST_DIR', 'link-2');">_LOCAL_TEST_DIR</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">    <tt class="py-name">module_names</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">mf</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">3</tt><tt class="py-op">]</tt> <tt class="py-keyword">for</tt> <tt class="py-name">mf</tt> <tt class="py-keyword">in</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">listdir</tt><tt class="py-op">(</tt><tt id="link-34" class="py-name"><a title="gaeunit._LOCAL_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-34', '_LOCAL_TEST_DIR', 'link-2');">_LOCAL_TEST_DIR</a></tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-name">mf</tt><tt class="py-op">.</tt><tt class="py-name">endswith</tt><tt class="py-op">(</tt><tt class="py-string">".py"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt class="py-name">reload</tt><tt class="py-op">(</tt><tt class="py-name">__import__</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">module_names</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line"> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line"> </tt>
+<a name="_get_tests_from_suite"></a><div id="_get_tests_from_suite-def"><a name="L243"></a><tt class="py-lineno">243</tt> <a class="py-toggle" href="#" id="_get_tests_from_suite-toggle" onclick="return toggle('_get_tests_from_suite');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit-module.html#_get_tests_from_suite">_get_tests_from_suite</a><tt class="py-op">(</tt><tt class="py-param">suite</tt><tt class="py-op">,</tt> <tt class="py-param">tests</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_get_tests_from_suite-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_get_tests_from_suite-expanded"><a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">test</tt> <tt class="py-keyword">in</tt> <tt class="py-name">suite</tt><tt class="py-op">:</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">test</tt><tt class="py-op">,</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TestSuite</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">            <tt id="link-35" class="py-name" targets="Function gaeunit._get_tests_from_suite()=gaeunit-module.html#_get_tests_from_suite"><a title="gaeunit._get_tests_from_suite" class="py-name" href="#" onclick="return doclink('link-35', '_get_tests_from_suite', 'link-35');">_get_tests_from_suite</a></tt><tt class="py-op">(</tt><tt class="py-name">test</tt><tt class="py-op">,</tt> <tt class="py-name">tests</tt><tt class="py-op">)</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">            <tt class="py-name">tests</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">test</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line"> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"> </tt>
+<a name="_test_suite_to_json"></a><div id="_test_suite_to_json-def"><a name="L251"></a><tt class="py-lineno">251</tt> <a class="py-toggle" href="#" id="_test_suite_to_json-toggle" onclick="return toggle('_test_suite_to_json');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit-module.html#_test_suite_to_json">_test_suite_to_json</a><tt class="py-op">(</tt><tt class="py-param">suite</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_test_suite_to_json-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_test_suite_to_json-expanded"><a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">    <tt class="py-name">tests</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">    <tt id="link-36" class="py-name"><a title="gaeunit._get_tests_from_suite" class="py-name" href="#" onclick="return doclink('link-36', '_get_tests_from_suite', 'link-35');">_get_tests_from_suite</a></tt><tt class="py-op">(</tt><tt class="py-name">suite</tt><tt class="py-op">,</tt> <tt class="py-name">tests</tt><tt class="py-op">)</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">    <tt class="py-name">test_tuples</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">test</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">__module__</tt><tt class="py-op">,</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">test</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt><tt class="py-op">,</tt> <tt class="py-name">test</tt><tt class="py-op">.</tt><tt class="py-name">_testMethodName</tt><tt class="py-op">)</tt> \ </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">                   <tt class="py-keyword">for</tt> <tt class="py-name">test</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tests</tt><tt class="py-op">]</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">    <tt class="py-name">test_dict</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">test_tuple</tt> <tt class="py-keyword">in</tt> <tt class="py-name">test_tuples</tt><tt class="py-op">:</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">        <tt class="py-name">module_name</tt><tt class="py-op">,</tt> <tt class="py-name">class_name</tt><tt class="py-op">,</tt> <tt class="py-name">method_name</tt> <tt class="py-op">=</tt> <tt class="py-name">test_tuple</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">module_name</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">test_dict</tt><tt class="py-op">:</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">            <tt class="py-name">mod_dict</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">            <tt class="py-name">method_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">            <tt class="py-name">method_list</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">method_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">            <tt class="py-name">mod_dict</tt><tt class="py-op">[</tt><tt class="py-name">class_name</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">method_list</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">            <tt class="py-name">test_dict</tt><tt class="py-op">[</tt><tt class="py-name">module_name</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">mod_dict</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">            <tt class="py-name">mod_dict</tt> <tt class="py-op">=</tt> <tt class="py-name">test_dict</tt><tt class="py-op">[</tt><tt class="py-name">module_name</tt><tt class="py-op">]</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">class_name</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">mod_dict</tt><tt class="py-op">:</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">                <tt class="py-name">method_list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">                <tt class="py-name">method_list</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">method_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">                <tt class="py-name">mod_dict</tt><tt class="py-op">[</tt><tt class="py-name">class_name</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">method_list</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">                <tt class="py-name">method_list</tt> <tt class="py-op">=</tt> <tt class="py-name">mod_dict</tt><tt class="py-op">[</tt><tt class="py-name">class_name</tt><tt class="py-op">]</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">                <tt class="py-name">method_list</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">method_name</tt><tt class="py-op">)</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">                 </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">test_dict</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"> </tt>
+<a name="_run_test_suite"></a><div id="_run_test_suite-def"><a name="L278"></a><tt class="py-lineno">278</tt> <a class="py-toggle" href="#" id="_run_test_suite-toggle" onclick="return toggle('_run_test_suite');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit-module.html#_run_test_suite">_run_test_suite</a><tt class="py-op">(</tt><tt class="py-param">runner</tt><tt class="py-op">,</tt> <tt class="py-param">suite</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_run_test_suite-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_run_test_suite-expanded"><a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">    <tt class="py-docstring">"""Run the test suite.</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"><tt class="py-docstring">    Preserve the current development apiproxy, create a new apiproxy and</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"><tt class="py-docstring">    replace the datastore with a temporary one that will be used for this</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line"><tt class="py-docstring">    test suite, run the test suite, and restore the development apiproxy.</tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line"><tt class="py-docstring">    This isolates the test datastore from the development datastore.</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt>         </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">    <tt class="py-name">original_apiproxy</tt> <tt class="py-op">=</tt> <tt class="py-name">apiproxy_stub_map</tt><tt class="py-op">.</tt><tt class="py-name">apiproxy</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">       <tt class="py-name">apiproxy_stub_map</tt><tt class="py-op">.</tt><tt class="py-name">apiproxy</tt> <tt class="py-op">=</tt> <tt class="py-name">apiproxy_stub_map</tt><tt class="py-op">.</tt><tt class="py-name">APIProxyStubMap</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>  </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">       <tt class="py-name">temp_stub</tt> <tt class="py-op">=</tt> <tt class="py-name">datastore_file_stub</tt><tt class="py-op">.</tt><tt class="py-name">DatastoreFileStub</tt><tt class="py-op">(</tt><tt class="py-string">'GAEUnitDataStore'</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">trusted</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt>   </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line">       <tt class="py-name">apiproxy_stub_map</tt><tt class="py-op">.</tt><tt class="py-name">apiproxy</tt><tt class="py-op">.</tt><tt class="py-name">RegisterStub</tt><tt class="py-op">(</tt><tt class="py-string">'datastore'</tt><tt class="py-op">,</tt> <tt class="py-name">temp_stub</tt><tt class="py-op">)</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">       <tt class="py-comment"># Allow the other services to be used as-is for tests.</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">       <tt class="py-keyword">for</tt> <tt class="py-name">name</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'urlfetch'</tt><tt class="py-op">,</tt> <tt class="py-string">'mail'</tt><tt class="py-op">,</tt> <tt class="py-string">'memcache'</tt><tt class="py-op">,</tt> <tt class="py-string">'images'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt>  </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line">           <tt class="py-name">apiproxy_stub_map</tt><tt class="py-op">.</tt><tt class="py-name">apiproxy</tt><tt class="py-op">.</tt><tt class="py-name">RegisterStub</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">original_apiproxy</tt><tt class="py-op">.</tt><tt class="py-name">GetStub</tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line">       <tt class="py-name">runner</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method gaeunit.JsonTestRunner.run()=gaeunit.JsonTestRunner-class.html#run"><a title="gaeunit.JsonTestRunner.run" class="py-name" href="#" onclick="return doclink('link-37', 'run', 'link-37');">run</a></tt><tt class="py-op">(</tt><tt class="py-name">suite</tt><tt class="py-op">)</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">    <tt class="py-keyword">finally</tt><tt class="py-op">:</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line">       <tt class="py-name">apiproxy_stub_map</tt><tt class="py-op">.</tt><tt class="py-name">apiproxy</tt> <tt class="py-op">=</tt> <tt class="py-name">original_apiproxy</tt> </tt>
+</div><a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line"> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line"> </tt>
+<a name="_log_error"></a><div id="_log_error-def"><a name="L300"></a><tt class="py-lineno">300</tt> <a class="py-toggle" href="#" id="_log_error-toggle" onclick="return toggle('_log_error');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit-module.html#_log_error">_log_error</a><tt class="py-op">(</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_log_error-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_log_error-expanded"><a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">   <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">warn</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line">   <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line"> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line">            </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line"><tt class="py-comment">################################################</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line"><tt class="py-comment"># Browser HTML, CSS, and Javascript</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line"><tt class="py-comment">################################################</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line"> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line"> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line"><tt class="py-comment"># This string uses Python string formatting, so be sure to escape percents as %%.</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line"><tt id="link-38" class="py-name"><a title="gaeunit._MAIN_PAGE_CONTENT" class="py-name" href="#" onclick="return doclink('link-38', '_MAIN_PAGE_CONTENT', 'link-10');">_MAIN_PAGE_CONTENT</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"""</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line"><tt class="py-string">&lt;html&gt;</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line"><tt class="py-string">&lt;head&gt;</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line"><tt class="py-string">    &lt;style&gt;</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line"><tt class="py-string">        body {font-family:arial,sans-serif; text-align:center}</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line"><tt class="py-string">        #title {font-family:"Times New Roman","Times Roman",TimesNR,times,serif; font-size:28px; font-weight:bold; text-align:center}</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line"><tt class="py-string">        #version {font-size:87%%; text-align:center;}</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line"><tt class="py-string">        #weblink {font-style:italic; text-align:center; padding-top:7px; padding-bottom:7px}</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line"><tt class="py-string">        #results {padding-top:20px; margin:0pt auto; text-align:center; font-weight:bold}</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line"><tt class="py-string">        #testindicator {width:750px; height:16px; border-style:solid; border-width:2px 1px 1px 2px; background-color:#f8f8f8;}</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-string">        #footerarea {text-align:center; font-size:83%%; padding-top:25px}</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line"><tt class="py-string">        #errorarea {padding-top:25px}</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line"><tt class="py-string">        .error {border-color: #c3d9ff; border-style: solid; border-width: 2px 1px 2px 1px; width:750px; padding:1px; margin:0pt auto; text-align:left}</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line"><tt class="py-string">        .errtitle {background-color:#c3d9ff; font-weight:bold}</tt> </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line"><tt class="py-string">    &lt;/style&gt;</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line"><tt class="py-string">    &lt;script language="javascript" type="text/javascript"&gt;</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line"><tt class="py-string">        var testsToRun = %s;</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line"><tt class="py-string">        var totalRuns = 0;</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line"><tt class="py-string">        var totalErrors = 0;</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line"><tt class="py-string">        var totalFailures = 0;</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line"><tt class="py-string">        function newXmlHttp() {</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line"><tt class="py-string">          try { return new XMLHttpRequest(); } catch(e) {}</tt> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line"><tt class="py-string">          try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {}</tt> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line"><tt class="py-string">          try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) {}</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line"><tt class="py-string">          alert("XMLHttpRequest not supported");</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line"><tt class="py-string">          return null;</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line"><tt class="py-string">        }</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line"><tt class="py-string">        </tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line"><tt class="py-string">        function requestTestRun(moduleName, className, methodName) {</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line"><tt class="py-string">            var methodSuffix = "";</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line"><tt class="py-string">            if (methodName) {</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line"><tt class="py-string">                methodSuffix = "." + methodName;</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line"><tt class="py-string">            }</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line"><tt class="py-string">            var xmlHttp = newXmlHttp();</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line"><tt class="py-string">            xmlHttp.open("GET", "%s/run?name=" + moduleName + "." + className + methodSuffix, true);</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line"><tt class="py-string">            xmlHttp.onreadystatechange = function() {</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line"><tt class="py-string">                if (xmlHttp.readyState != 4) {</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line"><tt class="py-string">                    return;</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"><tt class="py-string">                }</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line"><tt class="py-string">                if (xmlHttp.status == 200) {</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line"><tt class="py-string">                    var result = eval("(" + xmlHttp.responseText + ")");</tt> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line"><tt class="py-string">                    totalRuns += parseInt(result.runs);</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line"><tt class="py-string">                    totalErrors += result.errors.length;</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line"><tt class="py-string">                    totalFailures += result.failures.length;</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"><tt class="py-string">                    document.getElementById("testran").innerHTML = totalRuns;</tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line"><tt class="py-string">                    document.getElementById("testerror").innerHTML = totalErrors;</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line"><tt class="py-string">                    document.getElementById("testfailure").innerHTML = totalFailures;</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line"><tt class="py-string">                    if (totalErrors == 0 &amp;&amp; totalFailures == 0) {</tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line"><tt class="py-string">                        testSucceed();</tt> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line"><tt class="py-string">                    } else {</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line"><tt class="py-string">                        testFailed();</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line"><tt class="py-string">                    }</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line"><tt class="py-string">                    var errors = result.errors;</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"><tt class="py-string">                    var failures = result.failures;</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"><tt class="py-string">                    var details = "";</tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line"><tt class="py-string">                    for(var i=0; i&lt;errors.length; i++) {</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"><tt class="py-string">                        details += '&lt;p&gt;&lt;div class="error"&gt;&lt;div class="errtitle"&gt;ERROR ' +</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line"><tt class="py-string">                                   errors[i].desc +</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line"><tt class="py-string">                                   '&lt;/div&gt;&lt;div class="errdetail"&gt;&lt;pre&gt;'+errors[i].detail +</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line"><tt class="py-string">                                   '&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;';</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line"><tt class="py-string">                    }</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line"><tt class="py-string">                    for(var i=0; i&lt;failures.length; i++) {</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line"><tt class="py-string">                        details += '&lt;p&gt;&lt;div class="error"&gt;&lt;div class="errtitle"&gt;FAILURE ' +</tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line"><tt class="py-string">                                    failures[i].desc +</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line"><tt class="py-string">                                    '&lt;/div&gt;&lt;div class="errdetail"&gt;&lt;pre&gt;' +</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line"><tt class="py-string">                                    failures[i].detail +</tt> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line"><tt class="py-string">                                    '&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/p&gt;';</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line"><tt class="py-string">                    }</tt> </tt>
+<a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line"><tt class="py-string">                    var errorArea = document.getElementById("errorarea");</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line"><tt class="py-string">                    errorArea.innerHTML += details;</tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line"><tt class="py-string">                } else {</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line"><tt class="py-string">                    document.getElementById("errorarea").innerHTML = xmlHttp.responseText;</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line"><tt class="py-string">                    testFailed();</tt> </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line"><tt class="py-string">                }</tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line"><tt class="py-string">            };</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line"><tt class="py-string">            xmlHttp.send(null);            </tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line"><tt class="py-string">        }</tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line"><tt class="py-string">        function testFailed() {</tt> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line"><tt class="py-string">            document.getElementById("testindicator").style.backgroundColor="red";</tt> </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line"><tt class="py-string">        }</tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line"><tt class="py-string">        </tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line"><tt class="py-string">        function testSucceed() {</tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line"><tt class="py-string">            document.getElementById("testindicator").style.backgroundColor="green";</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line"><tt class="py-string">        }</tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line"><tt class="py-string">        </tt> </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line"><tt class="py-string">        function runTests() {</tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line"><tt class="py-string">            // Run each test asynchronously (concurrently).</tt> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line"><tt class="py-string">            var totalTests = 0;</tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line"><tt class="py-string">            for (var moduleName in testsToRun) {</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line"><tt class="py-string">                var classes = testsToRun[moduleName];</tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line"><tt class="py-string">                for (var className in classes) {</tt> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line"><tt class="py-string">                    // TODO: Optimize for the case where tests are run by class so we don't</tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line"><tt class="py-string">                    //       have to always execute each method separately.  This should be</tt> </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line"><tt class="py-string">                    //       possible when we have a UI that allows the user to select tests</tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line"><tt class="py-string">                    //       by module, class, and method.</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line"><tt class="py-string">                    //requestTestRun(moduleName, className);</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"><tt class="py-string">                    methods = classes[className];</tt> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line"><tt class="py-string">                    for (var i = 0; i &lt; methods.length; i++) {</tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line"><tt class="py-string">                        totalTests += 1;</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line"><tt class="py-string">                        var methodName = methods[i];</tt> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line"><tt class="py-string">                        requestTestRun(moduleName, className, methodName);</tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line"><tt class="py-string">                    }</tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line"><tt class="py-string">                }</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line"><tt class="py-string">            }</tt> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line"><tt class="py-string">            document.getElementById("testtotal").innerHTML = totalTests;</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line"><tt class="py-string">        }</tt> </tt>
+<a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line"><tt class="py-string">    &lt;/script&gt;</tt> </tt>
+<a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line"><tt class="py-string">    &lt;title&gt;GAEUnit: Google App Engine Unit Test Framework&lt;/title&gt;</tt> </tt>
+<a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line"><tt class="py-string">&lt;/head&gt;</tt> </tt>
+<a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line"><tt class="py-string">&lt;body onload="runTests()"&gt;</tt> </tt>
+<a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line"><tt class="py-string">    &lt;div id="headerarea"&gt;</tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line"><tt class="py-string">        &lt;div id="title"&gt;GAEUnit: Google App Engine Unit Test Framework&lt;/div&gt;</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line"><tt class="py-string">        &lt;div id="version"&gt;Version %s&lt;/div&gt;</tt> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line"><tt class="py-string">    &lt;/div&gt;</tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line"><tt class="py-string">    &lt;div id="resultarea"&gt;</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line"><tt class="py-string">        &lt;table id="results"&gt;&lt;tbody&gt;</tt> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line"><tt class="py-string">            &lt;tr&gt;&lt;td colspan="3"&gt;&lt;div id="testindicator"&gt; &lt;/div&gt;&lt;/td&lt;/tr&gt;</tt> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line"><tt class="py-string">            &lt;tr&gt;</tt> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line"><tt class="py-string">                &lt;td&gt;Runs: &lt;span id="testran"&gt;0&lt;/span&gt;/&lt;span id="testtotal"&gt;0&lt;/span&gt;&lt;/td&gt;</tt> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line"><tt class="py-string">                &lt;td&gt;Errors: &lt;span id="testerror"&gt;0&lt;/span&gt;&lt;/td&gt;</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line"><tt class="py-string">                &lt;td&gt;Failures: &lt;span id="testfailure"&gt;0&lt;/span&gt;&lt;/td&gt;</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line"><tt class="py-string">            &lt;/tr&gt;</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line"><tt class="py-string">        &lt;/tbody&gt;&lt;/table&gt;</tt> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line"><tt class="py-string">    &lt;/div&gt;</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line"><tt class="py-string">    &lt;div id="errorarea"&gt;&lt;/div&gt;</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line"><tt class="py-string">    &lt;div id="footerarea"&gt;</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line"><tt class="py-string">        &lt;div id="weblink"&gt;</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line"><tt class="py-string">        &lt;p&gt;</tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line"><tt class="py-string">            Please visit the &lt;a href="http://code.google.com/p/gaeunit"&gt;project home page&lt;/a&gt;</tt> </tt>
+<a name="L443"></a><tt class="py-lineno">443</tt>  <tt class="py-line"><tt class="py-string">            for the latest version or to report problems.</tt> </tt>
+<a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line"><tt class="py-string">        &lt;/p&gt;</tt> </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line"><tt class="py-string">        &lt;p&gt;</tt> </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line"><tt class="py-string">            Copyright 2008-2009 &lt;a href="mailto:George.Z.Lei@Gmail.com"&gt;George Lei&lt;/a&gt;</tt> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line"><tt class="py-string">            and &lt;a href="mailto:srfarley@gmail.com&gt;Steven R. Farley&lt;/a&gt;</tt> </tt>
+<a name="L448"></a><tt class="py-lineno">448</tt>  <tt class="py-line"><tt class="py-string">        &lt;/p&gt;</tt> </tt>
+<a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line"><tt class="py-string">        &lt;/div&gt;</tt> </tt>
+<a name="L450"></a><tt class="py-lineno">450</tt>  <tt class="py-line"><tt class="py-string">    &lt;/div&gt;</tt> </tt>
+<a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line"><tt class="py-string">&lt;/body&gt;</tt> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line"><tt class="py-string">&lt;/html&gt;</tt> </tt>
+<a name="L453"></a><tt class="py-lineno">453</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L454"></a><tt class="py-lineno">454</tt>  <tt class="py-line"> </tt>
+<a name="L455"></a><tt class="py-lineno">455</tt>  <tt class="py-line"> </tt>
+<a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L457"></a><tt class="py-lineno">457</tt>  <tt class="py-line"><tt class="py-comment"># Script setup and execution</tt> </tt>
+<a name="L458"></a><tt class="py-lineno">458</tt>  <tt class="py-line"><tt class="py-comment">##############################################################################</tt> </tt>
+<a name="L459"></a><tt class="py-lineno">459</tt>  <tt class="py-line"> </tt>
+<a name="L460"></a><tt class="py-lineno">460</tt>  <tt class="py-line"> </tt>
+<a name="L461"></a><tt class="py-lineno">461</tt>  <tt class="py-line"><tt id="link-39" class="py-name" targets="Variable gaeunit.application=gaeunit-module.html#application"><a title="gaeunit.application" class="py-name" href="#" onclick="return doclink('link-39', 'application', 'link-39');">application</a></tt> <tt class="py-op">=</tt> <tt class="py-name">webapp</tt><tt class="py-op">.</tt><tt class="py-name">WSGIApplication</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'%s'</tt>      <tt class="py-op">%</tt> <tt id="link-40" class="py-name"><a title="gaeunit._WEB_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-40', '_WEB_TEST_DIR', 'link-3');">_WEB_TEST_DIR</a></tt><tt class="py-op">,</tt> <tt id="link-41" class="py-name" targets="Class gaeunit.MainTestPageHandler=gaeunit.MainTestPageHandler-class.html"><a title="gaeunit.MainTestPageHandler" class="py-name" href="#" onclick="return doclink('link-41', 'MainTestPageHandler', 'link-41');">MainTestPageHandler</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L462"></a><tt class="py-lineno">462</tt>  <tt class="py-line">                                      <tt class="py-op">(</tt><tt class="py-string">'%s/run'</tt>  <tt class="py-op">%</tt> <tt id="link-42" class="py-name"><a title="gaeunit._WEB_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-42', '_WEB_TEST_DIR', 'link-3');">_WEB_TEST_DIR</a></tt><tt class="py-op">,</tt> <tt id="link-43" class="py-name" targets="Class gaeunit.JsonTestRunHandler=gaeunit.JsonTestRunHandler-class.html"><a title="gaeunit.JsonTestRunHandler" class="py-name" href="#" onclick="return doclink('link-43', 'JsonTestRunHandler', 'link-43');">JsonTestRunHandler</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L463"></a><tt class="py-lineno">463</tt>  <tt class="py-line">                                      <tt class="py-op">(</tt><tt class="py-string">'%s/list'</tt> <tt class="py-op">%</tt> <tt id="link-44" class="py-name"><a title="gaeunit._WEB_TEST_DIR" class="py-name" href="#" onclick="return doclink('link-44', '_WEB_TEST_DIR', 'link-3');">_WEB_TEST_DIR</a></tt><tt class="py-op">,</tt> <tt id="link-45" class="py-name" targets="Class gaeunit.JsonTestListHandler=gaeunit.JsonTestListHandler-class.html"><a title="gaeunit.JsonTestListHandler" class="py-name" href="#" onclick="return doclink('link-45', 'JsonTestListHandler', 'link-45');">JsonTestListHandler</a></tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L464"></a><tt class="py-lineno">464</tt>  <tt class="py-line">                                      <tt class="py-name">debug</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L465"></a><tt class="py-lineno">465</tt>  <tt class="py-line"> </tt>
+<a name="main"></a><div id="main-def"><a name="L466"></a><tt class="py-lineno">466</tt> <a class="py-toggle" href="#" id="main-toggle" onclick="return toggle('main');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="gaeunit-module.html#main">main</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="main-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="main-expanded"><a name="L467"></a><tt class="py-lineno">467</tt>  <tt class="py-line">    <tt class="py-name">run_wsgi_app</tt><tt class="py-op">(</tt><tt id="link-46" class="py-name"><a title="gaeunit.application" class="py-name" href="#" onclick="return doclink('link-46', 'application', 'link-39');">application</a></tt><tt class="py-op">)</tt>                                     </tt>
+</div><a name="L468"></a><tt class="py-lineno">468</tt>  <tt class="py-line"> </tt>
+<a name="L469"></a><tt class="py-lineno">469</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L470"></a><tt class="py-lineno">470</tt>  <tt class="py-line">    <tt id="link-47" class="py-name" targets="Function gaeunit.main()=gaeunit-module.html#main"><a title="gaeunit.main" class="py-name" href="#" onclick="return doclink('link-47', 'main', 'link-47');">main</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L471"></a><tt class="py-lineno">471</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Nov 28 19:05:49 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

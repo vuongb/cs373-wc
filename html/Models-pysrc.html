@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Models</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;Models
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Models-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Models-module.html">Module Models</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt> <tt class="py-keyword">import</tt> <tt class="py-name">db</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">urllib</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">json</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># One to Many Relationships</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="ExternalLink"></a><div id="ExternalLink-def"><a name="L8"></a><tt class="py-lineno">  8</tt> <a class="py-toggle" href="#" id="ExternalLink-toggle" onclick="return toggle('ExternalLink');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.ExternalLink-class.html">ExternalLink</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ExternalLink-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ExternalLink-expanded"><a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable Models.Citation.source=Models.Citation-class.html#source,Variable Models.ExternalLink.source=Models.ExternalLink-class.html#source,Variable Models.Image.source=Models.Image-class.html#source,Variable Models.Map.source=Models.Map-class.html#source"><a title="Models.Citation.source
+Models.ExternalLink.source
+Models.Image.source
+Models.Map.source" class="py-name" href="#" onclick="return doclink('link-0', 'source', 'link-0');">source</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">LinkProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable Models.Citation.description=Models.Citation-class.html#description,Variable Models.ExternalLink.description=Models.ExternalLink-class.html#description,Variable Models.Image.description=Models.Image-class.html#description,Variable Models.Map.description=Models.Map-class.html#description"><a title="Models.Citation.description
+Models.ExternalLink.description
+Models.Image.description
+Models.Map.description" class="py-name" href="#" onclick="return doclink('link-1', 'description', 'link-1');">description</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable Models.Citation.assoc_object=Models.Citation-class.html#assoc_object,Variable Models.ExternalLink.assoc_object=Models.ExternalLink-class.html#assoc_object,Variable Models.Image.assoc_object=Models.Image-class.html#assoc_object,Variable Models.Map.assoc_object=Models.Map-class.html#assoc_object,Variable Models.Social.assoc_object=Models.Social-class.html#assoc_object,Variable Models.Video.assoc_object=Models.Video-class.html#assoc_object"><a title="Models.Citation.assoc_object
+Models.ExternalLink.assoc_object
+Models.Image.assoc_object
+Models.Map.assoc_object
+Models.Social.assoc_object
+Models.Video.assoc_object" class="py-name" href="#" onclick="return doclink('link-2', 'assoc_object', 'link-2');">assoc_object</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'external_links'</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="Citation"></a><div id="Citation-def"><a name="L13"></a><tt class="py-lineno"> 13</tt> <a class="py-toggle" href="#" id="Citation-toggle" onclick="return toggle('Citation');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Citation-class.html">Citation</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Citation-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Citation-expanded"><a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt id="link-3" class="py-name"><a title="Models.Citation.source
+Models.ExternalLink.source
+Models.Image.source
+Models.Map.source" class="py-name" href="#" onclick="return doclink('link-3', 'source', 'link-0');">source</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">LinkProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt id="link-4" class="py-name"><a title="Models.Citation.description
+Models.ExternalLink.description
+Models.Image.description
+Models.Map.description" class="py-name" href="#" onclick="return doclink('link-4', 'description', 'link-1');">description</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt id="link-5" class="py-name"><a title="Models.Citation.assoc_object
+Models.ExternalLink.assoc_object
+Models.Image.assoc_object
+Models.Map.assoc_object
+Models.Social.assoc_object
+Models.Video.assoc_object" class="py-name" href="#" onclick="return doclink('link-5', 'assoc_object', 'link-2');">assoc_object</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'citations'</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="Map"></a><div id="Map-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="Map-toggle" onclick="return toggle('Map');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Map-class.html">Map</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Map-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Map-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">    <tt id="link-6" class="py-name"><a title="Models.Citation.source
+Models.ExternalLink.source
+Models.Image.source
+Models.Map.source" class="py-name" href="#" onclick="return doclink('link-6', 'source', 'link-0');">source</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">LinkProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">    <tt id="link-7" class="py-name"><a title="Models.Citation.description
+Models.ExternalLink.description
+Models.Image.description
+Models.Map.description" class="py-name" href="#" onclick="return doclink('link-7', 'description', 'link-1');">description</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt id="link-8" class="py-name"><a title="Models.Citation.assoc_object
+Models.ExternalLink.assoc_object
+Models.Image.assoc_object
+Models.Map.assoc_object
+Models.Social.assoc_object
+Models.Video.assoc_object" class="py-name" href="#" onclick="return doclink('link-8', 'assoc_object', 'link-2');">assoc_object</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'maps'</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="Image"></a><div id="Image-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="Image-toggle" onclick="return toggle('Image');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Image-class.html">Image</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Image-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Image-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt id="link-9" class="py-name"><a title="Models.Citation.source
+Models.ExternalLink.source
+Models.Image.source
+Models.Map.source" class="py-name" href="#" onclick="return doclink('link-9', 'source', 'link-0');">source</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">LinkProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt id="link-10" class="py-name"><a title="Models.Citation.description
+Models.ExternalLink.description
+Models.Image.description
+Models.Map.description" class="py-name" href="#" onclick="return doclink('link-10', 'description', 'link-1');">description</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt id="link-11" class="py-name"><a title="Models.Citation.assoc_object
+Models.ExternalLink.assoc_object
+Models.Image.assoc_object
+Models.Map.assoc_object
+Models.Social.assoc_object
+Models.Video.assoc_object" class="py-name" href="#" onclick="return doclink('link-11', 'assoc_object', 'link-2');">assoc_object</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'images'</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="Social"></a><div id="Social-def"><a name="L28"></a><tt class="py-lineno"> 28</tt> <a class="py-toggle" href="#" id="Social-toggle" onclick="return toggle('Social');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Social-class.html">Social</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Social-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Social-expanded"><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt id="link-12" class="py-name" targets="Variable Models.Social.social_id=Models.Social-class.html#social_id"><a title="Models.Social.social_id" class="py-name" href="#" onclick="return doclink('link-12', 'social_id', 'link-12');">social_id</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt id="link-13" class="py-name" targets="Variable Models.Social.social_type=Models.Social-class.html#social_type"><a title="Models.Social.social_type" class="py-name" href="#" onclick="return doclink('link-13', 'social_type', 'link-13');">social_type</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">choices</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-string">'facebook'</tt><tt class="py-op">,</tt> <tt class="py-string">'twitter'</tt><tt class="py-op">,</tt> <tt class="py-string">'youtube'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt id="link-14" class="py-name"><a title="Models.Citation.assoc_object
+Models.ExternalLink.assoc_object
+Models.Image.assoc_object
+Models.Map.assoc_object
+Models.Social.assoc_object
+Models.Video.assoc_object" class="py-name" href="#" onclick="return doclink('link-14', 'assoc_object', 'link-2');">assoc_object</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'social'</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="Social.get_twitter_feed"></a><div id="Social.get_twitter_feed-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="Social.get_twitter_feed-toggle" onclick="return toggle('Social.get_twitter_feed');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Models.Social-class.html#get_twitter_feed">get_twitter_feed</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Social.get_twitter_feed-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Social.get_twitter_feed-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="Models.Social.social_type" class="py-name" href="#" onclick="return doclink('link-15', 'social_type', 'link-13');">social_type</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">'twitter'</tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="Models.Social.social_id" class="py-name" href="#" onclick="return doclink('link-16', 'social_id', 'link-12');">social_id</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">"@"</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">            <tt class="py-name">url</tt> <tt class="py-op">=</tt> <tt class="py-string">"https://api.twitter.com/1/statuses/user_timeline.json?include_entities=false&amp;include_rts=false&amp;screen_name=%s&amp;count=5"</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="Models.Social.social_id" class="py-name" href="#" onclick="return doclink('link-17', 'social_id', 'link-12');">social_id</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt class="py-name">url</tt> <tt class="py-op">=</tt> <tt class="py-string">"http://search.twitter.com/search.json?q=%s&amp;rpp=5&amp;include_entities=false&amp;result_type=mixed"</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="Models.Social.social_id" class="py-name" href="#" onclick="return doclink('link-18', 'social_id', 'link-12');">social_id</a></tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">urlopen</tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="Video"></a><div id="Video-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="Video-toggle" onclick="return toggle('Video');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Video-class.html">Video</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Video-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Video-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt id="link-19" class="py-name" targets="Variable Models.Video.video_id=Models.Video-class.html#video_id"><a title="Models.Video.video_id" class="py-name" href="#" onclick="return doclink('link-19', 'video_id', 'link-19');">video_id</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Variable Models.Video.video_type=Models.Video-class.html#video_type"><a title="Models.Video.video_type" class="py-name" href="#" onclick="return doclink('link-20', 'video_type', 'link-20');">video_type</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">choices</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-string">'youtube'</tt><tt class="py-op">,</tt> <tt class="py-string">'vimeo'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt id="link-21" class="py-name"><a title="Models.Citation.assoc_object
+Models.ExternalLink.assoc_object
+Models.Image.assoc_object
+Models.Map.assoc_object
+Models.Social.assoc_object
+Models.Video.assoc_object" class="py-name" href="#" onclick="return doclink('link-21', 'assoc_object', 'link-2');">assoc_object</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'videos'</tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="Crisis"></a><div id="Crisis-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="Crisis-toggle" onclick="return toggle('Crisis');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Crisis-class.html">Crisis</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Crisis-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Crisis-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt class="py-comment"># Base Data</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt id="link-22" class="py-name" targets="Variable Models.Crisis.us_id=Models.Crisis-class.html#us_id,Variable Models.Organization.us_id=Models.Organization-class.html#us_id,Variable Models.Person.us_id=Models.Person-class.html#us_id"><a title="Models.Crisis.us_id
+Models.Organization.us_id
+Models.Person.us_id" class="py-name" href="#" onclick="return doclink('link-22', 'us_id', 'link-22');">us_id</a></tt>              <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt id="link-23" class="py-name" targets="Variable Models.Crisis.us_name=Models.Crisis-class.html#us_name,Variable Models.Organization.us_name=Models.Organization-class.html#us_name,Variable Models.Person.us_name=Models.Person-class.html#us_name"><a title="Models.Crisis.us_name
+Models.Organization.us_name
+Models.Person.us_name" class="py-name" href="#" onclick="return doclink('link-23', 'us_name', 'link-23');">us_name</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt id="link-24" class="py-name" targets="Variable Models.Crisis.us_alternateNames=Models.Crisis-class.html#us_alternateNames,Variable Models.Organization.us_alternateNames=Models.Organization-class.html#us_alternateNames,Variable Models.Person.us_alternateNames=Models.Person-class.html#us_alternateNames"><a title="Models.Crisis.us_alternateNames
+Models.Organization.us_alternateNames
+Models.Person.us_alternateNames" class="py-name" href="#" onclick="return doclink('link-24', 'us_alternateNames', 'link-24');">us_alternateNames</a></tt>  <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt id="link-25" class="py-name" targets="Variable Models.Crisis.us_type=Models.Crisis-class.html#us_type,Variable Models.Organization.us_type=Models.Organization-class.html#us_type,Variable Models.Person.us_type=Models.Person-class.html#us_type"><a title="Models.Crisis.us_type
+Models.Organization.us_type
+Models.Person.us_type" class="py-name" href="#" onclick="return doclink('link-25', 'us_type', 'link-25');">us_type</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt id="link-26" class="py-name" targets="Variable Models.Crisis.us_description=Models.Crisis-class.html#us_description,Variable Models.Organization.us_description=Models.Organization-class.html#us_description,Variable Models.Person.us_description=Models.Person-class.html#us_description"><a title="Models.Crisis.us_description
+Models.Organization.us_description
+Models.Person.us_description" class="py-name" href="#" onclick="return doclink('link-26', 'us_description', 'link-26');">us_description</a></tt>     <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">TextProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-comment"># Location</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt id="link-27" class="py-name" targets="Variable Models.Crisis.us_city=Models.Crisis-class.html#us_city,Variable Models.Organization.us_city=Models.Organization-class.html#us_city,Variable Models.Person.us_city=Models.Person-class.html#us_city"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-27', 'us_city', 'link-27');">us_city</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt id="link-28" class="py-name" targets="Variable Models.Crisis.us_state=Models.Crisis-class.html#us_state,Variable Models.Organization.us_state=Models.Organization-class.html#us_state,Variable Models.Person.us_state=Models.Person-class.html#us_state"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-28', 'us_state', 'link-28');">us_state</a></tt>           <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt id="link-29" class="py-name" targets="Variable Models.Crisis.us_country=Models.Crisis-class.html#us_country,Variable Models.Organization.us_country=Models.Organization-class.html#us_country,Variable Models.Person.us_country=Models.Person-class.html#us_country"><a title="Models.Crisis.us_country
+Models.Organization.us_country
+Models.Person.us_country" class="py-name" href="#" onclick="return doclink('link-29', 'us_country', 'link-29');">us_country</a></tt>         <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt id="link-30" class="py-name" targets="Variable Models.Crisis.us_latitude=Models.Crisis-class.html#us_latitude,Variable Models.Organization.us_latitude=Models.Organization-class.html#us_latitude,Variable Models.Person.us_latitude=Models.Person-class.html#us_latitude"><a title="Models.Crisis.us_latitude
+Models.Organization.us_latitude
+Models.Person.us_latitude" class="py-name" href="#" onclick="return doclink('link-30', 'us_latitude', 'link-30');">us_latitude</a></tt>        <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt id="link-31" class="py-name" targets="Variable Models.Crisis.us_longitude=Models.Crisis-class.html#us_longitude,Variable Models.Organization.us_longitude=Models.Organization-class.html#us_longitude,Variable Models.Person.us_longitude=Models.Person-class.html#us_longitude"><a title="Models.Crisis.us_longitude
+Models.Organization.us_longitude
+Models.Person.us_longitude" class="py-name" href="#" onclick="return doclink('link-31', 'us_longitude', 'link-31');">us_longitude</a></tt>       <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-comment"># Other Data</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt id="link-32" class="py-name" targets="Variable Models.Crisis.us_startDate=Models.Crisis-class.html#us_startDate"><a title="Models.Crisis.us_startDate" class="py-name" href="#" onclick="return doclink('link-32', 'us_startDate', 'link-32');">us_startDate</a></tt>       <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">DateTimeProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt id="link-33" class="py-name" targets="Variable Models.Crisis.us_endDate=Models.Crisis-class.html#us_endDate"><a title="Models.Crisis.us_endDate" class="py-name" href="#" onclick="return doclink('link-33', 'us_endDate', 'link-33');">us_endDate</a></tt>         <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">DateTimeProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt id="link-34" class="py-name" targets="Variable Models.Crisis.us_economicImpact=Models.Crisis-class.html#us_economicImpact"><a title="Models.Crisis.us_economicImpact" class="py-name" href="#" onclick="return doclink('link-34', 'us_economicImpact', 'link-34');">us_economicImpact</a></tt>  <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">IntegerProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt id="link-35" class="py-name" targets="Variable Models.Crisis.us_humanDeaths=Models.Crisis-class.html#us_humanDeaths"><a title="Models.Crisis.us_humanDeaths" class="py-name" href="#" onclick="return doclink('link-35', 'us_humanDeaths', 'link-35');">us_humanDeaths</a></tt>     <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">IntegerProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt id="link-36" class="py-name" targets="Variable Models.Crisis.us_humanMissing=Models.Crisis-class.html#us_humanMissing"><a title="Models.Crisis.us_humanMissing" class="py-name" href="#" onclick="return doclink('link-36', 'us_humanMissing', 'link-36');">us_humanMissing</a></tt>    <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">IntegerProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt id="link-37" class="py-name" targets="Variable Models.Crisis.us_humanInjured=Models.Crisis-class.html#us_humanInjured"><a title="Models.Crisis.us_humanInjured" class="py-name" href="#" onclick="return doclink('link-37', 'us_humanInjured', 'link-37');">us_humanInjured</a></tt>    <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">IntegerProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt id="link-38" class="py-name" targets="Variable Models.Crisis.us_humanDisplaced=Models.Crisis-class.html#us_humanDisplaced"><a title="Models.Crisis.us_humanDisplaced" class="py-name" href="#" onclick="return doclink('link-38', 'us_humanDisplaced', 'link-38');">us_humanDisplaced</a></tt>  <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">IntegerProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt id="link-39" class="py-name" targets="Variable Models.Crisis.us_resourcesNeeded=Models.Crisis-class.html#us_resourcesNeeded"><a title="Models.Crisis.us_resourcesNeeded" class="py-name" href="#" onclick="return doclink('link-39', 'us_resourcesNeeded', 'link-39');">us_resourcesNeeded</a></tt>  <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringListProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt id="link-40" class="py-name" targets="Variable Models.Crisis.us_waysToHelp=Models.Crisis-class.html#us_waysToHelp"><a title="Models.Crisis.us_waysToHelp" class="py-name" href="#" onclick="return doclink('link-40', 'us_waysToHelp', 'link-40');">us_waysToHelp</a></tt>      <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringListProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="Crisis.getUrl"></a><div id="Crisis.getUrl-def"><a name="L74"></a><tt class="py-lineno"> 74</tt> <a class="py-toggle" href="#" id="Crisis.getUrl-toggle" onclick="return toggle('Crisis.getUrl');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Models.Crisis-class.html#getUrl">getUrl</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Crisis.getUrl-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Crisis.getUrl-expanded"><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"/c/"</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="Crisis.getLocation"></a><div id="Crisis.getLocation-def"><a name="L77"></a><tt class="py-lineno"> 77</tt> <a class="py-toggle" href="#" id="Crisis.getLocation-toggle" onclick="return toggle('Crisis.getLocation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Models.Crisis-class.html#getLocation">getLocation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Crisis.getLocation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Crisis.getLocation-expanded"><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-name">location</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-41', 'us_city', 'link-27');">us_city</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">          <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-42', 'us_city', 'link-27');">us_city</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-43', 'us_state', 'link-28');">us_state</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">          <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-44', 'us_state', 'link-28');">us_state</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="Models.Crisis.us_country
+Models.Organization.us_country
+Models.Person.us_country" class="py-name" href="#" onclick="return doclink('link-45', 'us_country', 'link-29');">us_country</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">", "</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">location</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="Organization"></a><div id="Organization-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="Organization-toggle" onclick="return toggle('Organization');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Organization-class.html">Organization</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Organization-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Organization-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-comment"># Base Data</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt id="link-46" class="py-name"><a title="Models.Crisis.us_id
+Models.Organization.us_id
+Models.Person.us_id" class="py-name" href="#" onclick="return doclink('link-46', 'us_id', 'link-22');">us_id</a></tt>              <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt id="link-47" class="py-name"><a title="Models.Crisis.us_name
+Models.Organization.us_name
+Models.Person.us_name" class="py-name" href="#" onclick="return doclink('link-47', 'us_name', 'link-23');">us_name</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt id="link-48" class="py-name"><a title="Models.Crisis.us_alternateNames
+Models.Organization.us_alternateNames
+Models.Person.us_alternateNames" class="py-name" href="#" onclick="return doclink('link-48', 'us_alternateNames', 'link-24');">us_alternateNames</a></tt>  <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt id="link-49" class="py-name"><a title="Models.Crisis.us_type
+Models.Organization.us_type
+Models.Person.us_type" class="py-name" href="#" onclick="return doclink('link-49', 'us_type', 'link-25');">us_type</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt id="link-50" class="py-name"><a title="Models.Crisis.us_description
+Models.Organization.us_description
+Models.Person.us_description" class="py-name" href="#" onclick="return doclink('link-50', 'us_description', 'link-26');">us_description</a></tt>     <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">TextProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-comment"># Location</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt id="link-51" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-51', 'us_city', 'link-27');">us_city</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt id="link-52" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-52', 'us_state', 'link-28');">us_state</a></tt>           <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt id="link-53" class="py-name"><a title="Models.Crisis.us_country
+Models.Organization.us_country
+Models.Person.us_country" class="py-name" href="#" onclick="return doclink('link-53', 'us_country', 'link-29');">us_country</a></tt>         <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">    <tt id="link-54" class="py-name"><a title="Models.Crisis.us_latitude
+Models.Organization.us_latitude
+Models.Person.us_latitude" class="py-name" href="#" onclick="return doclink('link-54', 'us_latitude', 'link-30');">us_latitude</a></tt>        <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt id="link-55" class="py-name"><a title="Models.Crisis.us_longitude
+Models.Organization.us_longitude
+Models.Person.us_longitude" class="py-name" href="#" onclick="return doclink('link-55', 'us_longitude', 'link-31');">us_longitude</a></tt>       <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt class="py-comment"># Contact Info</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt id="link-56" class="py-name" targets="Variable Models.Organization.us_address=Models.Organization-class.html#us_address"><a title="Models.Organization.us_address" class="py-name" href="#" onclick="return doclink('link-56', 'us_address', 'link-56');">us_address</a></tt>         <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">TextProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt id="link-57" class="py-name" targets="Variable Models.Organization.us_email=Models.Organization-class.html#us_email"><a title="Models.Organization.us_email" class="py-name" href="#" onclick="return doclink('link-57', 'us_email', 'link-57');">us_email</a></tt>           <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt id="link-58" class="py-name" targets="Variable Models.Organization.us_phone=Models.Organization-class.html#us_phone"><a title="Models.Organization.us_phone" class="py-name" href="#" onclick="return doclink('link-58', 'us_phone', 'link-58');">us_phone</a></tt>           <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="Organization.getUrl"></a><div id="Organization.getUrl-def"><a name="L106"></a><tt class="py-lineno">106</tt> <a class="py-toggle" href="#" id="Organization.getUrl-toggle" onclick="return toggle('Organization.getUrl');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Models.Organization-class.html#getUrl">getUrl</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Organization.getUrl-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Organization.getUrl-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"/o/"</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="Organization.getLocation"></a><div id="Organization.getLocation-def"><a name="L109"></a><tt class="py-lineno">109</tt> <a class="py-toggle" href="#" id="Organization.getLocation-toggle" onclick="return toggle('Organization.getLocation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Models.Organization-class.html#getLocation">getLocation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Organization.getLocation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Organization.getLocation-expanded"><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">location</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-59', 'us_city', 'link-27');">us_city</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">          <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-60', 'us_city', 'link-27');">us_city</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-61', 'us_state', 'link-28');">us_state</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">          <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-62', 'us_state', 'link-28');">us_state</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="Models.Crisis.us_country
+Models.Organization.us_country
+Models.Person.us_country" class="py-name" href="#" onclick="return doclink('link-63', 'us_country', 'link-29');">us_country</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">", "</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">location</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="Person"></a><div id="Person-def"><a name="L118"></a><tt class="py-lineno">118</tt> <a class="py-toggle" href="#" id="Person-toggle" onclick="return toggle('Person');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.Person-class.html">Person</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Person-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Person-expanded"><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">    <tt class="py-comment"># Base Data</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">    <tt id="link-64" class="py-name"><a title="Models.Crisis.us_id
+Models.Organization.us_id
+Models.Person.us_id" class="py-name" href="#" onclick="return doclink('link-64', 'us_id', 'link-22');">us_id</a></tt>              <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">    <tt id="link-65" class="py-name"><a title="Models.Crisis.us_name
+Models.Organization.us_name
+Models.Person.us_name" class="py-name" href="#" onclick="return doclink('link-65', 'us_name', 'link-23');">us_name</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">    <tt id="link-66" class="py-name"><a title="Models.Crisis.us_alternateNames
+Models.Organization.us_alternateNames
+Models.Person.us_alternateNames" class="py-name" href="#" onclick="return doclink('link-66', 'us_alternateNames', 'link-24');">us_alternateNames</a></tt>  <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">    <tt id="link-67" class="py-name"><a title="Models.Crisis.us_type
+Models.Organization.us_type
+Models.Person.us_type" class="py-name" href="#" onclick="return doclink('link-67', 'us_type', 'link-25');">us_type</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt id="link-68" class="py-name"><a title="Models.Crisis.us_description
+Models.Organization.us_description
+Models.Person.us_description" class="py-name" href="#" onclick="return doclink('link-68', 'us_description', 'link-26');">us_description</a></tt>     <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">TextProperty</tt><tt class="py-op">(</tt><tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">    <tt class="py-comment"># Location</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt id="link-69" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-69', 'us_city', 'link-27');">us_city</a></tt>            <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">    <tt id="link-70" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-70', 'us_state', 'link-28');">us_state</a></tt>           <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt id="link-71" class="py-name"><a title="Models.Crisis.us_country
+Models.Organization.us_country
+Models.Person.us_country" class="py-name" href="#" onclick="return doclink('link-71', 'us_country', 'link-29');">us_country</a></tt>         <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt id="link-72" class="py-name"><a title="Models.Crisis.us_latitude
+Models.Organization.us_latitude
+Models.Person.us_latitude" class="py-name" href="#" onclick="return doclink('link-72', 'us_latitude', 'link-30');">us_latitude</a></tt>        <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt id="link-73" class="py-name"><a title="Models.Crisis.us_longitude
+Models.Organization.us_longitude
+Models.Person.us_longitude" class="py-name" href="#" onclick="return doclink('link-73', 'us_longitude', 'link-31');">us_longitude</a></tt>       <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="Person.getUrl"></a><div id="Person.getUrl-def"><a name="L133"></a><tt class="py-lineno">133</tt> <a class="py-toggle" href="#" id="Person.getUrl-toggle" onclick="return toggle('Person.getUrl');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Models.Person-class.html#getUrl">getUrl</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Person.getUrl-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Person.getUrl-expanded"><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"/p/"</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"> </tt>
+<a name="Person.getLocation"></a><div id="Person.getLocation-def"><a name="L136"></a><tt class="py-lineno">136</tt> <a class="py-toggle" href="#" id="Person.getLocation-toggle" onclick="return toggle('Person.getLocation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="Models.Person-class.html#getLocation">getLocation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Person.getLocation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Person.getLocation-expanded"><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-name">location</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-74', 'us_city', 'link-27');">us_city</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">          <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-75" class="py-name"><a title="Models.Crisis.us_city
+Models.Organization.us_city
+Models.Person.us_city" class="py-name" href="#" onclick="return doclink('link-75', 'us_city', 'link-27');">us_city</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-76" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-76', 'us_state', 'link-28');">us_state</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">          <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-77" class="py-name"><a title="Models.Crisis.us_state
+Models.Organization.us_state
+Models.Person.us_state" class="py-name" href="#" onclick="return doclink('link-77', 'us_state', 'link-28');">us_state</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-name">location</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-78" class="py-name"><a title="Models.Crisis.us_country
+Models.Organization.us_country
+Models.Person.us_country" class="py-name" href="#" onclick="return doclink('link-78', 'us_country', 'link-29');">us_country</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">", "</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">location</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-comment"># Many to many relationships</tt> </tt>
+<a name="CrisisOrganization"></a><div id="CrisisOrganization-def"><a name="L146"></a><tt class="py-lineno">146</tt> <a class="py-toggle" href="#" id="CrisisOrganization-toggle" onclick="return toggle('CrisisOrganization');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.CrisisOrganization-class.html">CrisisOrganization</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CrisisOrganization-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CrisisOrganization-expanded"><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">    <tt id="link-79" class="py-name" targets="Variable Models.CrisisOrganization.crisis=Models.CrisisOrganization-class.html#crisis,Variable Models.CrisisPerson.crisis=Models.CrisisPerson-class.html#crisis"><a title="Models.CrisisOrganization.crisis
+Models.CrisisPerson.crisis" class="py-name" href="#" onclick="return doclink('link-79', 'crisis', 'link-79');">crisis</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt id="link-80" class="py-name" targets="Class Models.Crisis=Models.Crisis-class.html"><a title="Models.Crisis" class="py-name" href="#" onclick="return doclink('link-80', 'Crisis', 'link-80');">Crisis</a></tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'organizations'</tt><tt class="py-op">)</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt id="link-81" class="py-name" targets="Variable Models.CrisisOrganization.organization=Models.CrisisOrganization-class.html#organization,Variable Models.OrganizationPerson.organization=Models.OrganizationPerson-class.html#organization"><a title="Models.CrisisOrganization.organization
+Models.OrganizationPerson.organization" class="py-name" href="#" onclick="return doclink('link-81', 'organization', 'link-81');">organization</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt id="link-82" class="py-name" targets="Class Models.Organization=Models.Organization-class.html"><a title="Models.Organization" class="py-name" href="#" onclick="return doclink('link-82', 'Organization', 'link-82');">Organization</a></tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'crises'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="CrisisPerson"></a><div id="CrisisPerson-def"><a name="L150"></a><tt class="py-lineno">150</tt> <a class="py-toggle" href="#" id="CrisisPerson-toggle" onclick="return toggle('CrisisPerson');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.CrisisPerson-class.html">CrisisPerson</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CrisisPerson-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CrisisPerson-expanded"><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">    <tt id="link-83" class="py-name"><a title="Models.CrisisOrganization.crisis
+Models.CrisisPerson.crisis" class="py-name" href="#" onclick="return doclink('link-83', 'crisis', 'link-79');">crisis</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt id="link-84" class="py-name"><a title="Models.Crisis" class="py-name" href="#" onclick="return doclink('link-84', 'Crisis', 'link-80');">Crisis</a></tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'people'</tt><tt class="py-op">)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt id="link-85" class="py-name" targets="Variable Models.CrisisPerson.person=Models.CrisisPerson-class.html#person,Variable Models.OrganizationPerson.person=Models.OrganizationPerson-class.html#person"><a title="Models.CrisisPerson.person
+Models.OrganizationPerson.person" class="py-name" href="#" onclick="return doclink('link-85', 'person', 'link-85');">person</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt id="link-86" class="py-name" targets="Class Models.Person=Models.Person-class.html"><a title="Models.Person" class="py-name" href="#" onclick="return doclink('link-86', 'Person', 'link-86');">Person</a></tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'crises'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="OrganizationPerson"></a><div id="OrganizationPerson-def"><a name="L154"></a><tt class="py-lineno">154</tt> <a class="py-toggle" href="#" id="OrganizationPerson-toggle" onclick="return toggle('OrganizationPerson');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Models.OrganizationPerson-class.html">OrganizationPerson</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OrganizationPerson-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="OrganizationPerson-expanded"><a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt id="link-87" class="py-name"><a title="Models.CrisisOrganization.organization
+Models.OrganizationPerson.organization" class="py-name" href="#" onclick="return doclink('link-87', 'organization', 'link-81');">organization</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt id="link-88" class="py-name"><a title="Models.Organization" class="py-name" href="#" onclick="return doclink('link-88', 'Organization', 'link-82');">Organization</a></tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'people'</tt><tt class="py-op">)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt id="link-89" class="py-name"><a title="Models.CrisisPerson.person
+Models.OrganizationPerson.person" class="py-name" href="#" onclick="return doclink('link-89', 'person', 'link-85');">person</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">ReferenceProperty</tt><tt class="py-op">(</tt><tt id="link-90" class="py-name"><a title="Models.Person" class="py-name" href="#" onclick="return doclink('link-90', 'Person', 'link-86');">Person</a></tt><tt class="py-op">,</tt> <tt class="py-name">required</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">collection_name</tt><tt class="py-op">=</tt><tt class="py-string">'organizations'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Nov 28 19:05:49 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

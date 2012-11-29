@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>test_wcunit</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;test_wcunit
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="test_wcunit-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="test_wcunit-module.html">Module test_wcunit</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">api</tt> <tt class="py-keyword">import</tt> <tt class="py-name">memcache</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt> <tt class="py-keyword">import</tt> <tt class="py-name">db</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt> <tt class="py-keyword">import</tt> <tt class="py-name">testbed</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module importer=importer-module.html"><a title="importer" class="py-name" href="#" onclick="return doclink('link-0', 'importer', 'link-0');">importer</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Function importer.process_crisis()=importer-module.html#process_crisis"><a title="importer.process_crisis" class="py-name" href="#" onclick="return doclink('link-1', 'process_crisis', 'link-1');">process_crisis</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="TestModel"></a><div id="TestModel-def"><a name="L9"></a><tt class="py-lineno"> 9</tt> <a class="py-toggle" href="#" id="TestModel-toggle" onclick="return toggle('TestModel');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="test_wcunit.TestModel-class.html">TestModel</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestModel-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestModel-expanded"><a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">    <tt class="py-docstring">"""A model class used for testing."""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable test_wcunit.TestModel.number=test_wcunit.TestModel-class.html#number"><a title="test_wcunit.TestModel.number" class="py-name" href="#" onclick="return doclink('link-2', 'number', 'link-2');">number</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">IntegerProperty</tt><tt class="py-op">(</tt><tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-number">42</tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable test_wcunit.TestModel.text=test_wcunit.TestModel-class.html#text"><a title="test_wcunit.TestModel.text" class="py-name" href="#" onclick="return doclink('link-3', 'text', 'link-3');">text</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">StringProperty</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="TestEntityGroupRoot"></a><div id="TestEntityGroupRoot-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="TestEntityGroupRoot-toggle" onclick="return toggle('TestEntityGroupRoot');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="test_wcunit.TestEntityGroupRoot-class.html">TestEntityGroupRoot</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestEntityGroupRoot-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestEntityGroupRoot-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-docstring">"""Entity group root"""</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="GetEntityViaMemcache"></a><div id="GetEntityViaMemcache-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="GetEntityViaMemcache-toggle" onclick="return toggle('GetEntityViaMemcache');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="test_wcunit-module.html#GetEntityViaMemcache">GetEntityViaMemcache</a><tt class="py-op">(</tt><tt class="py-param">entity_key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GetEntityViaMemcache-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="GetEntityViaMemcache-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-docstring">"""Get entity from memcache if available, from datastore if not."""</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-name">entity</tt> <tt class="py-op">=</tt> <tt class="py-name">memcache</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method WC3.AboutPage.get()=WC3.AboutPage-class.html#get,Method WC3.CrisisPage.get()=WC3.CrisisPage-class.html#get,Method WC3.ExportHandler.get()=WC3.ExportHandler-class.html#get,Method WC3.ImportHandler.get()=WC3.ImportHandler-class.html#get,Method WC3.IndexPage.get()=WC3.IndexPage-class.html#get,Method WC3.OrganizationPage.get()=WC3.OrganizationPage-class.html#get,Method WC3.PersonPage.get()=WC3.PersonPage-class.html#get,Method WC3.SearchHandler.get()=WC3.SearchHandler-class.html#get,Method gaeunit.JsonTestListHandler.get()=gaeunit.JsonTestListHandler-class.html#get,Method gaeunit.JsonTestRunHandler.get()=gaeunit.JsonTestRunHandler-class.html#get,Method gaeunit.MainTestPageHandler.get()=gaeunit.MainTestPageHandler-class.html#get"><a title="WC3.AboutPage.get
+WC3.CrisisPage.get
+WC3.ExportHandler.get
+WC3.ImportHandler.get
+WC3.IndexPage.get
+WC3.OrganizationPage.get
+WC3.PersonPage.get
+WC3.SearchHandler.get
+gaeunit.JsonTestListHandler.get
+gaeunit.JsonTestRunHandler.get
+gaeunit.MainTestPageHandler.get" class="py-name" href="#" onclick="return doclink('link-4', 'get', 'link-4');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">entity_key</tt><tt class="py-op">)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">entity</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">entity</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-name">entity</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name" targets="Class test_wcunit.TestModel=test_wcunit.TestModel-class.html"><a title="test_wcunit.TestModel" class="py-name" href="#" onclick="return doclink('link-5', 'TestModel', 'link-5');">TestModel</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="WC3.AboutPage.get
+WC3.CrisisPage.get
+WC3.ExportHandler.get
+WC3.ImportHandler.get
+WC3.IndexPage.get
+WC3.OrganizationPage.get
+WC3.PersonPage.get
+WC3.SearchHandler.get
+gaeunit.JsonTestListHandler.get
+gaeunit.JsonTestRunHandler.get
+gaeunit.MainTestPageHandler.get" class="py-name" href="#" onclick="return doclink('link-6', 'get', 'link-4');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">entity_key</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">entity</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">memcache</tt><tt class="py-op">.</tt><tt class="py-name">set</tt><tt class="py-op">(</tt><tt class="py-name">entity_key</tt><tt class="py-op">,</tt> <tt class="py-name">entity</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">entity</tt> </tt>
+</div><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">     </tt>
+<a name="DemoTestCase"></a><div id="DemoTestCase-def"><a name="L28"></a><tt class="py-lineno">28</tt> <a class="py-toggle" href="#" id="DemoTestCase-toggle" onclick="return toggle('DemoTestCase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="test_wcunit.DemoTestCase-class.html">DemoTestCase</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DemoTestCase-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="DemoTestCase-expanded"><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="DemoTestCase.setUp"></a><div id="DemoTestCase.setUp-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="DemoTestCase.setUp-toggle" onclick="return toggle('DemoTestCase.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="test_wcunit.DemoTestCase-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DemoTestCase.setUp-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DemoTestCase.setUp-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-comment"># First, create an instance of the Testbed class.</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testbed</tt> <tt class="py-op">=</tt> <tt class="py-name">testbed</tt><tt class="py-op">.</tt><tt class="py-name">Testbed</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-comment"># Then activate the testbed, which prepares the service stubs for use.</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testbed</tt><tt class="py-op">.</tt><tt class="py-name">activate</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-comment"># Next, declare which service stubs you want to use.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testbed</tt><tt class="py-op">.</tt><tt class="py-name">init_datastore_v3_stub</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testbed</tt><tt class="py-op">.</tt><tt class="py-name">init_memcache_stub</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">         </tt>
+<a name="DemoTestCase.tearDown"></a><div id="DemoTestCase.tearDown-def"><a name="L39"></a><tt class="py-lineno">39</tt> <a class="py-toggle" href="#" id="DemoTestCase.tearDown-toggle" onclick="return toggle('DemoTestCase.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="test_wcunit.DemoTestCase-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DemoTestCase.tearDown-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DemoTestCase.tearDown-expanded"><a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">testbed</tt><tt class="py-op">.</tt><tt class="py-name">deactivate</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">         </tt>
+<a name="DemoTestCase.testInsertEntity"></a><div id="DemoTestCase.testInsertEntity-def"><a name="L42"></a><tt class="py-lineno">42</tt> <a class="py-toggle" href="#" id="DemoTestCase.testInsertEntity-toggle" onclick="return toggle('DemoTestCase.testInsertEntity');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="test_wcunit.DemoTestCase-class.html#testInsertEntity">testInsertEntity</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DemoTestCase.testInsertEntity-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DemoTestCase.testInsertEntity-expanded"><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt id="link-7" class="py-name"><a title="test_wcunit.TestModel" class="py-name" href="#" onclick="return doclink('link-7', 'TestModel', 'link-5');">TestModel</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="test_wcunit.TestModel" class="py-name" href="#" onclick="return doclink('link-8', 'TestModel', 'link-5');">TestModel</a></tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">fetch</tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">         </tt>
+<a name="DemoTestCase.testFilterByNumber"></a><div id="DemoTestCase.testFilterByNumber-def"><a name="L46"></a><tt class="py-lineno">46</tt> <a class="py-toggle" href="#" id="DemoTestCase.testFilterByNumber-toggle" onclick="return toggle('DemoTestCase.testFilterByNumber');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="test_wcunit.DemoTestCase-class.html#testFilterByNumber">testFilterByNumber</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DemoTestCase.testFilterByNumber-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DemoTestCase.testFilterByNumber-expanded"><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">root</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name" targets="Class test_wcunit.TestEntityGroupRoot=test_wcunit.TestEntityGroupRoot-class.html"><a title="test_wcunit.TestEntityGroupRoot" class="py-name" href="#" onclick="return doclink('link-9', 'TestEntityGroupRoot', 'link-9');">TestEntityGroupRoot</a></tt><tt class="py-op">(</tt><tt class="py-name">key_name</tt><tt class="py-op">=</tt><tt class="py-string">"root"</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt id="link-10" class="py-name"><a title="test_wcunit.TestModel" class="py-name" href="#" onclick="return doclink('link-10', 'TestModel', 'link-5');">TestModel</a></tt><tt class="py-op">(</tt><tt class="py-name">parent</tt><tt class="py-op">=</tt><tt class="py-name">root</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt id="link-11" class="py-name"><a title="test_wcunit.TestModel" class="py-name" href="#" onclick="return doclink('link-11', 'TestModel', 'link-5');">TestModel</a></tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="test_wcunit.TestModel.number" class="py-name" href="#" onclick="return doclink('link-12', 'number', 'link-2');">number</a></tt><tt class="py-op">=</tt><tt class="py-number">17</tt><tt class="py-op">,</tt> <tt class="py-name">parent</tt><tt class="py-op">=</tt><tt class="py-name">root</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">query</tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="test_wcunit.TestModel" class="py-name" href="#" onclick="return doclink('link-13', 'TestModel', 'link-5');">TestModel</a></tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">ancestor</tt><tt class="py-op">(</tt><tt class="py-name">root</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-string">'number ='</tt><tt class="py-op">,</tt> <tt class="py-number">42</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name">results</tt> <tt class="py-op">=</tt> <tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">fetch</tt><tt class="py-op">(</tt><tt class="py-number">2</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">results</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-number">42</tt><tt class="py-op">,</tt> <tt class="py-name">results</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="test_wcunit.TestModel.number" class="py-name" href="#" onclick="return doclink('link-14', 'number', 'link-2');">number</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">         </tt>
+<a name="DemoTestCase.testGetEntityViaMemcache"></a><div id="DemoTestCase.testGetEntityViaMemcache-def"><a name="L55"></a><tt class="py-lineno">55</tt> <a class="py-toggle" href="#" id="DemoTestCase.testGetEntityViaMemcache-toggle" onclick="return toggle('DemoTestCase.testGetEntityViaMemcache');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="test_wcunit.DemoTestCase-class.html#testGetEntityViaMemcache">testGetEntityViaMemcache</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DemoTestCase.testGetEntityViaMemcache-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DemoTestCase.testGetEntityViaMemcache-expanded"><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">entity_key</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="test_wcunit.TestModel" class="py-name" href="#" onclick="return doclink('link-15', 'TestModel', 'link-5');">TestModel</a></tt><tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="test_wcunit.TestModel.number" class="py-name" href="#" onclick="return doclink('link-16', 'number', 'link-2');">number</a></tt><tt class="py-op">=</tt><tt class="py-number">18</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">put</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-name">retrieved_entity</tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name" targets="Function test_wcunit.GetEntityViaMemcache()=test_wcunit-module.html#GetEntityViaMemcache"><a title="test_wcunit.GetEntityViaMemcache" class="py-name" href="#" onclick="return doclink('link-17', 'GetEntityViaMemcache', 'link-17');">GetEntityViaMemcache</a></tt><tt class="py-op">(</tt><tt class="py-name">entity_key</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertNotEqual</tt><tt class="py-op">(</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">retrieved_entity</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-number">18</tt><tt class="py-op">,</tt> <tt class="py-name">retrieved_entity</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="test_wcunit.TestModel.number" class="py-name" href="#" onclick="return doclink('link-18', 'number', 'link-2');">number</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">         </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">    <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Function gaeunit.main()=gaeunit-module.html#main"><a title="gaeunit.main" class="py-name" href="#" onclick="return doclink('link-19', 'main', 'link-19');">main</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Nov 28 19:05:49 2012
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
