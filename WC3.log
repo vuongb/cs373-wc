@@ -1,0 +1,1851 @@
+commit 65da6435ab4e183db6ee6d3b516c8ba48c284789
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Nov 28 19:12:07 2012 -0600
+
+    refactor to WC3.app
+
+commit 8bf300282fae3c2004d3c9e137bfbb9af9c7e93f
+Merge: db697cc 8dd7bb4
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 19:06:37 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit db697ccdd98d7278a74617c6a3a9e3667cd89e31
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 19:06:25 2012 -0600
+
+    documentation added
+
+commit 8dd7bb4eaf99ad045c8daf6ca31084824a0e8d58
+Author: Michael Tarng <mtarng@gmail.com>
+Date:   Wed Nov 28 19:04:07 2012 -0600
+
+    adding report pdf file
+
+commit 1aa6ac3f0c636ad992e0f32c2ec0e5dd3c15a4b5
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 19:00:24 2012 -0600
+
+    update phase 3 test compilation
+
+commit b1e3c46e5f13b0cd84e735c9edb7f00ae00001d6
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 18:57:56 2012 -0600
+
+    refactor WC2 references to WC3
+
+commit 26abf0d7964c3c686b0d6d8386a684feb4f92110
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 18:53:43 2012 -0600
+
+    fix reference to organization before creation
+
+commit 9c95ecd195a8e2b2f61294aa4506671df4d9b2d9
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 18:49:40 2012 -0600
+
+    fix bug where kind cannot be encoded as ascii
+
+commit 0951445afd5e92ab83983e5811c985ae03c8d85b
+Merge: 3816d00 76ca72f
+Author: Michael Tarng <mtarng@gmail.com>
+Date:   Wed Nov 28 18:55:49 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 3816d00e2dc4f78b95622ee7b1fdc621271e31cb
+Author: Michael Tarng <mtarng@gmail.com>
+Date:   Wed Nov 28 18:55:30 2012 -0600
+
+    fixing sudan map
+
+commit 76ca72ff1cf64f42a674c080167decf536eaf608
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 18:49:24 2012 -0600
+
+    Re-addedd diagram
+
+commit 5848e019444ac5d0f92960d91d058b08bc7d4ae2
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 18:41:15 2012 -0600
+
+    Fixed Map Links problem where full URL not provided
+
+commit 19ae4d1048b400ca5d4235ead7473228ae00cb1c
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 18:23:32 2012 -0600
+
+    added asserts to merge
+
+commit 5d1ad0ea41670636f3a8f4579e5f714294a04d28
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 18:16:21 2012 -0600
+
+    Added documentation for merge.py
+
+commit 4186d724656e8ace4ab5fec07b20f37b48e1b476
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 18:14:32 2012 -0600
+
+    add tests for merging different and identical objects
+
+commit cf987b1ad727163d10b8c7e194b5557a495898f1
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 17:52:23 2012 -0600
+
+    only render location if it exists in result
+
+commit 57f92dcbfa15a543e57cd9047ca99e1e1b31632c
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 17:45:52 2012 -0600
+
+    update crisis dict
+
+commit 46f7bcc4cf154812298b4676a80fcea8026e7712
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 17:26:25 2012 -0600
+
+    Deleted Old Submission Files
+
+commit 3e7d8d5099467ecd6b273427176c75bb8458cb02
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 17:25:07 2012 -0600
+
+    prevent populating Citaitons and External Links when not present in object
+
+commit d1ffb69eef8a263cd977aca2a3c5e219202b4c1d
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 17:24:04 2012 -0600
+
+    Fixed Exporter Unit Tests
+
+commit 2512216151da87e85755a06b42c7856cda4efac0
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 17:18:03 2012 -0600
+
+    Fixed Old Importer Unit tests
+
+commit 46fe99a961a5b0de875412f9693bd3af787cf436
+Merge: cf32e48 816a4d9
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 17:12:12 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit cf32e487e4f4d7b226bde1de95b775b8bb7d8bfd
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 17:12:01 2012 -0600
+
+    CSS change: restyled group pages to display data better
+
+commit 816a4d9fcbd5ca20bae56d16809ef7c28911883f
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 16:52:38 2012 -0600
+
+    Added Some Unit Testing
+
+commit 89bd47a927ba5d706ba9bfb783de58748f551121
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 16:46:40 2012 -0600
+
+    Adding Test Merge Org XML instance
+
+commit 5389e903ca6e7b0ff981ba0bc06d91248f4eee71
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 16:45:39 2012 -0600
+
+    re-order rendering of merged org. add merge_crisis
+
+commit 2292a89d665e8000819ae26aa29d102544e861df
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 28 16:38:57 2012 -0600
+
+    Merge Unit Tests
+
+commit bd86ec0b5c3feb90bd92e4212d3c62361935b193
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Nov 28 16:30:45 2012 -0600
+
+    added to task queue
+
+commit c6cceec4b4f1bf7ecd3ba63ff1b1876e1460c57a
+Merge: 925f880 85217fb
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Nov 28 16:26:51 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 85217fbc50e28b8de56068b6a5278feef90bfa08
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 16:19:26 2012 -0600
+
+    fixed js loading error
+
+commit 925f880656b79a7fce8be37d43c25467ebbf5727
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Nov 28 16:17:35 2012 -0600
+
+    added some to task queue
+
+commit e4b1d8fce640be451aa8e455f20745adde47ded7
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 16:10:29 2012 -0600
+
+    fix case where 'results' not a key in feed
+
+commit 916afa5629e685d2a97f0892ba5f87e63a1eaef2
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 16:01:52 2012 -0600
+
+    remove unnecessary comment
+
+commit 754b9baa42254148e23ac231ece5f581e864bdb6
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 16:00:57 2012 -0600
+
+    perform twitter search even if query does not contain a pound symbol
+
+commit 9550f3c8c14ceec78949134b6502e052ec88b760
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 15:58:05 2012 -0600
+
+    fix bug where we access 'errors' in a feed dict without the key existing
+
+commit 7833e1ef31bd2a638379839d261a43bb94b1f115
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 15:56:40 2012 -0600
+
+    handle invalid twitter pages
+
+commit 6f681152e6ee9e6921fac8899efb8dde7eb06e7a
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 15:53:37 2012 -0600
+
+    fix case where False is sometimes returned for get_twitter_feed on search query
+
+commit 7f313d6e6fbb018a78bcb73ce937273e19e19550
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 15:52:44 2012 -0600
+
+    add support for twitter searches. fixes #72, fixes #73
+
+commit 0cb1a9f3830d04bd9679f3855ab1659eaaac000e
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 14:45:44 2012 -0600
+
+    fix importing empty lists as strings in alternatename. close #70
+
+commit 772bc8f566c66ab437eaca0bfb7d7769fc238299
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 14:38:36 2012 -0600
+
+    improving alternate names rendering
+
+commit b368ad0349a36e8d1ab757a9a0916ef549913c25
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 28 13:08:02 2012 -0600
+
+    fix etree to dict reference. unit tests work
+
+commit adc6f07b3039757e69eea6514fb91528c876bbf9
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 11:12:21 2012 -0600
+
+    CSS change: search results
+
+commit e3151fe7cdc8deb8b9ab63fe23026a2ae1074761
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 11:07:46 2012 -0600
+
+    CSS: centered object header
+
+commit e75fa384050044f651f3c82f577ddfed8349e177
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 28 10:59:25 2012 -0600
+
+    Spiced up the About page
+
+commit b8f2139688f62edcce310122e4f167e649886d08
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Nov 28 02:59:12 2012 -0600
+
+    added some base code for using task queue
+
+commit 4043cf573267d095ea7eda96e174b38f875a6a98
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 23:34:15 2012 -0600
+
+    fix error causing some altnames to be read as list rather than string
+
+commit ae100fefa3e3d972768cd6a14eb9cc3cdbb3cc59
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 23:28:40 2012 -0600
+
+    formatted about page a little
+
+commit 01aa7e23c0eeb4597a4ff9127a9dedde857f54cd
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 23:18:17 2012 -0600
+
+    fix error causing some altnames to be read as list rather than string
+
+commit 720c4c9790e51273121942ebd7acc7dcffd28527
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 22:51:12 2012 -0600
+
+    make country non-required
+
+commit ef1c1832dbae330714c84610c00fde6443497f64
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 22:50:01 2012 -0600
+
+    store latitude and longitude as floats
+
+commit 84795899fa619e60a14ceac0a8cabfd327f28247
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 22:49:16 2012 -0600
+
+    Fixed exporter, Added some content to about
+
+commit 969c7d146c598964e2af64ab22096659d38e01ad
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 22:23:35 2012 -0600
+
+    fix case where timezone is included in xml date
+
+commit d67aa521ce85730878f10a23d20e9290e136fb9b
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 22:11:31 2012 -0600
+
+    fix stripping problem
+
+commit f6db9598fbf885c688b92a4471dab3c8aa8feea3
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 22:02:12 2012 -0600
+
+    attempt to fix newline problems in others xmls
+
+commit cca2f7a8929d01afb3e9f4010daaaf1777b2abef
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 21:37:30 2012 -0600
+
+    fix duplicate entries for related objects
+
+commit a21f10add11ccfd03a0daaafd4747763d0019dc5
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 21:16:14 2012 -0600
+
+    don't print empty contact info
+
+commit 207d207f25464b079455685b5906c8273e950cd4
+Merge: 05fea72 238f6c4
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 21:29:50 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 05fea72038206e701ff0d20b2ad17d799189110c
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 21:29:33 2012 -0600
+
+    Added About page
+
+commit 238f6c44eb75fbb590a7ba9ed8fe2735a9da7522
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 21:15:54 2012 -0600
+
+    fix missing ID bug introduced by last commit
+
+commit 299c5ee9d4defa5a2a3bc66a46346d9c782d367b
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 21:06:36 2012 -0600
+
+    finalize rendering of merged org data
+
+commit 3d98286c2d94f9c6f8ccd331c4a5ffbe6e278a78
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 20:52:45 2012 -0600
+
+    add merging and rendering of contact info
+
+commit d74cdb77c329eae7c82ae9a3182c161d78298e4f
+Merge: 55593c0 18c0367
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 20:45:55 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 55593c03fc3f3f884df9012172578721947e086b
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 20:45:32 2012 -0600
+
+    Added utilities menu
+
+commit 18c036706041b25d31a7323afb25be05d814145e
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 20:35:22 2012 -0600
+
+    WC2 now works for person pages
+
+commit 7d2765265ff4af02cf1e46f09cd4082088928f17
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 20:31:50 2012 -0600
+
+    Removed old referenced objects code
+
+commit 54d2f4258c1b781cfdd6b47768e0e369fa3f3f11
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 20:27:17 2012 -0600
+
+    WIP merge_org
+
+commit a9adb56211c35d26cfb84e286af969b9a09ae5f2
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 20:22:56 2012 -0600
+
+    referenced objects now working.
+
+commit 57cd106dba562c42beb89f597391bf960258f221
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 20:00:59 2012 -0600
+
+    Refereced objects still not working.
+
+commit 14b9013c0f119a42dd3f65d555e0efec9762ee2d
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 19:54:02 2012 -0600
+
+    Not properly rendering related objects
+
+commit 5fdd453ebc6ad0cc01506f711cd589a4bc99e866
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 19:10:28 2012 -0600
+
+    CSS change: make background more blue and centered the nav
+
+commit f1825e3995e1dbb6a701b81b9e00c8b035960803
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 18:54:52 2012 -0600
+
+    CSS change: made links burnt orange
+
+commit 0418257a4e1f6dd6d5c4eec4dd299794879d8fb0
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 18:52:08 2012 -0600
+
+    finish new rendering system for everything but related-objects
+
+commit f461e1d6fefbc375918213636285ca889a1e2c12
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 18:37:46 2012 -0600
+
+    Add handling image conflicts. Close #66
+
+commit 2eab0302e63fb3f981dd167f9c6915e3c0dc7cb7
+Merge: e381426 e87a07c
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 18:45:05 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit e3814267391fecc9cba0833633b4cfc93d5ba314
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 18:44:56 2012 -0600
+
+    CSS change: displaying groups properly
+
+commit e87a07c7290490296711acc9a002d3c4aafc277c
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 18:37:08 2012 -0600
+
+    Added merge capabilities for video and social
+
+commit fea93e9cd164585946313ae4b19edb3d2301770a
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 18:08:54 2012 -0600
+
+    Oops. Add code to render results to html in wc2.py
+
+commit 5e038fd4786b2a5103949911cdb8f303f441036d
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 18:05:12 2012 -0600
+
+    add map render. Close #65
+
+commit 1484fccb66946f88ce4f492b551288ff9d4193be
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 17:36:57 2012 -0600
+
+    simplify citations render using dicts
+
+commit e6e0676629c6afa4e94cf86849b2130ad50380dd
+Merge: a95b092 e0d47ef
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 18:00:16 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit a95b092b024787024f0f7bb3fd845850434cc353
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 18:00:06 2012 -0600
+
+    CSS change: added group banners, improved margins
+
+commit e0d47efa308edc28c3e397afdbd62e8c11047c57
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 17:21:08 2012 -0600
+
+    fix newline rendering. add render for Citations.
+
+commit 3e0548e56a0532fe226914df96366bc1a0c356dc
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 17:19:31 2012 -0600
+
+    CSS change: fixed navbar
+
+commit bf0673416b13770a986955088f6a8de645c034f6
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 27 17:18:12 2012 -0600
+
+    Fixed XML Instance; Validates now
+
+commit 592dcd45e839a63acd4c622ab2e3053a224e0887
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 27 16:51:19 2012 -0600
+
+    render locations for an organization on a semicolon-separated line. close #64
+
+commit 2fab457b3551f0665fd0a0ed95f2d0067d6f996a
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 15:09:06 2012 -0600
+
+    even more CSS changes, added group templates, they need work
+
+commit 41789fc5a38b604a6cac54b68bccc942b262d2ac
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 11:14:51 2012 -0600
+
+    big css changes, still not done
+
+commit 5c971a4853a76cbb8cba301c941a4fda8b6244c2
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 02:23:17 2012 -0600
+
+    changed some more CSS
+
+commit ffb1f4a69b90c26cfc6aa59e2d8112d013cda00c
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 27 01:46:34 2012 -0600
+
+    made some CSS changes and refactored our phtml templates to standard HTML
+
+commit c2a4017e61df8e701fdaa6abec30f5d9b83c0ba6
+Merge: fcc6729 1671536
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Nov 26 17:56:55 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit fcc672990cd6b2a342ccb18d1c57500aef546106
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Nov 26 17:56:42 2012 -0600
+
+    updated some CSS
+
+commit 16715369f85b1857022bf6aab4392f3feefce7df
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 17:41:13 2012 -0600
+
+    store result of merge as ordereddict to maintain insertion order
+
+commit b8dac26815b5b739860378c0d1bd4b2adbaabeb1
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 17:38:28 2012 -0600
+
+    more work on merge
+
+commit 7944022e8dc928345c09440b871210159f52d9e7
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Nov 26 17:04:44 2012 -0600
+
+    fixed more merge errors. Search works again
+
+commit 187e91e0849fb3cdd194171ab55ce72787da170d
+Merge: 85efb27 6e23236
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Nov 26 16:59:30 2012 -0600
+
+    merged conflicts in search.html and WC2.py
+
+commit 85efb274175fd25f9d22ec5279dedb3839b6aa00
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Nov 26 16:54:04 2012 -0600
+
+    properly handles search errors. Closes #60
+
+commit 6e2323645ffc59f89057cefc4fa9a9aa4fde42dd
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 16:50:33 2012 -0600
+
+    make location required
+
+commit 9c851441e1f5a83e83da9401ac5677bbd9d1abf9
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 16:30:59 2012 -0600
+
+    begin working on structure of merge
+
+commit b2fe61076e2c59986561e00631bf4247ed75d658
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 16:01:22 2012 -0600
+
+    modify search results to list only distinct results. closes #59
+
+commit ec9c3fbdfca01a2b97d7e300f0cadfe070789d19
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Mon Nov 26 15:50:18 2012 -0600
+
+    Changed id names in xml instance to match class standards
+
+commit c6f342eb3488b5b4d3f3ca7e1875010204f881ed
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 15:44:16 2012 -0600
+
+    Update for case where query is empty
+
+commit 9476a34e9c746d3d6b97faf41aecfd1e85f000db
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 15:39:21 2012 -0600
+
+    handle case where page is reached without entered search terms
+
+commit df9614fac9c9fc9b5b7290256cad361ac2df039c
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 15:28:53 2012 -0600
+
+    remove self from argument to query_distinct
+
+commit 83395219c542ab6f1e2bfdf22dd90e7ed13137e5
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 15:27:30 2012 -0600
+
+    make filter_distinct available to all handlers, and use it in all page handlers.
+
+commit 4e681de5c493a713933f9ba832d2b5c1ce2a9360
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 26 15:15:13 2012 -0600
+
+    make search a textbox, rather than a textarea
+
+commit 748d16ea359d35a4cff4ea02a2c6483636c5761f
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Nov 26 01:27:06 2012 -0600
+
+    Included search terms on search results page
+
+commit 3541d03616dc13361ff7c9fad20e0cbca275800c
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Nov 26 01:09:23 2012 -0600
+
+    Fixed some search bugs
+
+commit 1fdce5c02ff956fd893f9667b96f782f35df04e7
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Sun Nov 25 23:48:07 2012 -0600
+
+    Added links to search results and included search for Person and Organization objects
+
+commit 14c4970dc398465d28362711204d591c464c89ce
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Sun Nov 25 18:32:01 2012 -0600
+
+    comment out test code
+
+commit 35dac04054568d1690cebacec2d9e86e5d0b72ef
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Sun Nov 25 18:29:50 2012 -0600
+
+    remove unused _querys
+
+commit bf24120eadb3390b2aab7d1292fc127419a21bf6
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Sun Nov 25 18:28:04 2012 -0600
+
+    return only distinct items on splash page. closes #56
+
+commit 533f441e37bdcea204cde16d0f06462c0427f06e
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Sat Nov 24 00:22:41 2012 -0600
+
+    first attempt at handling marged data with get_names, get_location, get_contact_info
+
+commit 7888ac991fb52149df27f058e17dc1ed284c96d3
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Thu Nov 22 23:13:33 2012 -0600
+
+    Search feature is in Beta stage. Closes #47
+
+commit c4bdb4cb0fe0759cb724db90771126419ece935f
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Thu Nov 22 21:13:48 2012 -0600
+
+    Got a super basic search to work
+
+commit 0c3833206f398317bd318ce370bcb81313774d59
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Thu Nov 22 16:06:47 2012 -0600
+
+    Added WSGI search handler
+
+commit 3ef7bc860d5d71d24ea6c87496ab27a8f6f5148b
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Thu Nov 22 15:50:05 2012 -0600
+
+    Added crisis object to document, added crisis document to search index
+
+commit 1437d85ade43a1ff7cec5e44ca28c56f1e46374a
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 20 17:44:52 2012 -0600
+
+    Fixed import for empty XML tags containing newlines and tabs. Commented out merge code so import works. Added base code for search API
+
+commit 5930f620aa454591667452c857b6fa7df4bbe370
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Nov 19 17:16:55 2012 -0600
+
+    condense checkduplicate query, fix syntax
+
+commit 85ff2dde6de3335e887cf4943b1326b556474707
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Mon Nov 19 17:09:02 2012 -0600
+
+    modified importer to handle id conflicts
+    
+    Merging still not implemented
+
+commit 97dbe04a970e0dcce4a1aa50a288f65801d2d241
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 13 23:57:39 2012 -0600
+
+    Modified export to export ID names
+
+commit f5b9dd1e1fdca5be63148272f13d09c9654d73be
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 13 18:06:27 2012 -0600
+
+    add logging for non-valid imports
+
+commit e665a9ed90a1d676cd0083a4b284319f27bf9a74
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 13 18:04:47 2012 -0600
+
+    improve syntax and style, make  exceptions less broad
+
+commit 9b051ac79da3464068c8a8f0db59e8f1dc6045f9
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 13 17:46:01 2012 -0600
+
+    remove unused imports, fix comparison with None
+
+commit cf701d621c8058b0404f1b8446648a9531cabd1f
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 7 16:33:40 2012 -0600
+
+    last commit before submit
+
+commit d0a44f6f1fe5b97e30ad7cc0a8cef2ac83b6d7ad
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 7 16:23:03 2012 -0600
+
+    Refactor to WC2 and compiling files for zip
+
+commit cf274727a09d570522fceef8159ade1c67926124
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 16:13:39 2012 -0600
+
+    Compile unit tests into TestWC2. Close #27
+
+commit 8a006b35065374f2cd3053e209e38546f4c9c836
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Wed Nov 7 16:10:58 2012 -0600
+
+    add width to social feed images
+
+commit e6e4f4002d0b64bfd62099e4031e1292d5fd3e39
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 16:08:24 2012 -0600
+
+    update tests
+
+commit 54d69c9ad6a64bc4ca95e00e77fad3544d39fd94
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Wed Nov 7 16:01:03 2012 -0600
+
+    add styling and add template for import page
+
+commit f113479c0787262c329c5dac616d0c5a69bf8f56
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 7 15:48:35 2012 -0600
+
+    Fixed unit testing
+
+commit 8a85fe6070a0d8f4746d222a5723bc9c820895f3
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 14:44:35 2012 -0600
+
+    fix empty fields
+
+commit d4223b2beebdddef0d0c9ac2e2a44e2c414c3391
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 14:43:39 2012 -0600
+
+    better use of empty fields in test_person.xml
+
+commit 07d7d2f9de07acc244a66046a286e0dc8e8484d0
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 14:43:05 2012 -0600
+
+    fix etree_to_dict unit test
+
+commit 01691290914a1323ac0ca702ffcc54b36460968a
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 7 15:35:49 2012 -0600
+
+    Fixed duplication of references. Fixes #40
+
+commit e051af0160a900bda2ab9f411821e6dce3f43d75
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 7 14:53:08 2012 -0600
+
+    Renamed UML Diagram pdf to conform
+
+commit 047c79cffd1127aa907a18148f701b8625e72acb
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 7 14:51:35 2012 -0600
+
+    Created Directory for submission files
+
+commit e37a9c08ca75c03c4d3afe695e9cd029107ef85c
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Nov 7 14:45:57 2012 -0600
+
+    Modified export to export IDREFs
+
+commit e764b3466e9a0dca81c8e1ffd8c3b1713403c2f0
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 14:21:59 2012 -0600
+
+    add documentation to tests
+
+commit 35300313f7f3e35a2de84e89d0748de8cb7977c3
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 14:12:51 2012 -0600
+
+    update export unit tests to conform to new model
+
+commit fa5b6e3d600b2150b27b2024236c42da935efa7a
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 14:12:21 2012 -0600
+
+    refactor nested import loop into importer.put_objects
+
+commit 27383f52297c10c2aedc4b15acdd7bb6fe4d3b44
+Merge: 12c5aef 3f82b29
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 7 11:55:41 2012 -0600
+
+    Added reference relationships to importer.py. Closes #41
+
+commit 12c5aef130fe7f79ec77119c1f6663aac7ef0385
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Nov 7 11:45:05 2012 -0600
+
+    Added object referencing to importer.py
+
+commit 3f82b2995520435bf46dd662b27d53370785dea2
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 02:29:29 2012 -0600
+
+    remove outdated todo
+
+commit 98fab899c3170537c30e85a1f3581858af64af46
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 02:29:17 2012 -0600
+
+    alter indentation
+
+commit 2677677eade3067803b2054bb9db943cc51c2c30
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Nov 7 02:28:32 2012 -0600
+
+    add exporter tests
+
+commit 1b0c04c8cc8e069eb6bdc22595417926cd0f6db2
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 22:19:59 2012 -0600
+
+    update importer to test validation and importing methods
+
+commit 41ae4b490481039f60355a0662b27c658e2129e3
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 22:19:42 2012 -0600
+
+    improve test schema instances
+
+commit bb834d084ad0ed565251f1761c849a7f1135ae6d
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 22:18:46 2012 -0600
+
+    move iterative upload loop to its own method, put_objects
+
+commit b6f1fe28f6129fe17e87fee52826204cd63aac8d
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 21:09:22 2012 -0600
+
+    add test person xml
+
+commit 03dbd5f0f18618bf4127d6c6d1e5780483c07d96
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 18:56:34 2012 -0600
+
+    add test organization xml
+
+commit 50e27b3af57db9bac5bdbce715d59501e787ba17
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 18:56:11 2012 -0600
+
+    add export test skeleton
+
+commit 6e09fb207e33d801e3f91811159406f8a8f1decd
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 18:31:57 2012 -0600
+
+    remove unused import
+
+commit 21c00ca59c59c2671ffdd10146ff9fe99944d24b
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 6 18:47:46 2012 -0600
+
+    Fixed documentation in exporter
+
+commit a044b229f84e204da01584aa5a666ef6a2099e36
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 18:24:17 2012 -0600
+
+    made tests passing. still WIP
+
+commit 64f333aa9e181487c56ea3877f96794e5a6933cf
+Merge: fead517 5b03890
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Tue Nov 6 18:19:22 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit fead5173ffff2e9dcca93d67ec04e060293b2727
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Tue Nov 6 18:19:01 2012 -0600
+
+    add refs, remove comments, add state for jimmy carter
+
+commit 5b03890c9d163a903804cd6cc5844f9b92f9c8b4
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 6 18:04:41 2012 -0600
+
+    added asserts to export
+
+commit a9c6574ed2aaa04cb826dcf4806e0cb119b60258
+Merge: 74b0ef8 45de4ed
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 6 18:02:44 2012 -0600
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 74b0ef8795b3121c35c652049b045adb7c693f9b
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 6 18:02:07 2012 -0600
+
+    cleaned up importer.py and added assertions and documentation. Closes #38
+
+commit 45de4edcb89bebf5ea10b3472297f209c8ce8728
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 17:37:22 2012 -0600
+
+    update test to use WC2.xsd
+
+commit 8b0e0ee30b270428baf8b691e0ff7e21c9bc1772
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 6 17:30:03 2012 -0600
+
+    Fixed export; working now
+
+commit 7ae551d17c0726f0b0bb0e354788c09317b31713
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Tue Nov 6 17:22:10 2012 -0600
+
+    remove repeated description attribute on organization template
+
+commit 9f3fb130fe8b33eef2ff4e2621102156e1d8bf8d
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Tue Nov 6 17:18:11 2012 -0600
+
+    add templates
+
+commit 3656e1342340190254a07edda18487f9d1ec7e7d
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 16:34:15 2012 -0600
+
+    remove outdated TODO
+
+commit 1fc43072e29a06391b8142b249ca605a312a886d
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 16:31:25 2012 -0600
+
+    add documentation to str_from_tree
+
+commit b24e63bc17450d3e7970f8863d606a795e1eb38a
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Nov 6 16:28:03 2012 -0600
+
+    refactor importer helper methods out of WC1.py
+
+commit fd2823dcd64dd2fc749745d728290deb90b6132c
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Nov 6 16:09:26 2012 -0600
+
+    Modified export
+
+commit e081ea8bf9c928e7b8c22c031bb75ce75c66f6d7
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Nov 6 15:29:29 2012 -0600
+
+    Modified importer.py and models.py to validate our updated XML instance with WC2.xsd. Closes #35, Closes #36
+
+commit f21d813036d4d7c88a85b9b39cf68a7bb7152c29
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Sat Nov 3 11:08:18 2012 -0500
+
+    Did some work on importer. Internal Server Error on line 212 of importer.py
+
+commit 7ca6f8316ce47ee2552ff2af216921f7207dea8a
+Author: Michael Tarng <mtarng@gmail.com>
+Date:   Wed Oct 31 17:48:42 2012 -0500
+
+    updated alternate names for people. xml instance now validates against new schema
+
+commit 3ced99170d5680ced2da9ed8538d166a3ebd8e99
+Author: Michael Tarng <mtarng@gmail.com>
+Date:   Wed Oct 31 17:43:50 2012 -0500
+
+    Updated conflicts in xml to match new xsd
+
+commit 3741c3f313a906c987a3ded5c9a34edc22db5580
+Author: Michael Tarng <mtarng@gmail.com>
+Date:   Wed Oct 31 12:56:31 2012 -0500
+
+    modified sudanese conflict in new WC2.xml instance to be compliant with WC2.xsd schema
+
+commit 9c581c13c7bd6866b3c808a308fad8d4484e635e
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 30 18:03:56 2012 -0500
+
+    added the splash page which got deleted for some reason. Modified WC1 to use WC2.xsd
+
+commit 0fb5405dcf5469c32bbd6d84cffeacd01c2a708a
+Author: Michael Tarng <mtarng@gmail.com>
+Date:   Tue Oct 30 17:58:49 2012 -0500
+
+    fixed WC2.xsd file
+
+commit c793b8004b451741a6a8758d9332e0a0bde59feb
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 30 17:52:15 2012 -0500
+
+    added html directory for documentation and WC2.xsd (new schema)
+
+commit 72a308dbac6e7c21fa8611f34e5b3a7300d35ead
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 19:50:00 2012 -0500
+
+    changes before submission
+
+commit 3a1c1792a38e5eadaaf6a4a98d1f522b64e61c10
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 19:47:01 2012 -0500
+
+    add xml files to text
+
+commit 85391fe3c65567655534f9bb7d1bc774a63a526b
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 19:46:26 2012 -0500
+
+    consolidate unit tests in TestWC1
+
+commit 7987781e99ea1a6342a5ce8b9b50bb0d292d5f53
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 19:45:53 2012 -0500
+
+    add test out
+
+commit 80472449949b772326339b1a97433fe94c3d29c4
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 19:43:01 2012 -0500
+
+    add exporter unit test
+
+commit a84d7d6b127ad76d8d1431308c4584fb02fa6819
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 19:18:36 2012 -0500
+
+    add test_exporter
+
+commit e4a5a52592cf4ae7d99c2910daeb6ed499f903f6
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 19:17:17 2012 -0500
+
+    remove unused imports
+
+commit cd69c843939937a4915749056d6dda7c564a040f
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 19:16:55 2012 -0500
+
+    add importer and uploader unit test
+
+commit 0f921f7439da6ea293660d95b4f28a8d3dbb2b10
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Wed Oct 24 18:48:30 2012 -0500
+
+    reset WC1 and importer
+
+commit d90aaf46409bba65c8f10597edd0e2738ceadaed
+Merge: d64ab1a a013bc3
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Wed Oct 24 18:44:35 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit d64ab1a96cc16660f221066440cccd0845b94dc1
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Wed Oct 24 18:44:07 2012 -0500
+
+    move wc1 importer functions to importer
+
+commit a013bc31491046498b4fd3ea9f90a9a93c4b6ec0
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 18:41:50 2012 -0500
+
+    remove references to django. replace with json
+
+commit 42558922bf8ac95bb5d88962dbbedf204fc98a51
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 18:34:10 2012 -0500
+
+    uri of unit tests is "/test" not "/tests"
+
+commit aedabea29c9e281589794adcba83d586b24079b6
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Wed Oct 24 18:18:40 2012 -0500
+
+    add django to app.yaml
+
+commit 885acac677a6966ed54ea027fc456793ff2c7804
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 18:17:27 2012 -0500
+
+    importer changes
+
+commit a3e03e3217a9c8b3b0cb22663c5322abb2889066
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 18:05:47 2012 -0500
+
+    Added documentation for exporter.py
+
+commit f084e89873e42fc673077fe6b268e7a8e4fa0fa5
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 18:03:23 2012 -0500
+
+    remove unused import
+
+commit 2fdf11cb3e60a3a7a039688b6bb2cb70420c7721
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 17:58:19 2012 -0500
+
+    add documentation and do some code cleanup
+
+commit 89633d385f7349e070a2b53a1bad9fb4cbde7936
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Wed Oct 24 17:54:02 2012 -0500
+
+    add a unit test
+
+commit b45fa9faefd742d0392eae856b88578a32f0924c
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 17:33:15 2012 -0500
+
+    Updated readme
+
+commit a15e1218ca6dfb5c2e61d2b926c7401b2f7d70f9
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 17:32:22 2012 -0500
+
+    move MainHandler into phase2_wip -- used for serving dynamic html
+
+commit 144b09f47dd340e55ed5adfea6e0cf55e57a977d
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 17:27:08 2012 -0500
+
+    handle invalid xml imports correctly
+
+commit 6db233a320092b3eac883f08bdee4f976e340ddc
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 17:23:08 2012 -0500
+
+    Got rid of accent marks on main XML EXPORTER WORKS
+
+commit 3c2f5390522a7dfa303ddca7b09d685d907ca222
+Merge: 92a89e3 387a3a1
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 16:35:03 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 92a89e3e1702e21b583854c75f3e37781d72cd6a
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 16:34:57 2012 -0500
+
+    Cleaned up and added required information on static html pages
+
+commit 387a3a13d390a7bf73c2d6b01c4b941224074e62
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 16:33:44 2012 -0500
+
+    move test_wcunit to test/
+
+commit d7a6d6f485939ae837090493329afff908579002
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:47:56 2012 -0500
+
+    make spacing uniform
+
+commit cd647150827366fcebd0009364d2fad2e49fdc89
+Merge: fc10e53 e8072f4
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Oct 24 16:26:13 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit fc10e53a16d22fce5676489aee3c6d22212a9383
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Oct 24 16:25:31 2012 -0500
+
+    unit test tutortial file
+
+commit e8072f4987ec97a0aa056d14afcd6f4c53e090c0
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:46:40 2012 -0500
+
+    update schema filename
+
+commit bb1f731bde115109bf1dddfdb8e39e12f4f45dda
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:45:01 2012 -0500
+
+    display status message of xml upload
+
+commit b274dbc74041547504ecf8fc0ae8052d73406c72
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 15:43:54 2012 -0500
+
+    deleted unused file
+
+commit a01472130b813e876d9a241eccc48c9ef6da036b
+Merge: 0fd5424 5b19f0b
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 15:43:02 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 0fd54241a21d466808359321571a9e9b6cfdd0e2
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 15:42:47 2012 -0500
+
+    reorg of our file structure
+
+commit 5b19f0b4adcccd08ee596a3a2f23d968b02ea661
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:41:01 2012 -0500
+
+    remove error checking, temporarily
+
+commit 409e66d1d364778f9f6445f747b1b4e03dbe41d7
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:39:30 2012 -0500
+
+    remove error checking, temporarily
+
+commit ed42b288af0b1c699f5360ca9afb26ed57cf230c
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 15:38:36 2012 -0500
+
+    changed name of our schema
+
+commit 023f57a75c427defa2180ff26e96901698d8b336
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:38:09 2012 -0500
+
+    remove finally
+
+commit dba0612390c975628533329c034ad55cb5e5fcd7
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:34:07 2012 -0500
+
+    resolve exporter conflict
+
+commit 2450e191eeb65c3ed6211e9ab19b4ee1d941914c
+Author: Boris Jonica <samnosuke@gmail.com>
+Date:   Wed Oct 24 15:31:06 2012 -0500
+
+    try to not fail on importing invalid files
+
+commit 0a5f8b91ff66511d1f7af989c3d0a83a55c80112
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 15:30:51 2012 -0500
+
+    Fixed Exporter
+
+commit c04d11377c5a6ab37a3da8b2c12b6853a8ffd6b3
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 15:26:30 2012 -0500
+
+    renamed final xml instance
+
+commit 90b5dd76713f4101d5cf8883731b70a05fe54d45
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 15:18:27 2012 -0500
+
+    complete xml instance with all 12 items
+
+commit b19c902a3b7bf5922b6b4751a0204b9b84ff4d56
+Merge: 1361c6f a7df6b6
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 15:14:05 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 1361c6fb70a55775c7050f46b04619a3741c440d
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 15:14:00 2012 -0500
+
+    fixed descriptions in xml files. building comprehensive xml file
+
+commit a7df6b638569419199a6918f40d010de8630569d
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 15:09:07 2012 -0500
+
+    3pm update. Import and export nearly finished
+
+commit 80aa173c8f797cbd8c5c7ba4cb5bdc287d45e536
+Merge: 0e3ecea 2644ec3
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 14:48:45 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 0e3ecea02ba894eb8460674b579369425edb5b4b
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 14:48:34 2012 -0500
+
+    xml validated for crisis and organizations
+
+commit 2644ec3d1a785f7b4c4eb78ec672dfd4e3076792
+Merge: 13417ff 3d662ef
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 14:47:00 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 13417ff27d3efe375c5ef63a2e64928df1aa1edd
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 14:46:54 2012 -0500
+
+    fixed maps import
+
+commit 3d662eff191039bbdefcd32318ec8e67db563c07
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 14:39:00 2012 -0500
+
+    Modified Exporter-Organization to ignore history
+
+commit 8fc600f12a51df33e68421b32dd80fb2db301492
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 14:33:09 2012 -0500
+
+    removed duplicates in xml instances
+
+commit ed3a6ff625b8ccb30c5e10a2fd1bbfb8f8cc4960
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 12:00:26 2012 -0500
+
+    Fixed importer to work for all
+
+commit 041dda843e072eca7d565848d9763700b0af8729
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 11:34:34 2012 -0500
+
+    Import works for special classes of all main classes
+
+commit fe50e2f5cf0b295c7d19962296623303ccdec201
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 11:21:14 2012 -0500
+
+    untested code written for special class upload for org and person
+
+commit e20e0d63384d68c4612061a1b357f907b9310474
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 11:07:20 2012 -0500
+
+    imported special classes relating to crisis
+
+commit dfdc1b3f48419072e1c17c3b3fa6ed18887ac717
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Oct 24 01:18:08 2012 -0500
+
+    remove old comments
+
+commit 34c3cf652796f8a6cbdd737e0eab35d645192d87
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Wed Oct 24 01:17:07 2012 -0500
+
+    convert xml file uploads to GAE objects. Fix #9
+
+commit 595cf3ad1ebb5bd9e7c840efba6feec4776cef8f
+Merge: 39adb5f dbe427a
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 03:13:02 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 39adb5fbffac82af613b0864b8bc278778235e8d
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 03:12:48 2012 -0500
+
+    merged WC1.py
+
+commit dbe427a13eecb35dc6d6a9c6130dd272749be320
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 03:12:25 2012 -0500
+
+    added nonworking upload file
+
+commit 88b2048669604185eedd3a1489ba4b250b955f21
+Merge: d96e945 dc5b630
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 03:12:21 2012 -0500
+
+    merged WC1
+
+commit d96e9458f3d87fc176c61e45092ca2a76d77add5
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Wed Oct 24 03:02:11 2012 -0500
+
+    almost have special classes working
+
+commit dc5b630d98e0177c1502ed6178ae5a5c01079b5c
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 02:42:59 2012 -0500
+
+    add password protection of importhandler, start implmenting upload
+
+commit f5e8b88f93ed4349d5c28b47474927aa5b993760
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Oct 24 02:10:24 2012 -0500
+
+    updaded html info for algore and doctorswb
+
+commit 2e50a5bdf42db94ae4e5379a17c9498bab64dc4a
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Wed Oct 24 01:57:46 2012 -0500
+
+    removed conflicting newlines in xml files
+
+commit 62fff939d5acbb99c0ed8c6ea96bed29447c22fa
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 01:54:01 2012 -0500
+
+    removed unneeded files
+
+commit 8b4052e1ce169989a050f7042f20e0e8cc9aa05f
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 01:50:25 2012 -0500
+
+    Added export handlers
+
+commit 2dfff3b010ab7a961188ce435f5724d146ccfa78
+Merge: f1116ef 039ec6f
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 01:45:11 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit f1116ef038bc4225148aaf1e728b94f7ec39ccdd
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 01:44:55 2012 -0500
+
+    added people xml files
+
+commit 039ec6f104ca022cfac4a295f13e571f3c73c948
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 01:35:00 2012 -0500
+
+    Import now works for alternate-names
+
+commit af3590dae8a7af28c04bd2c51872edd4f6d72fc1
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 01:28:42 2012 -0500
+
+    Changed the schema; modified importer for people and organization
+    
+    schema changed to be list of alternate names
+
+commit 927960c5fc4af6afc1a984b78585272efd5a2411
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 01:25:22 2012 -0500
+
+    added crisis xml files
+
+commit 5b9424007defb014ba7bd33871a93d0b8d1e27dc
+Author: mtarng <mtarng@gmail.com>
+Date:   Wed Oct 24 01:00:59 2012 -0500
+
+    adding organization xml files
+
+commit 79140f67707873619d41af6477e23920339dc4cc
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 00:40:14 2012 -0500
+
+    Yeah you'd like me to push ryan
+
+commit 6a732edac8a7f826e77ec34c345ddd2761d78c75
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 00:36:17 2012 -0500
+
+    Ryan's mom
+
+commit 5e7ac2970d6cc0919860a70c0f2d7d4f6f897f08
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Wed Oct 24 00:20:48 2012 -0500
+
+    People and Organization Handler/Importer
+
+commit 1fb571a16313841720eb34d593dff5fa6b774dde
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 23:50:10 2012 -0500
+
+    bryan sux
+
+commit 4a4c08039e0dab76b684114e145512120e122eb1
+Merge: 036175a 46a173d
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 23:33:17 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 036175ae6938dfc3969bf08ce340869df430be38
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 23:32:43 2012 -0500
+
+    first import to local datastore. Crisis import kinda works! Fixes #17
+
+commit 46a173d279ff55140316d8a494eb84d12a8daf84
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Oct 23 23:22:26 2012 -0500
+
+    Added final edits to my static html files
+
+commit 1399f7934ef6f889b7300c4430194361fed0f843
+Merge: 4268d11 e0d2cfd
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Tue Oct 23 23:16:20 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 4268d113d7df1a5a48c9ad7763774dab4a333946
+Author: Cassie Schwendiman <cassie.schwendiman@gmail.com>
+Date:   Tue Oct 23 23:16:03 2012 -0500
+
+    begin combining xml into WC1.xml
+
+commit e0d2cfd67bebd4b3ac5396a23b9dff56308b677f
+Author: mtarng <mtarng@gmail.com>
+Date:   Tue Oct 23 23:13:39 2012 -0500
+
+    modified landing page
+
+commit a542299799db9cc1ed901a7a9bbb17bbe283e7d7
+Author: mtarng <mtarng@gmail.com>
+Date:   Tue Oct 23 23:03:33 2012 -0500
+
+    added jimmy carter and invisible children pages. sourced build.py from cassie
+
+commit 12ca760ceb839073c98a367695d1db96704c31ab
+Author: mtarng <mtarng@gmail.com>
+Date:   Tue Oct 23 22:25:17 2012 -0500
+
+    added mexican drug war and felipe calderon pages
+
+commit bd1090f99cfad4a228b3d806f58a1476f3d6c760
+Merge: 0fd1342 506926a
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 22:15:40 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 0fd13428a2719b14bf9b3c6b9c5d514a91bf2b8f
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 22:15:03 2012 -0500
+
+    brute forcing import.py, crisis almost done
+
+commit 506926a509653ca46ce4a908cd014bc2f0fca30d
+Author: Dereck Sanchez <psycster580@hotmail.com>
+Date:   Tue Oct 23 22:14:10 2012 -0500
+
+    Adding html and xml files for doctors without borders and al gore. Note html not complete
+
+commit bed3025ec887399075c934a97c6e50d8cc2a23e2
+Merge: 5b4a67e 2e0875a
+Author: mtarng <mtarng@gmail.com>
+Date:   Tue Oct 23 20:29:19 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 5b4a67ef3d8eb166c509229186fb8798ddfbcbe2
+Author: mtarng <mtarng@gmail.com>
+Date:   Tue Oct 23 20:28:51 2012 -0500
+
+    Added export.py start
+
+commit 2e0875ae95d3062c67226db9b7ea24e618f2c115
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 20:27:48 2012 -0500
+
+    blah
+
+commit 9978569e6418219e3f34fbe146668c076a3e296d
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 19:44:16 2012 -0500
+
+    added xml to dict function
+
+commit 39367ecd96869a193614cf48af95036e3d27b48e
+Merge: 2764810 ea525af
+Author: mtarng <mtarng@gmail.com>
+Date:   Tue Oct 23 19:17:08 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit 276481051d76ad484ec5b69eacccf0a4e638dea9
+Author: mtarng <mtarng@gmail.com>
+Date:   Tue Oct 23 19:16:52 2012 -0500
+
+    Added more information on FOT page. Fixed links on splash page
+
+commit ea525af6f745aeb05b3ab765448a24be53bb214c
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 19:15:43 2012 -0500
+
+    merge dict convert
+
+commit 7caf312a268213a132f361f111639babd4fae87e
+Merge: dcfa362 d5a92c6
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 19:14:00 2012 -0500
+
+    Merge branch 'master' of https://github.com/vuongb/cs373-wc
+
+commit dcfa3620a3e7783a8cd5e4a515f3dc469afcdab9
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 19:13:42 2012 -0500
+
+    preliminary xml to dict function in import.py
+
+commit d5a92c659023cd6ab9dc4c962d8d737075dab761
+Author: Michael <michael@inspironserver.(none)>
+Date:   Tue Oct 23 18:58:10 2012 -0500
+
+    changed spash page link from cyclone to breast cancer
+
+commit b10a3e7ab732933738d46bf3c8ef85b807e389b5
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 18:55:52 2012 -0500
+
+    sample text, attribute, and tag printing
+
+commit 10cae9763af98e8bddec471d4c1b90cd0e390fbd
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 18:41:24 2012 -0500
+
+    use iterator to go through all elements in tree
+
+commit 5ab7c2aba29fc9cb04a4ae86f8d16e9bb879b553
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 18:30:52 2012 -0500
+
+    add process function to read and create objects from xml elements
+
+commit c3fe25ec48278daed2630ada1432b55481cdce06
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 18:26:19 2012 -0500
+
+    add process function to read and create objects from xml elements
+
+commit 3374a02b2ed35deaff1b1f98718cd20c5994ef35
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Tue Oct 23 18:25:54 2012 -0500
+
+    Added static html for libyan civil war and oxfam
+
+commit 7e5268ccc22725108086fb506778b6012e60c540
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Tue Oct 23 17:28:02 2012 -0500
+
+    created xml_instances folder
+
+commit 414093635f9c3cdd70c88c2bfede0e1ba1f4c7a1
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 11:47:01 2012 -0500
+
+    change WC1.py to WC1.app. Otherwise GAE doesn't run app
+
+commit 5182713b32c3c790be95f97183a0c99e05fed83b
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 11:46:20 2012 -0500
+
+    validate xml against xsl
+
+commit 0315ec61eca35a96c93e0c53388c7ed4c4b7637f
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 11:35:12 2012 -0500
+
+    fix spelling
+
+commit 3b552e6a89da237ce9a1e3e598acdd371cef3aed
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Tue Oct 23 10:53:10 2012 -0500
+
+    added import of 'db'
+
+commit b2000052b5f6d30771c770da4d9981a78e2792fc
+Author: mtarng <mtarng@gmail.com>
+Date:   Mon Oct 22 21:53:48 2012 -0500
+
+    modified splash page
+
+commit 8331c2305dec393ed531268549a726381d6a1b54
+Author: mtarng <mtarng@gmail.com>
+Date:   Mon Oct 22 21:41:46 2012 -0500
+
+    added static Sudanese Conflict page
+
+commit 098bca272591cb23fcf1ccdedbf9faa416aec7fb
+Author: mtarng <mtarng@gmail.com>
+Date:   Mon Oct 22 21:35:00 2012 -0500
+
+    added static TOMS page
+
+commit 1d5b8f1ca3a82f768bfbc12215421099300e8edf
+Author: mtarng <mtarng@gmail.com>
+Date:   Mon Oct 22 21:09:06 2012 -0500
+
+    testing repo clone
+
+commit 9ddd54da590a8d300e41ac8233277724e6be102b
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Oct 22 18:18:24 2012 -0500
+
+    Ryan created and validated his XML instances
+
+commit 60c2bbc94a49699cc6db6508b600220adfc81222
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Mon Oct 22 17:24:21 2012 -0500
+
+    changed my crisis from cyclone nargis to breast cancer and made an HTML page
+
+commit bb2774b241973d1053dc16feb4314da4b055669f
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Mon Oct 22 16:00:30 2012 -0500
+
+    move Models to own file, made adjustments, rename main to WC1
+
+commit 8952f152e3d1595a08736c029719b419777f5b2b
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Mon Oct 22 15:42:48 2012 -0500
+
+    add gitignore to ignore .pyc files, and any google_appengine dirs
+
+commit e75ffec090ce76ec48a5f4c9f578866178705b40
+Author: Cassie Schwendiman <cassie@cs.utexas.edu>
+Date:   Mon Oct 22 15:41:05 2012 -0500
+
+    move unicornsteroids contents to main directory, move html pages to static
+    directory
+
+commit 400a0644f121e7911378022d7f7dfa6fde62a499
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Sun Oct 21 22:58:03 2012 -0500
+
+    add methods for querying and displaying data from datastore
+
+commit 5d1e38ab33f67f14367afaa92f46c1cf703837df
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Sun Oct 21 19:26:11 2012 -0500
+
+    change plural "People" class to "Person".
+
+commit 0c0ec89e307bd3bf66abd8cf042be12d69516dfe
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Sun Oct 21 19:25:57 2012 -0500
+
+    prepend attribute names with us_ to avoid conflicts with reserved words.
+
+commit cd09d9c6675b3d2d0cca32d9d5ef88f47091ddaf
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Sun Oct 21 19:27:49 2012 -0500
+
+    Ryan added his research HTML pages
+
+commit 6256ab5cf7700830c55e4dbbfefd7cad33bacc84
+Author: Ryan Prater <ryanprater@utexas.edu>
+Date:   Sun Oct 21 14:38:58 2012 -0500
+
+    Added HTML template and update models in main.py. Fixes #13
+
+commit 448cdc3db6f9c4f6f6f8604a8893398523057900
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Sun Oct 21 12:47:51 2012 -0500
+
+    Model first commit
+
+commit e2c9e3f7b89bd40edd3ec5d78b70c6902fd1d638
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Sun Oct 21 00:53:29 2012 -0500
+
+    Added app engine directory
+
+commit 4f54cbd4e053a5e86cff3c13c08f8213c0989436
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Oct 15 20:15:12 2012 -0500
+
+    add project skeleton
+
+commit 2ff71686d64b2da857349eb77cc2fc6bf07de1cd
+Author: Boris Jonica <boris.jonica@utexas.edu>
+Date:   Mon Oct 15 20:13:27 2012 -0500
+
+    add Boris' info
+
+commit 4461371bc18dca48661a91250abd85ceefe6492e
+Author: Bryan Vuong <vuong.bryan@gmail.com>
+Date:   Mon Oct 15 14:20:34 2012 -0500
+
+    Initial Commit
