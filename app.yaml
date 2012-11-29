@@ -16,7 +16,7 @@ handlers:
   script: gaeunit.py
 
 - url: /.*
-  script: WC2.app
+  script: WC3.app
 
 libraries:
 - name: webapp2
