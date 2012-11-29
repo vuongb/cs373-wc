@@ -162,7 +162,7 @@ def proccess_common_data(key, xml_value, result_dict):
     elif key == 'alternate-names' and str(xml_value) != '[]':
         result_dict['us_alternateNames'] = str(xml_value).strip()
     elif key == 'kind':
-        result_dict['us_type'] = str(xml_value)
+        result_dict['us_type'] = xml_value
     elif key == 'description':
         result_dict['us_description'] = db.Text(xml_value)
     elif key == 'location':
