@@ -50,7 +50,7 @@ def merge(id, model_str):
 
     for obj in query:
         if 'Name' in result:
-            assert type(result['Name']) == str
+#            assert type(result['Name']) == str
             if 'Alternate Names' in result and result['Alternate Names']:
                 if obj.us_name not in result['Alternate Names'].split(','):
                     result['Alternate Names'] += ', ' + obj.us_name
@@ -60,7 +60,7 @@ def merge(id, model_str):
             result['Name'] = obj.us_name
 
         if 'Alternate Names' in result:
-            assert type(result['Alternate Names']) == str
+#            assert type(result['Alternate Names']) == str
             if obj.us_alternateNames is not None:
                 for name in obj.us_alternateNames.split(','):
                     if name not in result['Alternate Names']:
@@ -69,7 +69,7 @@ def merge(id, model_str):
             result['Alternate Names'] = obj.us_alternateNames
 
         if 'Kind' in result:
-            assert type(result['Kind']) == str
+#            assert type(result['Kind']) == str
             for kind in obj.us_type.split(','):
                 if kind not in result['Kind']:
                     result['Kind'] += ', ' + kind
@@ -77,7 +77,7 @@ def merge(id, model_str):
             result['Kind'] = obj.us_type
 
         if 'Description' in result:
-            assert type(result['Description']) == str
+#            assert type(result['Description']) == str
             for descrip in obj.us_description.split('\n'):
                 if descrip not in result['Description']:
                     result['Description'] += '<p /><p />' + descrip
@@ -148,7 +148,7 @@ def merge(id, model_str):
 
         if 'Related Organizations' in result:
             assert type(result['Related Organizations']) == dict
-            for organization.us_name in obj.organizations:
+            for organization in obj.organizations:
                 if organization not in result['Related Organizations']:
                     result['Related Organizations'][organization.organization.us_name] = organization.organization.getUrl()
         elif hasattr(obj, 'organizations'):
