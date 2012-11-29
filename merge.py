@@ -308,6 +308,11 @@ def merge(id, model_str):
 
 
 def merge_location(result, obj):
+    """
+    merge_location is a helper method for merge function. It merges location data
+    result is the output dictionary for merge
+    obj is the current crisis,organization, or person object being scrutinized
+    """
     for location in result['Location']:
         if location[0] == obj.us_city:
             return
@@ -318,6 +323,12 @@ def merge_location(result, obj):
 
 
 def merge_org(result, obj):
+    """
+    merge_org is the special merge case for Organization. It uses the merge function
+    to merge common data then handles the unique/specific data, contact info
+    result is the output dictionary for merge
+    obj is the current crisis, organization, or person object being scrutinized
+    """
     if obj.us_phone or obj.us_email or obj.us_address:
         contact_info = (obj.us_phone, "<a target=\"_blank\" href=\"mailto:" + obj.us_email + "\">" + obj.us_email + "</a>" if obj.us_email else obj.us_email, obj.us_address)
         if 'Contact Info' in result:
@@ -327,6 +338,10 @@ def merge_org(result, obj):
             result['Contact Info'] = [contact_info]
 
 def render_org(result):
+    """
+    render_org is a helper method to properly create the Contact Info data for an Organization
+    result is the output dictionary for merge
+    """
     contact_info = "<ul>"
     if 'Contact Info' in result:
         for contact in result['Contact Info']:
@@ -334,6 +349,13 @@ def render_org(result):
         result['Contact Info'] = contact_info + "</ul>"
 
 def merge_crisis(result, obj):
+    """
+    merge_crisis is the special merge handler for crisis. Crisis isn't allowed for duplicates
+    but it uses merge function for common data and merge_crisis handles the crisis specific
+    data such as all the Impact
+    result is the output dictionary for merge
+    obj is the current crisis, organization, or person object being scrutinized
+    """
     if obj.us_startDate:
         result['Start Date'] = str(obj.us_startDate)
 
