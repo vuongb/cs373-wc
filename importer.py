@@ -101,8 +101,12 @@ def store_special_classes(result_dict, assoc_obj):
             Image(**builder).put()
     maps            = result_dict.get('maps')
     if maps:
+        header = 'https://maps.google.com/maps?q='
         for map in maps:
-            builder                 = {'source': map.get('source'),
+            s = map.get('source')
+            if s[0:4] != 'http':
+                s = header + s
+            builder                 = {'source': s,
                                        'description': map.get('description'),
                                        'assoc_object': assoc_obj}
             Map(**builder).put()
