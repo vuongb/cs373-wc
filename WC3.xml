@@ -187,7 +187,7 @@
 		</crisis>
 		<crisis id="sudanese-conflict">
 			<name>Sudanese Conflict</name>
-			<kind>Cancer</kind>
+			<kind>Civil War</kind>
 			<description>The conflict began when many groups took up arms, accusing the Sudanese government of oppressing non-Arab Sudanese.  It is also refered to as the "War in Darfur" and "Darfur Genocide."</description>
 			<location>
 				<country>Sudan</country>
