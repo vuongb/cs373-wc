@@ -54,7 +54,7 @@ li a:hover{
     /*background: white;*/
     /*border: 1px solid #222;*/
     border-top: none;
-    width: 1170px;
+    width: 100%;
 }
 
 #header-image{
